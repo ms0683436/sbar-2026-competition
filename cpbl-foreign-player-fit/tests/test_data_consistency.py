@@ -152,6 +152,25 @@ def test_statsapi_mid_pa_substitutions_credit_the_right_players():
     assert list(pa1.stand) == ["R", "R", "L", "L"]
 
 
+def test_statsapi_two_pitching_changes_in_one_pa():
+    """12 replaces 10 before the first pitch, then 11 replaces 12 after it (no replacedPlayer)."""
+    feed = _feed_fixture()
+    pitch = feed["liveData"]["plays"]["allPlays"][0]["playEvents"][0]
+    change = lambda who: {"isPitch": False, "type": "action", "isSubstitution": True, "player": {"id": who},
+                          "details": {"eventType": "pitching_substitution"}, "count": {"balls": 0, "strikes": 0}}
+    play = {"about": {"atBatIndex": 2, "inning": 2, "isTopInning": False},
+            "matchup": {"pitcher": {"id": 11}, "batter": {"id": 23}, "pitchHand": {"code": "R"}, "batSide": {"code": "R"}},
+            "result": {"description": "Gi Ho walks."},
+            "playEvents": [change(12), dict(pitch, pitchNumber=1), change(11), dict(pitch, pitchNumber=2),
+                           dict(pitch, pitchNumber=3)]}
+    feed["liveData"]["plays"]["allPlays"].append(play)
+    feed["gameData"]["players"]["ID12"] = {"pitchHand": {"code": "L"}}
+    rows = pd.DataFrame(statsapi_pbp.feed_rows(feed))
+    pa2 = rows[rows.at_bat_number == 2]
+    assert list(pa2.pitcher) == [12, 11, 11]
+    assert list(pa2.p_throws) == ["L", "R", "R"]
+
+
 def _overlap_games():
     mirror = raw("milb_pbp", "2025_5_aaa_pbp.csv")
     games = raw("statsapi_pbp", "games")

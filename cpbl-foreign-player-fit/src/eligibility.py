@@ -213,7 +213,7 @@ def official_lines(ids: list[int], season: int) -> pd.DataFrame:
                     else:
                         outs += v.get("outs") if v.get("outs") is not None else ip_to_outs(v.get("inningsPitched", "0.0"))
             rows.append({"mlbam_id": p["id"], "season": season, "official_pa": pa, "official_outs": outs})
-    return pd.DataFrame(rows)
+    return pd.DataFrame(rows, columns=["mlbam_id", "season", "official_pa", "official_outs"])
 
 
 def official_crosscheck(players: pd.DataFrame, role: str) -> pd.DataFrame:

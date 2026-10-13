@@ -51,6 +51,7 @@ COLUMNS = [
     "pfx_x", "pfx_z", "plate_x", "plate_z", "zone", "launch_speed", "launch_angle", "balls", "strikes",
 ]
 PRE_COUNT = ["balls_before", "strikes_before"]
+PARSER_VERSION = "3"        # bump when feed_rows changes; cached games are then re-parsed
 _session = requests.Session()
 
 
@@ -88,21 +89,29 @@ def _hand(players: dict, pid: int, key: str) -> str | None:
 def _identities(play: dict, players: dict, prev_pitcher: int | None) -> list[tuple]:
     """(pitcher, batter, p_throws, stand) for every play event, undoing mid-PA substitutions.
 
-    Walks the events backwards from the final matchup. A pitching change carries no
-    replacedPlayer, so the pitcher it replaced is the fielding team's previous pitcher
-    (prev_pitcher); a pinch-hitter's replacedPlayer names the original batter.
+    Walks the events backwards from the final matchup. A pinch-hitter's replacedPlayer
+    names the original batter. A pitching change carries no replacedPlayer, so the pitcher
+    it replaced is the one who entered at the PA's previous pitching change, or the
+    fielding team's pitcher in the previous PA (prev_pitcher) for the first change.
     """
     mu = play["matchup"]
     pit, bat = mu["pitcher"]["id"], mu["batter"]["id"]
     thr, side = mu.get("pitchHand", {}).get("code"), mu.get("batSide", {}).get("code")
+    events = play["playEvents"]
+    replaced, current = {}, prev_pitcher                    # event index -> pitcher it replaced
+    for i, e in enumerate(events):
+        if e.get("isSubstitution") and (e.get("details") or {}).get("eventType") == "pitching_substitution":
+            replaced[i] = (e.get("replacedPlayer") or {}).get("id") or current
+            current = (e.get("player") or {}).get("id")
     out = []
-    for e in reversed(play["playEvents"]):
+    for i in range(len(events) - 1, -1, -1):
+        e = events[i]
         out.append((pit, bat, thr, side))
         det, who = e.get("details") or {}, (e.get("player") or {}).get("id")
         if not e.get("isSubstitution"):
             continue
         if det.get("eventType") == "pitching_substitution" and who == pit:
-            old = (e.get("replacedPlayer") or {}).get("id") or prev_pitcher
+            old = replaced.get(i)
             if old and old != pit:
                 pit, thr = old, _hand(players, old, "pitchHand") or thr
                 if _hand(players, bat, "batSide") == "S":
@@ -162,17 +171,19 @@ def _game_path(pk: int):
     return raw("statsapi_pbp", "games", f"{pk}.csv.gz")
 
 
-def _current(p) -> bool:
-    """Cached file exists and was written by this parser version (has the pre-pitch count)."""
-    if not p.exists():
-        return False
-    with gzip.open(p, "rt", encoding="utf-8") as f:
-        return PRE_COUNT[0] in f.readline()
+def _version_path():
+    return raw("statsapi_pbp", "parser_version.txt")
 
 
-def fetch_game(pk: int) -> int:
+def _cache_current() -> bool:
+    """The cached games were all written by this PARSER_VERSION."""
+    v = _version_path()
+    return v.exists() and v.read_text().strip() == PARSER_VERSION
+
+
+def fetch_game(pk: int, force: bool = False) -> int:
     p = _game_path(pk)
-    if _current(p):
+    if p.exists() and not force:
         return -1
     feed = _get(f"{API}/v1.1/game/{pk}/feed/live")
     df = pd.DataFrame(feed_rows(feed), columns=COLUMNS + PRE_COUNT)
@@ -193,14 +204,18 @@ def fetch(workers: int = 4) -> pd.DataFrame:
     sched = pd.concat(games, ignore_index=True)
     raw("statsapi_pbp", "games").mkdir(parents=True, exist_ok=True)
     sched.to_csv(raw("statsapi_pbp", "schedule.csv"), index=False)
-    todo = [pk for pk in sched.game_pk if not _current(_game_path(pk))]
-    print(f"statsapi: {len(sched)} final AAA games, {len(todo)} to download")
+    stale = not _cache_current()
+    todo = [pk for pk in sched.game_pk if stale or not _game_path(pk).exists()]
+    print(f"statsapi: {len(sched)} final AAA games, {len(todo)} to download"
+          + (" (cache written by an older parser)" if stale else ""))
     done = 0
     with ThreadPoolExecutor(workers) as ex:
-        for n in ex.map(fetch_game, todo):
+        for n in ex.map(lambda pk: fetch_game(pk, force=stale), todo):
             done += 1
             if done % 200 == 0:
                 print(f"  {done}/{len(todo)}", flush=True)
+    if all(_game_path(pk).exists() for pk in sched.game_pk):
+        _version_path().write_text(PARSER_VERSION + "\n")
     return sched
 
 

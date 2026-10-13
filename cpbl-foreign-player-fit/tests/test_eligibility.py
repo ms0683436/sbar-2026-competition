@@ -103,3 +103,18 @@ def test_official_crosscheck_keeps_missing_players_unconfirmed(monkeypatch, tmp_
     out = eligibility.official_crosscheck(pd.DataFrame({"mlbam_id": [1, 2]}), "hitter").set_index("mlbam_id")
     assert out.loc[1, "official_eligibility"] == "eligible"       # returned, no MLB appearances
     assert out.loc[2, "official_eligibility"] == "unknown"        # omitted from the response
+
+
+def test_official_crosscheck_survives_an_empty_response(monkeypatch, tmp_path):
+    from src import eligibility
+
+    class Empty:
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return {"people": []}
+    monkeypatch.setattr(eligibility, "processed", lambda name: tmp_path / name)
+    monkeypatch.setattr("requests.get", lambda *a, **k: Empty())
+    out = eligibility.official_crosscheck(pd.DataFrame({"mlbam_id": [1, 2]}), "pitcher")
+    assert (out.official_eligibility == "unknown").all()
