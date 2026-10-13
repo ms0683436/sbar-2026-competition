@@ -1,0 +1,6 @@
+# Raw downloads are large and re-creatable with `python -m src.fetch_data`
+data/raw/
+!data/raw/README.md
+__pycache__/
+*.pyc
+.pytest_cache/

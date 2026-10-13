@@ -1,0 +1,22 @@
+[project]
+name = "cpbl-foreign-player-fit"
+version = "0.1.0"
+description = "POC: does pitch-type / velocity / handedness matching with the CPBL environment add information beyond traditional AAA stats when scouting foreign players?"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.1",
+    "pyarrow>=14",
+    "duckdb>=1.0",
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+    "seaborn>=0.13",
+    "pyyaml>=6",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

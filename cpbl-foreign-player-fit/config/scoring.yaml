@@ -1,0 +1,136 @@
+# CPBL Foreign Player Fit POC — single source of truth for every tunable choice.
+#
+# PRE-REGISTRATION NOTE
+# The `baseline` and `fit` weights below were committed to git BEFORE any
+# candidate ranking was computed (see git history of this file). They must not
+# be edited to favour a particular player. Sensitivity analyses live in
+# `evaluate.py` and perturb these weights instead of replacing them.
+
+snapshot_date: "2026-10-13"   # nothing dated after this is used
+
+paths:
+  raw: data/raw
+  processed: data/processed
+  reports: reports
+  figures: figures
+  external: ../../ext          # scratch clones (Retrosheet, Chadwick register, chadwick tools)
+
+sources:
+  rebas_release: "https://github.com/rebas-tw/rebas.tw-open-data/releases/download"
+  rebas_seasons: {2024: "v0.1.0-2024", 2025: "v0.1.0-2025"}
+  milb_release: "https://github.com/armstjc/milb-data-repository/releases/download"
+  milb_pbp_months:
+    2024: [3, 4, 5, 6, 7, 8, 9]
+    2025: [3, 4, 5]            # mirror stopped publishing pitch-level files after 2025-05
+  milb_game_months:
+    2025: [3, 4, 5]
+    2026: [4, 5, 6, 7, 8, 9]
+  milb_season_years: [2025, 2026]
+  retrosheet_repo: "https://github.com/chadwickbureau/retrosheet"
+  register_repo: "https://github.com/chadwickbureau/register"
+  chadwick_tarball: "https://github.com/chadwickbureau/chadwick/releases/download/v0.10.0/chadwick-0.10.0.tar.gz"
+
+eligibility:
+  seasons: [2024, 2025]
+  hitter_max_pa: 200           # inclusive: exactly 200 PA is eligible
+  pitcher_max_ip: 40           # inclusive: exactly 40.0 IP (120 outs) is eligible
+
+units:
+  kmh_per_mph: 1.609344
+
+# Pitch-type harmonisation. REBAS codes are hand-tagged from broadcast video;
+# Statcast codes come from MLBAM's classifier. Both are mapped onto this
+# common vocabulary; finer distinctions (ST vs SL, KC vs CU) do not exist on
+# the CPBL side and are therefore collapsed.
+pitch_map:
+  common:
+    FF: FF
+    FA: FF
+    SI: SI
+    FT: SI
+    FC: FC
+    SL: SL
+    ST: SL
+    SV: SL
+    CU: CU
+    KC: CU
+    CS: CU
+    CH: CH
+    FS: SPL
+    FO: SPL
+    SC: CH
+  group:            # coarse fallback (Go/No-Go level 1)
+    FF: FB
+    SI: FB
+    FC: FB
+    SL: BRK
+    CU: BRK
+    CH: OFF
+    SPL: OFF
+
+velocity_bands_mph:          # four-seam / sinker velocity bands for the hitter partition
+  edges: [0, 88, 91, 94, 200]
+  labels: ["<88", "88-91", "91-94", "94+"]
+
+samples:
+  min_cell_pitches_env: 400    # environment cells below this are merged / flagged
+  shrink_k_whiff_swings: 60    # beta-binomial prior strength for player whiff% (swings)
+  shrink_k_woba_pa: 80         # prior strength for player wOBA splits (PA)
+  shrink_k_env_swings: 300     # prior strength for environment whiff contrasts
+  min_pitcher_tracked_pitches: 400
+  min_hitter_tracked_pa: 150
+
+candidate_filters:
+  pitcher:
+    season: 2026
+    min_gs: 10
+    min_ip: 60
+  hitter:
+    season: 2026
+    min_pa: 300
+
+# wOBA linear weights. The same generic weights are applied to BOTH leagues so
+# that differences reflect outcomes, not weight choices (FanGraphs 2024 MLB
+# scale, rounded). Absolute levels are therefore "wOBA-like", not official.
+woba_weights:
+  uBB: 0.69
+  HBP: 0.72
+  1B: 0.89
+  2B: 1.27
+  3B: 1.62
+  HR: 2.10
+
+baseline:
+  winsor_z: 2.5               # z-scores clipped so one extreme stat cannot dominate
+  pitcher:                    # sign: +1 higher is better, -1 lower is better
+    k_minus_bb_pct:  {weight: 0.40, sign: 1}
+    fip:             {weight: 0.25, sign: -1}
+    recent_k_minus_bb_pct: {weight: 0.15, sign: 1}   # 2026-08-01 .. 2026-09-30 game logs
+    ip_per_gs:       {weight: 0.10, sign: 1}
+    gs:              {weight: 0.10, sign: 1}
+  hitter:
+    woba:            {weight: 0.40, sign: 1}
+    iso:             {weight: 0.20, sign: 1}
+    bb_pct:          {weight: 0.15, sign: 1}
+    k_pct:           {weight: 0.15, sign: -1}
+    recent_woba:     {weight: 0.10, sign: 1}
+  recent_window: ["2026-08-01", "2026-09-30"]
+
+fit:
+  pitcher:
+    # F1: extra whiffs per 100 swings explained by CPBL-specific pitch-type weakness
+    # F2: wOBA-allowed shift from the pitcher's PA-ending pitch mix
+    components: {mix_whiff: 0.6, mix_damage: 0.4}
+  hitter:
+    # All hitter components are in the same unit (expected wOBA change), so they
+    # are summed without subjective weights; the weights below only exist so the
+    # sensitivity test can perturb them.
+    components: {pitch_mix: 1.0, velocity: 1.0, hand: 1.0}
+  combined_heuristic:          # ONLY used for the illustrative "overall" column
+    baseline: 0.7
+    fit: 0.3
+  weight_grid: [[1.0, 0.0], [0.8, 0.2], [0.7, 0.3], [0.5, 0.5]]
+
+evaluation:
+  bootstrap_reps: 300
+  random_seed: 20261013
