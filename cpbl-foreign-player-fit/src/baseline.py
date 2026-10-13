@@ -33,6 +33,8 @@ def _league_table(kind: str, year: int, s: pd.DataFrame | None = None) -> pd.Dat
         g = s.groupby("team_league")[["pitching_BF", "pitching_SO", "pitching_BB", "pitching_HBP", "pitching_HR",
                                       "pitching_ER", "pitching_IP"]].sum()
         g["k_minus_bb_pct"] = (g.pitching_SO - g.pitching_BB) / g.pitching_BF
+        g["k_pct"] = g.pitching_SO / g.pitching_BF
+        g["bb_pct"] = g.pitching_BB / g.pitching_BF
         g["era"] = 9 * g.pitching_ER / g.pitching_IP
         raw = (13 * g.pitching_HR + 3 * (g.pitching_BB + g.pitching_HBP) - 2 * g.pitching_SO) / g.pitching_IP
         g["cfip"] = g.era - raw
@@ -104,6 +106,10 @@ def pitcher_metrics(cand: pd.DataFrame, year: int | None = None, season: pd.Data
     d["lg_fip"] = _league_mix(d, lg, "fip")
     adj = config().get("league_adjust", True)
     d["k_minus_bb_pct"] = d.k_minus_bb_pct_raw - (d.lg_k_minus_bb if adj else 0)
+    d["lg_k_pct"] = _league_mix(d, lg, "k_pct")
+    d["lg_bb_pct"] = _league_mix(d, lg, "bb_pct")
+    d["k_pct_adj"] = d.k_pct - (d.lg_k_pct if adj else 0)           # amendment 5
+    d["bb_pct_adj"] = d.bb_pct - (d.lg_bb_pct if adj else 0)
     d["fip"] = d.fip_raw - (d.lg_fip if adj else 0)
     d["ip_per_gs"] = d.IP / d.pitching_GS
     d["gs"] = d.pitching_GS
@@ -150,7 +156,9 @@ def judgment_weights(role: str) -> dict:
 def active_weights(role: str) -> dict:
     """Weights the baseline uses. Amendment 4: estimated from 2025 -> 2026 AAA data
     (src.baseline_weights) unless the estimate fell back to the judgment weights."""
-    if config()["baseline"].get("weights_source", "judgment") != "estimated":
+    src = config()["baseline"].get("weights_source", "judgment")
+    src = src.get(role, "judgment") if isinstance(src, dict) else src      # amendment 5: per role
+    if src != "estimated":
         return judgment_weights(role)
     from . import baseline_weights
     return baseline_weights.weights(role)

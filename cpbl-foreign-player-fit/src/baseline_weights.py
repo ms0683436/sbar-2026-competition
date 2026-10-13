@@ -34,7 +34,7 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import nnls
 
-from . import baseline, milb_candidates
+from . import baseline, milb_candidates, park
 from .common import ROOT, config, processed, raw
 
 API = "https://statsapi.mlb.com/api/v1/stats"
@@ -63,7 +63,7 @@ def to_frame(splits: list[dict], group: str) -> pd.DataFrame:
         if lg is None or "team" not in s:
             continue
         r = {"season": int(s["season"]), "player_id": s["player"]["id"], "player_full_name": s["player"]["fullName"],
-             "team_abv": s["team"]["name"], "team_league": lg,
+             "team_id": s["team"]["id"], "team_abv": s["team"]["name"], "team_league": lg,
              "player_position": s.get("position", {}).get("abbreviation", "")}
         r.update({v: s["stat"].get(k, 0) for k, v in fields.items()})
         rows.append(r)
@@ -81,8 +81,9 @@ def fetch(group: str, season: int, start: str | None = None, end: str | None = N
     therefore queried separately (teamId), which returns that club's stint only."""
     tag = f"{season}_{group}" + (f"_{start}_{end}" if start else "")
     out = raw("statsapi_season", f"{tag}_by_team.csv")
+    kind = "pitching" if group == "pitching" else "batting"
     if out.exists() and not force:
-        return pd.read_csv(out)
+        return park.adjust(pd.read_csv(out), kind)
     from .statsapi_pbp import _get
     teams = _get(f"{API.rsplit('/', 1)[0]}/teams", {"sportId": 11, "season": season})["teams"]
     params = {"stats": "byDateRange" if start else "season", "group": group, "sportId": 11, "season": season,
@@ -97,7 +98,7 @@ def fetch(group: str, season: int, start: str | None = None, end: str | None = N
     df = to_frame(splits, group)
     out.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(out, index=False)
-    return df
+    return park.adjust(df, kind)
 
 
 def _pool(group: str, season: int) -> pd.DataFrame:
@@ -244,7 +245,8 @@ def run() -> pd.DataFrame:
 def _stale(f) -> bool:
     """The saved weights are rebuilt when the config or any cached statsapi table is newer."""
     t = f.stat().st_mtime
-    inputs = [ROOT / "config" / "scoring.yaml", *raw("statsapi_season").glob("*_by_team.csv")]
+    inputs = [ROOT / "config" / "scoring.yaml", processed("park_factors.csv"),
+              *raw("statsapi_season").glob("*_by_team.csv")]
     return any(p.stat().st_mtime > t for p in inputs if p.exists())
 
 

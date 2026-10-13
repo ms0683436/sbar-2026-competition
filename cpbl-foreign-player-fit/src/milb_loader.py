@@ -23,7 +23,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from . import statsapi_pbp
+from . import park, statsapi_pbp
 from .common import config, processed, raw, snapshot
 from .pitch_schema import finalize
 
@@ -171,8 +171,9 @@ def load(force: bool = False) -> pd.DataFrame:
 
 # ------------------------------------------------------------ season / game stats
 def season_stats(kind: str, year: int) -> pd.DataFrame:
+    """AAA season totals per player x club stint; park-adjusted (amendment 5) when enabled."""
     df = pd.read_csv(raw("milb_season", f"{year}_aaa_season_{kind}_stats.csv"), low_memory=False)
-    return df[df.team_level_abv == "AAA"].copy()
+    return park.adjust(df[df.team_level_abv == "AAA"].copy(), kind)
 
 
 def game_logs(year: int) -> pd.DataFrame:
@@ -183,6 +184,9 @@ def game_logs(year: int) -> pd.DataFrame:
     df = df[(df.game_type == "R") & (df.league_level_name == "Triple-A")]
     df["game_date"] = pd.to_datetime(df.game_date)
     df = df[df.game_date <= snapshot()]
+    if park.enabled():          # amendment 5: home games divided by the club's park factor
+        home = df["loc"].eq("H")
+        df = park.adjust(park.adjust(df, "pitching", home=home), "batting", home=home)
     df.attrs["n_raw"] = n0
     return df
 

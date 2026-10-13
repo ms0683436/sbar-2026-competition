@@ -41,7 +41,7 @@ def test_nnls_uses_player_weights():
 def _sample(n, rng, in_sample=True):
     spec = config()["baseline"]["pitcher"]
     d = pd.DataFrame({m: rng.normal(size=n) for m in spec})
-    d["target"] = d.k_minus_bb_pct + rng.normal(scale=0.5, size=n)
+    d["target"] = d.k_pct_adj + rng.normal(scale=0.5, size=n)
     d["target_n"] = 300.0
     d["in_sample"] = in_sample
     d["n_predictor_pool"] = n
@@ -60,8 +60,8 @@ def test_estimate_puts_weight_on_the_predictive_metric():
     t = bw.estimate("pitcher", _sample(300, np.random.default_rng(2))).set_index("metric")
     assert (t.used == "estimated").all()
     assert t.used_weight.sum() == pytest.approx(1)
-    assert t.used_weight.idxmax() == "k_minus_bb_pct"
-    assert t.loc["k_minus_bb_pct", "ci_lo"] > 0.5
+    assert t.used_weight.idxmax() == "k_pct_adj"
+    assert t.loc["k_pct_adj", "ci_lo"] > 0.5
     assert t.cv_spearman_estimated.iat[0] > t.spearman_judgment.iat[0]
 
 
@@ -72,10 +72,13 @@ def test_score_uses_the_registered_weight_source(monkeypatch):
     a = baseline.score(d, "pitcher").baseline_score
     assert np.allclose(a, baseline.score(d, "pitcher", baseline.judgment_weights("pitcher")).baseline_score)
     monkeypatch.setitem(config()["baseline"], "weights_source", "estimated")
-    fake = {m: (1.0 if m == "gs" else 0.0) for m in config()["baseline"]["pitcher"]}
+    fake = {m: (1.0 if m == "fip" else 0.0) for m in config()["baseline"]["pitcher"]}
     monkeypatch.setattr(bw, "weights", lambda role: fake)
     s = baseline.score(d, "pitcher")
-    assert np.allclose(s.baseline_score, s.z_gs)
+    assert np.allclose(s.baseline_score, s.z_fip)
+    monkeypatch.setitem(config()["baseline"], "weights_source", {"pitcher": "judgment", "hitter": "estimated"})
+    assert baseline.active_weights("pitcher") == baseline.judgment_weights("pitcher")
+    assert baseline.active_weights("hitter") == fake
 
 
 def test_fetch_keeps_one_row_per_team_stint(monkeypatch, tmp_path):
@@ -100,9 +103,9 @@ def test_design_standardises_with_the_fitting_rows_only():
     d = _sample(50, rng)
     train, test = d.iloc[:40], d.iloc[40:]
     X = bw.design("pitcher", train, test)
-    mu, sd = train.k_minus_bb_pct.mean(), train.k_minus_bb_pct.std(ddof=0)
-    col = list(config()["baseline"]["pitcher"]).index("k_minus_bb_pct")
-    assert np.allclose(X[:, col], ((test.k_minus_bb_pct - mu) / sd).clip(-2.5, 2.5))
+    mu, sd = train.k_pct_adj.mean(), train.k_pct_adj.std(ddof=0)
+    col = list(config()["baseline"]["pitcher"]).index("k_pct_adj")
+    assert np.allclose(X[:, col], ((test.k_pct_adj - mu) / sd).clip(-2.5, 2.5))
 
 
 def test_failed_bootstrap_draws_are_not_counted_as_nonzero(monkeypatch):

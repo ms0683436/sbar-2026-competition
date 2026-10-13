@@ -35,7 +35,8 @@ def spearman(a, b) -> float:
 def test_a(P: pd.DataFrame, H: pd.DataFrame) -> dict:
     out = {}
     for role, D, fitcol, ctrl in (
-        ("pitcher", P, "fit_score", ["k_minus_bb_pct_raw", "fip_raw", "aaa_whiff_pct_tracked", "swstr_pct_aaa", "ip_per_gs"]),
+        ("pitcher", P, "fit_score", ["k_minus_bb_pct_raw", "k_pct", "bb_pct", "fip_raw", "aaa_whiff_pct_tracked",
+                                     "swstr_pct_aaa", "ip_per_gs"]),
         ("hitter", H, "fit_score", ["woba_raw", "iso_raw", "k_pct_raw", "bb_pct_raw", "whiff_pct_aaa"]),
     ):
         d = D[D.fit_available].copy()
@@ -92,6 +93,8 @@ def baseline_boot(role: str, cand: pd.DataFrame, logs: pd.DataFrame, w: pd.Serie
         x["recent_k_minus_bb_pct"] = ((r.pitching_SO - r.pitching_BB) + kbb * k) / (r.pitching_BF + k) - lg_adj
         x["ip_per_gs"] = s.pitching_IP / s.pitching_GS.replace(0, np.nan)
         x["gs"] = s.pitching_GS
+        x["k_pct_adj"] = s.pitching_SO / s.pitching_BF - d.lg_k_pct         # amendment 5
+        x["bb_pct_adj"] = s.pitching_BB / s.pitching_BF - d.lg_bb_pct
     else:
         cols = ["batting_PA", "batting_AB", "batting_H", "batting_2B", "batting_3B", "batting_HR", "batting_BB",
                 "batting_IBB", "batting_SO", "batting_HBP", "batting_SF", "batting_TB"]

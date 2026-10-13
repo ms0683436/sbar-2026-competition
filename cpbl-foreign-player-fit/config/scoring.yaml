@@ -121,12 +121,20 @@ woba_weights:
 
 baseline:
   winsor_z: 2.5               # z-scores clipped so one extreme stat cannot dominate
+  # AMENDMENT 5 (2026-10-13; Johnny's choice "K%+BB% 分開"): the pitcher baseline is rebuilt
+  # around strikeout ability, because CPBL hitters make contact (whiff% 19.4% vs AAA 24.8%).
+  # Chosen after a check of 2025 vs 2026 AAA (statsapi totals, 178 pitchers with >= 150 BF in
+  # both seasons; no candidate ranking involved): year-to-year Spearman K% 0.42, BB% 0.53,
+  # K-BB% 0.12, K/BB 0.17, FIP 0.11; same-season Spearman with ERA K% -0.40, BB% +0.16,
+  # K-BB% -0.53, FIP +0.72. K% and BB% are each stable; their difference is not. Weights are
+  # judgment (K% leads, FIP supports); amendment 4's estimate is still computed for these
+  # metrics and reported, but not used for pitchers (weights_source below).
+  # Previous pitcher spec (amendments 0-4): K-BB% 0.40, FIP 0.25, recent K-BB% 0.15,
+  # IP/GS 0.10, GS 0.10 (git history).
   pitcher:                    # sign: +1 higher is better, -1 lower is better
-    k_minus_bb_pct:  {weight: 0.40, sign: 1}
+    k_pct_adj:       {weight: 0.50, sign: 1}    # SO / BF minus league SO / BF
+    bb_pct_adj:      {weight: 0.25, sign: -1}   # BB / BF minus league BB / BF
     fip:             {weight: 0.25, sign: -1}
-    recent_k_minus_bb_pct: {weight: 0.15, sign: 1}   # 2026-08-01 .. 2026-09-30 game logs
-    ip_per_gs:       {weight: 0.10, sign: 1}
-    gs:              {weight: 0.10, sign: 1}
   hitter:
     woba:            {weight: 0.40, sign: 1}
     iso:             {weight: 0.20, sign: 1}
@@ -143,7 +151,7 @@ baseline:
   # (baseline_rank_judgment). The weight perturbation in Test B perturbs the weights in use.
   # Nothing about the estimated weights was looked at before this registration; only the fact
   # that the mirror's 2025 season file stops in May (so 2025 comes from statsapi) was checked.
-  weights_source: estimated     # "judgment" restores the weights above
+  weights_source: {pitcher: judgment, hitter: estimated}   # amendment 5; amendment 4 had "estimated" for both
   estimation:
     predictor_season: 2025
     target_season: 2026
@@ -159,6 +167,23 @@ baseline:
     min_n: 40                    # fewer players with a target -> judgment weights
     cv_folds: 10                 # reported only: CV Spearman of estimated vs judgment weights
     bootstrap: {draws: 1000, ci: 0.90, seed: 20261013}
+
+# AMENDMENT 5 (2026-10-13; committed BEFORE any park-adjusted ranking was computed or viewed).
+# Johnny: a player's home park is half of his games, so hitter / pitcher parks must be
+# accounted for. Park factors per AAA club and event (src/park.py docstring) are estimated
+# from 2025-26 AAA plate appearances (home vs road games of each club, regressed by
+# method-of-moments reliability, PA-weighted mean 1). Only the factors themselves were
+# looked at before this registration (e.g. HR: CLT 1.52, LV 1.47, NAS 0.69). Every AAA
+# counting stat is divided by (PF + 1) / 2 of the club it was compiled with (season totals,
+# the statsapi tables behind amendment 4) or, game by game, by PF in home games (game logs:
+# recent form, bootstrap). League adjustment, z-scores, the amendment-4 estimation and the
+# D7 road-only check (road games are not adjusted) all run on the adjusted numbers.
+# Fit (pitch-level shape) is not park-adjusted.
+park:
+  enabled: true
+  seasons: [2025, 2026]
+  events: [SO, uBB, HBP, 1B, 2B, 3B, HR]
+  player_factor: half_home    # (PF_home + 1) / 2 per club stint
 
 fit:
   pitcher:
