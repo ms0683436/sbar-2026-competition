@@ -76,3 +76,48 @@ def test_score_uses_the_registered_weight_source(monkeypatch):
     monkeypatch.setattr(bw, "weights", lambda role: fake)
     s = baseline.score(d, "pitcher")
     assert np.allclose(s.baseline_score, s.z_gs)
+
+
+def test_fetch_keeps_one_row_per_team_stint(monkeypatch, tmp_path):
+    """A traded player must keep his league mix: each club is queried on its own."""
+    from src import statsapi_pbp
+    monkeypatch.setattr(bw, "raw", lambda *parts: tmp_path.joinpath(*parts))
+
+    def fake_get(url, params=None):
+        if url.endswith("/teams"):
+            return {"teams": [{"id": 1}, {"id": 2}]}
+        lg, pa = (112, 238) if params["teamId"] == 1 else (117, 45)
+        sp = _split(7, lg, plateAppearances=pa)
+        sp["team"] = {"id": params["teamId"], "name": f"T{params['teamId']}"}
+        return {"stats": [{"totalSplits": 1, "splits": [sp]}]}
+    monkeypatch.setattr(statsapi_pbp, "_get", fake_get)
+    df = bw.fetch("hitting", 2026)
+    assert sorted(zip(df.team_league, df.batting_PA)) == [("INT", 45), ("PCL", 238)]
+
+
+def test_design_standardises_with_the_fitting_rows_only():
+    rng = np.random.default_rng(4)
+    d = _sample(50, rng)
+    train, test = d.iloc[:40], d.iloc[40:]
+    X = bw.design("pitcher", train, test)
+    mu, sd = train.k_minus_bb_pct.mean(), train.k_minus_bb_pct.std(ddof=0)
+    col = list(config()["baseline"]["pitcher"]).index("k_minus_bb_pct")
+    assert np.allclose(X[:, col], ((test.k_minus_bb_pct - mu) / sd).clip(-2.5, 2.5))
+
+
+def test_failed_bootstrap_draws_are_not_counted_as_nonzero(monkeypatch):
+    names = list(config()["baseline"]["pitcher"])
+    calls = {"n": 0}
+
+    def fake(X, y, w):
+        calls["n"] += 1
+        if calls["n"] > 1 and calls["n"] % 2 == 0:
+            return None                              # every other bootstrap draw fails
+        c = np.zeros(len(names)); c[1] = 1.0
+        return c
+    monkeypatch.setattr(bw, "nnls_weights", fake)
+    monkeypatch.setattr(bw, "cv_spearman", lambda *a, **k: np.nan)
+    t = bw.estimate("pitcher", _sample(60, np.random.default_rng(5))).set_index("metric")
+    draws = config()["baseline"]["estimation"]["bootstrap"]["draws"]
+    assert t.boot_draws_all_zero.iat[0] == draws // 2
+    assert t.loc[names[0], "share_zero"] == 1.0 and t.loc[names[1], "share_zero"] == 0.0

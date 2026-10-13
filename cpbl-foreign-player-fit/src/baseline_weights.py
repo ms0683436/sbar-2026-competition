@@ -35,7 +35,7 @@ import pandas as pd
 from scipy.optimize import nnls
 
 from . import baseline, milb_candidates
-from .common import config, processed, raw
+from .common import ROOT, config, processed, raw
 
 API = "https://statsapi.mlb.com/api/v1/stats"
 LEAGUES = {112: "PCL", 117: "INT"}
@@ -75,19 +75,25 @@ def to_frame(splits: list[dict], group: str) -> pd.DataFrame:
 
 def fetch(group: str, season: int, start: str | None = None, end: str | None = None,
           force: bool = False) -> pd.DataFrame:
-    """Season (or date-range) AAA stats for every player, cached under data/raw/statsapi_season."""
+    """Season (or date-range) AAA stats, one row per player x team stint, cached under
+    data/raw/statsapi_season. The league-wide query returns ONE combined row per player labelled
+    with his latest team, so a traded player's league mix would be lost; each AAA club is
+    therefore queried separately (teamId), which returns that club's stint only."""
     tag = f"{season}_{group}" + (f"_{start}_{end}" if start else "")
-    out = raw("statsapi_season", f"{tag}.csv")
+    out = raw("statsapi_season", f"{tag}_by_team.csv")
     if out.exists() and not force:
         return pd.read_csv(out)
     from .statsapi_pbp import _get
+    teams = _get(f"{API.rsplit('/', 1)[0]}/teams", {"sportId": 11, "season": season})["teams"]
     params = {"stats": "byDateRange" if start else "season", "group": group, "sportId": 11, "season": season,
               "gameType": "R", "playerPool": "ALL", "limit": 10000}
     if start:
         params.update(startDate=start, endDate=end)
-    d = _get(API, params)
-    splits = d["stats"][0]["splits"]
-    assert len(splits) == d["stats"][0]["totalSplits"], "statsapi returned a partial page"
+    splits = []
+    for t in teams:
+        d = _get(API, dict(params, teamId=t["id"]))["stats"][0]
+        assert len(d["splits"]) == d["totalSplits"], "statsapi returned a partial page"
+        splits += [sp for sp in d["splits"] if sp.get("team", {}).get("id") == t["id"]]
     df = to_frame(splits, group)
     out.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(out, index=False)
@@ -159,15 +165,34 @@ def _spearman(a, b) -> float:
     return float(pd.Series(a).rank().corr(pd.Series(b).rank()))
 
 
-def cv_spearman(X: np.ndarray, y: np.ndarray, w: np.ndarray, folds: int, rng) -> float:
-    """Out-of-fold predictions from weights fitted on the other folds."""
-    idx = rng.permutation(len(y))
-    pred = np.empty(len(y))
+def design(role: str, fit_rows: pd.DataFrame, apply_rows: pd.DataFrame | None = None) -> np.ndarray:
+    """Sign-aligned z-scores clipped at winsor_z, with mean / SD taken from `fit_rows` (as
+    baseline.score does within its sample) and applied to `apply_rows` (default: the same rows)."""
+    spec, clip = config()["baseline"][role], config()["baseline"]["winsor_z"]
+    apply_rows = fit_rows if apply_rows is None else apply_rows
+    cols = []
+    for m, sp in spec.items():
+        x = pd.to_numeric(fit_rows[m], errors="coerce")
+        mu, sd = x.mean(), x.std(ddof=0)
+        v = pd.to_numeric(apply_rows[m], errors="coerce")
+        z = (v - mu) / sd if sd and not np.isnan(sd) else v * 0.0
+        cols.append(sp["sign"] * z.clip(-clip, clip).to_numpy(float))
+    return np.column_stack(cols)
+
+
+def cv_spearman(role: str, s: pd.DataFrame, folds: int, rng) -> float:
+    """Out-of-fold predictions: standardisation and weights both come from the other folds;
+    a fold whose fit is all zeros falls back to the judgment weights, as the full rule does."""
+    judg = baseline.judgment_weights(role)
+    jw = np.array([judg[m] for m in config()["baseline"][role]])
+    y, w = s.target.to_numpy(float), s.target_n.to_numpy(float)
+    idx = rng.permutation(len(s))
+    pred = np.empty(len(s))
     for k in range(folds):
         test = idx[k::folds]
         train = np.setdiff1d(idx, test)
-        c = nnls_weights(X[train], y[train], w[train])
-        pred[test] = X[test] @ (c if c is not None else np.ones(X.shape[1]) / X.shape[1])
+        c = nnls_weights(design(role, s.iloc[train]), y[train], w[train])
+        pred[test] = design(role, s.iloc[train], s.iloc[test]) @ (c if c is not None else jw)
     return _spearman(pred, y)
 
 
@@ -177,29 +202,30 @@ def estimate(role: str, d: pd.DataFrame | None = None) -> pd.DataFrame:
     s = d[d.in_sample].copy()
     judg = baseline.judgment_weights(role)
     names = list(judg)
-    z = baseline.score(s, role, judg)
-    X = z[[f"z_{m}" for m in names]].to_numpy(float)
-    y = z.target.to_numpy(float)
-    w = z.target_n.to_numpy(float)
+    X = design(role, s)
+    y = s.target.to_numpy(float)
+    w = s.target_n.to_numpy(float)
     n = len(y)
     coef = nnls_weights(X, y, w) if n >= e["min_n"] else None
     rng = np.random.default_rng(e["bootstrap"]["seed"])
     draws = []
     for _ in range(e["bootstrap"]["draws"] if coef is not None else 0):
-        i = rng.integers(0, n, n)
-        c = nnls_weights(X[i], y[i], w[i])
+        i = rng.integers(0, n, n)                    # re-standardise within each resample
+        c = nnls_weights(design(role, s.iloc[i]), y[i], w[i])
         draws.append(c if c is not None else np.full(len(names), np.nan))
     B = np.array(draws) if draws else np.full((1, len(names)), np.nan)
+    ok = ~np.isnan(B).any(axis=1)                    # draws whose fit was all zeros are excluded
     a = (1 - e["bootstrap"]["ci"]) / 2
     used = "estimated" if coef is not None else "judgment (fallback)"
     jw = np.array([judg[m] for m in names])
-    cv = cv_spearman(X, y, w, e["cv_folds"], np.random.default_rng(e["bootstrap"]["seed"])) if coef is not None else np.nan
+    cv = cv_spearman(role, s, e["cv_folds"], np.random.default_rng(e["bootstrap"]["seed"])) if coef is not None else np.nan
     return pd.DataFrame({
         "role": role, "metric": names, "judgment_weight": jw,
         "estimated_weight": coef if coef is not None else np.nan,
         "used_weight": coef if coef is not None else jw,
         "ci_lo": np.nanquantile(B, a, axis=0), "ci_hi": np.nanquantile(B, 1 - a, axis=0),
-        "share_zero": np.nanmean(B == 0, axis=0) if draws else np.nan,
+        "share_zero": (B[ok] == 0).mean(axis=0) if ok.any() else np.nan,
+        "boot_draws_all_zero": int((~ok).sum()) if draws else 0,
         "n": n, "n_predictor_pool": int(d.n_predictor_pool.iat[0]) if len(d) else 0,
         "n_without_target": int((~d.in_sample).sum()), "used": used,
         "cv_spearman_estimated": cv, "spearman_judgment": _spearman(X @ jw, y),
@@ -215,10 +241,17 @@ def run() -> pd.DataFrame:
     return out
 
 
+def _stale(f) -> bool:
+    """The saved weights are rebuilt when the config or any cached statsapi table is newer."""
+    t = f.stat().st_mtime
+    inputs = [ROOT / "config" / "scoring.yaml", *raw("statsapi_season").glob("*_by_team.csv")]
+    return any(p.stat().st_mtime > t for p in inputs if p.exists())
+
+
 @lru_cache(maxsize=1)
 def _table() -> pd.DataFrame:
     f = processed("baseline_weights.csv")
-    return pd.read_csv(f) if f.exists() else run()
+    return pd.read_csv(f) if f.exists() and not _stale(f) else run()
 
 
 @lru_cache(maxsize=None)
