@@ -11,9 +11,11 @@ Sources (all public, see data/sources.md for licences):
   * chadwickbureau/register — MLBAM <-> Retrosheet ID crosswalk + birth years
   * chadwick 0.10.0 tools (cwdaily) — Retrosheet event files -> player-game lines
 
-Network note: the official sites (stats.cpbl.com.tw, baseballsavant.mlb.com,
-statsapi.mlb.com) were blocked by the execution environment's egress policy at
-analysis time; this script only uses the GitHub-hosted mirrors above.
+Network note: the official sites were blocked at first. Since amendment 1
+(2026-10-13) statsapi.mlb.com is reachable and supplies the rest of the AAA pitch
+data and the roster facts — run `python -m src.statsapi_pbp` after this script.
+stats.cpbl.com.tw is reachable too but is not used: its data comes from `/api/`,
+which robots.txt disallows, and its terms forbid reuse without written permission.
 """
 from __future__ import annotations
 

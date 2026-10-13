@@ -4,7 +4,7 @@ import re
 import pandas as pd
 import pytest
 
-from src.common import ip_to_outs, outs_to_ip_str
+from src.common import ip_to_outs, outs_to_ip_str, processed
 from src.eligibility import decide, regular_season_files
 
 
@@ -79,3 +79,15 @@ def test_mlb_season_lines_match_published_totals():
     assert lines.loc[(2024, "salec001"), "p_outs"] == 533  # Chris Sale 2024: 177.2 IP
     audit = pd.read_csv(processed("mlb_season_audit.csv")).set_index("season")
     assert audit.loc[2024, "games"] == 2429 and audit.loc[2025, "games"] == 2430
+
+
+@pytest.mark.skipif(not processed("screening_log_pitchers.csv").exists(), reason="screening not built")
+def test_official_statsapi_agrees_with_retrosheet_verdict():
+    for role in ("pitchers", "hitters"):
+        log = pd.read_csv(processed(f"screening_log_{role}.csv"))
+        if "official_eligibility" not in log.columns:
+            pytest.skip("official cross-check not built")
+        q = log[log.pass_workload]
+        assert q.official_eligibility.notna().all()
+        assert (q.official_eligibility == q.eligibility_status).all(), \
+            q.loc[q.official_eligibility != q.eligibility_status, ["name", "eligibility_reason"]]

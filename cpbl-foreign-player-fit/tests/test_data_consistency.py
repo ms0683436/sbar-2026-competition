@@ -4,8 +4,8 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from src import milb_loader, rebas_loader
-from src.common import processed
+from src import milb_loader, rebas_loader, statsapi_pbp
+from src.common import processed, raw
 
 
 def _aaa_fixture():
@@ -77,4 +77,68 @@ def test_aaa_pitches_unique_and_regular_season():
     d = pd.read_parquet(processed("aaa_pitches.parquet"), columns=["game_id", "pa_id", "pitch_seq", "date", "season"])
     assert not d.duplicated(["pa_id", "pitch_seq"]).any()
     assert d.date.max() <= pd.Timestamp("2026-10-13")
-    assert set(d.season.unique()) <= {2024, 2025}
+    assert set(d.season.unique()) <= {2024, 2025, 2026}
+
+
+def _feed_fixture():
+    def pitch(n, code, b, s, speed=95.0):
+        return {"isPitch": True, "type": "pitch", "pitchNumber": n, "count": {"balls": b, "strikes": s},
+                "details": {"call": {"code": code}, "type": {"code": "FF"}},
+                "pitchData": {"startSpeed": speed, "extension": 6.5, "zone": 5,
+                              "coordinates": {"pfxX": -6.0, "pfxZ": 9.0, "pX": 0.1, "pZ": 2.5},
+                              "breaks": {"spinRate": 2300}}}
+    pickoff = {"isPitch": False, "type": "pickoff", "details": {"description": "Pickoff Attempt 1B"}}
+    play = {"about": {"atBatIndex": 0, "inning": 1, "isTopInning": False},
+            "matchup": {"pitcher": {"id": 10}, "batter": {"id": 20}, "pitchHand": {"code": "L"},
+                        "batSide": {"code": "R"}},
+            "result": {"description": "Al Bo strikes out swinging."},
+            "playEvents": [pitch(1, "*B", 1, 0), pickoff, pitch(2, "F", 1, 1), pitch(3, "S", 1, 2)]}
+    team = lambda ab: {"abbreviation": ab, "league": {"name": "Pacific Coast League"}, "sport": {"name": "Triple-A"}}
+    return {"gameData": {"game": {"pk": 99, "type": "R"}, "datetime": {"officialDate": "2026-06-01"},
+                         "teams": {"home": team("ABQ"), "away": team("SL")}},
+            "liveData": {"plays": {"allPlays": [play]}}}
+
+
+def test_statsapi_feed_rows_use_mirror_layout():
+    rows = pd.DataFrame(statsapi_pbp.feed_rows(_feed_fixture()), columns=statsapi_pbp.COLUMNS)
+    assert list(rows.columns) == milb_loader.USECOLS          # same layout as the mirror
+    assert len(rows) == 3                                      # pickoff is not a pitch
+    assert list(rows.pitch_number) == [1, 2, 3] and (rows.at_bat_number == 0).all()   # 0-based like the mirror
+    assert list(rows.type) == ["*B", "F", "S"]                 # call codes verbatim
+    assert list(rows.strikes) == [0, 1, 2]                     # count AFTER the pitch, as in the mirror
+    assert (rows.inning_top_bot == "Bot").all() and (rows.home_team == "ABQ").all()
+    s = milb_loader.to_schema(rows.assign(source="statsapi"))
+    assert list(s.strikes) == [0, 0, 1]                        # loader shifts to count BEFORE the pitch
+    assert list(s.whiff) == [False, False, True] and list(s.pa_event.dropna()) == ["SO"]
+    assert (s.pitcher_team == "SL").all()                      # bottom half: away team pitches
+
+
+def _overlap_games():
+    mirror = raw("milb_pbp", "2025_5_aaa_pbp.csv")
+    games = raw("statsapi_pbp", "games")
+    if not mirror.exists() or not games.exists():
+        return None, []
+    m = pd.read_csv(mirror, usecols=milb_loader.USECOLS, low_memory=False)
+    m = m[m.game_date >= "2025-05-20"].drop_duplicates(["game_pk", "at_bat_number", "pitch_number"])
+    pks = [pk for pk in sorted(m.game_pk.unique()) if (games / f"{pk}.csv.gz").exists()][:20]
+    return m, pks
+
+
+@pytest.mark.skipif(not _overlap_games()[1], reason="mirror/statsapi overlap not downloaded")
+def test_statsapi_matches_mirror_on_overlapping_games():
+    m, pks = _overlap_games()
+    key = ["game_pk", "at_bat_number", "pitch_number"]
+    f = pd.concat(pd.read_csv(raw("statsapi_pbp", "games", f"{pk}.csv.gz")) for pk in pks)
+    a = m[m.game_pk.isin(pks)].set_index(key).sort_index()
+    b = f.set_index(key).sort_index()
+    assert a.index.equals(b.index)                             # identical pitch rows
+    for c in ("release_speed", "pfx_x", "pfx_z", "plate_x", "plate_z", "launch_speed"):
+        assert np.allclose(a[c].astype(float), b[c].astype(float), equal_nan=True)
+    for c in ("pitcher", "stand", "p_throws", "balls", "strikes"):
+        assert (a[c] == b[c]).all(), c
+    # same PA outcome (description wording can change later: name edits, ABS-challenge preamble)
+    assert (a.des.map(milb_loader.classify_des) == b.des.map(milb_loader.classify_des)).mean() > 0.995
+    # mid-PA pinch hitters: the feed lists the final batter on every pitch of the PA
+    assert (a.batter == b.batter).mean() > 0.995
+    # MLBAM re-classifies a few pitches after the game; the mirror captured them earlier
+    assert (a.pitch_type == b.pitch_type).mean() > 0.9

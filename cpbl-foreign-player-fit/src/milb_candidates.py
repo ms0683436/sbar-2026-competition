@@ -3,19 +3,19 @@
 Funnel (every AAA player in the 2026 season file enters; each exit is logged):
   1. 2026 AAA regular-season workload filter   (pitchers: GS>=10 & IP>=60; hitters: PA>=300)
   2. MLB eligibility (eligibility.check)        -> 'ineligible' and 'unknown' both exit
-  3. tracked-pitch availability (2024-25 AAA pitch data) -> does NOT exit; Fit is
-     reported as NA ("insufficient tracking data") but the baseline still ranks them.
+  3. tracked-pitch availability (AAA pitch data in samples.player_seasons) -> does NOT
+     exit; Fit is reported as NA ("insufficient tracking data") but the baseline still ranks them.
 
-Recruitment feasibility (contract / 40-man / willingness) is NOT in any source used
-here and is reported as a separate, explicitly unassessed column — never mixed
-into ability scores.
+Recruitment feasibility: factual MLB roster status from statsapi (src.roster_status,
+amendment 1) — 40-man membership, 2026 MLB playing time, latest transaction. Contract
+terms, salary and willingness are still NOT assessed. Never mixed into ability scores.
 """
 from __future__ import annotations
 
 import numpy as np
 import pandas as pd
 
-from . import eligibility, milb_loader
+from . import eligibility, milb_loader, roster_status
 from .common import config, processed, snapshot
 
 PITCH_SUM = ["pitching_G", "pitching_GS", "pitching_BF", "pitching_IP", "pitching_H", "pitching_HR",
@@ -56,6 +56,7 @@ def hitter_pool() -> pd.DataFrame:
 
 
 def tracked_counts(aaa: pd.DataFrame) -> tuple[pd.Series, pd.Series]:
+    aaa = aaa[aaa.season.isin(config()["samples"]["player_seasons"])]
     p = aaa.groupby("pitcher_id").size()
     b = aaa[aaa.pa_end].groupby("batter_id").size()
     return p, b
@@ -75,6 +76,9 @@ def screen(role: str, aaa: pd.DataFrame | None = None) -> tuple[pd.DataFrame, pd
     stage = pool[pool.pass_workload]
     el = eligibility.check(stage[["mlbam_id", "name"]], role)
     pool = pool.merge(el.drop(columns=["name"]), on="mlbam_id", how="left")
+    off = eligibility.official_crosscheck(stage[["mlbam_id"]], role)          # amendment 1
+    pool = pool.merge(off, on="mlbam_id", how="left")
+    pool["official_agrees"] = np.where(pool.pass_workload, pool.official_eligibility == pool.eligibility_status, np.nan)
     if aaa is not None:
         pc, bc = tracked_counts(aaa)
         key = pool.mlbam_id.astype(str)
@@ -88,20 +92,37 @@ def screen(role: str, aaa: pd.DataFrame | None = None) -> tuple[pd.DataFrame, pd
     by = pool.birth_year.astype(float)
     pool["age_2026"] = snapshot().year - by
     pool["data_year_baseline"] = config()["candidate_filters"][role]["season"]
-    pool["recruitment_feasibility"] = ("NOT ASSESSED — contract/40-man/willingness not in public data used; "
-                                       "verify manually")
     log = pool.copy()
     cand = pool[pool.screening_result == "candidate"].copy()
     return log, cand
 
 
+REC_COLS = ["on_40man", "roster_club", "roster_status", "mlb_2026_g", "mlb_2026_pa", "mlb_2026_ip",
+            "last_transaction_date", "last_transaction", "recruitment_feasibility"]
+
+
+def recruitment(ids) -> pd.DataFrame:
+    """Cached roster facts; rebuilt from statsapi when a candidate is missing from the cache."""
+    ids = set(int(i) for i in ids)
+    rs = roster_status.load() if processed("recruitment_status.csv").exists() else None
+    if rs is None or not ids <= set(rs.mlbam_id):
+        rs = roster_status.load(sorted(ids), force=True)
+    return rs[["mlbam_id", *REC_COLS]]
+
+
 def run(aaa: pd.DataFrame | None = None) -> dict:
     out = {}
+    screened = {role: screen(role, aaa) for role in ("pitcher", "hitter")}
+    rec = recruitment(pd.concat([c.mlbam_id for _, c in screened.values()]))
     for role in ("pitcher", "hitter"):
-        log, cand = screen(role, aaa)
+        log, cand = screened[role]
+        cand = cand.merge(rec, on="mlbam_id", how="left")
         cols = ["mlbam_id", "name", "position", "teams", "leagues", "age_2026", "pass_workload",
                 "eligibility_status", "eligibility_reason", "evidence", "retro_id",
-                *[c for c in log.columns if c.startswith("mlb_")], "screening_result"]
+                *[c for c in log.columns if c.startswith("mlb_")],
+                *[c for c in log.columns if c.startswith("official_")], "screening_result"]
+        log = log.merge(rec, on="mlbam_id", how="left")
+        cols += REC_COLS
         log[[c for c in cols if c in log.columns]].to_csv(processed(f"screening_log_{role}s.csv"), index=False)
         out[role] = (log, cand)
     return out
