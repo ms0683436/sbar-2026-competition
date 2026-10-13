@@ -91,3 +91,15 @@ def test_official_statsapi_agrees_with_retrosheet_verdict():
         assert q.official_eligibility.notna().all()
         assert (q.official_eligibility == q.eligibility_status).all(), \
             q.loc[q.official_eligibility != q.eligibility_status, ["name", "eligibility_reason"]]
+
+
+def test_official_crosscheck_keeps_missing_players_unconfirmed(monkeypatch, tmp_path):
+    """A player the official API does not return is 'unknown', never 'eligible' by zero usage."""
+    from src import eligibility
+    monkeypatch.setattr(eligibility, "processed", lambda name: tmp_path / name)
+    returned = lambda ids, season: pd.DataFrame({"mlbam_id": [1], "season": season, "official_pa": [0],
+                                                 "official_outs": [0]})
+    monkeypatch.setattr(eligibility, "official_lines", returned)
+    out = eligibility.official_crosscheck(pd.DataFrame({"mlbam_id": [1, 2]}), "hitter").set_index("mlbam_id")
+    assert out.loc[1, "official_eligibility"] == "eligible"       # returned, no MLB appearances
+    assert out.loc[2, "official_eligibility"] == "unknown"        # omitted from the response

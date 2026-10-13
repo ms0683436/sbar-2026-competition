@@ -235,7 +235,9 @@ def official_crosscheck(players: pd.DataFrame, role: str) -> pd.DataFrame:
     unit = "pa" if role == "hitter" else "outs"
     verdict = {}
     for pid, row in vals.iterrows():
-        ok, _ = decide(role, {s: float(row[f"official_{unit}_{s}"]) if pd.notna(row[f"official_{unit}_{s}"]) else 0.0
+        # a player missing from the response stays unconfirmed (None), never zero usage;
+        # a returned player with no MLB split is a real 0
+        ok, _ = decide(role, {s: float(row[f"official_{unit}_{s}"]) if pd.notna(row[f"official_{unit}_{s}"]) else None
                               for s in seasons})
         verdict[pid] = {True: "eligible", False: "ineligible", None: "unknown"}[ok]
     wide["official_eligibility"] = wide.mlbam_id.map(verdict)

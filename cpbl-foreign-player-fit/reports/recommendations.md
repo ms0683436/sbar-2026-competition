@@ -231,6 +231,6 @@
 | 角色 | 首選 | 依據強度 |
 |---|---|---|
 | 洋投 | **Tyson Hardin** | **中等**。baseline 第 3、Fit 第 10、組合第 1；在非 40 人名單中 bootstrap 首位機率 0.48、前 3 機率 0.80；客場排名第 4。弱點是 ERA 與 FIP 落差大、只有一季 AAA 樣本、9 月曾短暫進傷兵名單。Fit 的預測效度尚未驗證。 |
-| 洋打 | **James Tibbs III** | **弱**。非 40 人名單 baseline 第 1、客場也是第 1，但 bootstrap 首位機率只有 0.08，與 Huff、Fedko、Velazquez 差距很小。 |
+| 洋打 | **James Tibbs III** | **弱**。非 40 人名單 baseline 第 1；客場整體第 7、非 40 人名單中第 1，但 bootstrap 首位機率只有 0.08，與 Huff、Fedko、Velazquez 差距很小。 |
 
 兩人的合約、薪資與來台意願都**未評估**。

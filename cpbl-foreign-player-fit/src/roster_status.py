@@ -44,6 +44,32 @@ def forty_man(as_of: str) -> pd.DataFrame:
     return df
 
 
+def mlb_line(splits: list[dict]) -> dict | None:
+    """One MLB season line from a stats group's splits.
+
+    A traded player gets one split per club plus a combined row without a "team" key;
+    use the combined row when present, otherwise add the club stints.
+    """
+    mlb = [sp for sp in splits if sp.get("sport", {}).get("id") in (1, None)]
+    if not mlb:
+        return None
+    total = [sp for sp in mlb if "team" not in sp]
+    if total and len(mlb) > 1:
+        return total[0]["stat"]
+    if len(mlb) == 1:
+        return mlb[0]["stat"]
+    line: dict = {"gamesPlayed": 0, "plateAppearances": 0}
+    outs = 0
+    for sp in mlb:
+        v = sp["stat"]
+        line["gamesPlayed"] += v.get("gamesPlayed") or 0
+        line["plateAppearances"] += v.get("plateAppearances") or 0
+        w, _, f = str(v.get("inningsPitched") or "0.0").partition(".")
+        outs += int(w) * 3 + int(f or 0)
+    line["inningsPitched"] = f"{outs // 3}.{outs % 3}"
+    return line
+
+
 def people(ids: list[int], as_of: str) -> pd.DataFrame:
     season = as_of[:4]
     hyd = f"transactions,stats(group=[hitting,pitching],type=[season],season={season},sportId=1)"
@@ -52,21 +78,18 @@ def people(ids: list[int], as_of: str) -> pd.DataFrame:
         chunk = ids[i:i + 50]
         d = _get("people", {"personIds": ",".join(map(str, chunk)), "hydrate": hyd})
         for p in d.get("people", []):
-            g = pa = 0
-            outs = 0
+            g = pa = outs = 0
             for s in p.get("stats", []):
-                for sp in s.get("splits", []):
-                    if sp.get("sport", {}).get("id") not in (1, None):
-                        continue
-                    st = sp["stat"]
-                    if s["group"]["displayName"] == "hitting":
-                        pa += st.get("plateAppearances") or 0
-                        g = max(g, st.get("gamesPlayed") or 0)
-                    else:
-                        ip = str(st.get("inningsPitched") or "0.0")
-                        w, _, f = ip.partition(".")
-                        outs += int(w) * 3 + int(f or 0)
-                        g = max(g, st.get("gamesPlayed") or 0)
+                st = mlb_line(s.get("splits", []))
+                if st is None:
+                    continue
+                g = max(g, st.get("gamesPlayed") or 0)       # two-way players: games, not stints
+                if s["group"]["displayName"] == "hitting":
+                    pa += st.get("plateAppearances") or 0
+                else:
+                    ip = str(st.get("inningsPitched") or "0.0")
+                    w, _, f = ip.partition(".")
+                    outs += int(w) * 3 + int(f or 0)
             tx = [t for t in p.get("transactions", []) if (t.get("date") or "") <= as_of]
             tx.sort(key=lambda t: (t.get("date") or "", t.get("id") or 0))
             last = tx[-1] if tx else {}

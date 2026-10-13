@@ -119,8 +119,12 @@ def test_b(r: dict, P: pd.DataFrame, H: pd.DataFrame, reps: int | None = None) -
     Pt["pid"], Ht["bid"] = Pt.mlbam_id.astype(str), Ht.mlbam_id.astype(str)
     plogs, hlogs = _baseline_logs("pitcher", Pt), _baseline_logs("hitter", Ht)
     cpbl_games = t["env_cpbl"].game_id.unique()
-    # environment (2024-25) and player (2025-26) AAA games share one weight per game
-    aaa_games = pd.unique(np.concatenate([t[k].game_id.unique() for k in ("env_aaa", "pit", "hit", "hand_hit")]))
+    # one weight per AAA game, shared by the environment (2024-25), the player tables
+    # (2025-26) and the 2026 game logs behind the baseline, so a resampled game moves
+    # baseline and Fit together. Game ids are compared as strings (logs store integers).
+    plogs["game_id"], hlogs["game_id"] = plogs.game_id.astype(str), hlogs.game_id.astype(str)
+    aaa_games = pd.unique(np.concatenate([t[k].game_id.astype(str).unique() for k in ("env_aaa", "pit", "hit", "hand_hit")]
+                                         + [plogs.game_id.unique(), hlogs.game_id.unique()]))
     ch = config()["fit"]["combined_heuristic"]
     store = {k: [] for k in ("p_fit", "p_comb", "p_base", "h_fit", "h_comb", "h_base")}
     for _ in range(reps):
@@ -130,9 +134,8 @@ def test_b(r: dict, P: pd.DataFrame, H: pd.DataFrame, reps: int | None = None) -
         hf = fit_score.hitter_fit(t, env, wa).reindex(Ht.bid)
         pfit = fit_score.combine_pitcher(pf).values
         hfit = zscore(hf.fit_total, 2.5).values
-        wpl = poisson_weights(plogs.game_id.unique().tolist() + hlogs.game_id.unique().tolist())
-        pb = baseline_boot("pitcher", Pt, plogs, wpl).reindex(Pt.mlbam_id).values
-        hb = baseline_boot("hitter", Ht, hlogs, wpl).reindex(Ht.mlbam_id).values
+        pb = baseline_boot("pitcher", Pt, plogs, wa).reindex(Pt.mlbam_id).values
+        hb = baseline_boot("hitter", Ht, hlogs, wa).reindex(Ht.mlbam_id).values
         for key, f, b in (("p", pfit, pb), ("h", hfit, hb)):
             comb = ch["baseline"] * zscore(pd.Series(b)).values + ch["fit"] * np.nan_to_num(f)
             store[f"{key}_fit"].append(np.asarray(f, dtype=float))
