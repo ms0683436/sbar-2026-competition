@@ -9,30 +9,30 @@ Analysis snapshot date: **2026-10-13**. Data was downloaded on **2026-10-13 (UTC
 | 3 | **Retrosheet** event files via `chadwickbureau/retrosheet` (commit `ee82e50b`, 2026-08-13) | MLB **regular-season** event files `{yyyy}{TEAM}.EVA/.EVN` for 2024 and 2025. Postseason `.EVE`, All-Star and box-score `.EB*` files are excluded. | 2024 (2,429 games), 2025 (2,430 games) | player-game, built with `cwdaily` | `git clone --sparse` | "The information used here was obtained free of charge from and is copyrighted by Retrosheet. Interested parties may contact Retrosheet at www.retrosheet.org." | `tests/test_eligibility.py` checks the output against published lines (Ohtani 2024 731 PA, Judge 704 PA, Skubal 192.0 IP, Sale 177.2 IP) and against the game counts |
 | 4 | **Chadwick Baseball Bureau register** (`chadwickbureau/register`, commit `781c175e`, 2026-10-02) | MLBAM ↔ Retrosheet ID crosswalk, birth year, `mlb_played_first/last` | as of 2026-10-02 | person | `git clone` | ODC-By 1.0 | none |
 | 5 | **Chadwick tools 0.10.0** | `cwdaily`, which turns event files into player-game lines (B_PA, P_OUT = outs recorded) | n/a | n/a | GitHub release tarball, built locally | GPL (tooling only) | none |
+| 6 | **MLB Stats API game feed** `statsapi.mlb.com/api/v1.1/game/{gamePk}/feed/live` (amendment 1) | AAA pitch by pitch in the mirror's column layout (`src/statsapi_pbp.py`): call code, Statcast pitch type, release speed, spin, extension, pfx, plate location, zone, EV/LA, count, PA description | 2025-05-20 → 2025-09-21 and 2026-03-27 → 2026-09-20. 3,681 final regular-season games downloaded; after de-duplication against the mirror, 2025 = 743 mirror + 1,455 feed games, 2026 = 2,152 feed games | pitch | one request per game, 4 at a time, cached per game in `data/raw/statsapi_pbp/games/` | © MLB Advanced Media; individual, non-commercial use. Not redistributed (git-ignored). | `tests/test_data_consistency.py` compares 20 overlapping games with the mirror: identical pitch rows, count, handedness and physics; ≥ 99.5% same PA outcome and batter (mid-PA pinch hitters differ); MLBAM later re-classifies a few % of pitch types and zone cells. |
+| 7 | **MLB Stats API rosters, people, transactions** (amendment 1) | 40-man roster of all 30 clubs on 2026-10-13; 2026 MLB playing time; full transaction log; official 2024/2025 MLB regular-season PA and outs for every workload-qualified player | as of 2026-10-13 | person | `/api/v1/teams/{id}/roster?rosterType=40Man&date=…`, `/api/v1/people?personIds=…&hydrate=…` | © MLB Advanced Media | Official PA/outs agree with the Retrosheet eligibility verdict for all 373 workload-qualified players (146 pitchers, 227 hitters); `tests/test_eligibility.py` |
 
-## Sources investigated but not usable from this environment
+## Official sources: status after amendment 1 (2026-10-13)
 
-| Source | Status | What it would add |
+The environment owner allowed `stats.cpbl.com.tw`, `baseballsavant.mlb.com` and `statsapi.mlb.com` on 2026-10-13. All three now answer HTTP 200.
+
+| Source | Status | Use |
 |---|---|---|
-| `stats.cpbl.com.tw` (official CPBL advanced-stats site) | **Blocked** by the execution environment's egress policy (HTTP 403 at CONNECT). From third-party documentation in `ruan6047/cpbl-analytics/docs/CPBL_SITE_MAP.md` and a sample of 11 game payloads: the site exposes JSON (`/api/proxy/v1/games/{id}`, `/players/logs`, `/leaderboards/*`) with per-pitch TrackMan (speed, spin, extension, release, plate location, 3-D trajectory polynomial). Pitch type is only `fastball` / `breakingball` (TaggedPitchType/AutoPitchType). No CSV export was observed. | 2026 CPBL environment; spin and movement; instrument-measured velocity |
-| `baseballsavant.mlb.com/statcast-search-minors` | **Blocked** (403) | 2025 Jun-Sep and 2026 AAA pitch-level data, xwOBA |
-| `statsapi.mlb.com` | **Blocked** (403) | official MLB playing time; Retrosheet substitutes for it |
-| `www.cpbl.com.tw` | **Blocked** (403). Third-party notes say it sits behind an anti-bot JS challenge since 2026-06. | official box scores |
-
-To reproduce with the official sources, the environment owner can add these hosts under the network allow-list:
-
-- `stats.cpbl.com.tw`
-- `baseballsavant.mlb.com`
-- `statsapi.mlb.com`
+| `statsapi.mlb.com` | Reachable; no robots.txt | **Used** (rows 6–7): AAA pitch data for 2025-05-20 onward and 2026, roster facts, official eligibility cross-check |
+| `baseballsavant.mlb.com/statcast-search-minors` | Reachable; robots.txt allows all | Not needed: the CSV export works only per player, and the same pitches come from the statsapi feed |
+| `stats.cpbl.com.tw` | Reachable, but **not used** | Pages are server-rendered shells; the numbers load from `/api/`, which robots.txt disallows. The site's terms (使用條款 §4) forbid using, reproducing or distributing its content without written authorization, and its `Content-Signal` header says `ai-train=no`. The leaderboard has an in-page 「匯出表單」 button, but exported data falls under the same terms. 2026 CPBL data therefore needs written permission from CPBL (or explicit cover in the contest rules). |
+| `www.cpbl.com.tw` | Not tested again | official box scores |
 
 ## Reproduce
 
 ```bash
 pip install -e .[dev]              # plus statsmodels, scipy
 python -m src.fetch_data           # downloads 1-5, builds chadwick tools (~2.5 GB raw CSV)
+python -m src.statsapi_pbp         # source 6: 3,681 AAA game feeds (~90 MB gzipped, resumable)
 python -m src.eligibility          # MLB season lines (Retrosheet -> cwdaily)
+python -m src.roster_status        # source 7 (also run automatically by src.evaluate when missing)
 python -m src.cpbl_profile         # CPBL/AAA environment profiles + figures 1-4
 python -m src.data_audit           # reports/data_audit_summary.md
-python -m src.evaluate             # candidates, baseline, Fit, Tests A-D, figures 5-6 (~10 min)
+python -m src.evaluate             # candidates, baseline, Fit, Tests A-D, figures 5-6 (~30 min)
 pytest -q
 ```
