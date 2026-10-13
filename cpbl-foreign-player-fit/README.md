@@ -8,14 +8,15 @@
 
 - **分析快照**：2026-10-13
 - **Go / No-Go**：有條件 GO（細球種可行；AAA 2025–26 逐球已補齊，但中職沒有 2026 逐球、也沒有轉速與位移）
+- **修正 2（2026-10-13）**：建立 REBAS 洋投 → MLBAM ID 對照表，並以 2024–25 來台洋投回測投手 Fit。規則在計算前先 commit；回測不改變推薦。
 - **修正 1（2026-10-13）**：官方 `statsapi.mlb.com` 開放後，補上 2025 下半季與 2026 AAA 逐球資料、MLB 40 人名單與異動事實，並以官方數據交叉核對出賽資格。所有權重在修正前已預先登錄、沒有改動（見 `config/scoring.yaml` 與 git 歷史）。
 
 ## 結論摘要
 
 | | 結論 |
 |---|---|
-| **A. 技術可行？** | **可行，但有條件。** AAA 端改用官方 statsapi，2024–26 逐球完整；CPBL 端用 REBAS 2024–25（ODC-By）。中職官方站可連線，但使用條款要求書面授權，所以沒有使用。整條流程可以重現，有 53 個自動化測試。限制：中職缺 2026 逐球、轉速與位移；中職球種為人工標記。 |
-| **B. 找到 baseline 沒有的適性資訊？** | **投手：有獨立且穩定的資訊，但效度未證實。** 投手 Fit 與 baseline 的 ρ = −0.05，2025 對 2026 跨季可靠度 0.82，主要內容是速球球速與球種組合。「中職怕高速球」這個訊號經投手內斜率檢驗，主要是投手品質混雜（findings D1）。<br>**打者：沒有可用的。** 打者 Fit 跨季可靠度 0.22，未達預先登錄的 0.30 門檻，H3 不成立。 |
+| **A. 技術可行？** | **可行，但有條件。** AAA 端改用官方 statsapi，2024–26 逐球完整；CPBL 端用 REBAS 2024–25（ODC-By）。中職官方站可連線，但使用條款要求書面授權，所以沒有使用。整條流程可以重現，有 60 個自動化測試。限制：中職缺 2026 逐球、轉速與位移；中職球種為人工標記。 |
+| **B. 找到 baseline 沒有的適性資訊？** | **投手：有獨立且穩定的資訊，但未證實能預測來台成績。** 投手 Fit 與 baseline 的 ρ = −0.05，2025 對 2026 跨季可靠度 0.82，主要內容是速球球速與球種組合。「中職怕高速球」這個訊號經投手內斜率檢驗，主要是投手品質混雜（findings D1）。<br>**打者：沒有可用的。** 打者 Fit 跨季可靠度 0.22，未達預先登錄的 0.30 門檻，H3 不成立。<br>**回測（修正 2）**：15 位從 AAA 直接來台的洋投中，揮空面 Fit 的方向正確（ρ = 0.56），但大部分可用均值回歸解釋；Fit 沒有預測中職 K-BB% 或被打 wOBA。見 [`reports/backtest.md`](reports/backtest.md)。 |
 | **C. 推薦與依據** | **洋投：Tyson Hardin**（RHP，25 歲，Nashville）。組合排名第 1，非 40 人名單中 bootstrap 首位機率 0.47、前 3 機率 0.82，客場第 4。依據**中等**。<br>**洋打：James Tibbs III**（左打 RF，24 歲，Oklahoma City）。非 40 人名單 baseline 第 1；客場整體第 7、非 40 人名單中第 1，但 bootstrap 首位機率只有 0.08。依據**弱**。<br>修正前的首選 Whisenhunt（巨人 60 天傷兵名單）與 Thompson（洛磯 40 人名單）都在 MLB 40 人名單上。兩位新首選都不在任何 40 人名單上，2026 也沒有 MLB 出賽；合約與意願**未評估**。候補見 [`reports/recommendations.md`](reports/recommendations.md)。 |
 | **D. 下一步** | 見本頁最後一節。 |
 
@@ -43,12 +44,14 @@ cpbl-foreign-player-fit/
 │   ├── milb_candidates.py       # Phase 2 候選池與篩選紀錄
 │   ├── baseline.py              # Phase 3 傳統排名
 │   ├── fit_score.py             # Phase 4 Pitcher／Hitter Fit
-│   └── evaluate.py              # Phase 5 Test A–D、bootstrap、fig5–6
-├── tests/                       # 53 tests：資格邊界、計算、跨來源一致性、官方交叉核對
+│   ├── evaluate.py              # Phase 5 Test A–D、bootstrap、fig5–6
+│   └── backtest.py              # 修正 2：洋投回測（AAA 來台前 Fit vs 中職成績）
+├── tests/                       # 60 tests：資格邊界、計算、跨來源一致性、官方交叉核對、回測規則
 ├── reports/
 │   ├── data_feasibility.md      # Phase 0 稽核與 Go/No-Go
 │   ├── data_audit_summary.md    # 自動產生的覆蓋率表
 │   ├── findings.md              # H1–H3、Test A–D
+│   ├── backtest.md              # 修正 2 回測（backtest_tables.md 為自動產生的表）
 │   ├── evaluation_tables.md     # 自動產生的 bootstrap 與環境表
 │   ├── limitations.md
 │   └── recommendations.md
@@ -70,6 +73,7 @@ cpbl-foreign-player-fit/
 | `mlb_season_lines.csv`、`mlb_season_audit.csv` | Retrosheet 衍生的 MLB 2024–25 球員賽季 PA 與出局數 |
 | `mlb_official_crosscheck_*.csv` | statsapi 官方 2024–25 PA 與出局數，以及據此重新判定的資格（與 Retrosheet 100% 一致） |
 | `recruitment_status.csv` | 每位候選人 2026-10-13 的 40 人名單、2026 MLB 出賽、最新異動 |
+| `backtest_screening.csv`、`backtest_cohort.csv`、`backtest_summary.json` | 回測：每位洋投的入選判定、來台前 AAA 的 Fit 與成績、來台後的中職成績、檢驗結果 |
 | `recommendation_shortlist.csv` | 預先登錄規則下的整體前 10 名與非 40 人名單前 10 名，含 bootstrap 機率 |
 
 ## 重現
@@ -85,7 +89,8 @@ python -m src.eligibility       # MLB 2024/2025 球員賽季行
 python -m src.cpbl_profile      # 環境輪廓 + fig1–4（約 1 分鐘）
 python -m src.data_audit
 python -m src.evaluate          # 候選人 → 名單事實 → baseline → Fit → Test A–D（300 次 bootstrap，約 30 分鐘）
-pytest -q                       # 53 passed
+python -m src.backtest          # 修正 2 回測；首次執行會另外下載 2023 AAA 2,156 場
+pytest -q                       # 60 passed
 ```
 
 各步驟都是 deterministic 的：bootstrap 的 seed 寫在 `config/scoring.yaml`。
@@ -107,7 +112,7 @@ pytest -q                       # 53 passed
 ## 下一步：若要正式參賽，最值得投入的事
 
 1. **取得中職 2026 逐球資料的授權**：這是目前最大的缺口。`stats.cpbl.com.tw` 已可連線，但數據由 robots.txt 禁止的 `/api/` 載入，使用條款要求書面授權。請先確認競賽規則是否已授權參賽者使用；若沒有，向中職申請。取得後可補上 2026 中職環境，以及 TrackMan 的轉速與位移，做「球路形狀（IVB、HB、轉速）」的匹配。
-2. **建立 AAA→CPBL 歷史對照表**：整理 2015–2025 年來台洋將的中文名與 MLBAM ID，做時間正確的回溯驗證，檢驗「來台前一年的 Fit」能不能預測「來台後的 K-BB% 與 wOBA」。statsapi 已可查歷年 AAA 逐球，這一步現在做得到。沒有這一步，Fit 永遠只是假說。
+2. **擴大回測樣本**：修正 2 已做 2024–25（n = 15），結果見 `reports/backtest.md`。樣本要變大，需要 2026 來台洋投的中職成績（REBAS 2026 尚未釋出，或開放 zh.wikipedia.org），或更早年份的中職逐球資料（需中職授權）。
 3. **把投手 Fit 改寫成投手內的效應**：D1 顯示速球溢價主要是投手間的混雜。可改用投手固定效應或 Mundlak 分解估計中職環境對比，並把擊球傷害對比（兩季同向，ρ = 0.95）當作主要成分。
 4. **打者 Fit 改用穩定得較快的成分**：例如對各球種的接觸率、好球帶內揮空率，並要求至少兩季樣本。
 5. **人工查證招募可行性**：Hardin、Tibbs 與候補的合約類型、選擇權與意願；Hardin 9 月短暫進傷兵名單的原因。11 月小聯盟自由球員申報後，名單事實需要重查。

@@ -120,6 +120,8 @@ def screen(ref: pd.DataFrame, cpbl: pd.DataFrame, aaa: pd.DataFrame) -> pd.DataF
                 reason = f"AAA pitches in window < {c['min_aaa_tracked_pitches']}"
             elif row["cpbl_bf"] < c["min_cpbl_bf"]:
                 reason = f"CPBL BF < {c['min_cpbl_bf']}"
+            elif row["cpbl_hand"] is None:
+                reason = "hand missing in REBAS (identity check fails)"
             elif row["aaa_hand"] != row["cpbl_hand"]:
                 reason = "hand mismatch"
             else:
@@ -171,6 +173,8 @@ def compute(sc: pd.DataFrame, cpbl: pd.DataFrame, aaa_env: pd.DataFrame, aaa_all
     coh["d_woba"] = coh.cpbl_woba - coh.aaa_woba
     b = np.polyfit(coh.aaa_k_minus_bb_pct.astype(float), coh.cpbl_k_minus_bb_pct.astype(float), 1)
     coh["kbb_resid"] = coh.cpbl_k_minus_bb_pct - np.polyval(b, coh.aaa_k_minus_bb_pct.astype(float))
+    b = np.polyfit(coh.aaa_whiff_pct.astype(float), coh.cpbl_whiff_pct.astype(float), 1)
+    coh["whiff_resid"] = coh.cpbl_whiff_pct - np.polyval(b, coh.aaa_whiff_pct.astype(float))
     ch = config()["fit"]["combined_heuristic"]
     coh["combined"] = ch["baseline"] * zscore(coh.aaa_k_minus_bb_pct.astype(float)) + ch["fit"] * coh.fit
     return coh
@@ -203,6 +207,17 @@ TESTS = [  # (label, predictor, outcome, expected sign)
     ("ref Fit vs CPBL K-BB%", "fit", "cpbl_k_minus_bb_pct", 1),
 ]
 
+# EXPLORATORY, added after the registered results were seen: is H1 regression to the mean?
+# F1 is lower for pitchers with a high AAA whiff%, and a high AAA whiff% falls in the CPBL
+# whatever the league. X1 asks whether F1 still ranks CPBL whiff% once AAA whiff% is
+# regressed out (residual fitted once on the full cohort, not refitted per bootstrap draw).
+EXPLORATORY = [
+    ("X1 F1 vs CPBL whiff% residual after AAA whiff%", "fit_mix_whiff", "whiff_resid", 1),
+    ("X2 AAA whiff% vs Δwhiff% (regression to the mean)", "aaa_whiff_pct", "d_whiff_pct", -1),
+    ("X3 F1 vs AAA whiff%", "fit_mix_whiff", "aaa_whiff_pct", -1),
+    ("X4 F1 vs CPBL whiff% (level)", "fit_mix_whiff", "cpbl_whiff_pct", 1),
+]
+
 
 def verdict(n: int, lo: float, hi: float, sign: int) -> str:
     if n < cfg()["min_n_for_conclusion"]:
@@ -223,7 +238,18 @@ def analyse(coh: pd.DataFrame) -> dict:
         res.append({"test": label, "n": int(coh[[x, y]].dropna().shape[0]), "rho": est,
                     "ci_lo": lo, "ci_hi": hi, "expected_sign": "+" if sign > 0 else "-",
                     "verdict": verdict(len(coh), lo, hi, sign)})
-    return {"n": len(coh), "by_season": coh.season.value_counts().sort_index().to_dict(), "tests": res}
+    exp = []
+    for label, x, y, sign in EXPLORATORY:
+        est, lo, hi = boot_ci(coh, x, y, b["draws"], b["ci"], rng)
+        exp.append({"test": label, "n": int(coh[[x, y]].dropna().shape[0]), "rho": est,
+                    "ci_lo": lo, "ci_hi": hi, "expected_sign": "+" if sign > 0 else "-"})
+    for s in sorted(coh.season.unique()):
+        d = coh[coh.season == s]
+        exp.append({"test": f"X5 H1 within outcome season {s}", "n": len(d), "rho": spearman(d.fit_mix_whiff, d.d_whiff_pct),
+                    "ci_lo": np.nan, "ci_hi": np.nan, "expected_sign": "+"})
+    loo = [spearman(coh.drop(i).fit_mix_whiff, coh.drop(i).d_whiff_pct) for i in coh.index]
+    return {"n": len(coh), "by_season": coh.season.value_counts().sort_index().to_dict(), "tests": res,
+            "exploratory": exp, "h1_leave_one_out_range": [min(loo), max(loo)]}
 
 
 def report(sc: pd.DataFrame, coh: pd.DataFrame, summ: dict) -> None:
@@ -235,6 +261,9 @@ def report(sc: pd.DataFrame, coh: pd.DataFrame, summ: dict) -> None:
              f"Cohort n = {summ['n']} (by outcome season: {summ['by_season']}).", "",
              "## Tests (Spearman, 90% bootstrap CI over pitchers)", "",
              md_table(pd.DataFrame(summ["tests"]), floatfmt=".2f"), "",
+             "## Exploratory (added after the registered results were seen)", "",
+             md_table(pd.DataFrame(summ["exploratory"]), floatfmt=".2f"), "",
+             f"H1 leave-one-out range: {summ['h1_leave_one_out_range'][0]:.2f} to {summ['h1_leave_one_out_range'][1]:.2f}.", "",
              "## Cohort", "", md_table(show, floatfmt=".3f"), "",
              "## Screened out", "", md_table(ex), ""]
     (path("reports") / "backtest_tables.md").write_text("\n".join(lines), encoding="utf-8")
