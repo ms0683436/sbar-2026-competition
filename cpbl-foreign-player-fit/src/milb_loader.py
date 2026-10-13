@@ -134,11 +134,15 @@ def to_schema(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def _inputs_newer_than(out) -> bool:
-    """True if any raw input (mirror CSV, statsapi schedule or game file) is newer than the cache."""
+    """True if any raw input (mirror CSV, statsapi schedule or scheduled game file) is newer than the
+    cache. Game files outside schedule.csv (the backtest's AAA 2023) are not inputs of this cache."""
     t = out.stat().st_mtime
-    files = glob.glob(str(raw("milb_pbp", "*_aaa_pbp.csv"))) + glob.glob(str(raw("statsapi_pbp", "schedule.csv"))) \
-        + glob.glob(str(raw("statsapi_pbp", "games", "*.csv.gz")))
-    return any(Path(f).stat().st_mtime > t for f in files)
+    files = glob.glob(str(raw("milb_pbp", "*_aaa_pbp.csv")))
+    sched = raw("statsapi_pbp", "schedule.csv")
+    if sched.exists():
+        files.append(str(sched))
+        files += [str(statsapi_pbp._game_path(pk)) for pk in pd.read_csv(sched).game_pk]
+    return any(Path(f).exists() and Path(f).stat().st_mtime > t for f in files)
 
 
 def load(force: bool = False) -> pd.DataFrame:
