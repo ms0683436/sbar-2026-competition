@@ -51,7 +51,7 @@ COLUMNS = [
     "pfx_x", "pfx_z", "plate_x", "plate_z", "zone", "launch_speed", "launch_angle", "balls", "strikes",
 ]
 PRE_COUNT = ["balls_before", "strikes_before"]
-PARSER_VERSION = "3"        # bump when feed_rows changes; cached games are then re-parsed
+PARSER_VERSION = "4"        # bump when feed_rows changes; cached games are then re-parsed
 _session = requests.Session()
 
 
@@ -136,7 +136,11 @@ def feed_rows(feed: dict) -> list[dict]:
         "home_team": home.get("abbreviation"), "away_team": away.get("abbreviation"),
     }
     out = []
-    last_pitcher = {}                       # fielding half ("Top"/"Bot") -> pitcher of its previous PA
+    # fielding half ("Top"/"Bot") -> pitcher of its previous PA, seeded with the box score's
+    # starters so a starter replaced mid-PA in his team's first defensive PA is still undone
+    box = (feed.get("liveData", {}).get("boxscore") or {}).get("teams", {})
+    last_pitcher = {half: (box.get(side, {}).get("pitchers") or [None])[0]
+                    for half, side in (("Top", "home"), ("Bot", "away"))}
     for play in feed["liveData"]["plays"]["allPlays"]:
         ab, res = play["about"], play["result"]
         half = "Top" if ab["isTopInning"] else "Bot"

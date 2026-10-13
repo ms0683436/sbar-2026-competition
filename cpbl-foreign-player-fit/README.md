@@ -14,7 +14,7 @@
 
 | | 結論 |
 |---|---|
-| **A. 技術可行？** | **可行，但有條件。** AAA 端改用官方 statsapi，2024–26 逐球完整；CPBL 端用 REBAS 2024–25（ODC-By）。中職官方站可連線，但使用條款要求書面授權，所以沒有使用。整條流程可以重現，有 46 個自動化測試。限制：中職缺 2026 逐球、轉速與位移；中職球種為人工標記。 |
+| **A. 技術可行？** | **可行，但有條件。** AAA 端改用官方 statsapi，2024–26 逐球完整；CPBL 端用 REBAS 2024–25（ODC-By）。中職官方站可連線，但使用條款要求書面授權，所以沒有使用。整條流程可以重現，有 53 個自動化測試。限制：中職缺 2026 逐球、轉速與位移；中職球種為人工標記。 |
 | **B. 找到 baseline 沒有的適性資訊？** | **投手：有獨立且穩定的資訊，但效度未證實。** 投手 Fit 與 baseline 的 ρ = −0.05，2025 對 2026 跨季可靠度 0.82，主要內容是速球球速與球種組合。「中職怕高速球」這個訊號經投手內斜率檢驗，主要是投手品質混雜（findings D1）。<br>**打者：沒有可用的。** 打者 Fit 跨季可靠度 0.22，未達預先登錄的 0.30 門檻，H3 不成立。 |
 | **C. 推薦與依據** | **洋投：Tyson Hardin**（RHP，25 歲，Nashville）。組合排名第 1，非 40 人名單中 bootstrap 首位機率 0.47、前 3 機率 0.82，客場第 4。依據**中等**。<br>**洋打：James Tibbs III**（左打 RF，24 歲，Oklahoma City）。非 40 人名單 baseline 第 1；客場整體第 7、非 40 人名單中第 1，但 bootstrap 首位機率只有 0.08。依據**弱**。<br>修正前的首選 Whisenhunt（巨人 60 天傷兵名單）與 Thompson（洛磯 40 人名單）都在 MLB 40 人名單上。兩位新首選都不在任何 40 人名單上，2026 也沒有 MLB 出賽；合約與意願**未評估**。候補見 [`reports/recommendations.md`](reports/recommendations.md)。 |
 | **D. 下一步** | 見本頁最後一節。 |
@@ -44,7 +44,7 @@ cpbl-foreign-player-fit/
 │   ├── baseline.py              # Phase 3 傳統排名
 │   ├── fit_score.py             # Phase 4 Pitcher／Hitter Fit
 │   └── evaluate.py              # Phase 5 Test A–D、bootstrap、fig5–6
-├── tests/                       # 46 tests：資格邊界、計算、跨來源一致性、官方交叉核對
+├── tests/                       # 53 tests：資格邊界、計算、跨來源一致性、官方交叉核對
 ├── reports/
 │   ├── data_feasibility.md      # Phase 0 稽核與 Go/No-Go
 │   ├── data_audit_summary.md    # 自動產生的覆蓋率表
@@ -85,7 +85,7 @@ python -m src.eligibility       # MLB 2024/2025 球員賽季行
 python -m src.cpbl_profile      # 環境輪廓 + fig1–4（約 1 分鐘）
 python -m src.data_audit
 python -m src.evaluate          # 候選人 → 名單事實 → baseline → Fit → Test A–D（300 次 bootstrap，約 30 分鐘）
-pytest -q                       # 46 passed
+pytest -q                       # 53 passed
 ```
 
 各步驟都是 deterministic 的：bootstrap 的 seed 寫在 `config/scoring.yaml`。

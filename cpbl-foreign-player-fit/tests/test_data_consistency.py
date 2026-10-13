@@ -152,6 +152,22 @@ def test_statsapi_mid_pa_substitutions_credit_the_right_players():
     assert list(pa1.stand) == ["R", "R", "L", "L"]
 
 
+def test_statsapi_starter_replaced_in_first_pa():
+    """The box score names the starter, so a change during the team's first PA is undone."""
+    feed = _feed_fixture()
+    first = feed["liveData"]["plays"]["allPlays"][0]
+    pitch = first["playEvents"][0]
+    change = {"isPitch": False, "type": "action", "isSubstitution": True, "player": {"id": 11},
+              "details": {"eventType": "pitching_substitution"}, "count": {"balls": 1, "strikes": 0}}
+    first["matchup"]["pitcher"], first["matchup"]["pitchHand"] = {"id": 11}, {"code": "R"}
+    first["playEvents"] = [pitch, change, dict(pitch, pitchNumber=2), dict(pitch, pitchNumber=3)]
+    feed["liveData"]["boxscore"] = {"teams": {"away": {"pitchers": [10, 11]}, "home": {"pitchers": [30]}}}
+    rows = pd.DataFrame(statsapi_pbp.feed_rows(feed))
+    pa0 = rows[rows.at_bat_number == 0]
+    assert list(pa0.pitcher) == [10, 11, 11]
+    assert list(pa0.p_throws) == ["L", "R", "R"]
+
+
 def test_statsapi_two_pitching_changes_in_one_pa():
     """12 replaces 10 before the first pitch, then 11 replaces 12 after it (no replacedPlayer)."""
     feed = _feed_fixture()
