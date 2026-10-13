@@ -1,0 +1,1269 @@
+mlbam_id,name,position,teams,leagues,age_2026,pass_workload,eligibility_status,eligibility_reason,evidence,retro_id,mlb_played_first,mlb_played_last,mlb_outs_2024,mlb_ip_2024,mlb_outs_2025,mlb_ip_2025,screening_result
+434378,Justin Verlander,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+445276,Kenley Jansen,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+453286,Max Scherzer,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+455119,Chris Martin,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+471911,Carlos Carrasco,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+472610,Luis García,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+476594,Robert Stock,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+489446,Kirby Yates,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+500779,Jose Quintana,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+518397,Scott Alexander,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+518489,Ryan Brasier,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+518876,Merrill Kelly,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+519043,Matt Moore,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+519141,Drew Pomeranz,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+519326,Hunter Strickland,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+521230,Liam Hendriks,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+529017,Alexander Cornielle,P,SWB,INT,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,corna001,2026,2026,0.0,0.0,0.0,0.0,candidate
+534910,Jesse Hahn,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+541640,Erasmo Ramírez,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+542194,Christian Bethancourt,C,IOW/SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+542888,Shawn Armstrong,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+543037,Gerrit Cole,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+543056,Danny Coulombe,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+543238,Anthony Gose,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+544150,Albert Suárez,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+547184,Michael Kelly,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+552640,Andrew Kittredge,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+554340,Yimi García,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+554430,Zack Wheeler,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+570560,Yolmer Sánchez,3B,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+571510,Matthew Boyd,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+571882,Derek Law,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+571927,Steven Matz,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+571946,Shelby Miller,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+571948,Hoby Milner,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+572143,Burch Smith,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+572955,Pierce Johnson,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+572971,Dallas Keuchel,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+573009,Joe Mantiply,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+579328,Yusei Kikuchi,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+592094,Jason Adam,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+592155,Cam Booser,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+592288,Kent Emanuel,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+592426,Luke Jackson,P,OMA/SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+592454,Tommy Kahnle,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+592717,Aaron Sanchez,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+592779,Brock Stewart,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+592791,Jameson Taillon,P,BUF/IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+592806,Andrew Thurman,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+592826,Vince Velasquez,P,IOW/OMA,INT,34.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,velav001,2015,2026,0.0,0.0,0.0,0.0,candidate
+592836,Taijuan Walker,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+592866,Trevor Williams,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+593833,Wander Suero,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+594027,Tyron Guerrero,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+594835,Marco Gonzales,P,ELP/RR,PCL,34.0,True,eligible,2024: 101 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,gonzm005,2014,2026,101.0,33.2,0.0,0.0,candidate
+594902,Ben Lively,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+595014,Blake Treinen,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+595881,Tyler Beede,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+595897,Nick Burdi,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+595928,John Curtiss,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+596271,Casey Lawrence,P,LHV/TAC,INT/PCL,39.0,True,eligible,2024: 0 outs <= 120; 2025: 53 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,lawrc001,2017,2025,0.0,0.0,53.0,17.2,candidate
+596295,Austin Gomber,P,GWN/RR/TOL,INT/PCL,33.0,True,ineligible,2024: 495 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,gomba001,2018,2025,495.0,165.0,173.0,57.2,excluded: MLB playing time over limit
+600917,José Leclerc,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+601713,Nick Pivetta,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+605130,Scott Barlow,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+605135,Chris Bassitt,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+605154,John Brebbia,P,ABQ/STP/WOR,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+605156,Aaron Brooks,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+605177,Andrew Chafin,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+605182,Mike Clevinger,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+605218,Carl Edwards Jr.,P,SYR/TOL,INT,35.0,True,eligible,2024: 0 outs <= 120; 2025: 18 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,edwac001,2015,2026,0.0,0.0,18.0,6.0,candidate
+605242,Michael Fulmer,P,SAC/SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+605280,Clay Holmes,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+605335,Brandon Leibrandt,P,LOU,INT,34.0,True,eligible,2024: 19 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,leibb001,2020,2026,19.0,6.1,0.0,0.0,candidate
+605397,Joe Musgrove,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+605441,Yacksel Ríos,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+605447,Jordan Romano,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+605452,Joe Ross,P,RNO/RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+605463,Tayler Scott,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+605483,Blake Snell,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+606160,Rafael Montero,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+606303,Joel Payamps,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+606965,Chris Devenski,P,IND/SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+606996,Kyle Hart,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+607074,Carlos Rodón,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+607179,Jordan Weems,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+607192,Tyler Glasnow,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+607481,Aaron Bummer,P,IOW/OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+607644,John Means,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+608032,Carlos Estévez,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+608331,Max Fried,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+608334,Carson Fulmer,P,IND/TAC,INT/PCL,33.0,True,ineligible,2024: 260 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,fulmc001,2016,2025,260.0,86.2,88.0,29.1,excluded: MLB playing time over limit
+608335,Kyle Funkhouser,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+608344,Cole Irvin,P,OKC,PCL,32.0,True,ineligible,2024: 333 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,irvic001,2019,2026,333.0,111.0,0.0,0.0,excluded: MLB playing time over limit
+608371,Lucas Sims,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+608566,Germán Márquez,P,ELP/STP,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+608650,Dietrich Enns,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+608723,Austin Voth,P,BUF/RR/STP,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+615698,Cal Quantrill,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+621016,Jose Cuas,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+621051,Steven Wilson,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+621053,Tyler Ferguson,P,IOW/LV,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+621074,Michael Rucker,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+621097,Jacob Waguespack,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+621121,Lance McCullers Jr.,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+621139,Brooks Kriske,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+621199,Matt Bowman,P,BUF/STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+621242,Edwin Díaz,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+621244,José Berríos,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+621345,A.J. Minter,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+621366,Ryan Borucki,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+621383,Tanner Banks,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+621389,Ty Blach,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+622065,Alex Young,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+622088,Tejay Antone,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+622098,Drew Smith,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+622250,Josh Sborz,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+622253,Dillon Tate,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+622256,Patrick Weigel,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+622459,Cristian Alvarado,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+622694,Elieser Hernández,P,GWN,INT,31.0,True,eligible,2024: 47 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,herne002,2018,2026,47.0,15.2,0.0,0.0,candidate
+622780,Angel Perdomo,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+623211,Huascar Brazobán,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+623352,Josh Hader,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+623381,Thomas Pannone,P,NAS,INT,32.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,pannt001,2018,2026,0.0,0.0,0.0,0.0,candidate
+623433,Nick Anderson,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+623437,Justin Topa,P,BUF/OMA/SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+623465,Evan Phillips,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+623474,Jimmy Herget,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+624513,Dom Nuñez,C,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+624522,Keegan Thompson,P,ABQ,PCL,31.0,True,eligible,2024: 91 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,thomk002,2021,2026,91.0,30.1,0.0,0.0,candidate
+624523,Riley Unroe,2B,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+625510,Erick Mejia,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+625643,Reynaldo López,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+628708,Yunior Marte,P,IND/LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+628709,Ofreidy Gómez,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+640454,Matt Krook,P,LV/ROC,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+640462,A.J. Puk,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+640470,Adbert Alzolay,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641312,Shaun Anderson,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641386,Ben Bowden,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641401,Connor Brogdon,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641482,Nestor Cortes,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641540,Dane Dunning,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641585,J.P. France,P,ELP/SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641627,Trevor Gott,P,ELP/ROC,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641656,Ian Hamilton,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641658,Garrett Hampson,2B,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641672,Thomas Hatch,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641703,Brent Honeywell,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641729,Joe Jiménez,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641739,Rob Kaminsky,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641745,Brad Keller,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641816,Tyler Mahle,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641871,Keynan Middleton,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641907,Patrick Murphy,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641927,Bailey Ober,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641941,Emilio Pagán,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+641962,CD Pelham,P,IND/LV,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+642048,Tayler Saucedo,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+642100,Gabe Speier,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+642121,Cole Sulser,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+642152,Lou Trivino III,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+642239,Rob Zastryzny,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+642376,Jefry Yan,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+642520,Gerson Garabito,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+642546,Jonathan Hernández,P,LHV/OKC,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+642575,Gerson Moreno,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+642585,Félix Bautista,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+642701,Dennis Santana,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+642758,Domingo Acevedo,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+642759,Julian Fernández,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+642770,Javy Guerra,P,CLT/GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+643290,Justin Dunn,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+643361,Kevin Herget,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+643377,Griffin Jax,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+643565,Mike Tauchman,RF,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+644429,Anderson Severino,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+646241,Enmanuel De Jesus,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+646242,Jhonathan Díaz,P,TAC,PCL,30.0,True,eligible,2024: 29 outs <= 120; 2025: 4 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,diazj007,2021,2026,29.0,9.2,4.0,1.1,candidate
+647315,Zach Pop,P,JAX/LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+647336,Michael Soroka,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+647351,Abraham Toro,1B,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+647378,Andy Yerzy,C,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+650644,Aaron Civale,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+650893,Génesis Cabrera,P,LHV/OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+650960,Daniel Duarte,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+655889,Manuel Rodríguez,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656181,Spencer Adams,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656186,Dan Altavilla,P,OMA/STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656212,Charlie Barnes,P,IOW/OKC,INT/PCL,31.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,barnc002,2021,2026,0.0,0.0,0.0,0.0,candidate
+656232,Brandon Bielak,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656234,Jake Bird,P,ROC/SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656240,Scott Blewett,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656266,J.B. Bukauskas,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656288,Griffin Canning,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656302,Dylan Cease,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656353,Tucker Davidson,P,LHV,INT,30.0,True,eligible,2024: 14 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,davit005,2020,2024,14.0,4.2,0.0,0.0,candidate
+656412,Alex Faedo,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656427,Jack Flaherty,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656457,Tyler Gilbert,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656529,Sam Hentges,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656557,Tanner Houck,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656620,Gabe Klobosits,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656686,Corbin Martin,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656726,Sam McWilliams,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656755,Bryce Montes de Oca,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656756,Jordan Montgomery,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656786,Parker Mushinski,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+656924,Ryder Ryan,P,OKC,PCL,31.0,True,eligible,2024: 62 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,ryanr002,2023,2024,62.0,20.2,0.0,0.0,candidate
+656986,Bennett Sousa,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+657006,Justin Steele,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+657022,Trey Supak,P,RR,PCL,30.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+657044,Ryan Thompson,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+657240,Julian Merryweather,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+657265,Peter Strzelecki,P,MEM/NAS/SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+657277,Logan Webb,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+657376,Clarke Schmidt,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+657424,Matt Gage,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+657508,Mike Baumann,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+657510,Andrew Bechtold,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+657571,Caleb Ferguson,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+657611,Cam Hill,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+657649,Jared Koenig,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+657746,Joe Ryan,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+657756,Connor Seabold,P,OMA/TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+658551,Junior Fernández,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+658648,Pedro Avila,P,COL,INT,29.0,True,ineligible,2024: 248 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,avilp001,2019,2024,248.0,82.2,0.0,0.0,excluded: MLB playing time over limit
+659381,Justin King,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+660600,Enoli Paredes,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+660604,Alan Rangel,P,LHV,INT,29.0,True,eligible,2024: 0 outs <= 120; 2025: 33 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,ranga001,2025,2026,0.0,0.0,33.0,11.0,candidate
+660623,Huascar Ynoa,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+660634,Yonny Hernández,SS,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+660636,Diego Castillo,SS,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+660781,Domingo Robles,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+660787,Yerry De los Santos,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+660813,Brusdar Graterol,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+660853,Enyel De Los Santos,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+660896,Jorge Alcala,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+661527,Seth Martinez,P,WOR,INT,32.0,True,ineligible,2024: 158 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,marts003,2021,2026,158.0,52.2,20.0,6.2,excluded: MLB playing time over limit
+661563,Luis Gil,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+661733,Max Burt,2B,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+662144,Brian Keller,P,LHV,INT,32.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,kellb004,2026,2026,0.0,0.0,0.0,0.0,candidate
+663158,Robert Suarez,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663321,Nick Hernandez,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663362,Matt Waldron,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663366,Beau Burrows,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663372,Ryan Feltner,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663399,Brandon Waddell,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663423,Trent Thornton,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663432,Tanner Rainey,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663436,Davis Martin,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663455,Konnor Pilkington,P,ROC/TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663460,Kris Bubic,P,OKC/OMA,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663462,Isaiah Campbell,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663465,Kolby Allard,P,COL/LHV,INT,29.0,True,ineligible,2024: 81 outs <= 120; 2025: 195 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,allak001,2018,2026,81.0,27.0,195.0,65.0,excluded: MLB playing time over limit
+663474,Triston McKenzie,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663485,Cole Sands,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663531,Logan Allen,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663556,Shane McClanahan,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663558,Jovani Morán,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663559,Bailey Falter,P,GWN/OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663562,Noah Davis,P,IND,INT,29.0,True,eligible,2024: 61 outs <= 120; 2025: 33 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,davin001,2022,2025,61.0,20.1,33.0,11.0,candidate
+663567,Peter Lambert,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663568,Stephen Kolek,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663574,Tony Santillan,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663609,Luken Baker,1B,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663681,Jarod Bayless,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663704,James McArthur,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663731,Connor Kaiser,SS,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663753,Reiss Knehr,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663765,Jake Woodford,P,DUR/IOW/NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663767,Chase Shugart,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663776,Patrick Sandoval,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663782,Joe Corbett,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663795,Justin Hagenman,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663804,Jackson Kowar,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663855,Jordan Hicks,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663878,Nate Pearson,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663884,Nolan Kingham,P,RR/TAC,PCL,30.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,kingn002,2026,2026,0.0,0.0,0.0,0.0,candidate
+663893,Brendon Little,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663897,Luke Williams,SS,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663901,Michael Flynn,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663941,Tristan Beck,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663967,César Salazar,C,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663977,Jake Higginbotham,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663986,Trevor Stephan,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+663992,Richard Lovelady,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664059,Sam Haggerty,LF,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664062,Tony Gonsolin,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664068,Scott Kingery,SS,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664076,Garrett Cleavinger,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664123,Scott Effross,P,TAC/TOL,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664129,Geoff Hartlieb,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664192,Joey Lucchesi,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664208,Phil Maton,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664299,Cristian Javier,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664337,Miguel Yajure,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664346,Carlos Guzman,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664353,José Urquidy,P,CLT/IND,INT,31.0,True,eligible,2024: 0 outs <= 120; 2025: 7 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,urquj001,2019,2026,0.0,0.0,7.0,2.1,candidate
+664670,Alejo Lopez,2B,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664687,Durbin Feltman,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664744,Jose Espada,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664747,Alexis Díaz,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664776,Jake Cousins,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664849,Danny Young,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664854,Ryan Helsley,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664875,Justin Lawrence,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664918,Kyle Keller,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+664948,Anthony Misiewicz,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+665048,Hobie Harris,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+665152,Dean Kremer,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+665645,Kervin Castro,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+665660,Elvis Alvarado,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+665665,Reiver Sanmartin,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+665795,Edward Cabrera,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+665871,Javier Assad,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+665878,Janser Lara,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+665993,Cristhian Tortosa,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+666123,Austin Bergner,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+666129,Braxton Garrett,P,IOW/JAX,INT,29.0,True,eligible,2024: 111 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,garrb001,2020,2026,111.0,37.0,0.0,0.0,candidate
+666142,Cole Ragans,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+666148,Drake Fellows,P,LHV,INT,28.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+666150,Dominic Fletcher,RF,IND/LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+666155,Chuck King,P,LHV,INT,28.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+666157,Nick Lodolo,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+666165,Blake Sabol,C,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+666168,Mason Thompson,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+666201,Alek Manoah,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+666374,Matt Brash,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+666619,Gregory Santos,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+666711,Joel Peguero,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+666745,Jhony Brito,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+666748,Mitch Neunborn,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+666768,Anderson Pilar,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+667240,Jason Matthews,SS,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+667297,Tommy Nance,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+667463,John King,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+667652,Jack Ralston,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+667690,C.J. Stubbs,C,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668338,Tyson Miller,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668390,Cole Winn,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668470,Hagen Danner,P,LOU/SL,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668472,Nick Pratto,1B,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668674,Lucas Erceg,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668678,Zac Gallen,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668716,Noah Murdock,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668761,Colin Peluse,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668766,Dylan File,P,TOL,INT,30.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+668820,Max Kranick,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668831,Garrett Stallings,P,NAS,INT,29.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,stalg001,2026,2026,0.0,0.0,0.0,0.0,candidate
+668834,Easton McGee,P,NAS/OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668845,Aaron Schunk,SS,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668876,Zach Humphreys,C,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668881,Hunter Greene,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668933,Graham Ashcraft,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668943,Ryan Miller,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668964,Tobias Myers,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668968,Hans Crouse,P,ELP/NOR,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+668970,Gavin Hollowell,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669020,Ryan Rolison,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669060,Bryse Wilson,P,LHV/NAS,INT,29.0,True,ineligible,2024: 314 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,wilsb003,2018,2026,314.0,104.2,142.0,47.1,excluded: MLB playing time over limit
+669062,Erik Miller,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669067,Ryan Webb,P,COL,INT,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+669084,DL Hall,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669093,Jeremiah Estrada,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669111,John McMillon,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669142,Tanner Burns,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669145,Bruce Zimmermann,P,MEM,INT,31.0,True,eligible,2024: 0 outs <= 120; 2025: 18 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,zimmb002,2020,2026,0.0,0.0,18.0,6.0,candidate
+669165,Kyle Hurt,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669169,Jonathan Heasley,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669193,Jack Little,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669194,Ryne Nelson,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669203,Corbin Burnes,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669211,Keegan Akin,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669212,Eli Morgan,P,OMA/SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669270,Joel Kuhnel,P,LV/NAS,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669285,Dan Hammer,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669294,Paul Campbell,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669298,TJ Shook,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669310,CJ Van Eyk,P,BUF,INT,28.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,vanec001,2026,2026,0.0,0.0,0.0,0.0,candidate
+669330,Tyler Wells,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669371,Cole Henry,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669395,Dylan Coleman,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669416,Blayne Enlow,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669422,Matt Sauer,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669434,Stevie Emanuels,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669438,Mason Englert,P,DUR,INT,27.0,True,ineligible,2024: 65 outs <= 120; 2025: 134 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,englm001,2023,2026,65.0,21.2,134.0,44.2,excluded: MLB playing time over limit
+669441,Chandler Champlain,P,ROC,INT,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+669445,Adam Laskey,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669456,Shane Bieber,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669620,Brady Basso,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669622,Anthony Bender,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669684,Chris Murphy,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669697,Andrew Schultz,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669699,Braden Shewmake,SS,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669704,Kade Strowd,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669713,Hayden Wesneski,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669721,Davis Daniel,P,LOU,INT,29.0,True,eligible,2024: 91 outs <= 120; 2025: 30 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,danid001,2023,2025,91.0,30.1,30.0,10.0,candidate
+669722,Logan Davidson,1B,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669724,Brenan Hanifee,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669740,Travis MacGregor,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669854,Ronel Blanco,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669912,Kirby Snead,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669920,Jason Alexander,P,SUG,PCL,33.0,True,ineligible,2024: 0 outs <= 120; 2025: 232 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,alexj001,2022,2026,0.0,0.0,232.0,77.1,excluded: MLB playing time over limit
+669947,Jesse Scholtens,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+669993,Raul Brito,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670059,Colin Holderman,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670062,Julian Garcia,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670090,Wyatt Mills,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670097,Zack Short,SS,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670103,Raymond Burgos,P,WOR,INT,28.0,True,eligible,2024: 3 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,burgr001,2024,2026,3.0,1.0,0.0,0.0,candidate
+670148,Nate Mondou,2B,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670174,Josh Winckowski,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670183,Garrett Acton,P,JAX/STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670234,Seth Shuman,P,ROC/TAC,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670241,Darius Vines,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670276,Cal Stevenson,OF,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670351,Jose Rojas,3B,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670391,Ben Anderson,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670766,Darren McCaughan,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670810,Logan Gillaspie,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670868,Abrahan Gutierrez,C,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670871,Guillo Zuñiga,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670897,Daison Acosta,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670912,Johan Oviedo,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670950,Trevor Richards,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+670955,Edwin Uceta,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+671106,Logan Allen,P,COL,INT,28.0,True,ineligible,2024: 292 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,allel003,2023,2026,292.0,97.1,470.0,156.2,excluded: MLB playing time over limit
+671109,Jake Eder,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+671111,Sammy Peralta,P,ABQ/NAS/SL,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+671131,Jackson Rutledge,P,LHV/ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+671143,Trenton Denholm,P,COL,INT,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+671162,Connor Thomas,P,GWN/OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+671212,Joe Boyle,P,DUR,INT,27.0,True,ineligible,2024: 143 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,boylj001,2023,2026,143.0,47.2,156.0,52.0,excluded: MLB playing time over limit
+671305,Michel Otañez,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+671345,Jason Foley,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+671382,Cameron Foster,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+671737,Taj Bradley,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+671936,Adam Macko,P,BUF/RR,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+672021,Eric Cerantola,P,OMA/SAC,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+672277,Sam Carlson,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+672335,Cionel Pérez,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+672391,Kaleb Ort,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+672442,Yovanny Cruz,P,ROC/SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+672456,Keider Montero,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+672487,Helcris Olivárez,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+672550,Danis Correa,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+672578,Carlos Hernández,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+672629,Gerardo Carrillo,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+672642,Steward Berroa,RF,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+672712,Luis Palacios,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+672841,Carlos Vargas,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+673257,Victor Santos,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+673380,Dedniel Núñez,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+673513,Yuki Matsui,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+673540,Kodai Senga,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+673662,Robinson Ortiz,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+673929,Jordan Leasure,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+673965,Caleb Freeman,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+674003,Cody Bradford,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+674072,Tommy Henry,P,RNO,PCL,29.0,True,eligible,2024: 115 outs <= 120; 2025: 20 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,henrt001,2022,2025,115.0,38.1,20.0,6.2,candidate
+674073,Jack Weisenburger,P,SYR,INT,29.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,weisj001,2026,2026,0.0,0.0,0.0,0.0,candidate
+674175,Houston Roth,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+674265,Kevin Abel,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+674285,Eduardo Salazar,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+674384,Eduarniel Núñez,P,IOW/LV/NOR,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+674444,Steven Cruz,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+674674,T.J. Sikkema,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+674681,Michael Plassmeyer,P,BUF/TAC,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+674841,Andrew Alvarez,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+674944,Sean Guenther,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+675296,Hayden Merda,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+675394,Johnny Olmstead,SS,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+675512,Troy Melton,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+675540,Xzavion Curry,P,SYR,INT,28.0,True,ineligible,2024: 128 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,currx001,2022,2026,128.0,42.2,9.0,3.0,excluded: MLB playing time over limit
+675627,Michael Grove,P,DUR/GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+675650,Michael Mercado,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+675660,Shane Drohan,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+675911,Spencer Strider,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+675915,David Bañuelos,C,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+675916,James Karinchak,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+675919,Nick Raquet,P,MEM/NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+675920,Seth Lonsway,P,SAC,PCL,28.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,lonss001,2026,2026,0.0,0.0,0.0,0.0,candidate
+675989,Cody Bolton,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676012,Gerald Ogando,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676026,Holden Powell,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676046,Griff McGarry,P,LHV/OKC,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676047,Osvaldo Berrios,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676050,Packy Naughton,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676051,Codi Heuer,P,COL/NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676053,Casey Opitz,C,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676070,Jacob Amaya,SS,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676083,Janson Junk,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676092,Collin Snider,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676105,Jeff Criswell,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676153,Austin Love,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676249,Adisyn Coffey,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676254,Ryan Walker,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676272,Bobby Miller,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676390,Tommy Mace,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676393,Jack Leftwich,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676395,Robert Garcia,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676428,Brant Hurter,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676454,Brendan Cellucci,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676463,Hayden Cantrelle,2B,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676467,Colton Gordon,P,NAS/SUG,INT/PCL,28.0,True,ineligible,2024: 0 outs <= 120; 2025: 258 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,gordc001,2025,2026,0.0,0.0,258.0,86.0,excluded: MLB playing time over limit
+676477,Garrett Whitlock,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676508,Ben Casparius,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676510,Nolan Hoffman,P,LHV/OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676540,Austin Marozas,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676568,Ricky Vanasco,P,GWN/TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676571,PJ Poulin,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676596,Josh Fleming,P,BUF/IOW/MEM,INT,30.0,True,eligible,2024: 94 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,flemj001,2020,2026,94.0,31.1,0.0,0.0,candidate
+676604,Tyler Zuber,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676614,Bryan Sammons,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676661,Max Lazar,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676664,JP Sears,P,ELP,PCL,30.0,True,ineligible,2024: 542 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,searj001,2022,2026,542.0,180.2,407.0,135.2,excluded: MLB playing time over limit
+676666,Matt Turner,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676680,Tom Cosgrove,P,ROC/SUG,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676684,Will Vest,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676700,Caleb Bolden,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676702,Hunter Stratton,P,ELP/GWN/IND,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676710,Kutter Crawford,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676742,Cam Sanders,P,IND/NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676755,Isaac Mattson,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676760,Ron Marinaccio,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676775,Keaton Winn,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676785,Bryce Conley,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676831,Kodi Whitley,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676881,Garrett Schoenle,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+676910,Matt Seelinger,P,SYR/TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+677020,Josh Walker,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+677161,Zack Kelly,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+677337,Pete Hansen,P,MEM,INT,26.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+677944,Slade Cecconi,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+677955,Jaden Hill,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+677957,Brandon Neeck,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+677961,Cole Wilcox,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+677976,Randy Dobnak,P,OMA/TAC,INT/PCL,31.0,True,eligible,2024: 29 outs <= 120; 2025: 16 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,dobnr001,2019,2026,29.0,9.2,16.0,5.1,candidate
+678013,Lenny Torres Jr.,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678016,Ian Bedell,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678020,Seth Halvorsen,P,ABQ/OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678022,Jack Perkins,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678061,Ray Kerr,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678142,Cedric De Grandpre,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678163,Ryan Magdic,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678184,Garrett Hawkins,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678226,Daysbel Hernández,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678316,Omar Cruz,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678368,Valente Bellozo,P,ABQ,PCL,26.0,True,ineligible,2024: 206 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,bellv001,2024,2026,206.0,68.2,244.0,81.1,excluded: MLB playing time over limit
+678394,Brayan Bello,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678576,Wilkin Ramos,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678620,Blake Townsend,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678738,Juan Sanchez,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678821,Luis Peralta,P,ABQ/IOW,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678868,Eddy Yean,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678899,Brayan Castillo,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678906,Kai-Wei Teng,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+678922,Jeisson Cabrera,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+679057,Mason Green,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+679358,Eric Orze,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+679693,Carson Coleman,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+679702,Daniel Harper,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+679712,Lael Lockhart,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+679775,Kyle Backhus,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+679883,Luinder Avila,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+679885,Justin Martinez,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+679922,Carlos Duran,P,OKC/OMA,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+679977,Noah Song,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680212,Conor Larkin,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680232,Jackson Wolf,P,ELP/TOL,INT/PCL,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,wolfj001,2023,2023,0.0,0.0,0.0,0.0,candidate
+680397,Sam Benschoter,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680451,Mason Erla,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680519,Mario Camilletti,3B,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680570,Grayson Rodriguez,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680572,Adam Kloffenstein,P,SWB,INT,26.0,True,eligible,2024: 3 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,klofa001,2024,2024,3.0,1.0,0.0,0.0,candidate
+680573,Simeon Woods Richardson,P,BUF/TAC,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680588,Julio Rodriguez,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680604,Blas Castaño,P,ABQ/TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680686,Josiah Gray,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680689,Lyon Richardson,P,LOU/NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680701,John Rooney,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680702,Joey Gerber,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680704,Nick Sandlin,P,SL/TOL,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680723,Drew Rom,P,LV/NAS,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680729,Garrett McDaniels,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680730,Mitchell Parker,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680736,Justin Wrobleski,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680742,Jonathan Bowlan,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680743,Ryan Cusick,P,LHV,INT,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+680744,Ty Madden,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680767,Victor Vodnik,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680802,Ryan Weiss,P,SUG,PCL,30.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,weisr001,2026,2026,0.0,0.0,0.0,0.0,candidate
+680837,Ryan Fitzgerald,3B,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680880,Grant Holman,P,LHV/TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680899,Erik Tolman,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680916,Franco Aleman,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680933,Joander Suarez,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680951,Doug Nikhazy,P,CLT/IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+680970,Andrew Pérez,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681003,Andrew Walling,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681004,Jack Carey,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681006,Josh Simpson,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681035,Christian Scott,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681077,Michael Knorr,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681084,Tanner Andrews,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681097,Andrew Moore,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681117,Evan Taylor,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681151,Jayden Murray,P,IOW/SUG,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681168,Luis Curvelo,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681252,Jack Anderson,P,STP/WOR,INT,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,andej006,2026,2026,0.0,0.0,0.0,0.0,candidate
+681293,Spencer Arrighetti,P,BUF/SUG,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681306,Christian MacLeod,P,JAX/STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681313,Jake Miller,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681320,Nate Lavender,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681324,Chazz Martinez,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681328,Jonny Cuevas,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681343,Shane Smith,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681347,Mike Burrows,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681357,Cody Morissette,2B,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681402,Gus Varland,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681432,Luke Little,P,IOW/OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681439,Zach Morgan,C,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681449,Brandon White,P,JAX,INT,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+681495,Cade Fergus,OF,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681520,Antoine Kelly,P,IOW/OKC,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681544,Wyatt Olds,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681673,Kohl Franklin,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681676,Ryan Fernandez,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681751,Lazaro Estrada,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681799,Ethan Roberts,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681806,Andrew Wantz,P,DUR/IOW,INT,31.0,True,eligible,2024: 4 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,wanta001,2021,2026,4.0,1.1,0.0,0.0,candidate
+681810,Austin Warren,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681854,Connor Van Scoyoc,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681867,Cooper Criswell,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681869,Shawn Dubin,P,RNO/ROC,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681871,Eli Villalobos,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681890,Troy Watson,P,TAC/TOL,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681892,Kody Funderburk,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681895,Evan Sisk,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681916,Dylan Smith,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681924,R.J. Dabovich,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681973,Josh Hendrickson,P,SUG,PCL,29.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,hendj002,2026,2026,0.0,0.0,0.0,0.0,candidate
+681974,Onix Vega,C,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+681982,Grant Anderson,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682044,Sean Boyle,P,ELP,PCL,30.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+682052,Jacob Lopez,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682077,Gabe Mosser,P,TAC,PCL,30.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+682087,Antonio Knowles,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682120,Tim Herrin,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682126,Evan Reifert,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682144,Jayvien Sandridge,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682175,Joe Jacques,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682227,Brandon Williamson,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682239,Luke Ritter,2B,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682240,Stephen Jones,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682243,Bryce Miller,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682260,Brian Metoyer,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682274,Yaramil Hiraldo,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682276,Jose Cordova,C,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682445,Domingo Gonzalez,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682515,Logan Porter,C,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682608,Peyton Gray,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682610,Roddery Muñoz,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682620,Richard Gallardo,P,BUF,INT,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+682645,Jerming Rosario,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682719,Jose Atencio,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682769,Eiberson Castellano,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682785,Angel Bastardo,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682790,Wikelman González,P,CLT/JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682825,Luis Mey,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682855,Luis Vargas,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682858,Gabriel Barbosa,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682897,Steven Pérez,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682967,Devin Sweet,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682981,Derek Diamond,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682982,Daniel Espino,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682989,Victor Mederos,P,GWN/SL,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682990,Quinn Priester,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682992,Erik Rivera,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+682995,Hunter Barco,P,IND,INT,26.0,True,eligible,2024: 0 outs <= 120; 2025: 9 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,barch001,2025,2026,0.0,0.0,9.0,3.0,candidate
+682999,Will Childers,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683000,Riley Cornelio,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683001,Ethan Hearn,C,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683003,Jared Jones,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683004,Jack Leiter,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683008,Avery Short,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683020,Gustavo Rodriguez,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683021,Michael Stefanic,2B,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683068,Zach Penrod,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683085,Landon Sims,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683093,Hayden Mullins,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683104,Trey Faltine,OF,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683155,Joey Estes,P,LV,PCL,25.0,True,ineligible,2024: 383 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,estej001,2023,2026,383.0,127.2,33.0,11.0,excluded: MLB playing time over limit
+683157,Evan Fitterer,P,ELP,PCL,26.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+683175,Connor Phillips,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683177,Jared Southard,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683235,Justin Campbell,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683352,Mitch Bratt,P,RNO,PCL,23.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,bratm001,2026,2026,0.0,0.0,0.0,0.0,candidate
+683363,Matt Wilkinson,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683409,Angel Chivilli,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683568,Jairo Iriarte,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683609,Victor Duarte,2B,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683627,Anthony Molina,P,GWN/SAC,INT/PCL,24.0,True,ineligible,2024: 179 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,molia001,2024,2026,179.0,59.2,104.0,34.2,excluded: MLB playing time over limit
+683720,Edwin Jimenez,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683742,Jose Franco,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+683769,Hunter Gaddis,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+684049,Brandan Bidois,P,IND/JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+684128,Reidis Sena,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+684320,Yariel Rodríguez,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+684384,Chase Plymell,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+684442,Kohl Drake,P,RNO,PCL,26.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,drakk001,2026,2026,0.0,0.0,0.0,0.0,candidate
+684516,Hancel Rincon,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+684608,Will Brian,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+684725,Zach Messinger,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+684949,Zac Leigh,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+684974,Craig Yoho,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685005,Christian Roa,P,IOW/NOR/STP/SUG,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685010,Dustin Saenz,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685095,Alaska Abney,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685107,Anthony Veneziano,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685112,Zach McCambley,P,JAX/LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685121,Beau Philip,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685126,Brandon Eisert,P,CLT/IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685299,Tanner Gordon,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685329,Carlos Peña,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685377,Misael Tamarez,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685382,Andrew Navigato,SS,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685396,Nate Peterson,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685464,Cade Winquest,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685719,Fernando Sanchez,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685763,Jonatan Bernal,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+685801,Hunter Bigge,P,DUR/LV,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686218,Emmet Sheehan,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686223,Joey Mancini,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686228,Juan Burgos,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686294,Amos Willingham,P,JAX/SUG,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686533,Jackson Finley,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686560,Gavin Collyer,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686563,Jonathan Cannon,P,CLT,INT,26.0,True,ineligible,2024: 373 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,cannj001,2024,2026,373.0,124.1,311.0,103.2,excluded: MLB playing time over limit
+686580,Justin Slaten,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686613,Hunter Brown,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686628,Blake Burkhalter,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686651,Levi Stoudt,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686654,Ty Adcock,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686662,Jarrod Cande,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686671,Thomas Farr,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686678,Chase Solesky,P,DUR/LOU,INT,29.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,solec001,2026,2026,0.0,0.0,0.0,0.0,candidate
+686701,Ryan Bergert,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686730,Carson Spiers,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686745,Zach Peek,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686747,Joe La Sorsa,P,IND/WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686751,Seth Johnson,P,LHV/LV,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686753,Drey Jameson,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686754,Ryan Jensen,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686762,Austin Roberts,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686763,Gunner Mayer,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686766,William Simoneit,C,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686769,Dane Acker,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686790,Trevor McDonald,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686796,Blake Walston,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686826,Bryce Jarvis,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686839,Brendan White,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686844,Ben Wereski,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686857,James Gonzalez,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686873,Nick Zwack,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686900,Evan Shawver,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686930,Mason Barnett,P,LV,PCL,26.0,True,eligible,2024: 0 outs <= 120; 2025: 67 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,barnm002,2025,2026,0.0,0.0,67.0,22.1,candidate
+686934,Alex McFarlane,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686951,Cy Nielson,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+686972,Cole Waites,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687033,Zack Lee,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687060,Blake Adams,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687064,Brandon Young,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687066,Eric Yang,C,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687075,Brandon Sproat,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687114,Bryce Hubbart,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687134,Bradley Blalock,P,JAX,INT,26.0,True,ineligible,2024: 92 outs <= 120; 2025: 176 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,blalb001,2024,2026,92.0,30.2,176.0,58.2,excluded: MLB playing time over limit
+687166,Austin Pope,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687189,Marcus Johnson,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687195,Jake Garland,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687208,Nathan Hickey,1B,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687209,Zach Maxwell,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687218,Will Bednar,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687223,Carson Palmquist,P,ABQ/ROC,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687238,Trace Bright,P,NOR,INT,26.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+687239,Ben Peoples,P,CLT/RR,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687259,Luke Bell,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687268,K.C. Hunt,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687273,Quinn Mathews,P,MEM,INT,26.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,mathq001,2026,2026,0.0,0.0,0.0,0.0,candidate
+687284,Thomas Gavello,3B,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687287,Patrick Monteverde,P,JAX,INT,29.0,True,eligible,2024: 0 outs <= 120; 2025: 11 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,montp001,2025,2026,0.0,0.0,11.0,3.2,candidate
+687288,Devereaux Harrison,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687309,Cooper Hjerpe,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687312,Gabriel Hughes,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687317,Stu Flesland III,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687362,Connor Gillispie,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687377,Orlando Ribalta,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687424,Anthony Maldonado,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687473,Ryan Gusto,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687531,William Kempner,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687547,Ryan Ramsey,P,OMA,INT,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+687562,Jake Bennett,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687570,Connor Prielipp,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687589,Dom Hamel,P,SWB,INT,27.0,True,eligible,2024: 0 outs <= 120; 2025: 3 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,hamed001,2025,2025,0.0,0.0,3.0,1.0,candidate
+687593,Hunter Patteson,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687606,Paxton Schultz,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687721,Cameron Weston,P,NOR/SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687726,Cameron Wagoner,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687762,Blake Wehunt,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687765,Mitch Spence,P,OMA,INT,28.0,True,ineligible,2024: 454 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,spenm001,2024,2026,454.0,151.1,254.0,84.2,excluded: MLB playing time over limit
+687792,DJ Herz,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687798,Nick Robertson,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687825,Tyler Santana,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687830,Sawyer Gipson-Long,P,TOL,INT,29.0,True,eligible,2024: 0 outs <= 120; 2025: 94 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,gipss001,2023,2025,0.0,0.0,94.0,31.1,candidate
+687841,Andrew Magno,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687847,Marc Church,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687849,Zak Kent,P,ROC/STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687856,Andrew Bash,P,LV/STP,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687866,Justin Yeager,P,DUR/ELP,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687867,Clay Dungan,2B,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687881,Kenten Egbert,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687900,Andrew Baker,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687911,Bryan King,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687916,Jack Jasiak,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687924,Julian Aguiar,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687931,Carson Whisenhunt,P,SAC,PCL,26.0,True,eligible,2024: 0 outs <= 120; 2025: 70 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,whisc001,2025,2026,0.0,0.0,70.0,23.1,candidate
+687941,Alec Gamboa,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687985,Josh White,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+687991,Jared Johnson,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+688107,Robert Gasser,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+688158,David Morgan,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+688230,Peyton Alford,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+688297,Chris Roycroft,P,DUR/MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+688354,Hayden Minton,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+688445,Jake Walkinshaw,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+688497,Taylor Rashi,P,LV/RNO/STP,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+688609,Hunter Parks,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+688692,Jared Simpson,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+688730,Marques Johnson,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+688753,Evan Gates,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+688883,Peyton Pallette,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689017,Landon Knack,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689147,Orion Kerkering,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689149,Chad Dallas,P,BUF,INT,26.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,dallc001,2026,2026,0.0,0.0,0.0,0.0,candidate
+689172,Brett Wisely,2B,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689225,Beau Brieske,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689266,Dylan Dodd,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689275,Henry Williams,P,OMA,INT,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+689296,Anthony Nunez,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689337,Kaleb Bowman,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689359,Dale Stanavich,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689379,Aidan Anderson,P,CLT/RR,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689441,Coleman Crow,P,NAS,INT,26.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,crowc001,2026,2026,0.0,0.0,0.0,0.0,candidate
+689450,Luke Taggart,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689476,Jace Beck,P,IOW/JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689520,Cody Laweryson,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689546,Nick Davila,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689672,Drew Thorpe,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689690,Alek Jacob,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689818,David Sandlin,P,CLT,INT,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,sandd005,2026,2026,0.0,0.0,0.0,0.0,candidate
+689958,Andrew Walters,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+689981,River Ryan,P,OKC/TOL,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+690148,Chris Kachmar,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+690155,Matt Pushard,P,JAX/MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+690162,Kenny Serwa,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+690217,C.J. Culpepper,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+690279,Mason Adams,P,ABQ/CLT,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+690294,Shane Murphy,P,CLT,INT,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+690382,Michael Darrell-Hicks,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+690440,Bradley Hanner,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+690448,Mike Jarvis,OF,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+690462,Ricky Castro,P,STP,INT,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+690829,Ben Joyce,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+690916,Richard Fitts,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+690925,Clayton Beeter,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+690928,Hunter Dobbins,P,MEM,INT,27.0,True,ineligible,2024: 0 outs <= 120; 2025: 183 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,dobbh001,2025,2026,0.0,0.0,183.0,61.0,excluded: MLB playing time over limit
+690939,Connor Noland,P,IOW,INT,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+690953,Mick Abel,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+690967,Max Carlson,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+690978,Dax Fulton,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691008,Max Rajcic,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691009,Dylan Ray,P,RNO,PCL,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+691012,Alex Santos II,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691013,Jason Savacool,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691027,Tanner Witt,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691172,Yosver Zulueta,P,IOW/NOR/TAC,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691196,Josh Hejka,P,JAX/RR,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691251,Andry Lara,P,ROC,INT,23.0,True,eligible,2024: 0 outs <= 120; 2025: 43 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,laraa001,2025,2025,0.0,0.0,43.0,14.1,candidate
+691384,Luis Perales,P,ROC,INT,23.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,peral002,2026,2026,0.0,0.0,0.0,0.0,candidate
+691405,Juan Benjamin,3B,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691414,Yorman Gómez,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691548,Rolddy Muñoz,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691576,Alejandro Hidalgo,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691587,Eury Pérez,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691641,Jose Acuna,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691721,Jared Kelley,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691725,Andrew Painter,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691739,Will Sanders,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691769,Philip Abner,P,RNO/SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691893,Jean Cabrera,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691938,Willy Vasquez,3B,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691945,Carter Baumler,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691946,George Klassen,P,SL,PCL,24.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,klasg001,2026,2026,0.0,0.0,0.0,0.0,candidate
+691947,Ronan Kopp,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+691951,Sam Aldegheri,P,SL,PCL,25.0,True,eligible,2024: 39 outs <= 120; 2025: 41 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,aldes001,2024,2026,39.0,13.0,41.0,13.2,candidate
+692024,Alex Carrillo,P,SAC/SYR,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+692030,Jose Corniell,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+692064,José Rodríguez,P,BUF/OKC,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+692179,Thomas Ireland,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+692230,Carlos Rodriguez,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+692243,Jaden Woods,P,CLT/IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+692285,Luis Guerrero,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+692294,Luis Gutierrez,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+692414,Yoniel Curet,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+692416,Christian Cerda,C,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+692437,Winston Santos,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+692589,Victor Juarez,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+692623,Leonard Garcia,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+693308,Nick Frasso,P,ABQ/OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+693311,Tink Hence,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+693312,Kyle Nicolas,P,LOU/NOR/ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+693313,Carson Seymour,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+693483,Pat Gallagher,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+693713,Emiliano Teodo,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+693739,Alexander Alberto,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+693781,Wilian Bormie,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694037,Daniel Palencia,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694206,Daniel Guilarte,SS,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694297,Brandon Pfaadt,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694298,Nick Dombkowski,P,IND,INT,28.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+694312,Logan Workman,P,DUR,INT,28.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+694331,Tyler Mattison,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694335,Matt Svanson,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694341,Brendan Beck,P,SWB,INT,28.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,beckb001,2026,2026,0.0,0.0,0.0,0.0,candidate
+694346,Trey Gibson,P,NOR,INT,24.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,gibst001,2026,2026,0.0,0.0,0.0,0.0,candidate
+694350,Zach Brzykcy,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694355,Tyler Gentry,OF,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694356,Nick Garcia,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694357,Ricky Tiedemann,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694360,Beck Way,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694363,Jared Shuster,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694370,Levi Wells,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694381,Trey McLoughlin,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694393,Jaxon Wiggins,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694397,Marco Raya,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694462,Hurston Waldrep,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694494,Ty Johnson,P,DUR,INT,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,johnt004,2026,2026,0.0,0.0,0.0,0.0,candidate
+694495,Javen Coleman,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694536,Trent Baker,P,STP,INT,28.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+694545,Jackson Nezuh,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694559,Nick Jones,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694646,Chayce McDermott,P,NOR/OKC/SYR,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694650,Cameron Cotter,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694660,Harrison Cohen,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694674,Antonio Menendez,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694677,Collin Baumgartner,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694680,Trevor Martin,P,DUR/SL,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694753,Khristian Curtis,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694761,Tommy Vail,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694781,Logan Mercado,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694795,Josh Ekness,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694805,Kyle Carr,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694813,Gavin Stone,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694818,Hunter Owen,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694820,Braxton Roxby,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694851,Andrew Hoffmann,P,LHV/RNO,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694855,Riley Cooper,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694860,Jake Brooks,P,ABQ,PCL,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+694885,Ryan Murphy,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+694918,Blade Tidwell,P,SAC,PCL,25.0,True,eligible,2024: 0 outs <= 120; 2025: 45 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,tidwb001,2025,2026,0.0,0.0,45.0,15.0,candidate
+694968,Jack Mahoney,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695001,Alimber Santa,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695033,Juaron Watts-Brown,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695034,Kade Morris,P,LV,PCL,24.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,morrk001,2026,2026,0.0,0.0,0.0,0.0,candidate
+695038,Sean Hunley,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695049,Brett Kerry,P,SL,PCL,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,kerrb001,2026,2026,0.0,0.0,0.0,0.0,candidate
+695065,Ryan Costeiu,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695066,Ben Grable,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695076,Rhett Lowder,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695078,Jean Walters,2B,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695239,Robby Ahlstrom,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695247,Jagger Haynes,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695308,Paulshawn Pasqualotto,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695366,Holt Jones,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695378,Jack Sinclair,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695380,Alex Hoppe,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695402,Najer Victor,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695406,Case Williams,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695418,Brad Lord,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695421,Ryan Slater,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695445,Chase Lee,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695462,Cal Conley,2B,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695467,Juan Montero,C,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695534,Chase Petty,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695556,Shane Panzini,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695558,Jonathan Santucci,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695611,Gage Jump,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695661,Logan McGuire,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695667,Ben Kudrna,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695684,Elmer Rodríguez,P,SWB,INT,23.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,rodre007,2026,2026,0.0,0.0,0.0,0.0,candidate
+695721,Gage Ziehl,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695766,Mason Molina,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695776,Josh Stephan,P,BUF/RR,INT/PCL,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+695778,Aidan Curry,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+695950,Nicolo Pinazzi,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+696062,Wilber Dotel,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+696070,Kendry Rojas,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+696131,Mason Black,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+696136,Jordan Wicks,P,IOW,INT,27.0,True,ineligible,2024: 138 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,wickj001,2023,2026,138.0,46.0,43.0,14.1,excluded: MLB playing time over limit
+696140,Ethan Murray,2B,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+696146,Hagen Smith,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+696147,Sam Bachman,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+696150,Eric Silva,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+696270,Ryan Johnson,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+696519,Samy Natera Jr.,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+696522,Hayden Juenger,P,BUF/LV,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+697811,Dylan Ross,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+697812,Joe Rock,P,CLT/DUR/LV,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+698968,Samir Chires,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+699008,Antwone Kelly,P,IND,INT,23.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,kella001,2026,2026,0.0,0.0,0.0,0.0,candidate
+699044,Miguel Ullola,P,SUG,PCL,24.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,ullom001,2026,2026,0.0,0.0,0.0,0.0,candidate
+699071,Christian Romero,P,OKC,PCL,24.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+699151,Jedixson Paez,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+699232,Anderdson Rojas,SS,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+699314,David Davalillo,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+699325,Oscar Rayo,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+699489,Brandon Johnson,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+699552,Brandon Beckel,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+699613,Houston Harding,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+699823,Tyler Davis,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+700072,Yaqui Rivera,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+700183,Blake Holub,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+700187,Troy Taylor,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+700249,Cade Povich,P,NOR,INT,26.0,True,ineligible,2024: 239 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,povic001,2024,2026,239.0,79.2,337.0,112.1,excluded: MLB playing time over limit
+700270,Yilber Díaz,P,RNO/TOL,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+700292,Yondrei Rojas,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+700327,Welinton Herrera,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+700363,AJ Smith-Shawver,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+700370,Felipe De La Cruz,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+700413,Tyler Uberstine,P,GWN/WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+700579,Nathan Dettmer,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+700669,Gordon Graceffo,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+700712,Walbert Ureña,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+700786,Ben Sears,P,OMA,INT,26.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+700794,Frankie Scalzo Jr.,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+700800,Darien Smith,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+700842,Eduardo Rivera,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701121,Logan VanWey,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701240,Ethan Routzahn,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701288,Jacob Webb,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701298,Phillip Glasser,2B,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701314,Nick Hull,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701328,Jackson Ferris,P,OKC,PCL,22.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+701364,Jamie Arnold,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701388,Jurrangelo Cijntje,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701404,Fisher Jameson,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701411,Jack Cebert,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701474,Duncan Davitt,P,CLT/GWN/SAC,INT/PCL,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,david005,2026,2026,0.0,0.0,0.0,0.0,candidate
+701488,Dylan Phillips,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701519,Travis Adams,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701533,Hunter Stanley,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701552,Andre Granillo,P,ROC/TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701564,Joe Adametz,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701568,Justin Meis,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701617,Ian Koenig,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701643,Grant Hartwig,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701656,Logan Henderson,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701717,Dalton Pence,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701719,Tyler Samaniego,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701780,Tanner McDougal,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701856,Patrick Halligan,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+701884,Magnus Ellerts,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702021,Will Dion,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702045,Rorik Maltrud,P,COL,INT,26.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+702047,Alex Cook,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702056,Trey Yesavage,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702065,Aaron Rozek,P,STP,INT,31.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+702068,Cole Gabrielson,OF,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702103,Zach Franklin,P,CLT/SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702129,Alex Pham,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702130,Danny Watson,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702153,Brian Fitzpatrick,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702193,Andrew Morris,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702273,Noah Schultz,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702275,JR Ritchie,P,GWN,INT,23.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,ritcj001,2026,2026,0.0,0.0,0.0,0.0,candidate
+702281,Robby Snelling,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702297,Carson Skipper,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702300,Johnathan Lavallee,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702303,Riley Martin,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702318,Chris Campos,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702331,Noah Mendlinger,2B,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702352,Spencer Bivens,P,OMA/SAC,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702462,Nic Swanson,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702465,Ryan Long,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702474,Mike Paredes,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702566,Owen Murphy,P,GWN,INT,23.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,murpo001,2026,2026,0.0,0.0,0.0,0.0,candidate
+702650,Michael Forret,P,DUR/NOR,INT,22.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+702674,Caden Dana,P,SL,PCL,23.0,True,eligible,2024: 31 outs <= 120; 2025: 97 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,danac001,2024,2025,31.0,10.1,97.0,32.1,candidate
+702750,Edinson Duran,C,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702752,Jonathan Pintaro,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702885,Cesar Perdomo,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702903,Saul Garcia,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+702911,Tristan Garnett,P,LHV,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+703186,Jarlin Susana,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+703596,Karson Milbrandt,P,JAX,INT,22.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+703615,Jose Cabrera,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+703670,Pierce George,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+703725,Luis Gastelum,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+800018,Chen Zhong-Ao Zhuang,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+800067,Jose Fleury,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+800311,Didier Fuentes,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+800550,Miguel Cienfuegos,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+800600,Jackson Kent,P,ROC,INT,23.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,kentj002,2026,2026,0.0,0.0,0.0,0.0,candidate
+800686,Parker Carlson,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+800959,Nick Goodwin,SS,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+801128,Robert Cranz,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+801139,Payton Tolle,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+801179,Yu-Min Lin,P,RNO,PCL,23.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+801293,Eric Yost,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+801333,Johnathan Harmon,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+801367,Matt Jachec,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+801432,Eric Reyzelman,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+801434,Paul Gervase,P,OKC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+801453,Cole Stasio,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+801517,Spencer Giesting,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+801555,Izaak Martinez,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+801594,Ryan Gallagher,P,STP,INT,23.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+801639,Trystan Vrieling,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+801643,Owen Wild,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+801725,Luis De León,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+801739,Carlos Lagrange,P,SWB,INT,23.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+802087,Frankeli Arias,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+802126,Joe Whitman,P,SAC,PCL,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+802355,Tanner Schobel,2B,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+802357,Drue Hackenberg,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+802363,Jordan Geber,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+802408,Brycen Mautz,P,MEM,INT,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,mautb001,2026,2026,0.0,0.0,0.0,0.0,candidate
+802416,Ashton Izzi,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+802419,Thomas Harrington,P,IND,INT,25.0,True,eligible,2024: 0 outs <= 120; 2025: 26 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,harrt002,2025,2025,0.0,0.0,26.0,8.2,candidate
+802541,Bryan Broecker,C,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+802609,John Michael Bertrand,P,SAC,PCL,28.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+802686,Hayden Harris,P,ABQ/GWN,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+802981,Mason Olson,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+803035,Riley Gowens,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+803276,Ruddy Gomez,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+803349,Herick Hernandez,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+803409,Jordan Morales,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+803833,Garrett Baumann,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+804249,Tate Kuehner,P,NAS,INT,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+804267,Zac Thornton,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+804541,Gary Gill Hill,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+804556,Braden Nett,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+804577,Reid VanScoter,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+804619,John Klein,P,BUF/STP,INT,24.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,kleij001,2026,2026,0.0,0.0,0.0,0.0,candidate
+804636,Jonah Tong,P,SYR,INT,23.0,True,eligible,2024: 0 outs <= 120; 2025: 56 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,tongj001,2025,2026,0.0,0.0,56.0,18.2,candidate
+804912,Mason Vinyard,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+804922,Tyler Vogel,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+804926,Austin Peterson,P,COL,INT,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,petea003,2026,2026,0.0,0.0,0.0,0.0,candidate
+804948,Gage Stanifer,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805175,Davis Polo,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805214,Isaac Lyon,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805272,Luke Young,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805291,Vince Reilly,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805299,Brandyn Garcia,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805311,Nick Sando,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805315,Michael Walsh,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805321,Trevor Kuncl,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805326,Tyler Schweitzer,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805345,Trent Harris,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805346,Ben Ross,SS,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805363,Chris Clark,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805427,Drew Sommers,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805673,Zebby Matthews,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805723,Jared Lyons,P,LOU,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805871,Joel Hurtado,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805892,Nick Altermatt,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805958,Jackson Kelley,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+805990,Grant Kipp,P,IOW,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+806188,Cade Gibson,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+806190,Isaac Coffey,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+806258,Thomas White,P,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+806333,Michael Sansone,P,WOR,INT,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+806413,Daniel Guerra,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+806960,Luis Morales,P,LV,PCL,24.0,True,ineligible,2024: 0 outs <= 120; 2025: 146 outs > 120,Retrosheet regular-season event files (complete seasons) via retro id,moral001,2025,2026,0.0,0.0,146.0,48.2,excluded: MLB playing time over limit
+807187,Mathias LaCombe,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+807716,Ty Langenberg,P,STP,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+807718,Jay Driver,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+807743,Sean Sullivan,P,ABQ,PCL,24.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,sulls002,2026,2026,0.0,0.0,0.0,0.0,candidate
+808052,Johan Moreno,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+808350,Joshua Quezada,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+808754,Cam Walty,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+808825,Andrew Sears,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+808865,Jack Young,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+808952,Jack Seppings,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+808970,Woo-Suk Go,P,STP/TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+809100,Ixan Henderson,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+809109,Roman Angelo,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+809137,Brian Hendry,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+809343,Bryce Mayer,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+809459,Morris Austin,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+809733,Connor Wietgrefe,P,IND,INT,24.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+809784,Garrett Stratton,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+809814,Francis Texido,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+809819,Bryson Van Sickle,P,ABQ,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+809950,Dakota Hawkins,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+810897,Charlie Beilenson,P,TAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+811139,Sandro Santana,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+811229,Ubert Mejias,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+811307,Jack Wenninger,P,SYR,INT,24.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+811315,Brody Hopkins,P,DUR,INT,24.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,hopkb001,2026,2026,0.0,0.0,0.0,0.0,candidate
+811600,Abraham Parra,P,ELP,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+811710,Jacob Stretch,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+812372,Daniel Wright,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+812521,Joe Glassey,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+813268,Jake Curtis,P,CLT,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+813349,Connelly Early,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+813401,Cole Roland,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+813697,Sam Biller,OF,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+813766,Skylar Hales,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+813865,Hudson Leach,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+813882,Brady Choban,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+814005,Jake Bloss,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+814217,Sam Gardner,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+814280,Landon Tomkins,P,IND,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+814305,Yunior Tur,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+814351,Lucas Braun,P,GWN/OMA,INT,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+814366,Cade Feeney,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+814388,Hayden Snelsire,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+814392,Xavier Rivas,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+814489,Brett Wichrowski,P,NAS,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+814490,Ethan Pecko,P,SUG,PCL,24.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,pecke001,2026,2026,0.0,0.0,0.0,0.0,candidate
+814783,Casey Anderson,P,RNO,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+814803,Logan Martin,P,SAC,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+814804,Grant Rogers,P,BUF,INT,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+815073,Ethan Bosacker,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+815081,Mark Manfredi,P,ABQ/NAS,INT/PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+815083,Mitch Farris,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+815084,Ben Simon,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+815148,Nestor German,P,NOR,INT,24.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+815179,Christian Herberholz,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+815454,Chris Kean,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+815587,Trent Sellers,P,SWB,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+815590,Ryan Lobus,P,RR,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+820862,José Fermin,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+821340,Zack Mack,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+822038,Ryan Lambert,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+822067,A.J. Causey,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+822410,Bobby Olsen,P,MEM,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+822412,Brett Sears,P,GWN,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+822483,Sean Matson,P,COL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+823116,Dominic Niman,P,DUR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+823230,Tyler McLoughlin,P,SYR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+824028,Gage Miller,2B,JAX,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+824620,Tyson Hardin,P,NAS,INT,25.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+825576,Brandt Thompson,P,MEM,INT,24.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+827292,John Holobetz,P,WOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+827734,Wei-En Lin,P,LV,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+828314,Kyle Roche,P,SL,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+828353,Nate Garkow,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+828616,Jack Nedrow,P,BUF,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+829272,Shinnosuke Ogasawara,P,ROC,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+829338,Dariel Fregio,P,TOL,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+829517,Jake Dykhoff,P,NOR,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+829524,Chase Jessee,P,OMA,INT,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60
+835483,Brandon McPherson,P,SUG,PCL,26.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,candidate
+837227,Tatsuya Imai,P,SUG,PCL,,False,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60

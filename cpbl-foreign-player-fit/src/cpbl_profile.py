@@ -308,14 +308,15 @@ def figures(prof: pd.DataFrame, env: pd.DataFrame, wc: pd.DataFrame, cpbl: pd.Da
     ax.legend(frameon=False, fontsize=9)
     fig.tight_layout(); fig.savefig(fig_dir / "fig2_pitch_usage.png", dpi=150); plt.close(fig)
 
-    # 3. four-seam velocity distribution
+    # 3. four-seam velocity distribution — in km/h with 1 km/h bins centred on integers,
+    #    because REBAS records whole km/h (mph bins would alias into a comb pattern)
     fig, ax = plt.subplots(figsize=(8, 4), facecolor=SURFACE)
-    bins = np.arange(80, 101, 0.5)
+    bins = np.arange(127.5, 163.5, 1.0)
     for lg, d, col in (("CPBL", cpbl, CPBL_COLOR), ("AAA", aaa, AAA_COLOR)):
-        v = d[(d.pitch_type == "FF")].velo_mph.dropna()
+        v = d[(d.pitch_type == "FF")].velo_mph.dropna() * 1.609344
         ax.hist(v, bins=bins, density=True, histtype="step", lw=2, color=col,
-                label=f"{lg} (n={len(v):,}, mean {v.mean():.1f} mph)")
-    _style(ax, "Four-seam velocity distribution (CPBL broadcast radar vs AAA Statcast)", xlabel="mph",
+                label=f"{lg} (n={len(v):,}, mean {v.mean():.1f} km/h = {v.mean()/1.609344:.1f} mph)")
+    _style(ax, "Four-seam velocity (CPBL broadcast radar, whole km/h; AAA Statcast)", xlabel="km/h",
            ylabel="density")
     ax.legend(frameon=False, fontsize=9)
     fig.tight_layout(); fig.savefig(fig_dir / "fig3_ff_velocity.png", dpi=150); plt.close(fig)

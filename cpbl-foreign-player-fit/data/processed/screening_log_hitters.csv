@@ -1,0 +1,904 @@
+mlbam_id,name,position,teams,leagues,age_2026,pass_workload,eligibility_status,eligibility_reason,evidence,retro_id,mlb_played_first,mlb_played_last,mlb_pa_2024,mlb_pa_2025,screening_result
+457705,Andrew McCutchen,DH/LF,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+467793,Carlos Santana,1B,GWN/RNO,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+502054,Tommy Pham,DH/LF,LHV/NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+506702,Sandy León,C,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+518595,Travis d'Arnaud,C,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+542194,Christian Bethancourt,C,IND/IOW/SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+542208,Carlos Pérez,C,SUG/TOL,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+543309,Kyle Higashioka,C/DH,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+543510,James McCann,C,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+553869,Elias Díaz,C,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+553993,Eugenio Suárez,DH/3B,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+570560,Yolmer Sánchez,3B/SS,SL,PCL,34.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,sancc001,2014,2022,0.0,0.0,candidate
+571657,Kyle Farmer,DH/3B,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+571771,Enrique Hernández,3B,OKC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+571912,Luke Maile,C,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+592273,Brandon Drury,3B,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+592325,Ben Gamel,RF,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+593871,Jorge Polanco,DH,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+595453,Chad Wallach,C,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+595751,Jorge Alfaro,C/1B,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+595879,Javier Báez,SS,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+595909,Jake Cave,CF/RF,CLT/DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+596019,Francisco Lindor,SS,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+596103,Austin Slater,RF,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+596115,Trevor Story,SS,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+596117,Garrett Stubbs,C,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+596146,Max Kepler,LF,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+600869,Jeimer Candelario,3B/1B,SL,PCL,33.0,True,ineligible,2024: 463 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,candj002,2016,2026,463.0,91.0,excluded: MLB playing time over limit
+602104,Ramón Urías,3B,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+605141,Mookie Betts,SS,OKC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+605244,Aramis Garcia,C,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+605353,Vimael Machín,SS/3B,ABQ,PCL,33.0,True,eligible,2024: 0 PA <= 200; 2025: 12 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,machv001,2020,2026,0.0,12.0,candidate
+606115,Orlando Arcia,SS,LOU/STP,INT,32.0,True,ineligible,2024: 602 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,arcio002,2016,2026,602.0,214.0,excluded: MLB playing time over limit
+606192,Teoscar Hernández,LF,OKC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+606992,Eric Haase,C,CLT/SAC,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+608701,Rob Refsnyder,DH,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+608841,Joey Meneses,1B,LV,PCL,34.0,True,ineligible,2024: 313 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,menej001,2022,2026,313.0,0.0,excluded: MLB playing time over limit
+609280,Miguel Andujar,DH/LF,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+621006,Richie Martin Jr.,SS,ABQ/RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+621028,Kevin Newman,3B/SS,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+621035,Chris Taylor,CF/RF,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+621438,Tyrone Taylor,LF/CF,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+621512,Tomás Nido,C,TOL/WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+621550,Patrick Wisdom,3B,TAC,PCL,35.0,True,eligible,2024: 174 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,wisdp001,2018,2026,174.0,0.0,candidate
+622268,Donovan Walton,2B/LF,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+622569,Pablo Reyes,OF/3B,ELP/SL,PCL,33.0,True,eligible,2024: 64 PA <= 200; 2025: 34 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,reyep001,2018,2025,64.0,34.0,candidate
+623205,Andrew Velazquez,SS/CF,OMA/RNO,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+623993,Anthony Santander,RF/LF,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+624414,Christian Arroyo,2B/3B,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+624415,Cavan Biggio,1B/2B,SUG,PCL,31.0,True,ineligible,2024: 224 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,biggc002,2019,2025,224.0,83.0,excluded: MLB playing time over limit
+624428,Adam Frazier,2B,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+624431,Jose Trevino,C,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+624513,Dom Nuñez,C,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+624523,Riley Unroe,2B/3B,CLT/SUG,INT/PCL,31.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+628451,Andy Ibáñez,2B/3B,SYR/TAC,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+630105,Jake Cronenworth,2B/1B,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+640458,Óscar Mercado,RF,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+640459,Brian Navarreto,C,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+640492,José Azócar,RF,GWN,INT,30.0,True,eligible,2024: 79 PA <= 200; 2025: 21 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,azocj001,2022,2026,79.0,21.0,candidate
+640902,Jhonny Pereda,C,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+641355,Cody Bellinger,LF,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+641487,J.P. Crawford,SS,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+641511,Jason Delay,C,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+641521,Edwin Díaz,SS/3B,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+641555,J.C. Escarra,C,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+641584,Jake Fraley,RF,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+641598,Mitch Garver,C,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+641658,Garrett Hampson,2B/SS,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+641820,Trey Mancini,1B,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+641943,Joshua Palacios,CF/RF,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+642020,Chuckie Robinson,C,GWN/OKC,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+642133,Rowdy Tellez,1B,GWN,INT,31.0,True,ineligible,2024: 421 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,tellr001,2018,2026,421.0,312.0,excluded: MLB playing time over limit
+642136,Matt Thaiss,C,SUG/WOR,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+642180,Tyler Wade,2B/3B,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+642215,Weston Wilson,3B,NOR/TAC,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+642350,Jose Siri,LF/RF,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+642727,Sergio Alcántara,SS,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+642851,Austin Wynns,C,IOW/RR/SL,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+643376,Danny Jansen,C,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+643396,Isiah Kiner-Falefa,2B,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+643565,Mike Tauchman,RF/DH,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+644433,Chadwick Tromp,C,GWN/NOR/OKC,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+645302,Victor Robles,RF,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+645305,Ali Sánchez,C,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+645444,Jose Herrera,C,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+647351,Abraham Toro,1B/3B,OMA,INT,30.0,True,ineligible,2024: 364 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,toroa001,2019,2025,364.0,284.0,excluded: MLB playing time over limit
+647378,Andy Yerzy,C,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+649966,Luis Urías,2B,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+650391,Eloy Jiménez,DH,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+650402,Gleyber Torres,2B,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+650559,Bryan De La Cruz,RF,LHV,INT,30.0,True,ineligible,2024: 622 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,delab001,2021,2026,622.0,50.0,excluded: MLB playing time over limit
+650859,Luis Rengifo,LF/3B,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+650907,René Pinto,C,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+650968,Yohel Pozo,C,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+651016,Matt Lloyd,3B/1B,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+656180,Riley Adams,C,ROC,INT,30.0,True,ineligible,2024: 130 PA <= 200; 2025: 286 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,adamr004,2021,2025,130.0,286.0,excluded: MLB playing time over limit
+656308,Michael Chavis,2B/3B,LOU,INT,31.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,chavm001,2019,2023,0.0,0.0,candidate
+656413,Stuart Fairchild,CF,COL/TAC,INT/PCL,30.0,True,ineligible,2024: 233 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,fairs001,2021,2026,233.0,55.0,excluded: MLB playing time over limit
+656484,Tristan Gray,SS,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+656577,Alex Jackson,C,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+656582,Connor Joe,RF/1B,TAC,PCL,34.0,True,ineligible,2024: 416 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,joe-c001,2019,2026,416.0,80.0,excluded: MLB playing time over limit
+656716,Zach McKinstry,RF/2B,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+656811,Ryan O'Hearn,RF/1B,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+656883,Jakson Reetz,C,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+656976,Pavin Smith,1B/DH,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+657247,Brian O'Keefe,C,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+657557,Paul DeJong,3B,SWB/TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+657675,Rudy Martin Jr.,RF/CF,BUF/OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+658668,Edward Olivares,RF/DH,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+660634,Yonny Hernández,SS/2B,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+660636,Diego Castillo,SS/3B,RR,PCL,29.0,True,eligible,2024: 8 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,castd004,2022,2024,8.0,0.0,candidate
+660644,Vidal Bruján,SS,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+660670,Ronald Acuña Jr.,RF,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+660710,Rodolfo Durán,C,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+660821,Jesús Sánchez,DH/LF,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+660844,Leo Rivas,3B/SS,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+661531,Brian Serven,C,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+661733,Max Burt,2B/SS,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663368,Blake Perkins,CF,COL/NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663445,James Nelson,3B/LF,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663457,Lars Nootbaar,LF,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663494,Bryan Torres,LF/2B,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663503,Elih Marrero,C,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663536,Tristin English,OF/LF,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663584,Hayden Senger,C,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663604,Brandon Lockridge,LF/CF,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663609,Luken Baker,1B,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663611,Nick Madrigal,3B/2B,DUR/SL,INT/PCL,29.0,True,eligible,2024: 94 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,madrn001,2020,2026,94.0,0.0,candidate
+663647,Ke'Bryan Hayes,3B,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663662,Daz Cameron,LF/CF,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663698,Joey Bart,C,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663728,Cal Raleigh,C,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663731,Connor Kaiser,SS,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663853,Romy Gonzalez,DH/1B,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+663897,Luke Williams,SS/3B,GWN,INT,30.0,True,eligible,2024: 52 PA <= 200; 2025: 34 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,willl001,2021,2026,52.0,34.0,candidate
+663967,César Salazar,C,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+664056,Harrison Bader,CF,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+664059,Sam Haggerty,LF/RF,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+664068,Scott Kingery,SS,IOW,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+664238,Dylan Moore,CF/SS,LHV,INT,34.0,True,ineligible,2024: 441 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,moord002,2019,2026,441.0,243.0,excluded: MLB playing time over limit
+664670,Alejo Lopez,2B/3B,OMA/TAC,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+664728,Kyle Isbel,CF,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+664731,P.J. Higgins,C,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+664774,LaMonte Wade Jr.,LF/1B,CLT/SUG,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+664874,Seby Zavala,C,OKC/TOL,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+664913,Seth Brown,LF/1B,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+665052,Griffin Conine,RF/1B,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+665161,Jeremy Peña,SS,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+665482,Gilberto Celestino,CF,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+665506,Cristian Pache,OF/CF,SYR,INT,28.0,True,eligible,2024: 183 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,pachc001,2020,2026,183.0,0.0,candidate
+665561,Rafael Marchán,C,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+665828,Oswaldo Cabrera,3B,SWB,INT,27.0,True,ineligible,2024: 326 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,cabro002,2022,2026,326.0,122.0,excluded: MLB playing time over limit
+665833,Oneil Cruz,CF,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+665839,Enmanuel Valdez,1B/3B,IND,INT,28.0,True,ineligible,2024: 223 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,valde002,2023,2025,223.0,102.0,excluded: MLB playing time over limit
+665846,Jesús Bastidas,SS,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+665856,Jair Camargo,C,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+665861,Sebastián Rivero,C,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+665923,Esteury Ruiz,RF/CF,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+665953,Andrés Chaparro,1B,ROC,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+665998,Ismael Munguia,OF/CF,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666023,Freddy Fermin,C/DH,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666134,Nolan Jones,RF,CLT/COL/TAC,INT/PCL,28.0,True,ineligible,2024: 297 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,jonen002,2022,2025,297.0,403.0,excluded: MLB playing time over limit
+666139,Josh Lowe,LF/RF,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666149,Tyler Fitzgerald,2B/3B,BUF/OKC/SAC,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666150,Dominic Fletcher,RF/CF,IND/LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666152,David Hamilton,3B,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666158,Gavin Lux,LF/2B,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666160,Mickey Moniak,LF,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666163,Ben Rortvedt,C,OKC/SYR,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666165,Blake Sabol,C/1B,DUR,INT,28.0,True,eligible,2024: 38 PA <= 200; 2025: 18 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,sabob001,2023,2025,38.0,18.0,candidate
+666181,Will Benson,RF/LF,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666185,Dylan Carlson,LF/CF,IOW/LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666194,Cooper Johnson,C,RR,PCL,28.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+666197,Grae Kessinger,3B/SS,IND/SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666198,Carter Kieboom,3B,LHV,INT,29.0,True,eligible,2024: 0 PA <= 200; 2025: 8 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,kiebc001,2019,2025,0.0,8.0,candidate
+666211,Taylor Trammell,LF/CF,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666310,Bo Naylor,C,COL/NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666397,Edouard Julien,2B,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666624,Christopher Morel,1B,JAX/SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666931,Jared Oliva,CF,DUR/SAC/SYR,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+666971,Lourdes Gurriel Jr.,LF,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+667240,Jason Matthews,SS,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+667452,Corey Julks,LF/DH,TOL,INT,30.0,True,eligible,2024: 189 PA <= 200; 2025: 13 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,julkc001,2023,2026,189.0,13.0,candidate
+667690,C.J. Stubbs,C,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+667803,Ernesto Martinez Jr.,1B,SWB,INT,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+668472,Nick Pratto,1B,ELP/RR,PCL,28.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,pratn001,2022,2024,0.0,0.0,candidate
+668663,Tres Barrera,C,ROC,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+668709,JJ Bleday,LF,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+668721,Payton Henry,C,LHV/SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+668731,Akil Baddoo,LF/RF,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+668752,Duke Ellis,CF,SWB,INT,28.0,True,eligible,2024: 5 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,ellid003,2024,2024,5.0,0.0,candidate
+668800,Andrew Knizner,C,ABQ/WOR,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+668832,Kyle McCann,C,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+668843,Conner Capel,LF/RF,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+668845,Aaron Schunk,SS/1B,GWN,INT,29.0,True,eligible,2024: 98 PA <= 200; 2025: 33 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,schua002,2024,2025,98.0,33.0,candidate
+668876,Zach Humphreys,C,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+668885,Austin Martin,RF/LF,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+668901,Mark Vientos,1B,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+668904,Royce Lewis,1B/3B,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+668939,Adley Rutschman,C,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+668942,Josh Rojas,3B,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+668952,Ryan Kreidler,SS/3B,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+668965,Freddy Zamora,SS/2B,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+668974,Maverick Handley,C,GWN/NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669004,MJ Melendez,DH/RF,SYR,INT,28.0,True,ineligible,2024: 451 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,melem001,2022,2026,451.0,65.0,excluded: MLB playing time over limit
+669065,Kyle Stowers,1B/LF,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669087,Sam Huff,C,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669127,Shea Langeliers,C/DH,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669134,Luis Campusano,C,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669200,Mason McCoy,2B/SS,ELP,PCL,31.0,True,eligible,2024: 57 PA <= 200; 2025: 26 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,mccom002,2023,2025,57.0,26.0,candidate
+669208,Ryan Bliss,2B,TAC,PCL,27.0,True,eligible,2024: 71 PA <= 200; 2025: 39 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,blisr001,2024,2026,71.0,39.0,candidate
+669219,Je'Von Ward,RF,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669221,Sean Murphy,C,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669222,Nick Senzel,3B,OKC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669224,Austin Wells,C,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669234,Justyn-Henry Malloy,RF/LF,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669236,Jeremiah Jackson,2B,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669242,Tommy Edman,2B,OKC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669256,Nick Solak,1B/DH,ELP,PCL,31.0,True,eligible,2024: 0 PA <= 200; 2025: 11 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,solan001,2019,2026,0.0,11.0,candidate
+669257,Will Smith,C,OKC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669261,Jack Suwinski,CF/RF,DUR/OKC,INT/PCL,28.0,True,ineligible,2024: 277 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,suwij001,2022,2025,277.0,178.0,excluded: MLB playing time over limit
+669288,Daniel Johnson,CF,JAX/SUG,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669289,Santiago Espinal,3B,RNO/RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669304,Jose F Miranda,3B/1B,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669326,Bryce Teodosio,LF/RF,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669357,Nolan Gorman,3B,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669360,Trei Cruz,CF/3B,TOL,INT,28.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,cruzt003,2026,2026,0.0,0.0,candidate
+669369,Bryce Johnson,RF/CF,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669384,Raynel Delgado,2B/3B,DUR/SUG,INT/PCL,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,delgr002,2026,2026,0.0,0.0,candidate
+669386,Trevor Hauver,OF/RF,RR,PCL,28.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+669392,Samad Taylor,LF,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669397,Nick Allen,SS/3B,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669398,Gage Workman,3B/SS,ELP/TOL,INT/PCL,27.0,True,eligible,2024: 0 PA <= 200; 2025: 17 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,workg001,2025,2026,0.0,17.0,candidate
+669413,Frainyer Chavez,2B/3B,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669439,Drew Swift,SS,LV,PCL,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+669699,Braden Shewmake,SS,SUG/SWB,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669701,Josh Smith,2B,BUF/RR,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669717,Will Wilson,3B,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669720,Austin Hays,DH/LF,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+669722,Logan Davidson,1B/3B,DUR,INT,29.0,True,eligible,2024: 0 PA <= 200; 2025: 47 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,davil002,2025,2025,0.0,47.0,candidate
+669899,Ryan Ward,LF/1B,OKC,PCL,28.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,wardr001,2026,2026,0.0,0.0,candidate
+669911,Michael Toglia,1B,LOU,INT,28.0,True,ineligible,2024: 458 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,toglm001,2022,2026,458.0,337.0,excluded: MLB playing time over limit
+670032,Nicky Lopez,2B/SS,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+670092,Trenton Brooks,LF/1B,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+670097,Zack Short,SS,ROC/SYR/TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+670148,Nate Mondou,2B,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+670156,Miles Mastrobuoni,3B/2B,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+670223,Matt Mervis,1B,ROC,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+670224,Kameron Misner,CF,LHV/OMA,INT,28.0,True,ineligible,2024: 15 PA <= 200; 2025: 217 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,misnk001,2024,2026,15.0,217.0,excluded: MLB playing time over limit
+670231,John Rave,RF/CF,OMA,INT,29.0,True,eligible,2024: 0 PA <= 200; 2025: 175 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,ravej001,2025,2026,0.0,175.0,candidate
+670232,Ramón Rodríguez,C,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+670242,Matt Wallner,RF,STP,INT,29.0,True,ineligible,2024: 261 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,wallm001,2022,2026,261.0,392.0,excluded: MLB playing time over limit
+670276,Cal Stevenson,OF/1B,TOL,INT,30.0,True,eligible,2024: 27 PA <= 200; 2025: 8 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,stevc001,2022,2025,27.0,8.0,candidate
+670351,Jose Rojas,3B/1B,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+670770,TJ Friedl,CF,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+670868,Abrahan Gutierrez,C,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+671083,Buddy Kennedy,3B,ROC/SAC,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+671117,Darren Baker,2B/LF,CLT/SAC,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+671155,Ivan Johnson,2B,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+671218,Heliot Ramos,LF/RF,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+671221,Drew Waters,LF/CF,OMA,INT,28.0,True,ineligible,2024: 19 PA <= 200; 2025: 219 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,wated001,2022,2025,19.0,219.0,excluded: MLB playing time over limit
+671284,Tim Elko,1B,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+671286,Johnathan Rodríguez,RF/LF,IND/LV/NOR,INT/PCL,27.0,True,eligible,2024: 40 PA <= 200; 2025: 77 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,rodrj009,2024,2026,40.0,77.0,candidate
+671289,Tyler Freeman,RF,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+671655,George Valera,LF/RF,COL,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 48 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,valeg001,2025,2026,0.0,48.0,candidate
+671748,Casey Yamauchi,2B,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+672012,Tyler Black,DH/LF,NAS,INT,26.0,True,eligible,2024: 57 PA <= 200; 2025: 13 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,blact003,2024,2026,57.0,13.0,candidate
+672016,Denzel Clarke,CF,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+672279,Michael Siani,CF,NOR/OKC/TOL,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+672284,Jarred Kelenic,RF/CF,CLT/RR/SWB,INT/PCL,27.0,True,ineligible,2024: 449 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,kelej001,2021,2026,449.0,65.0,excluded: MLB playing time over limit
+672356,Gabriel Arias,3B/2B,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+672386,Alejandro Kirk,C/DH,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+672463,Rafael Lantigua,2B/LF,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+672569,Gustavo Campero,OF/C,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+672580,Maikel Garcia,3B,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+672613,Eliezer Alfonzo,C,OKC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+672642,Steward Berroa,RF/CF,LHV/NAS,INT,27.0,True,eligible,2024: 45 PA <= 200; 2025: 6 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,berrs002,2024,2026,45.0,6.0,candidate
+672761,Wenceel Pérez,RF,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+672820,Lenyn Sosa,2B/3B,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+673237,Yainer Diaz,C,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+673357,Luis Robert Jr.,CF,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+673490,Ha-Seong Kim,SS,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+673962,Josh Jung,3B,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+673995,Davis Wendzel,3B/SS,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+674441,Jacob Hurtubise,LF/CF,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+674976,Griffin Lockwood-Powell,C,OKC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+675085,Jonathon Long,3B/1B,IOW/JAX,INT,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+675394,Johnny Olmstead,SS,JAX,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+675448,Blake Hunt,C,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+675455,Milan Tolentino,SS,COL,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+675659,Greg Jones,LF/RF,IOW/NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+675915,David Bañuelos,C,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+675961,Alika Williams,SS,IND/LV,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+676053,Casey Opitz,C,IOW,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+676070,Jacob Amaya,SS,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+676116,Ryan Noda,1B,NOR,INT,30.0,True,eligible,2024: 111 PA <= 200; 2025: 59 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,nodar001,2023,2025,111.0,59.0,candidate
+676203,Marcos Castañon,2B,ELP,PCL,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+676205,Tyler Hardman,1B,SWB,INT,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+676356,Jonny DeLuca,RF/CF,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+676369,Nelson Velázquez,LF,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+676463,Hayden Cantrelle,2B/LF,IOW,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+676466,Jack Winkler,2B,LV/SUG,PCL,28.0,True,eligible,2024: 0 PA <= 200; 2025: 16 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,winkj003,2025,2025,0.0,16.0,candidate
+676480,José Barrero,SS,NOR,INT,28.0,True,eligible,2024: 0 PA <= 200; 2025: 31 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,garcj007,2020,2026,0.0,31.0,candidate
+676551,Brewer Hicklen,RF,GWN,INT,30.0,True,eligible,2024: 5 PA <= 200; 2025: 4 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,hickb003,2022,2026,5.0,4.0,candidate
+676560,Hemmanuel Rosario,C/X,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+676566,Shawn Ross,C,BUF/IND/SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+676572,Eric Wagaman,1B,STP/SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+676632,Bligh Madris,OF/1B,MEM,INT,30.0,True,eligible,2024: 75 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,madrb002,2022,2024,75.0,0.0,candidate
+676679,Luis Vázquez,SS,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+676694,Jake Meyers,CF,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+676724,Jared Young,1B,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+676801,Chas McCormick,LF,IOW,INT,31.0,True,ineligible,2024: 267 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,mccoc001,2021,2025,267.0,116.0,excluded: MLB playing time over limit
+676914,Davis Schneider,LF,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+677007,Josh Breaux,C,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+677008,Heston Kjerstad,LF/RF,NOR,INT,27.0,True,eligible,2024: 114 PA <= 200; 2025: 167 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,kjerh001,2023,2026,114.0,167.0,candidate
+677060,Chad Stevens,2B/3B,ABQ,PCL,27.0,True,eligible,2024: 0 PA <= 200; 2025: 14 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,stevc002,2025,2026,0.0,14.0,candidate
+677319,Cameron Barstad,C,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+677342,Brock Jones,OF/RF,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+677347,Kyren Paris,2B/SS,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+677356,Carter Young,SS/2B,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+677565,Kristian Robinson,LF/RF,RNO,PCL,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+677578,Carlos Rodríguez,RF/CF,ELP,PCL,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+677592,Everson Pereira,RF,CLT/MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+677595,Ronny Mauricio,SS,SYR,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 184 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,maurr002,2023,2026,0.0,184.0,candidate
+677601,Keyber Rodriguez,SS,RR,PCL,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+677941,Jordyn Adams,CF/RF,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+677942,Blaze Alexander,3B,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+677943,Will Banfield,C,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+677950,Alek Thomas,CF,OKC,PCL,26.0,True,ineligible,2024: 103 PA <= 200; 2025: 469 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,thoma004,2022,2026,103.0,469.0,excluded: MLB playing time over limit
+677954,Jordan Groshans,SS/3B,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+677956,Rece Hinds,RF/CF,JAX/LOU/NOR,INT,26.0,True,eligible,2024: 51 PA <= 200; 2025: 44 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,hindr001,2024,2026,51.0,44.0,candidate
+678010,Nick Schnell,RF,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+678011,Anthony Seigler,2B/3B,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+678099,Gavin Logan,C,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+678173,David McCabe,1B,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+678218,Brandon Valenzuela,C,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+678225,Jihwan Bae,CF/2B,NAS/SYR,INT,27.0,True,eligible,2024: 81 PA <= 200; 2025: 25 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,bae-j001,2022,2026,81.0,25.0,candidate
+678232,Jesus Valdez,3B,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+678545,Osleivis Basabe,2B/SS,SAC,PCL,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,basao001,2023,2026,0.0,0.0,candidate
+678577,Junior Perez,CF,CLT/LV,INT/PCL,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,perej005,2026,2026,0.0,0.0,candidate
+678636,Orlando Martinez,OF/CF,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+678760,Eddys Leonard,SS/2B,NAS/SAC,INT/PCL,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,leone001,2026,2026,0.0,0.0,candidate
+678877,Jhonkensy Noel,RF/1B,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+678894,Liover Peguero,SS/2B,LHV/ROC,INT,26.0,True,eligible,2024: 10 PA <= 200; 2025: 88 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,pegul001,2022,2025,10.0,88.0,candidate
+679822,Justin Foscue,2B,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+679845,Nick Loftin,3B/LF,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680118,Dairon Blanco,CF/RF,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680273,Chris Meyers,OF/LF,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680474,Max Schuemann,LF/3B,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680519,Mario Camilletti,3B,CLT,INT,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+680574,Matt McLain,2B,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680577,DaShawn Keirsey Jr.,CF,GWN,INT,29.0,True,eligible,2024: 14 PA <= 200; 2025: 88 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,keird001,2024,2026,14.0,88.0,candidate
+680636,Ramon Mendoza,3B,MEM,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+680664,Eduardo Valencia,DH/C,TOL,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,valee003,2026,2026,0.0,0.0,candidate
+680672,Luke Waddell,SS/2B,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680695,Brennen Davis,CF/RF,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680713,P.J. Hilson,OF/LF,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680716,Jonathan Ornelas,SS/2B,LV/NAS/SWB,INT/PCL,26.0,True,eligible,2024: 40 PA <= 200; 2025: 10 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,ornej001,2023,2026,40.0,10.0,candidate
+680728,Adrian Del Castillo,DH/C,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680737,Michael Helman,CF,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680753,Adam Hackenberg,C,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680769,CJ Alexander,1B/RF,SUG,PCL,30.0,True,eligible,2024: 8 PA <= 200; 2025: 17 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,alexc001,2024,2025,8.0,17.0,candidate
+680777,Ryan Jeffers,C/DH,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680837,Ryan Fitzgerald,3B,OKC,PCL,32.0,True,eligible,2024: 0 PA <= 200; 2025: 53 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,fitzr001,2025,2025,0.0,53.0,candidate
+680862,Willie MacIver,C,BUF/RR/TAC,INT/PCL,30.0,True,eligible,2024: 0 PA <= 200; 2025: 111 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,maciw001,2025,2025,0.0,111.0,candidate
+680869,Zack Gelof,3B/2B,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680890,Jax Biggers,2B,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680911,Owen Miller,2B/3B,IOW,INT,30.0,True,eligible,2024: 27 PA <= 200; 2025: 17 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,millo002,2021,2026,27.0,17.0,candidate
+680977,Brendan Donovan,3B/2B,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680994,Nick Biddison,RF/2B,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+680996,Luke Mann,1B/3B,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681036,Anthony Vilar,C,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681047,Christian Franklin,CF/LF,NOR/ROC,INT,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,franc001,2026,2026,0.0,0.0,candidate
+681080,Caleb Ricketts,C,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681114,Michael Trautwein,C,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681123,Luca Tresh,C,OMA,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+681132,Max Ferguson,2B/LF,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681146,Jonah Bride,3B/1B,RR,PCL,31.0,True,ineligible,2024: 272 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,bridj001,2022,2026,272.0,125.0,excluded: MLB playing time over limit
+681172,Tyler Tolve,C,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681230,BJ Murray Jr.,3B/1B,IOW,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,murrb001,2026,2026,0.0,0.0,candidate
+681317,Jeremiah Boyd,C,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681323,Alex Binelas,1B,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681333,Dru Baker,CF,CLT,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+681351,Logan O'Hoppe,DH/C,RR/SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681357,Cody Morissette,2B,JAX/STP,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+681371,Dom Keegan,C,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681393,Connor Norby,2B/3B,ABQ/JAX,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681400,Danny Serretti,IF/3B,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681433,Noah Cardenas,C,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681439,Zach Morgan,C,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681481,Kerry Carpenter,RF,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681495,Cade Fergus,OF/LF,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681508,Mickey Gasper,DH/C,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681526,Bryan Lavastida,C,LV,PCL,28.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,lavab001,2022,2022,0.0,0.0,candidate
+681546,James Outman,CF,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681581,Andy Weber,2B/SS,CLT,INT,29.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+681715,Heriberto Hernández,LF/DH,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681807,David Fry,RF,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681909,Justin Dean,CF,IOW,INT,30.0,True,eligible,2024: 0 PA <= 200; 2025: 2 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,deanj001,2025,2026,0.0,2.0,candidate
+681962,Vinny Capra,3B/SS,WOR,INT,30.0,True,eligible,2024: 9 PA <= 200; 2025: 105 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,caprv001,2022,2025,9.0,105.0,candidate
+681974,Onix Vega,C,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+681987,Nate Eaton,LF/CF,WOR,INT,30.0,True,eligible,2024: 0 PA <= 200; 2025: 90 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,eaton001,2022,2026,0.0,90.0,candidate
+682003,Garrett Martin,OF/CF,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682119,Levi Jordan,CF/SS,ROC,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682177,Daniel Schneemann,CF/SS,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682183,Drew Avans,LF/CF,ABQ,PCL,30.0,True,eligible,2024: 0 PA <= 200; 2025: 18 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,avand001,2025,2025,0.0,18.0,candidate
+682192,Paul McIntosh,C,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682239,Luke Ritter,2B,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682276,Jose Cordova,C,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682515,Logan Porter,C,SAC/SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682617,Marco Luciano,SS/2B,SWB,INT,25.0,True,eligible,2024: 81 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,lucim001,2023,2024,81.0,0.0,candidate
+682622,Noelvi Marte,RF,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682626,Francisco Alvarez,C,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682633,Eduardo Garcia,SS,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682634,Kevin Alcántara,DH/RF,IOW,INT,24.0,True,eligible,2024: 10 PA <= 200; 2025: 12 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,alcak001,2024,2026,10.0,12.0,candidate
+682641,Luis Matos,RF,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682657,Angel Martínez,LF,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682663,Agustín Ramírez,DH/C,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682674,Victor Bericoto,LF/RF,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682679,Dayan Frias,3B/2B,COL,INT,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+682692,Miguel Palma,C,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682729,Jonatan Clase,LF/CF,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682774,Andrick Nava,C,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682818,Yohendrick Piñango,LF/RF,BUF,INT,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,pinay001,2026,2026,0.0,0.0,candidate
+682829,Elly De La Cruz,SS,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682848,Endy Rodríguez,C,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682868,Bryan Ramos,3B/2B,NOR,INT,24.0,True,eligible,2024: 108 PA <= 200; 2025: 12 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,ramob001,2024,2025,108.0,12.0,candidate
+682877,Juan Brito,2B,COL/LOU,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,britj004,2026,2026,0.0,0.0,candidate
+682927,Ronny Simon,RF/LF,IND,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 88 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,simor002,2025,2026,0.0,88.0,candidate
+682947,Jose Ramos,CF/LF,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682983,Jud Fabian,OF/CF,NOR,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+682985,Riley Greene,LF,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682987,Spencer Jones,CF,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+682988,Tyler Locklear,1B,RNO,PCL,26.0,True,eligible,2024: 49 PA <= 200; 2025: 116 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,lockt001,2024,2026,49.0,116.0,candidate
+682997,Tyler Callihan,LF/3B,IND,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 6 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,callt001,2025,2026,0.0,6.0,candidate
+683001,Ethan Hearn,C,IOW,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683006,Chris Newell,OF/LF,OKC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683011,Anthony Volpe,SS/2B,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683021,Michael Stefanic,2B,LV,PCL,30.0,True,eligible,2024: 124 PA <= 200; 2025: 25 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,stefm001,2022,2026,124.0,25.0,candidate
+683079,Omar Martinez,C,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683090,Matthew Lugo,LF,OMA/SL,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683104,Trey Faltine,OF/SS,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683149,Julian Brock,C,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683227,Cody Freeman,3B/2B,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683344,Homer Bush Jr.,CF,DUR,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+683357,Owen Caissie,RF/DH,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683427,Omar Hernandez,C,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683454,Brayan Buelvas,CF,LV,PCL,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+683494,Euribiel Angeles,3B/SS,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683609,Victor Duarte,2B/C,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683610,Leandro Pineda,OF/RF,ROC,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683679,Jesus Rodriguez,C,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683734,Andrew Vaughn,1B,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683748,Victor Mesa Jr.,RF,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683766,Christian Koss,SS,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683770,Will Robertson,LF,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+683953,Travis Bazzana,2B,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+684715,Nic Kent,3B,ABQ,PCL,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+684976,Johnathon Thomas,OF/LF,ROC,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+685087,Jordan Nwogu,OF/LF,IOW,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+685091,Parker Chavers,OF/CF,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+685133,Wade Meckler,LF,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+685274,Braiden Ward,CF,WOR,INT,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+685301,Matt Gorski,1B,OKC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+685332,Carlos Mendoza,2B,BUF,INT,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+685382,Andrew Navigato,SS,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+685744,Kenedy Corona,CF/LF,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686217,Sal Frelick,RF,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686404,Wuilfredo Antunez,OF/LF,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686469,Vinnie Pasquantino,1B,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686475,Tyler Tolbert,SS/2B,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686482,Logan Driscoll,C,DUR/JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686523,Peyton Wilson,2B,OMA,INT,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+686540,Owen Cobb,SS,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686551,Christian Cairo,SS,LHV/SYR,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+686554,Oliver Dunn,3B/2B,CLT/DUR,INT,29.0,True,eligible,2024: 104 PA <= 200; 2025: 41 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,dunno001,2024,2026,104.0,41.0,candidate
+686611,Dylan Crews,RF/CF,ROC,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686668,Brenton Doyle,CF,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686676,Korey Lee,C,CLT,INT,28.0,True,ineligible,2024: 394 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,lee-k002,2022,2025,394.0,40.0,excluded: MLB playing time over limit
+686681,Michael Massey,2B,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686683,Tevin Tucker,SS/2B,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686765,Nick Sogard,2B/1B,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686766,William Simoneit,C,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686823,Will Brennan,LF/RF,SAC,PCL,28.0,True,ineligible,2024: 353 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,brenw002,2022,2026,353.0,13.0,excluded: MLB playing time over limit
+686894,Joey Wiemer,RF,CLT/ROC,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686912,Maxwell Romero Jr.,C,ROC,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686948,Drake Baldwin,C,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686960,Nate Baez,C,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+686976,Silas Ardoin,C,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687005,Kellen Strahm,RF/CF,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687066,Eric Yang,C,IOW,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687069,Josh Rivera,SS,BUF,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+687093,Vaughn Grissom,1B/3B,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687152,Darrien Miller,C,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687201,Kevin Kilpatrick Jr.,OF/RF,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687208,Nathan Hickey,1B,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687210,Nathan Martorella,1B/DH,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687231,Darell Hernaiz,SS,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687248,Keshawn Ogans,SS/3B,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687282,Gabriel Rincones Jr.,RF,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687284,Thomas Gavello,3B,SAC,PCL,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+687310,Will Simpson,1B,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687363,Victor Scott II,CF,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687394,Jack Brannigan,SS,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687515,Colby Thomas,RF/CF,LHV/LV,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687521,Eric Brown Jr.,OF/2B,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687529,Grant McCray,CF,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687551,Drew Gilbert,CF,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687597,Jordan Beck,RF/LF,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687600,Kaden Hopson,C,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687605,Andrew Pinckney,LF/CF,ROC,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,pinca001,2026,2026,0.0,0.0,candidate
+687625,Kai Murphy,OF/LF,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687627,Kody Huff,C,COL,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+687637,Dylan Beavers,LF,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687714,Jackson Cluff,SS,IOW/SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687724,Jake Holton,1B,SAC,PCL,28.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+687749,Jase Bowen,RF/CF,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687751,Cortland Lawson,SS/3B,ROC,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687799,Cade Marlowe,OF/CF,LV/SL,PCL,29.0,True,eligible,2024: 9 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,marlc001,2023,2024,9.0,0.0,candidate
+687867,Clay Dungan,2B/3B,ELP,PCL,30.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+687930,Tyresse Turner,2B,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687952,Christian Encarnacion-Strand,3B,LOU/NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+687957,Dustin Harris,LF,CLT/ELP,INT/PCL,27.0,True,eligible,2024: 7 PA <= 200; 2025: 43 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,harrd003,2024,2026,7.0,43.0,candidate
+688005,Francisco Urbaez,2B/DH,LOU,INT,29.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+688363,Graham Pauley,3B,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+688457,Gavin Cross,OF/RF,OMA,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+688460,Josh Kasevich,SS,BUF,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+688682,Cooper Bowman,2B,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+688760,Blaine Crim,1B,ABQ/RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+688875,Trace Willhoite,3B/1B,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+689041,Rhylan Thomas,LF/CF,BUF/SUG/TAC,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+689070,Spencer Packard,OF/LF,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+689134,Wyatt Hendrie,C,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+689172,Brett Wisely,2B,GWN,INT,27.0,True,ineligible,2024: 272 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,wiseb001,2023,2025,272.0,63.0,excluded: MLB playing time over limit
+689196,Owen Ayers,C,IOW,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+689200,Jacob Melton,LF/CF,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+689288,Matt Koperniak,LF/RF,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+689531,Brett Squires,1B,OMA,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+689822,Matt Rudick,OF/RF,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690022,Ryan Ritter,SS,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690291,Jace Jung,3B/1B,TOL,INT,26.0,True,eligible,2024: 94 PA <= 200; 2025: 55 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,jungj002,2024,2026,94.0,55.0,candidate
+690443,Mike Antico,OF/LF,ABQ/MEM,INT/PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690448,Mike Jarvis,OF/SS,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690469,Kyle Hayes,C,ROC,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690474,Tommy Sacco Jr.,SS/3B,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690523,Joe Campagna,C/X,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690804,Ryan Nicholson,1B,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690841,Matt O'Neill,C,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690914,Brody Moore,SS,MEM,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+690924,Braxton Fulford,C,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690961,Enrique Bradfield Jr.,OF/CF,NOR,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+690971,Chase Davis,OF/RF,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690976,Alex Freeland,2B/3B,OKC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690984,Petey Halpin,CF,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690985,Colby Halter,OF/LF,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690987,Robert Hassell III,CF,IND/ROC,INT,25.0,True,ineligible,2024: 0 PA <= 200; 2025: 206 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,hassr002,2025,2025,0.0,206.0,excluded: MLB playing time over limit
+690988,Austin Hendrick,OF/LF,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690992,Ed Howard,SS/2B,IOW,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+690996,T.J. McCants,OF/X,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691001,Robert Moore,2B,LHV,INT,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+691002,Yohandy Morales,1B,ROC,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,moray001,2026,2026,0.0,0.0,candidate
+691003,Tre' Morgan,1B,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691006,Kevin Parada,C,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691011,Drew Romo,C,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691019,Kyle Teel,C,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691021,A.J. Vukovich,OF/LF,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691024,Cayden Wallace,3B/2B,ROC,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691176,Jasson Domínguez,RF/LF,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691181,Emmanuel Rodriguez,CF,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691182,Adael Amador,2B,ABQ,PCL,23.0,True,eligible,2024: 36 PA <= 200; 2025: 128 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,amada001,2024,2026,36.0,128.0,candidate
+691185,Maximo Acosta,SS,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691186,Arol Vera,2B,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691276,Luis Caicuto,C,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691277,Deyvison De Los Santos,1B,JAX,INT,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,delod001,2026,2026,0.0,0.0,candidate
+691292,Angel Ortiz,OF/LF,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691369,Allan Castro,CF/RF,WOR,INT,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+691373,Jhostynxon Garcia,RF/CF,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691392,Johnny Ascanio,LF/2B,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691405,Juan Benjamin,3B,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691408,Maick Collado,3B,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691422,Kevin Rivas,1B/DH,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691458,Blaze Jordan,3B,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691464,Fernando Caldera,C/X,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691571,Johan Macias,SS/2B,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691620,Jeferson Quero,C/DH,NAS,INT,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,querj002,2026,2026,0.0,0.0,candidate
+691621,Jheremy Vargas,3B/2B,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691627,Ricardo Olivar,C,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691710,Vincent Perozo,C,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691728,Zac Veen,LF,ABQ,PCL,25.0,True,eligible,2024: 0 PA <= 200; 2025: 37 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,veenz001,2025,2026,0.0,37.0,candidate
+691740,Daniel Susac,C,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691775,Ryan Clifford,1B,SYR,INT,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+691777,Max Muncy,3B,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691781,Brady House,3B,ROC,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691783,Jordan Lawlar,CF,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691785,Marcelo Mayer,2B,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691788,Joe Mack,C,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691792,Roc Riggio,2B,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691858,Jared Serna,2B,JAX,INT,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,sernj001,2026,2026,0.0,0.0,candidate
+691907,Tsung-Che Cheng,SS,WOR,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 7 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,chent001,2025,2026,0.0,7.0,candidate
+691913,Jesus Castillo,SS/RF,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+691938,Willy Vasquez,3B,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+692021,Oswaldo Linares,C/2B,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+692046,Axel Sanchez,2B,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+692150,Émilien Pitre,SS/2B,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+692216,CJ Kayfus,1B/LF,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+692225,Kristian Campbell,OF/RF,WOR,INT,24.0,True,ineligible,2024: 0 PA <= 200; 2025: 263 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,campk002,2025,2025,0.0,263.0,excluded: MLB playing time over limit
+692232,Fernando Gonzalez,C,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+692238,Parks Harber,3B,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+692348,Aeverson Arteaga,SS,SAC,PCL,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+692368,Adrián Sugastey,C,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+692371,Lizandro Espinoza,CF,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+692405,Jeremy Rivas,SS,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+692416,Christian Cerda,C,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+692446,Miguel Villarroel,SS/2B,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+692585,Yanquiel Fernández,RF,SWB,INT,23.0,True,eligible,2024: 0 PA <= 200; 2025: 147 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,ferny001,2025,2025,0.0,147.0,candidate
+692944,Kevin Villavicencio,SS/2B,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+693306,Aaron Sabato,1B,STP,INT,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,sabaa001,2026,2026,0.0,0.0,candidate
+693409,César Prieto,3B/2B,MEM,INT,27.0,True,eligible,2024: 0 PA <= 200; 2025: 6 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,priec002,2025,2026,0.0,6.0,candidate
+693459,Kyler Fedko,LF/CF,STP,INT,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,fedkk001,2026,2026,0.0,0.0,candidate
+693850,Kala'i Rosario,OF/LF,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694025,Felix Reyes,LF,LHV,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,reyef002,2026,2026,0.0,0.0,candidate
+694175,Pedro León,RF/CF,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694181,Carlos Colmenarez,3B,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694192,Jackson Chourio,LF,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694196,Diego Velasquez,2B,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694197,Angel Genao,2B/SS,COL,INT,22.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,genaa001,2026,2026,0.0,0.0,candidate
+694203,Denzer Guzman,3B/SS,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694204,Maikol Hernández,SS,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694206,Daniel Guilarte,SS/2B,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694208,Moisés Ballesteros,DH,IOW,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694211,Manuel Pena,1B,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694212,Samuel Basallo,C,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694224,Gabriel Gonzalez,RF/1B,STP,INT,22.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,gonzg004,2026,2026,0.0,0.0,candidate
+694230,Hendry Mendez,OF/LF,STP,INT,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+694249,Cole Carrigg,CF,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694266,D'Andre Smith,OF/CF,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694294,Colton Vincent,C,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694351,Jacob Berry,1B/3B,JAX/OMA,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+694355,Tyler Gentry,OF/LF,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694359,Niko Kavadas,1B,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694362,Blake Dunn,CF,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694371,Tommy Troy,LF/2B,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694374,Tim Tawa,1B/LF,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694376,Shay Whitcomb,3B/SS,SAC/SUG,PCL,28.0,True,eligible,2024: 46 PA <= 200; 2025: 32 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,whits003,2024,2026,46.0,32.0,candidate
+694377,Nick Yorke,3B,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694378,Jacob Gonzalez,SS,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694384,Nolan Schanuel,1B,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694385,Brock Wilken,1B,NAS,INT,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+694388,Joey Loperfido,LF/RF,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694410,LuJames Groover,1B/3B,RNO,PCL,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,grool001,2026,2026,0.0,0.0,candidate
+694420,Tatem Levins,C,DUR,INT,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+694425,Justice Bigbie,OF/LF,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694444,Tavian Josenberger,OF/LF,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694478,Michael Turner,C,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694514,Sterlin Thompson,RF/LF,ABQ,PCL,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,thoms002,2026,2026,0.0,0.0,candidate
+694565,Alex Stone,C,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694580,Kemp Alderman,OF/RF,JAX,INT,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+694661,Riley Tirotta,3B/1B,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694671,Wyatt Langford,LF,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694673,Abimelec Ortiz,1B,ROC,INT,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,ortia001,2026,2026,0.0,0.0,candidate
+694689,Dominic Pitelli,SS,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694728,Brice Matthews,CF,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694812,Tyler McDonough,2B,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694815,Jack Hurley,OF/LF,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694876,Cooper Ingle,C,COL,INT,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,inglc001,2026,2026,0.0,0.0,candidate
+694930,Carson Taylor,1B,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694939,Marcus Brown,SS/DH,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694966,Brayden Taylor,3B/2B,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+694991,Mitch Jebb,OF/CF,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695020,Tanner Murray,LF/2B,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695023,Eddie Park,OF/DH,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695048,Garret Guillemette,1B/C,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695078,Jean Walters,2B,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695238,Will Wagner,DH/2B,ELP,PCL,28.0,True,eligible,2024: 86 PA <= 200; 2025: 149 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,wagnw001,2024,2026,86.0,149.0,candidate
+695257,Billy Cook,CF,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695336,Thomas Saggese,SS,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695342,Colin Davis,OF/RF,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695391,Brett Harris,3B,LV/SAC/WOR,INT/PCL,28.0,True,eligible,2024: 123 PA <= 200; 2025: 84 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,harrb002,2024,2026,123.0,84.0,candidate
+695462,Cal Conley,2B,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695467,Juan Montero,C/X,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695481,Jay Allen II,OF/CF,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695490,Edwin Arroyo,2B/SS,LOU,INT,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,arroe001,2026,2026,0.0,0.0,candidate
+695491,Joshua Báez,LF/CF,MEM,INT,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,baezj002,2026,2026,0.0,0.0,candidate
+695501,Blake Burke,1B,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695508,Cam Cauley,CF/SS,RR,PCL,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,caulc001,2026,2026,0.0,0.0,candidate
+695521,Gavin Conticello,RF,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695527,Ian Daugherty,C,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695596,Nick Raposo,C,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695612,Alex Mooney,SS/2B,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695653,Noah Miller,SS,OKC,PCL,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+695670,Harry Ford,C,ROC,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695681,Christian Moore,2B,SL,PCL,24.0,True,eligible,2024: 0 PA <= 200; 2025: 184 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,moorc002,2025,2026,0.0,184.0,candidate
+695692,Cooper Kinney,2B,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695720,Tommy White,1B/3B,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695731,Braden Montgomery,RF/CF,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+695735,Creed Willems,C,NOR,INT,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+695763,Sam Petersen,OF/CF,ROC,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+696030,Alejandro Osuna,LF/1B,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+696135,Kahlil Watson,RF/CF,COL,INT,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,watsk001,2026,2026,0.0,0.0,candidate
+696140,Ethan Murray,2B,NAS,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+696160,Jake Rucker,3B,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+696286,Davis Diaz,C/3B,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+696486,James Tibbs III,RF,OKC,PCL,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+698916,Rosman Verdugo,2B/3B,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+698973,Jose Astudillo,OF/LF,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+699013,Esmerlyn Valdez,RF,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+699024,Leo Bernal,C,MEM,INT,22.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,bernl001,2026,2026,0.0,0.0,candidate
+699114,Leo Balcazar,SS/3B,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+699115,Carlos Jorge,CF,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+699130,Jadher Areinamo,2B,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+699232,Anderdson Rojas,SS,RNO,PCL,22.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+699302,Héctor Rodríguez,RF,LOU,INT,22.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,rodrh004,2026,2026,0.0,0.0,candidate
+699393,Pedro Ramírez,2B/3B,IOW,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+699471,Ivan Melendez,1B/DH,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+699625,Jimmy Crooks,C,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+699912,Jose Fernandez,DH/SS,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+700032,Victor Labrada,CF,TAC,PCL,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+700164,Bryant Betancourt,C,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+700243,Payton Green,2B/SS,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+700246,Carson Williams,SS,DUR,INT,23.0,True,eligible,2024: 0 PA <= 200; 2025: 106 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,willc002,2025,2026,0.0,106.0,candidate
+700337,Edgar Quero,C,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+700652,Kenny Piper,C,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+700681,Nick Lorusso,3B/1B,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+700731,Keiner Delgado,2B/SS,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+700845,Adam Zebrowski,C,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+700932,Kyle Manzardo,1B,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+700939,Bennett Lee,C,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+701100,Ben McCabe,C/X,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+701162,Ben Malgeri,RF,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+701177,Nick Cimillo,1B,IND,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+701298,Phillip Glasser,2B,ROC,INT,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+701305,Zach Dezenzo,LF,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+701350,Roman Anthony,LF,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+701394,Zach Ehrhard,OF/CF,OKC,PCL,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+701496,Ben Cowles,3B/SS,IOW,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+701527,Mike Sirota,CF/RF,OKC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+701546,Duce Gourson,3B,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+701648,Aaron Zavala,OF/LF,RR,PCL,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+701649,James Triantos,2B,IOW,INT,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,triaj001,2026,2026,0.0,0.0,candidate
+701655,Reed Trimble,LF/CF,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+701675,Nathan Church,CF,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+701678,Hao-Yu Lee,2B,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+701682,Braedon Karpathios,OF/RF,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+701771,Billy Amick,3B/1B,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+701785,Kaelen Culpepper,SS,STP,INT,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,culpk001,2026,2026,0.0,0.0,candidate
+701852,Drew Cavanaugh,C,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+702025,Harry Genth,SS/LF,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+702068,Cole Gabrielson,OF/LF,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+702112,Hogan Windish,1B,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+702176,Alan Roden,RF/CF,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+702261,Termarr Johnson,2B,IND,INT,22.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+702302,RJ Schreck,LF/RF,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+702315,Bennett Hostetler,C,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+702331,Noah Mendlinger,2B,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+702358,Trey Lipscomb,3B/SS,ROC,INT,26.0,True,ineligible,2024: 211 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,lipst001,2024,2025,211.0,4.0,excluded: MLB playing time over limit
+702518,Jett Williams,SS/3B,NAS,INT,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+702540,Mikey Romero,3B,WOR,INT,22.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+702616,Jackson Holliday,2B,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+702679,Demetrio Crisantes,2B,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+702726,Luke Adams,1B,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+702750,Edinson Duran,C/P,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+702789,Austin Gauthier,2B,OKC,PCL,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+703151,William Bergolla Jr.,2B/SS,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+703155,Lazaro Montes,RF,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+703185,Nelson Rada,CF,SL,PCL,21.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+703197,Michael Arroyo,SS/LF,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+703448,Cam Cannarella,OF/CF,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+703492,Nick Morabito,LF/CF,SYR,INT,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,moran001,2026,2026,0.0,0.0,candidate
+703520,Brett Bateman,CF,BUF/IOW,INT,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,bateb002,2026,2026,0.0,0.0,candidate
+703601,Max Clark,CF,TOL,INT,22.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,clarm004,2026,2026,0.0,0.0,candidate
+703607,Henry Bolte,CF,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+703680,Brandon Compton,OF/DH,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+703766,Dakota Harris,3B/2B,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+703804,Romeo Sanabria,1B,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+800060,Xavier Isaac,1B,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+800139,Reylin Perez,SS/LF,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+800325,Luis Lara,RF/CF,NAS,INT,22.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,laral001,2026,2026,0.0,0.0,candidate
+800384,Nicandro Aybar,3B/LF,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+800387,Fernando Peguero,OF/RF,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+800406,Aron Estrada,2B,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+800414,Alfredo Velásquez,3B/2B,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+800473,Jefferson Rojas,SS/3B,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+800522,Josue Briceño,C/1B,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+800643,Ty Hanchey,C,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+800683,Blake Rambusch,3B/2B,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+800957,Brendan Jones,CF/LF,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+800959,Nick Goodwin,SS,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+801126,Brock Rodden,SS/3B,TAC,PCL,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,roddb001,2026,2026,0.0,0.0,candidate
+801194,Max Anderson,2B,TOL,INT,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+801276,Juan Matheus,SS/2B,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+801346,Luis Hernandez,C,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+801406,Jared Dickey,RF,LV,PCL,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+801442,Jack Pineda,SS,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+801464,Andrew Pintar,CF,JAX,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+801501,Nate Furman,2B,SAC,PCL,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,furmn001,2026,2026,0.0,0.0,candidate
+801592,Zander Darby,1B,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+801854,Ben Wilmes,2B/X,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+802117,Patrick Clohisy,OF/CF,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+802143,Dayne Leonard,C,LOU,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+802355,Tanner Schobel,2B,STP,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+802407,Joe Lampe,OF/CF,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+802541,Bryan Broecker,C/P,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+803011,Sam Antonacci,LF,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+803033,Matthew Etzel,LF,JAX,INT,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+803175,Ethan Anderson,C,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+803385,Jay Harry,2B/SS,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+804241,Zach Levenson,OF/RF,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+804466,Carter Garate,2B,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+804558,Raudi Rodriguez,OF/CF,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+804603,Duncan Pastore,3B,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+804606,Konnor Griffin,SS,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+804645,Caden Connor,OF/LF,CLT,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+804668,Rafael Flores Jr.,C,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+805126,Charlie Szykowny,1B,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+805127,Devin Taylor,OF/RF,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+805207,Caden Bodine,C,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+805249,Otto Kemp,LF/3B,LHV,INT,27.0,True,ineligible,2024: 0 PA <= 200; 2025: 218 PA > 200,Retrosheet regular-season event files (complete seasons) via retro id,kempo001,2025,2026,0.0,218.0,excluded: MLB playing time over limit
+805268,Peyton Williams,1B,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+805301,Jordan Dissin,C,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+805346,Ben Ross,SS,STP,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,rossb002,2026,2026,0.0,0.0,candidate
+805347,Jim Jarvis,SS,GWN,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,jarvj001,2026,2026,0.0,0.0,candidate
+805373,Nacho Alvarez Jr.,SS/3B,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+805672,Collin Price,C,SUG,PCL,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,pricc001,2026,2026,0.0,0.0,candidate
+805704,Keaton Anthony,1B,LHV,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+805779,Jacob Wilson,SS,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+805805,Walker Jenkins,CF,STP,INT,21.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,jenkw001,2026,2026,0.0,0.0,candidate
+805811,Bryce Eldridge,DH/1B,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+805834,Javier Vaz,OF/2B,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+805891,Taylor Young,2B/3B,OKC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+805904,Zach Cole,LF/RF,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+805999,A.J. Ewing,CF,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+806005,Ryan McCarty,1B,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+806068,Colt Emerson,SS,TAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+806146,George Lombard Jr.,SS,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+806198,Cooper Pratt,SS,NAS,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+806210,Alfonsin Rosario,OF/RF,COL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+806212,Stone Russell,3B,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+806252,Ralphy Velazquez,1B,COL,INT,21.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+806273,Adam Retzbach,C/1B,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+806275,Jack Goodman,2B/3B,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+806367,Turner Hill,LF/CF,SAC,PCL,27.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,hillt003,2026,2026,0.0,0.0,candidate
+806401,Dayson Croes,1B,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+806534,Ben Gobbel,1B/3B,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+806956,Ethan Salas,C,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+806964,Sebastian Walcott,DH/SS,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+807713,Matt Shaw,RF/2B,IOW,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+807720,Garret Forrester,3B/C,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+807726,John Peck,SS,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+807727,Charles McAdoo,2B/3B,BUF,INT,24.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,mcadc001,2026,2026,0.0,0.0,candidate
+807740,Luke Shliger,C,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+807742,Colton Ledbetter,CF/RF,MEM,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+807747,Rikuu Nishida,RF/2B,CLT,INT,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,nishr001,2026,2026,0.0,0.0,candidate
+807751,Ethan O'Donnell,CF,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+808265,Franklin Arias,SS,WOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+808864,Raider Tello,3B/SS,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+808959,Munetaka Murakami,1B,CLT,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+808975,Hyeseong Kim,SS/2B,OKC,PCL,27.0,True,eligible,2024: 0 PA <= 200; 2025: 170 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,kim-h003,2025,2026,0.0,170.0,candidate
+809338,Trevor Austin,3B/2B,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+809707,Charlie Condon,1B,ABQ,PCL,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+810938,Ben Williamson,2B,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+811287,Carson Roccaforte,OF/CF,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+811312,Justin Riemer,2B,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+811948,Tony Santa Maria,3B,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+811965,Joshua Kuroda-Grauer,3B/2B,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+813697,Sam Biller,OF/P,SYR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+813833,Cole Conn,C,LV,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+813841,Jonah Cox,CF,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+813851,Colton Becker,3B,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+813852,Trey Paige,1B,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+814154,Scott Bandura,LF/CF,SAC,PCL,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,Retrosheet regular-season event files (complete seasons) via retro id,bands001,2026,2026,0.0,0.0,candidate
+814261,Carlos Caro,2B/DH,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+814294,Dario Reynoso,3B,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+814299,Pascanel Ferreras,SS,SUG,PCL,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+814362,Alberto Rios,C,SL,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+814409,Seaver King,SS,ROC,INT,23.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+814430,Brett Callahan,LF/RF,TOL,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+814436,Ryan Galanie,1B,CLT,INT,26.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+814439,Ryan Waldschmidt,CF,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+814781,Jonathan Hogart,OF/CF,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+815039,Dustin Dickerson,SS,OMA,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+815074,Derek Berg,C,IND,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+815104,Graysen Tarlow,C,MEM,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+815152,Theo Hardy,2B,RR,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+815586,Joe Olsavsky,2B,GWN,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+815589,Bo Davidson,RF,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+815694,Lou Albrecht,C/X,LHV,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+815873,Sean Keys,DH/1B,BUF,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+821296,Connor McGinnis,2B/SS,SWB,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+821672,Eduardo Rojas,C/DH,OKC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+822578,Brandon Butterworth,SS,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+822966,John Taylor,3B/2B,RR,PCL,25.0,True,eligible,2024: 0 PA <= 200; 2025: 0 PA <= 200,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,candidate
+823185,Zane Zielinski,SS/2B,SAC,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+823356,Payton Eeles,2B,NOR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+823550,Sung-Mun Song,2B/SS,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+824028,Gage Miller,2B,JAX,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+824615,Connor Hujsak,OF/RF,DUR,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+827636,Trent Youngblood,OF/CF,RNO,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+828395,Jason Schiavone,C,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+828599,Lucas Spence,CF,SUG,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+828620,Parker Coddou,IF/3B,ABQ,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+834966,Dylan Grego,SS/2B,ELP,PCL,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+840570,Henry Kusiak,SS/3B,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
+842249,Graham Brown,OF/CF,STP,INT,,False,,,,,,,,,excluded: 2026 AAA workload below PA>=300
