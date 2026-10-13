@@ -134,6 +134,31 @@ baseline:
     k_pct:           {weight: 0.15, sign: -1}
     recent_woba:     {weight: 0.10, sign: 1}
   recent_window: ["2026-08-01", "2026-09-30"]
+  # AMENDMENT 4 (2026-10-13; committed BEFORE the estimated weights, or any ranking that uses
+  # them, were computed or viewed). The weights above were set by judgment. From now on the
+  # baseline uses weights estimated from data (src/baseline_weights.py docstring): which mix of
+  # the SAME metrics in 2025 AAA best predicts next-season (2026) AAA quality. Metrics, signs,
+  # league adjustment, clipping and the 0.7 / 0.3 combination are unchanged; no metric is added.
+  # The judgment weights stay as the fallback and are reported next to the new ranking
+  # (baseline_rank_judgment). The weight perturbation in Test B perturbs the weights in use.
+  # Nothing about the estimated weights was looked at before this registration; only the fact
+  # that the mirror's 2025 season file stops in May (so 2025 comes from statsapi) was checked.
+  weights_source: estimated     # "judgment" restores the weights above
+  estimation:
+    predictor_season: 2025
+    target_season: 2026
+    recent_window: ["2025-08-01", "2025-09-30"]     # same calendar window as the 2026 recent form
+    source: statsapi season and byDateRange stats, sportId 11, gameType R, both seasons
+    sample: 2025 AAA players passing candidate_filters workload (any MLB status)
+    target_min: {pitcher: 150, hitter: 150}        # 2026 AAA BF / PA
+    target:
+      pitcher: "-(FIP - league FIP), 2026 AAA, league mix as in the baseline"
+      hitter: "wOBA - league wOBA, 2026 AAA, generic woba_weights"
+    method: weighted NNLS on centred sign-aligned clipped z-scores (z within the sample), player
+      weight = 2026 BF / PA, coefficients rescaled to sum to 1
+    min_n: 40                    # fewer players with a target -> judgment weights
+    cv_folds: 10                 # reported only: CV Spearman of estimated vs judgment weights
+    bootstrap: {draws: 1000, ci: 0.90, seed: 20261013}
 
 fit:
   pitcher:

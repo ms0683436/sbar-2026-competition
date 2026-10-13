@@ -19,7 +19,7 @@ import pandas as pd
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
 
-from . import baseline, fit_score, milb_candidates, milb_loader
+from . import baseline, baseline_weights, fit_score, milb_candidates, milb_loader
 from .common import config, md_table, path, processed, zscore
 from .cpbl_profile import AAA_COLOR, CPBL_COLOR, GRID, INK, INK2, SURFACE, _style
 
@@ -169,12 +169,14 @@ def test_b(r: dict, P: pd.DataFrame, H: pd.DataFrame, reps: int | None = None) -
 
 
 def weight_perturbation(P: pd.DataFrame, H: pd.DataFrame, n: int = 400) -> dict:
-    """Dirichlet perturbation of pre-registered weights; Top-1 frequency."""
+    """Dirichlet perturbation of the baseline weights in use (amendment 4: estimated); Top-1 frequency.
+    A weight estimated at exactly 0 gets a small floor so the Dirichlet is defined."""
     res = {}
     for role, D in (("pitcher", P[P.fit_available]), ("hitter", H[H.fit_available])):
-        spec = config()["baseline"][role]
-        names = list(spec)
-        base_w = np.array([spec[m]["weight"] for m in names])
+        active = baseline.active_weights(role)
+        names = list(config()["baseline"][role])
+        base_w = np.maximum(np.array([active[m] for m in names]), 0.02)
+        base_w = base_w / base_w.sum()
         tops_base, tops_comb = [], []
         for _ in range(n):
             w = RNG.dirichlet(base_w * 20)
@@ -463,7 +465,8 @@ def run(reps: int | None = None) -> dict:
     b = baseline.run({k: v[1] for k, v in c.items()})
     r = fit_score.run(b, cpbl, aaa)
     P, H = r["pitcher"], r["hitter"]
-    summary = {"A": test_a(P, H)}
+    bw = baseline_weights._table()
+    summary = {"baseline_weights": bw.round(4).to_dict(orient="records"), "A": test_a(P, H)}
     boot = test_b(r, P, H, reps)
     summary["B_weights"] = weight_perturbation(P, H)
     summary["B_season"] = season_split(r, P, H)
@@ -486,7 +489,12 @@ def run(reps: int | None = None) -> dict:
     sl = pd.read_csv(processed("recommendation_shortlist.csv"))
     lines.append(md_table(sl[["role", "rule_rank", "rule_rank_non40", "name", "age_2026", "teams", "on_40man",
                               "roster_club", "roster_status", "mlb_2026_g", "boot_p_top1", "boot_p_top1_non40"]], ".2f"))
-    lines.append("\n## Fit environment cells (pooled 2024-25)\n")
+    lines.append("\n## Baseline weights (amendment 4: estimated 2025 -> 2026 AAA; judgment = original)\n")
+    lines.append(md_table(bw[["role", "metric", "judgment_weight", "estimated_weight", "ci_lo", "ci_hi", "share_zero",
+                              "n", "used"]], ".3f"))
+    lines.append(md_table(bw.groupby("role")[["n", "n_predictor_pool", "n_without_target", "cv_spearman_estimated",
+                                             "spearman_estimated_in_sample", "spearman_judgment"]].first(), ".3f", index=True))
+    lines.append(f"\n## Fit environment cells (2024-25, method: {config()['fit'].get('environment_method', 'pooled')})\n")
     lines.append(md_table(r["env"][["swings_cpbl", "W_cpbl", "swings_aaa", "W_aaa", "whiff_contrast", "pa_cpbl",
                                     "woba_cpbl", "pa_aaa", "woba_aaa", "damage_contrast", "pa_share_cpbl",
                                     "pa_share_aaa"]], ".3f", index=True))

@@ -111,8 +111,9 @@ def test_recruitment_facts_never_enter_baseline_score():
     spec = baseline.config()["baseline"]["pitcher"]
     d = pd.DataFrame({m: rng.normal(size=30) for m in spec})
     d["name"] = [f"p{i}" for i in range(30)]
-    a = baseline.score(d.assign(on_40man=True), "pitcher").sort_values("name").baseline_score.values
-    b = baseline.score(d.assign(on_40man=rng.random(30) > 0.5), "pitcher").sort_values("name").baseline_score.values
+    w = baseline.judgment_weights("pitcher")
+    a = baseline.score(d.assign(on_40man=True), "pitcher", w).sort_values("name").baseline_score.values
+    b = baseline.score(d.assign(on_40man=rng.random(30) > 0.5), "pitcher", w).sort_values("name").baseline_score.values
     assert np.allclose(a, b)
 
 
