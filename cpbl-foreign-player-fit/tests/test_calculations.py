@@ -75,7 +75,7 @@ def test_uniform_level_gap_gives_zero_contrast():
     lg = np.log(aaa / (1 - aaa)) - 0.3   # CPBL uniformly 0.3 logit lower on every cell
     cpbl = 1 / (1 + np.exp(-lg))
     t = _env(cpbl, aaa, swings=200_000)  # large n so the small-cell shrinkage is negligible
-    e = fit_score.environment(t)
+    e = fit_score.environment(t, method="pooled")
     # shrinkage toward the CPBL league rate perturbs slightly; contrasts must be ~0
     assert np.allclose(e.whiff_contrast, 0, atol=0.03)
 
@@ -84,7 +84,7 @@ def test_aaa_average_pitcher_scores_zero_fit():
     aaa = np.linspace(0.15, 0.35, 9)
     cpbl = np.array(aaa) * np.array([1.2, 1.1, 1.0, 0.9, 0.8, 0.9, 1.0, 1.1, 1.2])
     t = _env(cpbl, aaa)
-    e = fit_score.environment(t)
+    e = fit_score.environment(t, method="pooled")
     # a pitcher whose cell usage equals AAA swing shares and whose whiff% equals AAA rates
     pit = t["env_aaa"].rename(columns={}).assign(pitcher_id="p1")
     t["pit"] = pit
@@ -96,7 +96,7 @@ def test_aaa_average_pitcher_scores_zero_fit():
 def test_hitter_fit_zero_when_no_distribution_shift():
     aaa = np.linspace(0.15, 0.35, 9)
     t = _env(aaa, aaa)
-    e = fit_score.environment(t)
+    e = fit_score.environment(t, method="pooled")
     hit = t["env_aaa"].assign(batter_id="b1")
     hit["woba_num"] = hit.pa * np.linspace(0.25, 0.45, 9)   # strong shape
     t["hit"] = hit
@@ -135,3 +135,80 @@ def test_roster_mlb_line_does_not_double_count_traded_players():
     assert no_total["plateAppearances"] == 100 and no_total["gamesPlayed"] == 32
     assert no_total["inningsPitched"] == "16.0"                                # 31 + 17 outs
     assert roster_status.mlb_line([{"sport": {"id": 11}, "stat": {}}]) is None
+
+
+# ---------------------------------------------------------------- amendment 3: within-pitcher environment
+CELL_BETA = dict(zip(fit_score.CELLS, [-1.9, -1.8, -1.6, -1.3, -1.2, -0.7, -0.8, -0.8, -0.6]))
+ZONE_GAMMA = {"in": -0.8, "out": 0.3}
+
+
+def _league(pitchers, hitter_shift=None, swings=4000):
+    """Expected (noise-free) counts per pitcher x cell x zone. pitchers: id -> (alpha, {cell: (share, in_zone_share)})."""
+    rows = []
+    for pid, (alpha, mix) in pitchers.items():
+        for cell, (share, zin) in mix.items():
+            for zone, zs in (("in", zin), ("out", 1 - zin)):
+                n = swings * share * zs
+                eta = alpha + CELL_BETA[cell] + ZONE_GAMMA[zone] + (hitter_shift or {}).get(cell, 0.0)
+                rows.append({"pitcher_id": pid, "season": 2025, "game_id": f"g-{pid}", "cell": cell, "zone": zone,
+                             "pitches": 2 * n, "swings": n, "whiffs": n / (1 + np.exp(-eta)),
+                             "pa": n / 4, "woba_num": n / 4 * (0.33 - 0.05 * alpha)})
+    return pd.DataFrame(rows)
+
+
+def _within_tables(cpbl_p, aaa_p):
+    agg = lambda d: d.groupby(["season", "game_id", "cell"], as_index=False)[["pitches", "swings", "whiffs", "pa", "woba_num"]].sum()
+    hand = pd.DataFrame([{"season": 2025, "game_id": "h", "stand": s, "p_throws": p, "pa": 100, "woba_num": 33}
+                         for s in "LR" for p in "LR"])
+    return {"env_cpbl": agg(cpbl_p), "env_aaa": agg(aaa_p), "envp_cpbl": cpbl_p, "envp_aaa": aaa_p,
+            "hand_cpbl": hand, "hand_aaa": hand}
+
+
+def _mix(cells, zin=0.5):
+    return {c: (1 / len(cells), zin) for c in cells}
+
+
+def test_fe_effects_recover_cell_effects_despite_composition():
+    # strong pitchers (high alpha) throw the hard cells, weak ones the slow cells
+    p = {f"s{i}": (0.6, _mix(["FB94+", "SL", "FC"])) for i in range(5)}
+    p.update({f"w{i}": (-0.6, _mix(["FB<88", "SL", "CU"])) for i in range(5)})
+    d = _league(p)
+    b = fit_score._fe_effects([d.pitcher_id.values, d.cell.values, d.zone.values], d.whiffs.values,
+                              d.swings.values, logistic=True, target=1)
+    truth = pd.Series(CELL_BETA)[b.index]
+    assert np.allclose(b - b.mean(), truth - truth.mean(), atol=1e-4)
+
+
+def test_within_contrast_is_zero_when_only_the_pitcher_mix_differs():
+    # identical hitters; CPBL's 94+ mph fastballs come only from its best pitchers
+    aaa = {f"a{i}": (0.0, _mix(fit_score.CELLS)) for i in range(6)}
+    cpbl = {"best": (0.9, _mix(["FB94+", "FB91-94", "SL", "CH"]))}
+    cpbl.update({f"c{i}": (-0.4, _mix([c for c in fit_score.CELLS if c != "FB94+"])) for i in range(5)})
+    t = _within_tables(_league(cpbl), _league(aaa))
+    pooled = fit_score.environment(t, method="pooled")
+    within = fit_score.environment(t, method="within_pitcher")
+    assert pooled.loc["FB94+", "whiff_contrast"] > 0.3          # the confound shows up pooled
+    assert np.allclose(within.whiff_contrast, 0, atol=1e-3)     # and disappears within pitcher
+    assert np.allclose(within.damage_contrast, 0, atol=1e-6)
+    assert np.allclose(within.whiff_contrast_pooled, pooled.whiff_contrast)
+
+
+def test_within_contrast_ignores_location_differences_but_keeps_hitter_effects():
+    # CPBL sliders land in the zone far more often; hitters also whiff 0.3 logit less on SL
+    aaa = {f"a{i}": (0.0, _mix(fit_score.CELLS)) for i in range(6)}
+    mix_c = _mix(fit_score.CELLS)
+    mix_c["SL"] = (mix_c["SL"][0], 0.9)
+    cpbl = {f"c{i}": (-0.2, mix_c) for i in range(6)}
+    t = _within_tables(_league(cpbl, hitter_shift={"SL": -0.3}), _league(aaa))
+    e = fit_score.environment(t, method="within_pitcher")
+    sl = e.loc["SL", "whiff_contrast"]
+    others = e.whiff_contrast.drop("SL")
+    assert abs((sl - others.mean()) - (-0.3)) < 0.01
+    assert others.max() - others.min() < 1e-3
+
+
+def test_pooled_mode_uses_the_raw_cpbl_logit():
+    aaa = np.linspace(0.15, 0.35, 9)
+    t = _env(aaa * 0.9, aaa)
+    e = fit_score.environment(t, method="pooled")
+    assert np.allclose(e.L_cpbl_fit, e.L_cpbl)

@@ -145,6 +145,22 @@ fit:
     # are summed without subjective weights; the weights below only exist so the
     # sensitivity test can perturb them.
     components: {pitch_mix: 1.0, velocity: 1.0, hand: 1.0}
+  # AMENDMENT 3 (2026-10-13; committed BEFORE any Fit score, ranking or backtest result
+  # under this method was computed). Test D1 found that CPBL's per-cell contrasts mix
+  # hitter reaction with WHO throws each pitch. An exploratory check run before this
+  # registration (pitcher fixed-effect logits of whiff by cell vs FB91-94, CPBL vs AAA
+  # 2024-25, no location term) was seen: SL -0.23 -> -0.13, CU -0.24 -> -0.14,
+  # SPL -0.19 -> -0.01, FB94+ +0.16 -> +0.03 (pooled -> within). Nothing else was computed.
+  # From now on both environment contrasts are estimated within pitcher AND location
+  # (in zone / out of zone / unknown), per league, then centred exactly as before
+  # (fit_score.py docstring). F1/F2 formulas, weights, thresholds and the pick rule are
+  # unchanged. The rankings, bootstrap, weight perturbation, Tests A-D and the amendment-2
+  # backtest (same rules) are all re-run with this environment; the pooled-environment
+  # results stay in git history (merge 30f89ea) and are reported next to the new ones.
+  environment_method: within_pitcher   # was implicitly "pooled"
+  within_pitcher:
+    min_swings: 100            # a pitcher enters the whiff model with >= 100 swings in the window
+    min_pa: 50                 # ... and the damage model with >= 50 PA ended by a tracked pitch
   combined_heuristic:          # ONLY used for the illustrative "overall" column
     baseline: 0.7
     fit: 0.3
