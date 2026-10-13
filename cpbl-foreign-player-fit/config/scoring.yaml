@@ -60,13 +60,13 @@ pitch_map:
     FO: SPL
     SC: CH
   group:            # coarse fallback (Go/No-Go level 1)
-    FF: FB
-    SI: FB
-    FC: FB
-    SL: BRK
-    CU: BRK
-    CH: OFF
-    SPL: OFF
+    FF: "FB"
+    SI: "FB"
+    FC: "FB"
+    SL: "BRK"
+    CU: "BRK"
+    CH: "OFF"
+    SPL: "OFF"
 
 velocity_bands_mph:          # four-seam / sinker velocity bands for the hitter partition
   edges: [0, 88, 91, 94, 200]
@@ -77,8 +77,14 @@ samples:
   shrink_k_whiff_swings: 60    # beta-binomial prior strength for player whiff% (swings)
   shrink_k_woba_pa: 80         # prior strength for player wOBA splits (PA)
   shrink_k_env_swings: 300     # prior strength for environment whiff contrasts
+  shrink_k_platoon_pa: 500     # platoon splits regress heavily (Tango: ~1000 PA); conservative middle
+  recent_shrink_bf: 60         # recent-form rates shrunk toward the player's own season rate
   min_pitcher_tracked_pitches: 400
   min_hitter_tracked_pa: 150
+
+# AAA has two leagues with very different run environments (PCL >> IL). Baseline
+# rate stats are expressed relative to the player's league(s) average, PA/BF-weighted.
+league_adjust: true
 
 candidate_filters:
   pitcher:

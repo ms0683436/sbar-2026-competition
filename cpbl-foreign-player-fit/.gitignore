@@ -4,3 +4,5 @@ data/raw/
 __pycache__/
 *.pyc
 .pytest_cache/
+# pitch-level intermediates: large and re-creatable (and MLBAM-derived)
+data/processed/*_pitches.parquet
