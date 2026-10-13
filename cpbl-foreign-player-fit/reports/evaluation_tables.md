@@ -4,97 +4,95 @@
 
 | name | mlbam_id | on_40man | fit_rank_med | fit_rank_p05 | fit_rank_p95 | fit_p_top1 | fit_p_top5 | fit_p_top1_non40 | fit_p_top3_non40 | base_rank_med | base_rank_p05 | base_rank_p95 | base_p_top1 | base_p_top5 | base_p_top1_non40 | base_p_top3_non40 | comb_rank_med | comb_rank_p05 | comb_rank_p95 | comb_p_top1 | comb_p_top5 | comb_p_top1_non40 | comb_p_top3_non40 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Tyson Hardin | 824620 | False | 14.00 | 5.95 | 34.00 | 0.00 | 0.05 | 0.00 | 0.08 | 4.00 | 1.00 | 31.05 | 0.18 | 0.57 | 0.43 | 0.71 | 2.00 | 1.00 | 20.00 | 0.31 | 0.77 | 0.58 | 0.81 |
-| Carson Whisenhunt | 687931 | True | 10.00 | 2.00 | 36.00 | 0.01 | 0.27 |  |  | 5.50 | 1.00 | 51.10 | 0.16 | 0.50 |  |  | 2.00 | 1.00 | 26.05 | 0.31 | 0.69 |  |  |
-| Garrett Stallings | 668831 | True | 29.00 | 10.95 | 59.00 | 0.00 | 0.00 |  |  | 13.00 | 2.00 | 50.10 | 0.02 | 0.21 |  |  | 8.50 | 2.00 | 38.10 | 0.03 | 0.31 |  |  |
-| Ethan Pecko | 814490 | True | 32.50 | 14.00 | 73.05 | 0.00 | 0.00 |  |  | 15.00 | 2.00 | 51.05 | 0.04 | 0.22 |  |  | 10.00 | 2.00 | 43.05 | 0.04 | 0.29 |  |  |
-| David Sandlin | 689818 | True | 31.50 | 9.00 | 103.10 | 0.00 | 0.01 |  |  | 14.50 | 1.00 | 60.00 | 0.06 | 0.29 |  |  | 10.50 | 1.00 | 55.15 | 0.07 | 0.32 |  |  |
-| Michael Forret | 702650 | False | 20.00 | 10.00 | 46.05 | 0.00 | 0.00 | 0.00 | 0.00 | 19.50 | 2.00 | 67.05 | 0.03 | 0.17 | 0.09 | 0.27 | 11.00 | 2.00 | 47.10 | 0.05 | 0.25 | 0.09 | 0.31 |
-| Nestor German | 815148 | False | 41.50 | 13.95 | 81.05 | 0.00 | 0.01 | 0.00 | 0.01 | 16.00 | 3.00 | 52.00 | 0.01 | 0.13 | 0.05 | 0.26 | 13.00 | 3.00 | 44.05 | 0.00 | 0.19 | 0.03 | 0.24 |
-| Tate Kuehner | 804249 | False | 1.00 | 1.00 | 7.00 | 0.56 | 0.90 | 0.75 | 0.93 | 50.00 | 14.00 | 87.05 | 0.00 | 0.00 | 0.00 | 0.01 | 15.00 | 3.00 | 51.00 | 0.01 | 0.17 | 0.03 | 0.20 |
-| Elmer Rodríguez | 695684 | True | 48.50 | 18.00 | 103.00 | 0.00 | 0.00 |  |  | 16.00 | 5.00 | 43.05 | 0.00 | 0.07 |  |  | 16.00 | 4.00 | 48.00 | 0.01 | 0.09 |  |  |
-| Trenton Denholm | 671143 | False | 7.00 | 2.00 | 26.00 | 0.02 | 0.41 | 0.03 | 0.47 | 37.00 | 4.00 | 88.00 | 0.00 | 0.06 | 0.02 | 0.11 | 16.00 | 2.00 | 63.05 | 0.03 | 0.23 | 0.07 | 0.27 |
-| José Urquidy | 664353 | False | 32.00 | 9.00 | 65.00 | 0.00 | 0.01 | 0.00 | 0.01 | 23.00 | 5.00 | 66.00 | 0.01 | 0.06 | 0.04 | 0.13 | 16.00 | 3.00 | 56.05 | 0.02 | 0.15 | 0.03 | 0.18 |
-| Ty Johnson | 694494 | True | 107.00 | 76.00 | 119.00 | 0.00 | 0.00 |  |  | 6.00 | 1.00 | 40.05 | 0.17 | 0.50 |  |  | 17.00 | 3.00 | 61.05 | 0.01 | 0.16 |  |  |
-| Brendan Beck | 694341 | True | 115.00 | 102.00 | 121.00 | 0.00 | 0.00 |  |  | 5.00 | 1.00 | 28.05 | 0.12 | 0.55 |  |  | 20.00 | 4.00 | 60.05 | 0.00 | 0.06 |  |  |
-| Trent Baker | 694536 | False | 13.00 | 3.00 | 83.20 | 0.00 | 0.17 | 0.03 | 0.27 | 39.00 | 5.95 | 91.05 | 0.01 | 0.05 | 0.03 | 0.08 | 21.50 | 3.00 | 78.05 | 0.01 | 0.15 | 0.02 | 0.18 |
-| JR Ritchie | 702275 | True | 28.50 | 14.00 | 64.05 | 0.00 | 0.00 |  |  | 31.00 | 8.00 | 76.10 | 0.00 | 0.02 |  |  | 23.00 | 5.00 | 66.00 | 0.00 | 0.06 |  |  |
+| Tyson Hardin | 824620 | False | 14.00 | 5.95 | 34.00 | 0.00 | 0.05 | 0.00 | 0.08 | 8.00 | 1.00 | 36.10 | 0.09 | 0.39 | 0.26 | 0.53 | 3.00 | 1.00 | 26.05 | 0.23 | 0.60 | 0.40 | 0.71 |
+| Carson Whisenhunt | 687931 | True | 10.00 | 2.00 | 36.00 | 0.01 | 0.27 |  |  | 12.00 | 1.00 | 63.05 | 0.08 | 0.27 |  |  | 6.00 | 1.00 | 37.15 | 0.17 | 0.49 |  |  |
+| Ty Johnson | 694494 | True | 107.00 | 76.00 | 119.00 | 0.00 | 0.00 |  |  | 2.00 | 1.00 | 15.00 | 0.25 | 0.78 |  |  | 7.00 | 2.00 | 29.00 | 0.03 | 0.40 |  |  |
+| Trenton Denholm | 671143 | False | 7.00 | 2.00 | 26.00 | 0.02 | 0.41 | 0.03 | 0.47 | 21.00 | 4.00 | 68.05 | 0.00 | 0.09 | 0.05 | 0.17 | 9.00 | 1.00 | 42.00 | 0.05 | 0.35 | 0.16 | 0.43 |
+| Trent Baker | 694536 | False | 13.00 | 3.00 | 83.20 | 0.00 | 0.17 | 0.03 | 0.27 | 16.00 | 2.00 | 63.00 | 0.04 | 0.18 | 0.09 | 0.25 | 9.00 | 1.00 | 50.00 | 0.09 | 0.35 | 0.13 | 0.43 |
+| JR Ritchie | 702275 | True | 28.50 | 14.00 | 64.05 | 0.00 | 0.00 |  |  | 14.00 | 2.00 | 67.05 | 0.03 | 0.23 |  |  | 11.50 | 1.00 | 63.00 | 0.07 | 0.30 |  |  |
+| Jonah Tong | 804636 | True | 3.00 | 2.00 | 23.00 | 0.04 | 0.70 |  |  | 38.00 | 11.00 | 85.05 | 0.00 | 0.00 |  |  | 16.00 | 3.00 | 54.00 | 0.00 | 0.13 |  |  |
+| Brendan Beck | 694341 | True | 115.00 | 102.00 | 121.00 | 0.00 | 0.00 |  |  | 5.00 | 1.00 | 24.00 | 0.13 | 0.50 |  |  | 16.00 | 3.00 | 51.05 | 0.02 | 0.13 |  |  |
+| Ethan Pecko | 814490 | True | 32.50 | 14.00 | 73.05 | 0.00 | 0.00 |  |  | 20.00 | 4.95 | 69.00 | 0.01 | 0.06 |  |  | 16.00 | 3.00 | 57.05 | 0.01 | 0.14 |  |  |
+| Miguel Ullola | 699044 | True | 55.00 | 34.95 | 86.00 | 0.00 | 0.00 |  |  | 15.00 | 3.00 | 55.10 | 0.01 | 0.13 |  |  | 16.50 | 3.00 | 52.00 | 0.01 | 0.11 |  |  |
+| Mitch Bratt | 683352 | True | 92.00 | 60.95 | 105.05 | 0.00 | 0.00 |  |  | 11.00 | 1.00 | 46.10 | 0.07 | 0.30 |  |  | 18.00 | 2.00 | 61.05 | 0.04 | 0.17 |  |  |
+| Brandon White | 681449 | False | 10.00 | 2.00 | 98.10 | 0.02 | 0.33 | 0.09 | 0.40 | 31.00 | 3.00 | 94.05 | 0.03 | 0.11 | 0.05 | 0.18 | 18.00 | 1.00 | 80.10 | 0.07 | 0.21 | 0.10 | 0.24 |
+| Nestor German | 815148 | False | 41.50 | 13.95 | 81.05 | 0.00 | 0.01 | 0.00 | 0.01 | 22.00 | 4.00 | 59.10 | 0.01 | 0.06 | 0.04 | 0.15 | 20.00 | 5.00 | 52.05 | 0.00 | 0.08 | 0.02 | 0.14 |
+| Jackson Kent | 800600 | True | 71.00 | 49.95 | 94.00 | 0.00 | 0.00 |  |  | 16.00 | 3.00 | 51.05 | 0.02 | 0.12 |  |  | 21.00 | 4.00 | 58.05 | 0.01 | 0.10 |  |  |
+| Carlos Lagrange | 801739 | False | 84.50 | 27.95 | 121.00 | 0.00 | 0.00 | 0.00 | 0.00 | 15.00 | 2.00 | 64.00 | 0.03 | 0.20 | 0.11 | 0.32 | 22.00 | 3.00 | 79.15 | 0.02 | 0.10 | 0.04 | 0.18 |
 
 ## Bootstrap rank stability — hitters (Fit-available subset)
 
 | name | mlbam_id | on_40man | fit_rank_med | fit_rank_p05 | fit_rank_p95 | fit_p_top1 | fit_p_top5 | fit_p_top1_non40 | fit_p_top3_non40 | base_rank_med | base_rank_p05 | base_rank_p95 | base_p_top1 | base_p_top5 | base_p_top1_non40 | base_p_top3_non40 | comb_rank_med | comb_rank_p05 | comb_rank_p95 | comb_p_top1 | comb_p_top5 | comb_p_top1_non40 | comb_p_top3_non40 |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Joshua Báez | 695491 | True | 25.50 | 3.00 | 108.20 | 0.04 | 0.09 |  |  | 16.00 | 5.00 | 65.00 | 0.00 | 0.05 |  |  | 9.00 | 1.95 | 46.00 | 0.05 | 0.31 |  |  |
-| Zac Veen | 691728 | True | 156.00 | 67.00 | 192.00 | 0.00 | 0.00 |  |  | 3.00 | 1.00 | 26.05 | 0.21 | 0.63 |  |  | 10.00 | 2.00 | 51.05 | 0.04 | 0.30 |  |  |
-| Robert Moore | 691001 | False | 65.00 | 25.00 | 132.05 | 0.00 | 0.00 | 0.00 | 0.00 | 13.00 | 1.00 | 66.00 | 0.10 | 0.28 | 0.20 | 0.39 | 12.00 | 1.00 | 62.05 | 0.12 | 0.28 | 0.20 | 0.42 |
-| Kody Huff | 687627 | False | 71.00 | 9.95 | 159.10 | 0.01 | 0.02 | 0.01 | 0.03 | 15.00 | 2.00 | 49.05 | 0.03 | 0.18 | 0.09 | 0.30 | 12.50 | 1.00 | 59.10 | 0.06 | 0.24 | 0.13 | 0.35 |
-| Kyler Fedko | 693459 | False | 45.00 | 5.00 | 116.05 | 0.00 | 0.05 | 0.02 | 0.06 | 19.00 | 2.00 | 94.25 | 0.03 | 0.28 | 0.14 | 0.35 | 13.50 | 1.00 | 79.15 | 0.11 | 0.35 | 0.20 | 0.43 |
-| César Prieto | 693409 | True | 9.00 | 1.00 | 53.10 | 0.15 | 0.35 |  |  | 37.00 | 8.00 | 88.05 | 0.00 | 0.03 |  |  | 15.00 | 2.00 | 47.05 | 0.05 | 0.17 |  |  |
-| Patrick Wisdom | 621550 | True | 38.00 | 3.00 | 114.10 | 0.02 | 0.08 |  |  | 21.00 | 7.00 | 61.40 | 0.00 | 0.02 |  |  | 15.00 | 2.00 | 48.00 | 0.03 | 0.18 |  |  |
-| Abimelec Ortiz | 694673 | True | 61.00 | 10.00 | 158.05 | 0.00 | 0.01 |  |  | 18.00 | 3.00 | 70.00 | 0.02 | 0.19 |  |  | 16.00 | 2.00 | 79.05 | 0.04 | 0.25 |  |  |
-| Héctor Rodríguez | 699302 | True | 113.50 | 34.90 | 188.05 | 0.00 | 0.00 |  |  | 11.00 | 1.00 | 64.00 | 0.09 | 0.35 |  |  | 16.50 | 2.00 | 76.00 | 0.04 | 0.21 |  |  |
-| Walker Jenkins | 805805 | True | 163.00 | 69.00 | 193.05 | 0.00 | 0.00 |  |  | 7.00 | 1.00 | 50.00 | 0.12 | 0.43 |  |  | 18.00 | 2.00 | 84.05 | 0.03 | 0.19 |  |  |
-| Cody Morissette | 681357 | False | 40.00 | 3.95 | 141.00 | 0.01 | 0.07 | 0.03 | 0.10 | 26.00 | 5.00 | 83.10 | 0.00 | 0.06 | 0.04 | 0.16 | 20.00 | 1.95 | 64.20 | 0.05 | 0.17 | 0.10 | 0.24 |
-| Ralphy Velazquez | 806252 | False | 157.00 | 72.95 | 194.00 | 0.00 | 0.00 | 0.00 | 0.00 | 9.00 | 1.00 | 50.10 | 0.08 | 0.36 | 0.24 | 0.52 | 23.00 | 3.00 | 81.05 | 0.03 | 0.15 | 0.06 | 0.22 |
-| John Rave | 670231 | True | 48.50 | 3.00 | 155.00 | 0.02 | 0.09 |  |  | 31.00 | 4.00 | 89.15 | 0.01 | 0.06 |  |  | 23.00 | 2.00 | 89.10 | 0.04 | 0.15 |  |  |
-| Ryan Galanie | 814436 | False | 14.50 | 1.00 | 62.05 | 0.09 | 0.26 | 0.11 | 0.31 | 46.50 | 13.00 | 104.05 | 0.00 | 0.01 | 0.01 | 0.03 | 24.00 | 3.00 | 73.10 | 0.02 | 0.12 | 0.05 | 0.18 |
-| Adael Amador | 691182 | True | 32.00 | 5.00 | 114.05 | 0.01 | 0.06 |  |  | 37.50 | 7.95 | 94.00 | 0.00 | 0.03 |  |  | 24.00 | 3.00 | 77.20 | 0.02 | 0.11 |  |  |
+| Patrick Wisdom | 621550 | True | 38.00 | 3.00 | 114.10 | 0.03 | 0.08 |  |  | 9.00 | 3.00 | 29.05 | 0.00 | 0.22 |  |  | 5.50 | 1.00 | 21.05 | 0.12 | 0.50 |  |  |
+| Joshua Báez | 695491 | True | 25.50 | 3.00 | 108.20 | 0.04 | 0.09 |  |  | 13.50 | 4.95 | 66.05 | 0.00 | 0.10 |  |  | 8.00 | 1.00 | 46.05 | 0.06 | 0.37 |  |  |
+| Zac Veen | 691728 | True | 156.00 | 67.00 | 192.00 | 0.00 | 0.00 |  |  | 3.00 | 1.00 | 25.30 | 0.20 | 0.66 |  |  | 9.00 | 2.00 | 48.05 | 0.03 | 0.26 |  |  |
+| Robert Moore | 691001 | False | 65.00 | 25.00 | 132.05 | 0.00 | 0.00 | 0.00 | 0.00 | 11.50 | 1.00 | 62.05 | 0.15 | 0.32 | 0.27 | 0.47 | 10.00 | 1.00 | 59.05 | 0.14 | 0.31 | 0.25 | 0.48 |
+| Eduardo Valencia | 680664 | True | 80.50 | 19.85 | 170.10 | 0.00 | 0.01 |  |  | 13.00 | 1.00 | 60.10 | 0.11 | 0.31 |  |  | 12.00 | 1.00 | 65.05 | 0.07 | 0.34 |  |  |
+| Jace Jung | 690291 | True | 14.00 | 1.00 | 94.05 | 0.13 | 0.27 |  |  | 29.00 | 5.00 | 83.05 | 0.01 | 0.07 |  |  | 13.00 | 1.00 | 56.00 | 0.07 | 0.24 |  |  |
+| Kody Huff | 687627 | False | 71.00 | 9.95 | 159.10 | 0.01 | 0.02 | 0.01 | 0.03 | 18.00 | 2.00 | 55.05 | 0.03 | 0.14 | 0.07 | 0.24 | 15.00 | 2.00 | 61.00 | 0.04 | 0.18 | 0.11 | 0.29 |
+| Abimelec Ortiz | 694673 | True | 61.00 | 10.00 | 158.05 | 0.00 | 0.01 |  |  | 22.00 | 2.00 | 68.30 | 0.02 | 0.16 |  |  | 17.00 | 1.00 | 78.00 | 0.05 | 0.24 |  |  |
+| Kyler Fedko | 693459 | False | 45.00 | 5.00 | 116.05 | 0.00 | 0.05 | 0.02 | 0.06 | 27.00 | 2.00 | 105.20 | 0.04 | 0.21 | 0.14 | 0.29 | 18.00 | 1.00 | 87.10 | 0.11 | 0.29 | 0.19 | 0.39 |
+| CJ Alexander | 680769 | False | 36.00 | 4.00 | 119.10 | 0.02 | 0.06 | 0.03 | 0.08 | 34.00 | 6.00 | 94.15 | 0.00 | 0.04 | 0.03 | 0.12 | 20.50 | 3.00 | 82.35 | 0.03 | 0.15 | 0.09 | 0.26 |
+| Héctor Rodríguez | 699302 | True | 113.50 | 34.90 | 188.05 | 0.00 | 0.00 |  |  | 16.00 | 1.00 | 71.05 | 0.08 | 0.23 |  |  | 21.00 | 2.00 | 77.00 | 0.03 | 0.14 |  |  |
+| César Prieto | 693409 | True | 9.00 | 1.00 | 53.10 | 0.13 | 0.35 |  |  | 52.00 | 14.95 | 107.00 | 0.00 | 0.00 |  |  | 23.00 | 4.00 | 58.05 | 0.01 | 0.08 |  |  |
+| Felix Reyes | 694025 | True | 84.00 | 25.95 | 153.05 | 0.00 | 0.00 |  |  | 22.50 | 3.00 | 79.10 | 0.01 | 0.13 |  |  | 23.00 | 3.00 | 87.00 | 0.01 | 0.10 |  |  |
+| Cody Morissette | 681357 | False | 40.00 | 3.95 | 141.00 | 0.02 | 0.07 | 0.03 | 0.10 | 33.00 | 7.95 | 98.15 | 0.01 | 0.04 | 0.02 | 0.10 | 24.00 | 3.00 | 74.05 | 0.02 | 0.11 | 0.06 | 0.19 |
+| Max Anderson | 801194 | False | 65.00 | 16.95 | 142.05 | 0.00 | 0.01 | 0.00 | 0.01 | 29.00 | 6.00 | 69.05 | 0.01 | 0.04 | 0.03 | 0.10 | 25.00 | 5.00 | 66.05 | 0.02 | 0.08 | 0.03 | 0.14 |
 
 ## Recommendation shortlist (pre-registered rule, amendment 1)
 
 | role | rule_rank | rule_rank_non40 | name | age_2026 | teams | on_40man | roster_club | roster_status | mlb_2026_g | boot_p_top1 | boot_p_top1_non40 |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| pitcher | 1 | 1.00 | Tyson Hardin | 25.00 | NAS | False |  |  | 0 | 0.31 | 0.58 |
-| pitcher | 2 |  | Carson Whisenhunt | 26.00 | SAC | True | San Francisco Giants | Injured 60-Day | 8 | 0.31 |  |
-| pitcher | 3 |  | Garrett Stallings | 29.00 | NAS | True | Milwaukee Brewers | Forty Man | 6 | 0.03 |  |
-| pitcher | 4 |  | David Sandlin | 25.00 | CLT | True | Chicago White Sox | Active | 8 | 0.07 |  |
-| pitcher | 5 |  | Ethan Pecko | 24.00 | SUG | True | Houston Astros | Active | 8 | 0.04 |  |
-| pitcher | 6 | 2.00 | Michael Forret | 22.00 | DUR/NOR | False |  |  | 0 | 0.05 | 0.09 |
-| pitcher | 7 | 3.00 | Nestor German | 24.00 | NOR | False |  |  | 0 | 0.00 | 0.03 |
-| pitcher | 8 | 4.00 | Tate Kuehner | 25.00 | NAS | False |  |  | 0 | 0.01 | 0.03 |
-| pitcher | 9 |  | Brendan Beck | 28.00 | SWB | True | New York Yankees | Active | 4 | 0.00 |  |
-| pitcher | 10 |  | Elmer Rodríguez | 23.00 | SWB | True | New York Yankees | Active | 6 | 0.01 |  |
-| pitcher | 11 | 5.00 | Trenton Denholm | 27.00 | COL | False |  |  | 0 | 0.03 | 0.07 |
-| pitcher | 13 | 6.00 | José Urquidy | 31.00 | CLT/IND | False |  |  | 13 | 0.02 | 0.03 |
-| pitcher | 15 | 7.00 | Chuck King | 28.00 | LHV | False |  |  | 0 | 0.00 | 0.01 |
-| pitcher | 18 | 8.00 | Brandt Thompson | 24.00 | MEM | False |  |  | 0 | 0.00 | 0.01 |
-| pitcher | 23 | 9.00 | Trent Baker | 28.00 | STP | False |  |  | 0 | 0.01 | 0.02 |
-| pitcher | 28 | 10.00 | Alexander Cornielle | 25.00 | SWB | False |  |  | 1 | 0.00 | 0.01 |
-| hitter | 1 |  | Zac Veen | 25.00 | ABQ | True | Colorado Rockies | Active | 36 | 0.21 |  |
-| hitter | 2 | 1.00 | Ralphy Velazquez | 21.00 | COL | False |  |  | 0 | 0.08 | 0.24 |
-| hitter | 3 |  | Walker Jenkins | 21.00 | STP | True | Minnesota Twins | Active | 26 | 0.12 |  |
-| hitter | 4 |  | Héctor Rodríguez | 22.00 | LOU | True | Cincinnati Reds | Active | 41 | 0.09 |  |
-| hitter | 5 | 2.00 | Robert Moore | 24.00 | LHV | False |  |  | 0 | 0.10 | 0.20 |
-| hitter | 6 |  | Dustin Harris | 27.00 | CLT/ELP | True | San Diego Padres | Active | 45 | 0.10 |  |
-| hitter | 7 |  | Turner Hill | 27.00 | SAC | True | San Francisco Giants | Active | 34 | 0.03 |  |
-| hitter | 8 | 3.00 | Kyler Fedko | 27.00 | STP | False |  |  | 14 | 0.03 | 0.14 |
-| hitter | 9 |  | Abimelec Ortiz | 24.00 | ROC | True | Washington Nationals | Active | 44 | 0.02 |  |
-| hitter | 10 | 4.00 | Kody Huff | 26.00 | COL | False |  |  | 0 | 0.03 | 0.09 |
-| hitter | 12 | 5.00 | Brett Squires | 26.00 | OMA | False |  |  | 0 | 0.01 | 0.08 |
-| hitter | 15 | 6.00 | George Valera | 26.00 | COL | False |  |  | 13 | 0.01 | 0.03 |
-| hitter | 19 | 7.00 | Cody Morissette | 26.00 | JAX/STP | False |  |  | 0 | 0.00 | 0.04 |
-| hitter | 22 | 8.00 | James Tibbs III | 24.00 | OKC | False |  |  | 0 | 0.00 | 0.01 |
-| hitter | 23 | 9.00 | Max Anderson | 24.00 | TOL | False |  |  | 0 | 0.01 | 0.02 |
-| hitter | 33 | 10.00 | Keaton Anthony | 25.00 | LHV | False |  |  | 0 | 0.01 | 0.01 |
+| pitcher | 1 | 1.00 | Tyson Hardin | 25.00 | NAS | False |  |  | 0 | 0.23 | 0.40 |
+| pitcher | 2 |  | Carson Whisenhunt | 26.00 | SAC | True | San Francisco Giants | Injured 60-Day | 8 | 0.17 |  |
+| pitcher | 3 |  | Ty Johnson | 25.00 | DUR | True | Tampa Bay Rays | Forty Man | 8 | 0.03 |  |
+| pitcher | 4 | 2.00 | Trenton Denholm | 27.00 | COL | False |  |  | 0 | 0.05 | 0.16 |
+| pitcher | 5 |  | Brendan Beck | 28.00 | SWB | True | New York Yankees | Active | 4 | 0.02 |  |
+| pitcher | 6 |  | Mitch Bratt | 23.00 | RNO | True | Arizona Diamondbacks | Active | 10 | 0.04 |  |
+| pitcher | 7 |  | Jonah Tong | 23.00 | SYR | True | New York Mets | Active | 7 | 0.00 |  |
+| pitcher | 8 |  | JR Ritchie | 23.00 | GWN | True | Atlanta Braves | Active | 17 | 0.07 |  |
+| pitcher | 9 | 3.00 | Trent Baker | 28.00 | STP | False |  |  | 0 | 0.09 | 0.13 |
+| pitcher | 10 |  | Ethan Pecko | 24.00 | SUG | True | Houston Astros | Active | 8 | 0.01 |  |
+| pitcher | 12 | 4.00 | Brandon White | 27.00 | JAX | False |  |  | 0 | 0.07 | 0.10 |
+| pitcher | 14 | 5.00 | Nestor German | 24.00 | NOR | False |  |  | 0 | 0.00 | 0.02 |
+| pitcher | 15 | 6.00 | Carlos Lagrange | 23.00 | SWB | False |  |  | 0 | 0.02 | 0.04 |
+| pitcher | 20 | 7.00 | Michael Forret | 22.00 | DUR/NOR | False |  |  | 0 | 0.00 | 0.00 |
+| pitcher | 21 | 8.00 | Jackson Ferris | 22.00 | OKC | False |  |  | 0 | 0.01 | 0.02 |
+| pitcher | 22 | 9.00 | Bruce Zimmermann | 31.00 | MEM | False |  |  | 1 | 0.02 | 0.02 |
+| pitcher | 23 | 10.00 | Tate Kuehner | 25.00 | NAS | False |  |  | 0 | 0.00 | 0.01 |
+| hitter | 1 |  | Zac Veen | 25.00 | ABQ | True | Colorado Rockies | Active | 36 | 0.20 |  |
+| hitter | 2 | 1.00 | Robert Moore | 24.00 | LHV | False |  |  | 0 | 0.15 | 0.27 |
+| hitter | 3 |  | Patrick Wisdom | 35.00 | TAC | True | Seattle Mariners | Active | 19 | 0.00 |  |
+| hitter | 4 | 2.00 | Ralphy Velazquez | 21.00 | COL | False |  |  | 0 | 0.03 | 0.12 |
+| hitter | 5 |  | Joshua Báez | 23.00 | MEM | True | St. Louis Cardinals | Active | 29 | 0.00 |  |
+| hitter | 6 | 3.00 | Brett Squires | 26.00 | OMA | False |  |  | 0 | 0.01 | 0.10 |
+| hitter | 7 |  | Héctor Rodríguez | 22.00 | LOU | True | Cincinnati Reds | Active | 41 | 0.08 |  |
+| hitter | 8 |  | Abimelec Ortiz | 24.00 | ROC | True | Washington Nationals | Active | 44 | 0.02 |  |
+| hitter | 9 | 4.00 | Kody Huff | 26.00 | COL | False |  |  | 0 | 0.03 | 0.07 |
+| hitter | 10 | 5.00 | Kyler Fedko | 27.00 | STP | False |  |  | 14 | 0.04 | 0.14 |
+| hitter | 13 | 6.00 | James Tibbs III | 24.00 | OKC | False |  |  | 0 | 0.00 | 0.01 |
+| hitter | 15 | 7.00 | CJ Alexander | 30.00 | SUG | False |  |  | 0 | 0.00 | 0.03 |
+| hitter | 20 | 8.00 | Max Anderson | 24.00 | TOL | False |  |  | 0 | 0.01 | 0.03 |
+| hitter | 22 | 9.00 | Eddys Leonard | 26.00 | NAS/SAC | False |  |  | 3 | 0.00 | 0.02 |
+| hitter | 27 | 10.00 | Charlie Condon | 23.00 | ABQ | False |  |  | 0 | 0.00 | 0.01 |
 
 ## Baseline weights (amendment 4: estimated 2025 -> 2026 AAA; judgment = original)
 
 | role | metric | judgment_weight | estimated_weight | ci_lo | ci_hi | share_zero | n | used |
 |---|---|---|---|---|---|---|---|---|
-| pitcher | k_minus_bb_pct | 0.400 | 0.000 | 0.000 | 0.000 | 0.951 | 68 | estimated |
-| pitcher | fip | 0.250 | 1.000 | 0.000 | 1.000 | 0.174 | 68 | estimated |
-| pitcher | recent_k_minus_bb_pct | 0.150 | 0.000 | 0.000 | 0.278 | 0.886 | 68 | estimated |
-| pitcher | ip_per_gs | 0.100 | 0.000 | 0.000 | 0.945 | 0.667 | 68 | estimated |
-| pitcher | gs | 0.100 | 0.000 | 0.000 | 1.000 | 0.515 | 68 | estimated |
-| hitter | woba | 0.400 | 0.000 | 0.000 | 0.554 | 0.667 | 143 | estimated |
-| hitter | iso | 0.200 | 0.519 | 0.049 | 0.793 | 0.038 | 143 | estimated |
-| hitter | bb_pct | 0.150 | 0.000 | 0.000 | 0.000 | 0.955 | 143 | estimated |
-| hitter | k_pct | 0.150 | 0.329 | 0.000 | 0.532 | 0.114 | 143 | estimated |
-| hitter | recent_woba | 0.100 | 0.152 | 0.000 | 0.628 | 0.400 | 143 | estimated |
+| pitcher | k_pct_adj | 0.500 | 0.000 | 0.000 | 0.136 | 0.930 | 68 | estimated |
+| pitcher | bb_pct_adj | 0.250 | 0.065 | 0.000 | 1.000 | 0.378 | 68 | estimated |
+| pitcher | fip | 0.250 | 0.935 | 0.000 | 1.000 | 0.162 | 68 | estimated |
+| hitter | woba | 0.400 | 0.000 | 0.000 | 0.422 | 0.710 | 143 | estimated |
+| hitter | iso | 0.200 | 0.650 | 0.236 | 0.941 | 0.006 | 143 | estimated |
+| hitter | bb_pct | 0.150 | 0.000 | 0.000 | 0.063 | 0.913 | 143 | estimated |
+| hitter | k_pct | 0.150 | 0.289 | 0.000 | 0.462 | 0.150 | 143 | estimated |
+| hitter | recent_woba | 0.100 | 0.061 | 0.000 | 0.501 | 0.504 | 143 | estimated |
 | role | n | n_predictor_pool | n_without_target | cv_spearman_estimated | spearman_estimated_in_sample | spearman_judgment |
 |---|---|---|---|---|---|---|
-| hitter | 143 | 241 | 98 | 0.202 | 0.251 | 0.199 |
-| pitcher | 68 | 148 | 80 | 0.110 | 0.142 | 0.018 |
+| hitter | 143 | 241 | 98 | 0.213 | 0.257 | 0.206 |
+| pitcher | 68 | 148 | 80 | 0.076 | 0.124 | 0.009 |
 
 ## Fit environment cells (2024-25, method: within_pitcher)
 
