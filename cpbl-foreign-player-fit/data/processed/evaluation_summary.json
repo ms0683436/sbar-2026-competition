@@ -3,7 +3,7 @@
     "pitcher": {
       "n": 122,
       "spearman_baseline_vs_fit": -0.05371405156945486,
-      "r2_fit_on_baseline_stats": 0.039190494760664274,
+      "r2_fit_on_baseline_stats": 0.03916067799094458,
       "fit_vs_stats_spearman": {
         "k_minus_bb_pct_raw": 0.01636700691624177,
         "fip_raw": -0.013194722111155537,
@@ -364,7 +364,7 @@
       "2025": 0.0001,
       "pooled": 0.0008
     },
-    "D3_pitcher_fit_corr_coarse": 0.8165361954391797,
+    "D3_pitcher_fit_corr_coarse": 0.8164634972457298,
     "D3_hitter_fit_corr_coarse": 0.9672066874387397,
     "D3_usage_table": {
       "usage_cpbl": {
@@ -417,7 +417,7 @@
         "untracked_n": 0,
         "tracked_age_mean": 26.901639344262296,
         "untracked_age_mean": NaN,
-        "tracked_baseline_mean": 0.0011032594488293566,
+        "tracked_baseline_mean": 0.0011032594488293492,
         "untracked_baseline_mean": NaN,
         "untracked_in_overall_top10": 0
       },
@@ -542,7 +542,7 @@
         "base_p_top3_non40": 0.63,
         "comb_rank_med": 3.0,
         "comb_rank_p05": 1.0,
-        "comb_rank_p95": 16.05,
+        "comb_rank_p95": 15.1,
         "comb_p_top1": 0.317,
         "comb_p_top5": 0.763,
         "comb_p_top1_non40": 0.467,
@@ -582,7 +582,7 @@
         "fit_rank_p05": 2.95,
         "fit_rank_p95": 20.05,
         "fit_p_top1": 0.01,
-        "fit_p_top5": 0.433,
+        "fit_p_top5": 0.43,
         "fit_p_top1_non40": 0.073,
         "fit_p_top3_non40": 0.55,
         "base_rank_med": 13.0,
