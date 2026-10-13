@@ -189,7 +189,7 @@ mlbam_id,name,position,teams,leagues,age_2026,pass_workload,eligibility_status,e
 655889,Manuel Rodríguez,P,DUR,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 656181,Spencer Adams,P,RR,PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 656186,Dan Altavilla,P,OMA/STP,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
-656212,Charlie Barnes,P,IOW/OKC,INT/PCL,31.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,barnc002,2021,2026,0.0,0.0,0.0,0.0,0.0,0.0,eligible,1.0,candidate,False,,,5.0,0.0,26.0,2026-08-18,LHP Charlie Barnes assigned to Oklahoma City Comets.,not on any MLB 40-man roster (as of 2026-10-13; contract/salary/willingness not assessed)
+656212,Charlie Barnes,P,IOW/OKC,INT/PCL,31.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,barnc002,2021,2026,0.0,0.0,0.0,0.0,0.0,0.0,eligible,1.0,candidate,False,,,5.0,0.0,13.0,2026-08-18,LHP Charlie Barnes assigned to Oklahoma City Comets.,not on any MLB 40-man roster (as of 2026-10-13; contract/salary/willingness not assessed)
 656232,Brandon Bielak,P,SUG,PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 656234,Jake Bird,P,ROC/SWB,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 656240,Scott Blewett,P,MEM,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
@@ -298,7 +298,7 @@ mlbam_id,name,position,teams,leagues,age_2026,pass_workload,eligibility_status,e
 664299,Cristian Javier,P,SUG,PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 664337,Miguel Yajure,P,SUG,PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 664346,Carlos Guzman,P,SYR,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
-664353,José Urquidy,P,CLT/IND,INT,31.0,True,eligible,2024: 0 outs <= 120; 2025: 7 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,urquj001,2019,2026,0.0,0.0,7.0,2.1,0.0,7.0,eligible,1.0,candidate,False,,,13.0,0.0,72.2,2026-09-30,RHP José Urquidy elected free agency.,not on any MLB 40-man roster (as of 2026-10-13; contract/salary/willingness not assessed)
+664353,José Urquidy,P,CLT/IND,INT,31.0,True,eligible,2024: 0 outs <= 120; 2025: 7 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,urquj001,2019,2026,0.0,0.0,7.0,2.1,0.0,7.0,eligible,1.0,candidate,False,,,13.0,0.0,36.1,2026-09-30,RHP José Urquidy elected free agency.,not on any MLB 40-man roster (as of 2026-10-13; contract/salary/willingness not assessed)
 664670,Alejo Lopez,2B,TAC,PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 664687,Durbin Feltman,P,MEM,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 664744,Jose Espada,P,NOR,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
@@ -319,7 +319,7 @@ mlbam_id,name,position,teams,leagues,age_2026,pass_workload,eligibility_status,e
 665878,Janser Lara,P,RR,PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 665993,Cristhian Tortosa,P,IND,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 666123,Austin Bergner,P,RR,PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
-666129,Braxton Garrett,P,IOW/JAX,INT,29.0,True,eligible,2024: 111 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,garrb001,2020,2026,111.0,37.0,0.0,0.0,111.0,0.0,eligible,1.0,candidate,True,Chicago Cubs,Active,3.0,0.0,18.2,2026-10-01,Chicago Cubs activated LHP Braxton Garrett.,on MLB 40-man roster — Chicago Cubs (as of 2026-10-13; contract/salary/willingness not assessed)
+666129,Braxton Garrett,P,IOW/JAX,INT,29.0,True,eligible,2024: 111 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,garrb001,2020,2026,111.0,37.0,0.0,0.0,111.0,0.0,eligible,1.0,candidate,True,Chicago Cubs,Active,3.0,0.0,9.1,2026-10-01,Chicago Cubs activated LHP Braxton Garrett.,on MLB 40-man roster — Chicago Cubs (as of 2026-10-13; contract/salary/willingness not assessed)
 666142,Cole Ragans,P,OMA,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 666148,Drake Fellows,P,LHV,INT,28.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,No Retrosheet id; register shows no MLB play in 2024-25 and name absent from all 2024/2025 MLB rosters,,,,0.0,0.0,0.0,0.0,0.0,0.0,eligible,1.0,candidate,False,,,0.0,0.0,0.0,2026-09-25,Lehigh Valley IronPigs activated RHP Drake Fellows from the Development List.,not on any MLB 40-man roster (as of 2026-10-13; contract/salary/willingness not assessed)
 666150,Dominic Fletcher,RF,IND/LOU,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
@@ -610,7 +610,7 @@ mlbam_id,name,position,teams,leagues,age_2026,pass_workload,eligibility_status,e
 681117,Evan Taylor,P,IOW,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 681151,Jayden Murray,P,IOW/SUG,INT/PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 681168,Luis Curvelo,P,RR,PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
-681252,Jack Anderson,P,STP/WOR,INT,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,andej006,2026,2026,0.0,0.0,0.0,0.0,0.0,0.0,eligible,1.0,candidate,True,Minnesota Twins,Active,7.0,0.0,24.2,2026-09-28,Minnesota Twins recalled RHP Jack Anderson from St. Paul Saints.,on MLB 40-man roster — Minnesota Twins (as of 2026-10-13; contract/salary/willingness not assessed)
+681252,Jack Anderson,P,STP/WOR,INT,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,andej006,2026,2026,0.0,0.0,0.0,0.0,0.0,0.0,eligible,1.0,candidate,True,Minnesota Twins,Active,7.0,0.0,12.1,2026-09-28,Minnesota Twins recalled RHP Jack Anderson from St. Paul Saints.,on MLB 40-man roster — Minnesota Twins (as of 2026-10-13; contract/salary/willingness not assessed)
 681293,Spencer Arrighetti,P,BUF/SUG,INT/PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 681306,Christian MacLeod,P,JAX/STP,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 681313,Jake Miller,P,COL,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
@@ -631,7 +631,7 @@ mlbam_id,name,position,teams,leagues,age_2026,pass_workload,eligibility_status,e
 681676,Ryan Fernandez,P,MEM,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 681751,Lazaro Estrada,P,BUF,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 681799,Ethan Roberts,P,IOW,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
-681806,Andrew Wantz,P,DUR/IOW,INT,31.0,True,eligible,2024: 4 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,wanta001,2021,2026,4.0,1.1,0.0,0.0,4.0,0.0,eligible,1.0,candidate,False,,,2.0,0.0,7.1,2026-09-04,Iowa Cubs activated RHP Andrew Wantz from the temporarily inactive list.,not on any MLB 40-man roster (as of 2026-10-13; contract/salary/willingness not assessed)
+681806,Andrew Wantz,P,DUR/IOW,INT,31.0,True,eligible,2024: 4 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,wanta001,2021,2026,4.0,1.1,0.0,0.0,4.0,0.0,eligible,1.0,candidate,False,,,2.0,0.0,3.2,2026-09-04,Iowa Cubs activated RHP Andrew Wantz from the temporarily inactive list.,not on any MLB 40-man roster (as of 2026-10-13; contract/salary/willingness not assessed)
 681810,Austin Warren,P,SYR,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 681854,Connor Van Scoyoc,P,ROC,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 681867,Cooper Criswell,P,TAC,PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
@@ -1058,7 +1058,7 @@ mlbam_id,name,position,teams,leagues,age_2026,pass_workload,eligibility_status,e
 701388,Jurrangelo Cijntje,P,MEM,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 701404,Fisher Jameson,P,ABQ,PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 701411,Jack Cebert,P,ROC,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
-701474,Duncan Davitt,P,CLT/GWN/SAC,INT/PCL,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,david005,2026,2026,0.0,0.0,0.0,0.0,0.0,0.0,eligible,1.0,candidate,True,San Francisco Giants,Active,6.0,0.0,16.0,2026-09-18,San Francisco Giants recalled RHP Duncan Davitt from Sacramento River Cats.,on MLB 40-man roster — San Francisco Giants (as of 2026-10-13; contract/salary/willingness not assessed)
+701474,Duncan Davitt,P,CLT/GWN/SAC,INT/PCL,27.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,david005,2026,2026,0.0,0.0,0.0,0.0,0.0,0.0,eligible,1.0,candidate,True,San Francisco Giants,Active,6.0,0.0,8.0,2026-09-18,San Francisco Giants recalled RHP Duncan Davitt from Sacramento River Cats.,on MLB 40-man roster — San Francisco Giants (as of 2026-10-13; contract/salary/willingness not assessed)
 701488,Dylan Phillips,P,SL,PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 701519,Travis Adams,P,STP,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 701533,Hunter Stanley,P,COL,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
@@ -1154,7 +1154,7 @@ mlbam_id,name,position,teams,leagues,age_2026,pass_workload,eligibility_status,e
 804541,Gary Gill Hill,P,SYR,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 804556,Braden Nett,P,LV,PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 804577,Reid VanScoter,P,TAC,PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
-804619,John Klein,P,BUF/STP,INT,24.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,kleij001,2026,2026,0.0,0.0,0.0,0.0,0.0,0.0,eligible,1.0,candidate,True,Toronto Blue Jays,Active,4.0,0.0,16.2,2026-09-25,Toronto Blue Jays recalled RHP John Klein from Buffalo Bisons.,on MLB 40-man roster — Toronto Blue Jays (as of 2026-10-13; contract/salary/willingness not assessed)
+804619,John Klein,P,BUF/STP,INT,24.0,True,eligible,2024: 0 outs <= 120; 2025: 0 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,kleij001,2026,2026,0.0,0.0,0.0,0.0,0.0,0.0,eligible,1.0,candidate,True,Toronto Blue Jays,Active,4.0,0.0,8.1,2026-09-25,Toronto Blue Jays recalled RHP John Klein from Buffalo Bisons.,on MLB 40-man roster — Toronto Blue Jays (as of 2026-10-13; contract/salary/willingness not assessed)
 804636,Jonah Tong,P,SYR,INT,23.0,True,eligible,2024: 0 outs <= 120; 2025: 56 outs <= 120,Retrosheet regular-season event files (complete seasons) via retro id,tongj001,2025,2026,0.0,0.0,56.0,18.2,0.0,56.0,eligible,1.0,candidate,True,New York Mets,Active,7.0,0.0,30.2,2026-09-07,New York Mets recalled RHP Jonah Tong from Syracuse Mets.,on MLB 40-man roster — New York Mets (as of 2026-10-13; contract/salary/willingness not assessed)
 804912,Mason Vinyard,P,JAX,INT,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,
 804922,Tyler Vogel,P,SAC,PCL,,False,,,,,,,,,,,,,,,excluded: 2026 AAA workload below GS>=10 & IP>=60,,,,,,,,,

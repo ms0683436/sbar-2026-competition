@@ -117,7 +117,7 @@ GLM 的 league × pitch_type 交互作用檢定：
 | 排名依據 | Top 5 |
 |---|---|
 | Baseline | Beck、Ty Johnson、Hardin、Hendrickson、Ullola |
-| Fit | Hopkins、Tong、Kuehner、Klein、B. White |
+| Fit | Hopkins、Kuehner、Tong、Klein、B. White |
 | 組合（0.7/0.3） | Hardin、Ty Johnson、Beck、Denholm、Whisenhunt |
 
 - Top 5 重疊：baseline 與 Fit 0 人，baseline 與組合 3 人。
@@ -139,26 +139,26 @@ GLM 的 league × pitch_type 交互作用檢定：
 
 ### 4.1 Bootstrap
 
-設定：300 次 Poisson 比賽層級重抽，同時重抽 AAA 比賽（環境 2024–25 與球員 2025–26 共用同一組權重）、CPBL 比賽，以及 2026 年逐場紀錄（baseline 用）。另外計算「只在非 40 人名單候選人中」的名次。
+設定：300 次 Poisson 比賽層級重抽，同時重抽 AAA 比賽與 CPBL 比賽。每場 AAA 比賽只抽一個權重，環境（2024–25）、球員輪廓（2025–26）與 baseline 用的 2026 逐場紀錄共用，所以同一場比賽會同時影響 baseline 與 Fit。另外計算「只在非 40 人名單候選人中」的名次。
 
 | 排名 | 球員 | 組合排名中位數（90% 區間） | P(Top 1) | 非 40 人名單 P(Top 1) | 非 40 人名單 P(Top 3) |
 |---|---|---|---|---|---|
-| 投手 #1 | **Tyson Hardin** | 3（1–14） | **0.33** | **0.48** | 0.80 |
-| 投手 | Ty Johnson（40 人名單） | 5（1–23） | 0.07 | — | — |
-| 投手 | Trenton Denholm | 7（2–36） | 0.05 | 0.13 | 0.47 |
-| 投手 | Trent Baker | 7（1–36） | 0.11 | 0.18 | 0.50 |
+| 投手 #1 | **Tyson Hardin** | 3（1–16） | **0.32** | **0.47** | 0.82 |
+| 投手 | Ty Johnson（40 人名單） | 5（1–26） | 0.05 | — | — |
+| 投手 | Trenton Denholm | 7（1–35） | 0.07 | 0.14 | 0.45 |
+| 投手 | Trent Baker | 5（1–32） | 0.14 | 0.19 | 0.58 |
 
 打者以 baseline 排名（不用 Fit）：
 
 | 球員 | Baseline 排名中位數（90% 區間） | P(Top 1) | 非 40 人名單 P(Top 1) | 非 40 人名單 P(Top 3) |
 |---|---|---|---|---|
-| Sterlin Thompson（40 人名單） | 3（1–19） | 0.31 | — | — |
-| **James Tibbs III** | 26（3–86） | 0.02 | **0.08** | 0.21 |
-| Kyler Fedko | 20（2–104） | 0.04 | 0.17 | 0.34 |
-| Ralphy Velazquez | 17（2–68） | 0.01 | 0.14 | 0.36 |
-| Kody Huff | 17（4–51） | 0.01 | 0.12 | 0.29 |
+| Sterlin Thompson（40 人名單） | 3（1–20） | 0.33 | — | — |
+| **James Tibbs III** | 21（3–77） | 0.02 | **0.08** | 0.25 |
+| Kyler Fedko | 23（2–107） | 0.03 | 0.15 | 0.30 |
+| Ralphy Velazquez | 18（3–73） | 0.02 | 0.09 | 0.37 |
+| Kody Huff | 17（3–50） | 0.02 | 0.11 | 0.35 |
 
-- 投手首選**中度穩定**：在非 40 人名單中 P(Top 1) 接近一半，P(Top 3) 0.80。
+- 投手首選**中度穩定**：在非 40 人名單中 P(Top 1) 接近一半，P(Top 3) 0.82。
 - 打者首選**不穩定**：非 40 人名單中前 5 名互有勝負，P(Top 1) 都在 0.2 以下，**屬低可信度**。
 - 完整表格見 `evaluation_tables.md` 與 `bootstrap_ranks_*.csv`。
 
