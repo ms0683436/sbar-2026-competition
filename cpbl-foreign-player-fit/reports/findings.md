@@ -168,8 +168,8 @@ GLM 的 league × pitch_type 交互作用檢定：
 
 | | 投手 Top 1 頻率 | 打者 Top 1 頻率 |
 |---|---|---|
-| 只用 baseline | Beck 71%、Ty Johnson 29% | Thompson 74%、Veen 25% |
-| 加入 Fit | **Hardin 57%**、Beck 28%、Ty Johnson 14% | Thompson 30%、Wisdom 28%、Murray 26% |
+| 只用 baseline | Beck 72.2%、Ty Johnson 27.8% | Thompson 72.5%、Veen 26.5% |
+| 加入 Fit | **Hardin 55.5%**、Beck 24.2%、Ty Johnson 17.5% | Thompson 30.5%、Wisdom 28.2%、Murray 24.8% |
 
 固定格點：baseline／Fit 為 1.0/0、0.8/0.2、0.7/0.3、0.5/0.5 時，投手 Top 1 依序為 Beck、Hardin、Hardin、Hardin。打者在 Fit 權重 0.3 以上時 Top 1 會換人，但這只反映不可靠的打者 Fit。
 
