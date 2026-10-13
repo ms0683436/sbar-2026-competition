@@ -13,6 +13,11 @@ through the Chadwick register. Retrosheet is used because statsapi.mlb.com was
 unreachable from the analysis environment; it is the standard reference
 compilation of MLB play-by-play and is cross-checked against game counts and
 published season totals in tests.
+
+Amendment 1: statsapi.mlb.com became reachable. The pre-registered decision source stays
+Retrosheet, but every workload-qualified player is now cross-checked against the
+official MLB Stats API season lines (official_crosscheck); any disagreement on the
+eligibility verdict is flagged in the screening log and fails a test.
 """
 from __future__ import annotations
 
@@ -182,6 +187,62 @@ def check(players: pd.DataFrame, role: str) -> pd.DataFrame:
         r["eligibility_reason"] = reason
         rows.append(r)
     return pd.DataFrame(rows)
+
+
+def official_lines(ids: list[int], season: int) -> pd.DataFrame:
+    """Official MLB (sportId=1) regular-season PA and outs per player, from statsapi."""
+    import requests
+    rows = []
+    hyd = f"stats(group=[hitting,pitching],type=[season],season={season},sportId=1,gameType=R)"
+    for i in range(0, len(ids), 50):
+        chunk = ids[i:i + 50]
+        r = requests.get("https://statsapi.mlb.com/api/v1/people", timeout=60,
+                         params={"personIds": ",".join(map(str, chunk)), "hydrate": hyd})
+        r.raise_for_status()
+        for p in r.json().get("people", []):
+            pa = outs = 0
+            for st in p.get("stats", []):
+                for sp in st.get("splits", []):
+                    non_mlb = sp.get("sport", {}).get("id", 1) != 1
+                    traded_total = "team" not in sp and len(st["splits"]) > 1
+                    if non_mlb or traded_total:
+                        continue        # skip non-MLB rows and the multi-team total row
+                    v = sp["stat"]
+                    if st["group"]["displayName"] == "hitting":
+                        pa += v.get("plateAppearances") or 0
+                    else:
+                        outs += v.get("outs") if v.get("outs") is not None else ip_to_outs(v.get("inningsPitched", "0.0"))
+            rows.append({"mlbam_id": p["id"], "season": season, "official_pa": pa, "official_outs": outs})
+    return pd.DataFrame(rows, columns=["mlbam_id", "season", "official_pa", "official_outs"])
+
+
+def official_crosscheck(players: pd.DataFrame, role: str) -> pd.DataFrame:
+    """Official statsapi values next to the Retrosheet-based verdict (cached per role)."""
+    out = processed(f"mlb_official_crosscheck_{role}s.csv")
+    ids = sorted(players.mlbam_id.astype(int).unique().tolist())
+    if out.exists():
+        cached = pd.read_csv(out)
+        if set(ids) <= set(cached.mlbam_id):
+            return cached[cached.mlbam_id.isin(ids)]
+    seasons = config()["eligibility"]["seasons"]
+    wide = pd.DataFrame({"mlbam_id": ids})
+    for s in seasons:
+        o = official_lines(ids, s).drop(columns="season")
+        col = "official_pa" if role == "hitter" else "official_outs"
+        wide = wide.merge(o[["mlbam_id", col]].rename(columns={col: f"official_{'pa' if role == 'hitter' else 'outs'}_{s}"}),
+                          on="mlbam_id", how="left")
+    vals = wide.set_index("mlbam_id")
+    unit = "pa" if role == "hitter" else "outs"
+    verdict = {}
+    for pid, row in vals.iterrows():
+        # a player missing from the response stays unconfirmed (None), never zero usage;
+        # a returned player with no MLB split is a real 0
+        ok, _ = decide(role, {s: float(row[f"official_{unit}_{s}"]) if pd.notna(row[f"official_{unit}_{s}"]) else None
+                              for s in seasons})
+        verdict[pid] = {True: "eligible", False: "ineligible", None: "unknown"}[ok]
+    wide["official_eligibility"] = wide.mlbam_id.map(verdict)
+    wide.to_csv(out, index=False)
+    return wide
 
 
 def ip_string_outs(ip) -> int:

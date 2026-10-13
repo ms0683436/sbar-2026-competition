@@ -12,15 +12,15 @@ Hitters:
 
 Scoring: z-score within the eligible candidate pool, clipped to +-winsor_z, sign-aligned,
 weighted sum with the pre-registered weights. Higher = better.
-xwOBA / HardHit% / Barrel% are NOT available for 2026 AAA (the pitch-level mirror stops in
-May 2025), so they are not in the hitter baseline.
+xwOBA / HardHit% / Barrel% are not in the hitter baseline: the weights were pre-registered
+when 2026 AAA pitch data was unavailable, and adding stats after seeing rankings is not allowed.
 """
 from __future__ import annotations
 
 import numpy as np
 import pandas as pd
 
-from . import milb_loader
+from . import milb_candidates, milb_loader
 from .common import config, processed, zscore
 
 
@@ -155,12 +155,12 @@ def run(cands: dict) -> dict:
              "pitching_BF", "k_pct", "bb_pct", "k_minus_bb_pct_raw", "k_minus_bb_pct", "era", "fip_raw", "fip",
              "whip", "swstr_pct_aaa", "recent_pitching_BF", "recent_k_minus_bb_pct_raw", "ip_per_gs",
              *[c for c in p.columns if c.startswith("z_")], "baseline_score", "mlb_ip_2024", "mlb_ip_2025",
-             "eligibility_status", "tracked_pitches", "recruitment_feasibility"]
+             "eligibility_status", "tracked_pitches", *milb_candidates.REC_COLS]
     hcols = ["baseline_rank", "mlbam_id", "name", "position", "teams", "leagues", "age_2026", "batting_PA",
              "woba_raw", "woba", "obp", "slg", "ops", "iso_raw", "bb_pct_raw", "k_pct_raw", "whiff_pct_aaa",
              "recent_batting_PA", "recent_woba_raw", *[c for c in h.columns if c.startswith("z_")],
              "baseline_score", "mlb_pa_2024", "mlb_pa_2025", "eligibility_status", "tracked_pa",
-             "recruitment_feasibility"]
+             *milb_candidates.REC_COLS]
     p[[c for c in pcols if c in p.columns]].to_csv(processed("baseline_pitchers.csv"), index=False)
     h[[c for c in hcols if c in h.columns]].to_csv(processed("baseline_hitters.csv"), index=False)
     out["pitcher"], out["hitter"] = p, h
@@ -168,7 +168,6 @@ def run(cands: dict) -> dict:
 
 
 if __name__ == "__main__":
-    from . import milb_candidates
     aaa = milb_loader.load()
     c = milb_candidates.run(aaa)
     r = run({k: v[1] for k, v in c.items()})

@@ -103,3 +103,35 @@ def test_hitter_fit_zero_when_no_distribution_shift():
     t["hand_hit"] = t["hand_aaa"].assign(batter_id="b1")
     f = fit_score.hitter_fit(t, e)
     assert abs(f.loc["b1", "fit_type"]) < 1e-9 and abs(f.loc["b1", "fit_velo"]) < 1e-9
+
+
+def test_recruitment_facts_never_enter_baseline_score():
+    from src import baseline
+    rng = np.random.default_rng(0)
+    spec = baseline.config()["baseline"]["pitcher"]
+    d = pd.DataFrame({m: rng.normal(size=30) for m in spec})
+    d["name"] = [f"p{i}" for i in range(30)]
+    a = baseline.score(d.assign(on_40man=True), "pitcher").sort_values("name").baseline_score.values
+    b = baseline.score(d.assign(on_40man=rng.random(30) > 0.5), "pitcher").sort_values("name").baseline_score.values
+    assert np.allclose(a, b)
+
+
+def test_roster_tier_wording():
+    from src import roster_status
+    on = pd.Series({"on_40man": True, "roster_status": "Injured 60-Day", "roster_club": "San Francisco Giants"})
+    off = pd.Series({"on_40man": False, "roster_status": np.nan, "roster_club": np.nan})
+    assert roster_status.tier(on) == "on MLB 40-man roster (Injured 60-Day) — San Francisco Giants"
+    assert roster_status.tier(off) == "not on any MLB 40-man roster"
+
+
+def test_roster_mlb_line_does_not_double_count_traded_players():
+    from src import roster_status
+    stint = lambda pa, ip, g, team=True: {"sport": {"id": 1}, **({"team": {"id": 1}} if team else {}),
+                                          "stat": {"plateAppearances": pa, "inningsPitched": ip, "gamesPlayed": g}}
+    traded = [stint(40, "10.1", 12), stint(60, "5.2", 20), stint(100, "16.0", 32, team=False)]
+    assert roster_status.mlb_line(traded)["plateAppearances"] == 100          # combined row, not 200
+    assert roster_status.mlb_line(traded)["inningsPitched"] == "16.0"
+    no_total = roster_status.mlb_line(traded[:2])                              # stints only: add them up
+    assert no_total["plateAppearances"] == 100 and no_total["gamesPlayed"] == 32
+    assert no_total["inningsPitched"] == "16.0"                                # 31 + 17 outs
+    assert roster_status.mlb_line([{"sport": {"id": 11}, "stat": {}}]) is None

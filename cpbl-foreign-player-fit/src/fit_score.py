@@ -4,6 +4,9 @@ Common partition of pitches into 9 CELLS (no cell is counted twice):
   FB<88, FB88-91, FB91-94, FB94+   four-seam + sinker by velocity (mph; CPBL km/h converted)
   FC, SL, CU, CH, SPL              other harmonised pitch types
 
+Seasons (amendment 1): environment = config samples.env_seasons on BOTH sides (2024-25,
+the CPBL REBAS span); player profiles = samples.player_seasons of AAA (2025-26).
+
 Environment (per cell, pooled 2024-25 unless stated):
   whiff contrast  w_c = [logit W_CPBL(c) - logit W_AAA(c)] - Δ̄
   damage contrast d_c = [wOBA_CPBL(c) - wOBA_AAA(c)]      - Δ̄_dmg
@@ -11,7 +14,7 @@ Environment (per cell, pooled 2024-25 unless stated):
   profile scores exactly 0: Fit isolates the *shape* match, not the overall
   level difference between leagues (that level is the baseline's job).
 
-PITCHER FIT (AAA tracked pitches 2024-25)
+PITCHER FIT (AAA tracked pitches, player_seasons)
   a_pc  = logit(shrunk whiff%_p,c) - logit W_AAA(c)            pitcher's skill on that pitch
   F1 mix_whiff  = 100 * {Σ_c s_pc [σ(logit W_CPBL(c) + a_pc) - σ(logit W_AAA(c) + Δ̄ + a_pc)] - REF}
                   REF = same sum for the AAA-average swing mix with a = 0 (so that profile scores 0)
@@ -20,7 +23,7 @@ PITCHER FIT (AAA tracked pitches 2024-25)
   F2 mix_damage = -1000 * Σ_c u_pc d_c   (u_pc = pitch usage share)  wOBA points prevented
   Fit = 0.6 z(F1) + 0.4 z(F2)   [heuristic weights, pre-registered, perturbed in evaluate]
 
-HITTER FIT (AAA tracked PAs 2024-25)
+HITTER FIT (AAA tracked PAs, player_seasons)
   sk_hc = n/(n+k) * (wOBA_h,c - wOBA_AAA(c) - δ_h)     split SHAPE (own level δ_h removed)
   G_type + G_velo = 1000 * Σ_c (p_CPBL(c) - p_AAA(c)) sk_hc   (PA-ending pitch distribution shift)
       G_velo = FB-cell part, G_type = non-FB part (additive decomposition)
@@ -63,11 +66,15 @@ def _agg(df: pd.DataFrame, keys: list[str]) -> pd.DataFrame:
 
 def build_tables(cpbl: pd.DataFrame, aaa: pd.DataFrame, pitcher_ids, hitter_ids,
                  cpbl_velo_shift: float = 0.0) -> dict:
+    smp = config()["samples"]
     cpbl = cpbl.assign(cell=assign_cell(cpbl, cpbl_velo_shift))
     aaa = aaa.assign(cell=assign_cell(aaa))
+    cpbl = cpbl[cpbl.season.isin(smp["env_seasons"])]
+    env_aaa = aaa[aaa.season.isin(smp["env_seasons"])]       # environment: same seasons as CPBL
+    aaa = aaa[aaa.season.isin(smp["player_seasons"])]         # players: most recent AAA seasons
     t = {
         "env_cpbl": _agg(cpbl, ["season", "game_id", "cell"]),
-        "env_aaa": _agg(aaa, ["season", "game_id", "cell"]),
+        "env_aaa": _agg(env_aaa, ["season", "game_id", "cell"]),
         "pit": _agg(aaa[aaa.pitcher_id.isin(pitcher_ids)], ["pitcher_id", "season", "game_id", "cell"]),
         "hit": _agg(aaa[aaa.batter_id.isin(hitter_ids)], ["batter_id", "season", "game_id", "cell"]),
     }
@@ -77,7 +84,7 @@ def build_tables(cpbl: pd.DataFrame, aaa: pd.DataFrame, pitcher_ids, hitter_ids,
         return (p.groupby(keys, observed=True)
                 .agg(pa=("pa_end", "size"), woba_num=("woba_value", "sum")).reset_index())
     t["hand_cpbl"] = hand(cpbl, ["season", "game_id", "stand", "p_throws"])
-    t["hand_aaa"] = hand(aaa, ["season", "game_id", "stand", "p_throws"])
+    t["hand_aaa"] = hand(env_aaa, ["season", "game_id", "stand", "p_throws"])
     t["hand_hit"] = hand(aaa[aaa.batter_id.isin(hitter_ids)], ["batter_id", "season", "game_id", "stand", "p_throws"])
     return t
 

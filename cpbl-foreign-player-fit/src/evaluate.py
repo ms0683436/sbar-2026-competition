@@ -3,7 +3,7 @@
 Test A  baseline vs Fit: rank overlap, correlation, and how much of Fit is explained
         by baseline stats (is Fit just "high-whiff AAA pitcher" again?)
 Test B  stability: Poisson game bootstrap (AAA + CPBL games, and 2026 game logs for the
-        baseline), weight perturbation, 2024-only vs 2025-only re-estimation
+        baseline), weight perturbation, environment 2024 vs 2025, player 2025 vs 2026
 Test C  negative cases: strong baseline / weak Fit, with the driving cells
 Test D  falsification: elite-pitcher confound (between vs within-pitcher velocity slope),
         hand/velocity/count adjustment, pitch-classification coarsening, CPBL radar
@@ -119,7 +119,12 @@ def test_b(r: dict, P: pd.DataFrame, H: pd.DataFrame, reps: int | None = None) -
     Pt["pid"], Ht["bid"] = Pt.mlbam_id.astype(str), Ht.mlbam_id.astype(str)
     plogs, hlogs = _baseline_logs("pitcher", Pt), _baseline_logs("hitter", Ht)
     cpbl_games = t["env_cpbl"].game_id.unique()
-    aaa_games = t["env_aaa"].game_id.unique()
+    # one weight per AAA game, shared by the environment (2024-25), the player tables
+    # (2025-26) and the 2026 game logs behind the baseline, so a resampled game moves
+    # baseline and Fit together. Game ids are compared as strings (logs store integers).
+    plogs["game_id"], hlogs["game_id"] = plogs.game_id.astype(str), hlogs.game_id.astype(str)
+    aaa_games = pd.unique(np.concatenate([t[k].game_id.astype(str).unique() for k in ("env_aaa", "pit", "hit", "hand_hit")]
+                                         + [plogs.game_id.unique(), hlogs.game_id.unique()]))
     ch = config()["fit"]["combined_heuristic"]
     store = {k: [] for k in ("p_fit", "p_comb", "p_base", "h_fit", "h_comb", "h_base")}
     for _ in range(reps):
@@ -129,24 +134,36 @@ def test_b(r: dict, P: pd.DataFrame, H: pd.DataFrame, reps: int | None = None) -
         hf = fit_score.hitter_fit(t, env, wa).reindex(Ht.bid)
         pfit = fit_score.combine_pitcher(pf).values
         hfit = zscore(hf.fit_total, 2.5).values
-        wpl = poisson_weights(plogs.game_id.unique().tolist() + hlogs.game_id.unique().tolist())
-        pb = baseline_boot("pitcher", Pt, plogs, wpl).reindex(Pt.mlbam_id).values
-        hb = baseline_boot("hitter", Ht, hlogs, wpl).reindex(Ht.mlbam_id).values
+        pb = baseline_boot("pitcher", Pt, plogs, wa).reindex(Pt.mlbam_id).values
+        hb = baseline_boot("hitter", Ht, hlogs, wa).reindex(Ht.mlbam_id).values
         for key, f, b in (("p", pfit, pb), ("h", hfit, hb)):
             comb = ch["baseline"] * zscore(pd.Series(b)).values + ch["fit"] * np.nan_to_num(f)
-            store[f"{key}_fit"].append(pd.Series(f).rank(ascending=False).values)
-            store[f"{key}_base"].append(pd.Series(b).rank(ascending=False).values)
-            store[f"{key}_comb"].append(pd.Series(comb).rank(ascending=False).values)
+            store[f"{key}_fit"].append(np.asarray(f, dtype=float))
+            store[f"{key}_base"].append(np.asarray(b, dtype=float))
+            store[f"{key}_comb"].append(np.asarray(comb, dtype=float))
+
+    def ranks(S: np.ndarray, mask: np.ndarray | None = None) -> np.ndarray:
+        S = S if mask is None else np.where(mask, S, -np.inf)
+        R = pd.DataFrame(S).rank(axis=1, ascending=False, method="first").values
+        return R if mask is None else np.where(mask, R, np.nan)
+
     out = {}
     for key, D in (("p", Pt), ("h", Ht)):
-        res = pd.DataFrame({"name": D.name.values, "mlbam_id": D.mlbam_id.values})
+        res = pd.DataFrame({"name": D.name.values, "mlbam_id": D.mlbam_id.values,
+                            "on_40man": D.on_40man.fillna(False).astype(bool).values})
+        free = ~res.on_40man.values
         for kind in ("fit", "base", "comb"):
-            R = np.vstack(store[f"{key}_{kind}"])
+            S = np.vstack(store[f"{key}_{kind}"])
+            R = ranks(S)
             res[f"{kind}_rank_med"] = np.median(R, axis=0)
             res[f"{kind}_rank_p05"] = np.percentile(R, 5, axis=0)
             res[f"{kind}_rank_p95"] = np.percentile(R, 95, axis=0)
             res[f"{kind}_p_top1"] = (R == 1).mean(axis=0)
             res[f"{kind}_p_top5"] = (R <= 5).mean(axis=0)
+            # among candidates NOT on a 40-man roster (amendment 1 primary-pick pool)
+            Rf = ranks(S, np.broadcast_to(free, S.shape))
+            res[f"{kind}_p_top1_non40"] = np.where(free, (Rf == 1).mean(axis=0), np.nan)
+            res[f"{kind}_p_top3_non40"] = np.where(free, (Rf <= 3).mean(axis=0), np.nan)
         out[key] = res.sort_values("comb_rank_med")
     return out
 
@@ -194,22 +211,27 @@ def season_split(r: dict, P: pd.DataFrame, H: pd.DataFrame) -> dict:
            "env_damage_contrast_2025": e25.damage_contrast.round(3).to_dict(),
            "env_whiff_contrast_spearman_24v25": env_corr_w,
            "env_damage_contrast_spearman_24v25": env_corr_d}
-    # player-level: same pooled environment, player data split by season
+    # player-level reliability: same pooled environment, player data split by season
+    # (amendment 1: the two player_seasons, 2025 vs 2026)
     env = r["env"]
-    pf24 = fit_score.pitcher_fit(t, env, seasons=[2024])
-    pf25 = fit_score.pitcher_fit(t, env, seasons=[2025])
-    j = pf24.join(pf25, lsuffix="_24", rsuffix="_25", how="inner")
-    j = j[(j.tracked_pitches_used_24 >= 300) & (j.tracked_pitches_used_25 >= 300)]
+    s1, s2 = config()["samples"]["player_seasons"]
+    out["player_seasons_compared"] = [s1, s2]
+    a, b = fit_score.pitcher_fit(t, env, seasons=[s1]), fit_score.pitcher_fit(t, env, seasons=[s2])
+    j = a.join(b, lsuffix="_1", rsuffix="_2", how="inner")
+    j = j[(j.tracked_pitches_used_1 >= 300) & (j.tracked_pitches_used_2 >= 300)]
     out["pitcher_n_both_seasons"] = len(j)
-    out["pitcher_mix_whiff_r_24v25"] = spearman(j.fit_mix_whiff_24, j.fit_mix_whiff_25)
-    out["pitcher_mix_damage_r_24v25"] = spearman(j.fit_mix_damage_24, j.fit_mix_damage_25)
-    hf24 = fit_score.hitter_fit(t, env, seasons=[2024])
-    hf25 = fit_score.hitter_fit(t, env, seasons=[2025])
-    j = hf24.join(hf25, lsuffix="_24", rsuffix="_25", how="inner")
-    j = j[(j.tracked_pa_used_24 >= 100) & (j.tracked_pa_used_25 >= 100)]
+    out["pitcher_mix_whiff_r_season"] = spearman(j.fit_mix_whiff_1, j.fit_mix_whiff_2)
+    out["pitcher_mix_damage_r_season"] = spearman(j.fit_mix_damage_1, j.fit_mix_damage_2)
+    cols = ["fit_mix_whiff", "fit_mix_damage"]
+    out["pitcher_fit_score_r_season"] = spearman(
+        fit_score.combine_pitcher(j[[c + "_1" for c in cols]].set_axis(cols, axis=1)),
+        fit_score.combine_pitcher(j[[c + "_2" for c in cols]].set_axis(cols, axis=1)))
+    a, b = fit_score.hitter_fit(t, env, seasons=[s1]), fit_score.hitter_fit(t, env, seasons=[s2])
+    j = a.join(b, lsuffix="_1", rsuffix="_2", how="inner")
+    j = j[(j.tracked_pa_used_1 >= 100) & (j.tracked_pa_used_2 >= 100)]
     out["hitter_n_both_seasons"] = len(j)
     for c in ("fit_total", "fit_velo", "fit_type", "fit_hand"):
-        out[f"hitter_{c}_r_24v25"] = spearman(j[f"{c}_24"], j[f"{c}_25"])
+        out[f"hitter_{c}_r_season"] = spearman(j[f"{c}_1"], j[f"{c}_2"])
     # environment fixed to one season, all player data: does the ranking depend on env season?
     for lab, e in (("2024env", e24), ("2025env", e25)):
         pf = fit_score.pitcher_fit(t, e)
@@ -290,7 +312,7 @@ def test_d(r: dict, P: pd.DataFrame, H: pd.DataFrame) -> dict:
     out["D1_env_without_top10_velo"] = e2[["swings_cpbl", "whiff_contrast", "damage_contrast"]].round(3).to_dict()
     out["D1_pitcher_fit_corr_without_top10"] = spearman(base_p, fit_score.combine_pitcher(fit_score.pitcher_fit(t2, e2)))
     out["D1_hitter_fit_corr_without_top10"] = spearman(base_h, fit_score.hitter_fit(t2, e2).fit_total)
-    vs = velocity_slopes(cpbl, aaa)
+    vs = velocity_slopes(cpbl, aaa[aaa.season.isin(config()["samples"]["env_seasons"])])
     out["D1_velocity_slopes"] = vs.round(4).to_dict(orient="records")
 
     # D2 hand / velocity / count adjustment (GLM in cpbl_profile): raw vs adjusted contrast
@@ -366,6 +388,44 @@ def test_d(r: dict, P: pd.DataFrame, H: pd.DataFrame) -> dict:
     return out
 
 
+# ------------------------------------------------------------------ recommendation rule
+def recommend(P: pd.DataFrame, H: pd.DataFrame, season: dict, boot: dict) -> dict:
+    """Pre-registered rule (config.recruitment, amendment 1). Returns shortlists + picks."""
+    rc = config()["recruitment"]
+    hitter_rel = season.get("hitter_fit_total_r_season", np.nan)
+    hitter_uses_fit = bool(hitter_rel >= rc["hitter_fit_min_reliability"])
+    out = {"hitter_fit_reliability": hitter_rel, "hitter_uses_fit": hitter_uses_fit}
+    keep = ["name", "mlbam_id", "age_2026", "teams", "baseline_rank", "baseline_rank_tracked", "fit_rank",
+            "combined_rank", *milb_candidates.REC_COLS]
+    rows = []
+    for role, D, key, rank_col in (("pitcher", P, "p", "combined_rank"),
+                                   ("hitter", H, "h", "combined_rank" if hitter_uses_fit else "baseline_rank_tracked")):
+        d = D[D.fit_available].sort_values(rank_col).copy()
+        d["rule_rank"] = np.arange(1, len(d) + 1)
+        d["on_40man"] = d.on_40man.fillna(False).astype(bool)
+        d["rule_rank_non40"] = np.nan
+        d.loc[~d.on_40man, "rule_rank_non40"] = np.arange(1, int((~d.on_40man).sum()) + 1)
+        b = boot[key].set_index("mlbam_id")
+        kind = "comb" if rank_col == "combined_rank" else "base"
+        d["boot_p_top1"] = d.mlbam_id.map(b[f"{kind}_p_top1"])
+        d["boot_p_top1_non40"] = d.mlbam_id.map(b[f"{kind}_p_top1_non40"])
+        d["boot_p_top3_non40"] = d.mlbam_id.map(b[f"{kind}_p_top3_non40"])
+        d["role"], d["rank_basis"] = role, rank_col
+        top = d.head(10)
+        free = d[~d.on_40man].head(10)
+        rows.append(pd.concat([top, free]).drop_duplicates("mlbam_id"))
+        out[role] = {"rank_basis": rank_col, "overall_top": d.iloc[0]["name"],
+                     "overall_top_on_40man": bool(d.iloc[0].on_40man),
+                     "primary_pick": free.iloc[0]["name"] if len(free) else None,
+                     "alternates": free.iloc[1:3].name.tolist(),
+                     "n_ranked": len(d), "n_non40": int((~d.on_40man).sum())}
+    cols = ["role", "rank_basis", "rule_rank", "rule_rank_non40", "boot_p_top1", "boot_p_top1_non40",
+            "boot_p_top3_non40", *keep]
+    sl = pd.concat(rows)
+    sl[[c for c in cols if c in sl.columns]].to_csv(processed("recommendation_shortlist.csv"), index=False)
+    return out
+
+
 # ------------------------------------------------------------------ figures & report
 def figures(P, H, boot):
     import matplotlib
@@ -412,6 +472,7 @@ def run(reps: int | None = None) -> dict:
     for key in ("p", "h"):
         boot[key].to_csv(processed(f"bootstrap_ranks_{'pitchers' if key == 'p' else 'hitters'}.csv"), index=False)
     summary["B_boot_top"] = {key: boot[key].head(8).round(3).to_dict(orient="records") for key in ("p", "h")}
+    summary["recommendation"] = recommend(P, H, summary["B_season"], boot)
     figures(P, H, boot)
     with open(processed("evaluation_summary.json"), "w") as f:
         json.dump(summary, f, indent=2, default=lambda o: o.item() if hasattr(o, "item") else str(o), ensure_ascii=False)
@@ -421,6 +482,10 @@ def run(reps: int | None = None) -> dict:
     lines.append(md_table(boot["p"].head(15), ".2f"))
     lines.append("\n## Bootstrap rank stability — hitters (Fit-available subset)\n")
     lines.append(md_table(boot["h"].head(15), ".2f"))
+    lines.append("\n## Recommendation shortlist (pre-registered rule, amendment 1)\n")
+    sl = pd.read_csv(processed("recommendation_shortlist.csv"))
+    lines.append(md_table(sl[["role", "rule_rank", "rule_rank_non40", "name", "age_2026", "teams", "on_40man",
+                              "roster_club", "roster_status", "mlb_2026_g", "boot_p_top1", "boot_p_top1_non40"]], ".2f"))
     lines.append("\n## Fit environment cells (pooled 2024-25)\n")
     lines.append(md_table(r["env"][["swings_cpbl", "W_cpbl", "swings_aaa", "W_aaa", "whiff_contrast", "pa_cpbl",
                                     "woba_cpbl", "pa_aaa", "woba_aaa", "damage_contrast", "pa_share_cpbl",

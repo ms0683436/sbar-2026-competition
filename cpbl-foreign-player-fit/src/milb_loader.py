@@ -1,5 +1,13 @@
-"""AAA pitch-level feed (armstjc/milb-data-repository mirror of the MLB Stats API
-MiLB game feed) -> common pitch schema.
+"""AAA pitch-level feed -> common pitch schema. Two sources, same upstream (MLB Stats API):
+  * armstjc/milb-data-repository mirror: 2024 and 2025-03-28..05-25
+  * statsapi.mlb.com game feed (src.statsapi_pbp, amendment 1): rest of 2025 and 2026
+Mirror rows are kept first where the two overlap.
+
+COUNT NOTE: both sources store the count AFTER each pitch. statsapi rows also carry the
+count BEFORE the pitch (balls_before/strikes_before), read from the feed's previous event,
+so automatic balls/strikes from pitch-timer violations (not pitches) are respected. The
+mirror dropped those events, so for mirror rows (2024, 2025 to 05-25) the pre-pitch count
+is reconstructed by shifting and misses them.
 
 DATA-QUALITY NOTE: the mirror's scraper concatenates every successfully parsed
 game twice (and re-appends the previous game when a game fails), so raw files
@@ -10,10 +18,12 @@ from __future__ import annotations
 
 import glob
 import re
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
+from . import statsapi_pbp
 from .common import config, processed, raw, snapshot
 from .pitch_schema import finalize
 
@@ -60,10 +70,12 @@ def classify_des(des: str | float) -> str:
     return "OUT"
 
 
-def read_raw(pattern: str) -> pd.DataFrame:
+def read_raw(pattern: str, statsapi: pd.DataFrame | None = None) -> pd.DataFrame:
     frames = []
     for f in sorted(glob.glob(str(raw("milb_pbp", pattern)))):
-        frames.append(pd.read_csv(f, usecols=USECOLS, low_memory=False))
+        frames.append(pd.read_csv(f, usecols=USECOLS, low_memory=False).assign(source="mirror"))
+    if statsapi is not None and len(statsapi):
+        frames.append(statsapi.assign(source="statsapi"))
     df = pd.concat(frames, ignore_index=True)
     n0 = len(df)
     df = df.drop_duplicates(["game_pk", "at_bat_number", "pitch_number"]).copy()
@@ -91,10 +103,14 @@ def to_schema(df: pd.DataFrame) -> pd.DataFrame:
              .groupby(["game_pk", "pitcher_team"]).pitcher.first().rename("sp"))
     df = df.join(first, on=["game_pk", "pitcher_team"])
     df["pitcher_role"] = np.where(df.pitcher == df.sp, "SP", "RP")
-    # the feed's balls/strikes are the count AFTER the pitch; shift to count before
+    # the feed's balls/strikes are the count AFTER the pitch; shift to count before,
+    # unless the source recorded the pre-pitch count itself (statsapi rows)
     g = df.groupby("pa_id")
-    df["balls"] = g.balls.shift(1).fillna(0).clip(upper=3).astype(int)
-    df["strikes"] = g.strikes.shift(1).fillna(0).clip(upper=2).astype(int)
+    for c in ("balls", "strikes"):
+        shifted = g[c].shift(1).fillna(0)
+        if f"{c}_before" in df:
+            shifted = pd.to_numeric(df[f"{c}_before"], errors="coerce").fillna(shifted)
+        df[c] = shifted.clip(upper=3 if c == "balls" else 2).astype(int)
     code = df["type"].astype(str)
     bunt_in_play = code.isin(["X", "D", "E"]) & df.des.str.contains("bunt", case=False, na=False) & \
         df.groupby("pa_id").pitch_number.transform("max").eq(df.pitch_number)
@@ -117,16 +133,34 @@ def to_schema(df: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
+def _inputs_newer_than(out) -> bool:
+    """True if any raw input (mirror CSV, statsapi schedule or scheduled game file) is newer than the
+    cache. Game files outside schedule.csv (the backtest's AAA 2023) are not inputs of this cache."""
+    t = out.stat().st_mtime
+    files = glob.glob(str(raw("milb_pbp", "*_aaa_pbp.csv")))
+    sched = raw("statsapi_pbp", "schedule.csv")
+    if sched.exists():
+        files.append(str(sched))
+        files += [str(statsapi_pbp._game_path(pk)) for pk in pd.read_csv(sched).game_pk]
+    return any(Path(f).exists() and Path(f).stat().st_mtime > t for f in files)
+
+
 def load(force: bool = False) -> pd.DataFrame:
     out = processed("aaa_pitches.parquet")
-    if out.exists() and not force:
+    if out.exists() and not force and not _inputs_newer_than(out):
         return pd.read_parquet(out)
     audits, frames = [], []
-    for year, months in config()["sources"]["milb_pbp_months"].items():
-        r = read_raw(f"{year}_*_aaa_pbp.csv")
+    api = statsapi_pbp.read_all(USECOLS + statsapi_pbp.PRE_COUNT)
+    api_year = pd.to_datetime(api.game_date).dt.year if len(api) else pd.Series(dtype=int)
+    years = sorted(set(config()["sources"]["milb_pbp_months"]) | set(api_year.unique().tolist()))
+    for year in years:
+        r = read_raw(f"{year}_*_aaa_pbp.csv", api[api_year == year] if len(api) else None)
         s = to_schema(r)
+        src = r.loc[s.index, "source"] if len(s) else pd.Series(dtype=object)
         audits.append({"season": year, "rows_raw": r.attrs["n_raw"], "rows_dedup": r.attrs["n_dedup"],
                        "rows_regular_aaa": len(s), "games": s.game_id.nunique(),
+                       "games_mirror": s.game_id[src.eq("mirror").values].nunique(),
+                       "games_statsapi": s.game_id[src.eq("statsapi").values].nunique(),
                        "first_date": s.date.min(), "last_date": s.date.max()})
         frames.append(s)
     df = pd.concat(frames, ignore_index=True)

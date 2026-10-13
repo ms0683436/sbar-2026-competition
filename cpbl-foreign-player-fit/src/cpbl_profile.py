@@ -340,6 +340,7 @@ def figures(prof: pd.DataFrame, env: pd.DataFrame, wc: pd.DataFrame, cpbl: pd.Da
 def run() -> dict:
     cpbl = add_bands(rebas_loader.load())
     aaa = add_bands(milb_loader.load())
+    aaa = aaa[aaa.season.isin(config()["samples"]["env_seasons"])]   # same seasons as CPBL (amendment 1)
     prof_c = batter_profile(cpbl)
     prof_a = batter_profile(aaa)
     env_c = pitching_environment(cpbl)

@@ -26,6 +26,14 @@ sources:
     2025: [3, 4, 5]
     2026: [4, 5, 6, 7, 8, 9]
   milb_season_years: [2025, 2026]
+  # AMENDMENT 1 (2026-10-13, committed before any amended ranking was computed):
+  # statsapi.mlb.com became reachable. The mirror's pitch-level gap (2025-05-26 onward
+  # and all of 2026) is filled from the official game feed. The windows overlap the
+  # mirror by a few days so cross-source consistency can be tested; duplicates are
+  # dropped on (game_pk, at_bat_number, pitch_number), mirror rows kept first.
+  statsapi_pbp_windows:
+    2025: ["2025-05-20", "2025-09-30"]
+    2026: ["2026-03-20", "2026-09-30"]
   retrosheet_repo: "https://github.com/chadwickbureau/retrosheet"
   register_repo: "https://github.com/chadwickbureau/register"
   chadwick_tarball: "https://github.com/chadwickbureau/chadwick/releases/download/v0.10.0/chadwick-0.10.0.tar.gz"
@@ -81,6 +89,11 @@ samples:
   recent_shrink_bf: 60         # recent-form rates shrunk toward the player's own season rate
   min_pitcher_tracked_pitches: 400
   min_hitter_tracked_pa: 150
+  # AMENDMENT 1: player pitch-level profiles use the two most recent complete AAA
+  # seasons; the CPBL-vs-AAA environment compares the SAME seasons on both sides
+  # (CPBL REBAS only covers 2024-25). Thresholds above are unchanged.
+  player_seasons: [2025, 2026]
+  env_seasons: [2024, 2025]
 
 # AAA has two leagues with very different run environments (PCL >> IL). Baseline
 # rate stats are expressed relative to the player's league(s) average, PA/BF-weighted.
@@ -140,3 +153,50 @@ fit:
 evaluation:
   bootstrap_reps: 300
   random_seed: 20261013
+
+# AMENDMENT 1: recruitment feasibility. Facts only, from the official MLB Stats API
+# as of the snapshot date (40-man roster membership of all 30 MLB clubs, 2026 MLB
+# appearances, transaction log). Never enters any score. The recommendation rule is
+# unchanged (pitcher: combined 0.7/0.3 rank among Fit-available; hitter: baseline
+# rank, Fit only if its 2025-vs-2026 reliability rho >= 0.30), except that the
+# PRIMARY pick is the best-ranked candidate NOT on an MLB 40-man roster at the
+# snapshot; the best-ranked candidate overall is always shown next to it.
+recruitment:
+  as_of: "2026-10-13"
+  primary_pick_excludes_40man: true
+  hitter_fit_min_reliability: 0.30
+
+# AMENDMENT 2 (2026-10-13; committed BEFORE any backtest outcome was computed or viewed):
+# backtest of the PITCHER Fit against foreign pitchers' actual CPBL results.
+# While building the cohort only CPBL batters-faced counts, first-appearance dates and
+# throwing hand were looked at, never a CPBL rate stat. Identities (REBAS Chinese name ->
+# English name -> MLBAM id) come from news reports + the MLB Stats API people search and
+# are listed with a source per row in data/reference/cpbl_foreign_pitchers.csv.
+# Nothing here enters the 2026 rankings; no backtest outcome changes the picks.
+backtest:
+  reference: data/reference/cpbl_foreign_pitchers.csv
+  outcome_seasons: [2024, 2025]       # the REBAS span
+  aaa_window_days: 365                # AAA tracked pitches in the 365 days BEFORE the pitcher's
+                                      # first CPBL appearance of the outcome season
+  aaa_extra_windows:                  # AAA 2023 fetched only for this backtest (statsapi feed)
+    2023: ["2023-03-28", "2023-09-30"]
+  min_aaa_tracked_pitches: 400        # = samples.min_pitcher_tracked_pitches
+  min_cpbl_bf: 60
+  one_season_per_pitcher: earliest    # a pitcher eligible in both seasons counts once
+  identity_check: throwing hand in AAA window must equal REBAS hand, else excluded
+  environment: leave_season_out       # outcome 2025 -> CPBL 2024 vs AAA 2024; outcome 2024 -> 2025 vs 2025
+  fit_z: within_cohort                # Fit = 0.6 z(F1) + 0.4 z(F2), z over the pooled cohort
+  outcomes:                           # same definitions on both sides (pitch-level data)
+    whiff: whiffs / swings, bunts excluded
+    k_minus_bb_pct: (SO - uBB) / PA
+    woba_allowed: generic woba_weights, IBB/SH/CI excluded from the denominator
+  hypotheses:
+    H1: "primary: Spearman(F1 mix_whiff, CPBL whiff% - AAA whiff%) > 0"
+    H2: "Spearman(F2 mix_damage, CPBL wOBA - AAA wOBA) < 0"
+    H3: "Spearman(Fit, residual of CPBL K-BB% after OLS on AAA K-BB%) > 0"
+    reference: "Spearman(AAA K-BB%, CPBL K-BB%) and Spearman(0.7 z(AAA K-BB%) + 0.3 Fit, CPBL K-BB%)"
+  bootstrap: {draws: 2000, ci: 0.90, seed: 20261013}   # resample pitchers
+  min_n_for_conclusion: 15            # below this every result is reported as descriptive only
+  # Reporting rule: if H1's 90% CI lies entirely below 0, recommendations.md says the
+  # backtest contradicts Fit; if it lies entirely above 0 it says the backtest supports it;
+  # otherwise "inconclusive". The 2026 picks are not changed by any outcome.

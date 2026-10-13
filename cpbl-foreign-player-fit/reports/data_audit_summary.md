@@ -27,27 +27,28 @@ Shares are fraction of rows with a non-missing value.
 
 ## AAA — MLB Stats API MiLB feed (GitHub mirror), pitch level
 
-| season | rows_raw | rows_dedup | rows_regular_aaa | games | first_date | last_date |
-|---|---|---|---|---|---|---|
-| 2024 | 1398450 | 675688 | 673753 | 2232 | 2024-03-29 | 2024-09-22 |
-| 2025 | 464388 | 220758 | 220758 | 743 | 2025-03-28 | 2025-05-25 |
+| season | rows_raw | rows_dedup | rows_regular_aaa | games | games_mirror | games_statsapi | first_date | last_date |
+|---|---|---|---|---|---|---|---|---|
+| 2024 | 1398450 | 675688 | 673753 | 2232 | 2232 | 0 | 2024-03-29 | 2024-09-22 |
+| 2025 | 927158 | 661491 | 661491 | 2198 | 743 | 1455 | 2025-03-28 | 2025-09-21 |
+| 2026 | 652542 | 652542 | 652542 | 2152 | 0 | 2152 | 2026-03-27 | 2026-09-20 |
 
 
-| field | 2024 | 2025 |
-|---|---|---|
-| pitch_type_raw | 0.999 | 0.998 |
-| pitch_type | 0.998 | 0.997 |
-| velo_mph | 0.999 | 0.998 |
-| release_spin_rate | 0.989 | 0.971 |
-| release_extension | 0.999 | 0.995 |
-| pfx_x | 0.999 | 0.998 |
-| pfx_z | 0.999 | 0.998 |
-| plate_x | 0.999 | 0.998 |
-| in_zone | 0.999 | 0.998 |
-| p_throws | 1.000 | 1.000 |
-| stand | 1.000 | 1.000 |
-| launch_speed (balls in play) | 0.992 | 0.987 |
-| launch_angle (balls in play) | 0.993 | 0.988 |
+| field | 2024 | 2025 | 2026 |
+|---|---|---|---|
+| pitch_type_raw | 0.999 | 0.999 | 0.999 |
+| pitch_type | 0.998 | 0.997 | 0.997 |
+| velo_mph | 0.999 | 0.999 | 0.999 |
+| release_spin_rate | 0.989 | 0.988 | 0.986 |
+| release_extension | 0.999 | 0.998 | 0.996 |
+| pfx_x | 0.999 | 0.999 | 0.999 |
+| pfx_z | 0.999 | 0.999 | 0.999 |
+| plate_x | 0.999 | 0.999 | 0.999 |
+| in_zone | 0.999 | 0.999 | 0.999 |
+| p_throws | 1.000 | 1.000 | 1.000 |
+| stand | 1.000 | 1.000 | 1.000 |
+| launch_speed (balls in play) | 0.992 | 0.988 | 0.989 |
+| launch_angle (balls in play) | 0.993 | 0.989 | 0.990 |
 
 
 Raw columns present but EMPTY in the mirror (2025-04 file):

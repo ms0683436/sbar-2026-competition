@@ -1,0 +1,117 @@
+{
+  "n": 15,
+  "by_season": {
+    "2024": 8,
+    "2025": 7
+  },
+  "tests": [
+    {
+      "test": "H1 F1 vs Δwhiff% (primary)",
+      "n": 15,
+      "rho": 0.5642857142857142,
+      "ci_lo": 0.11634655951783024,
+      "ci_hi": 0.8345790643536359,
+      "expected_sign": "+",
+      "verdict": "supports"
+    },
+    {
+      "test": "H2 F2 vs ΔwOBA",
+      "n": 15,
+      "rho": 0.11785714285714284,
+      "ci_lo": -0.3768234735091472,
+      "ci_hi": 0.5109529304422499,
+      "expected_sign": "-",
+      "verdict": "inconclusive"
+    },
+    {
+      "test": "H3 Fit vs K-BB% residual",
+      "n": 15,
+      "rho": -0.007142857142857141,
+      "ci_lo": -0.4791404015277903,
+      "ci_hi": 0.47860044761074955,
+      "expected_sign": "+",
+      "verdict": "inconclusive"
+    },
+    {
+      "test": "ref AAA K-BB% vs CPBL K-BB%",
+      "n": 15,
+      "rho": 0.2752458650468749,
+      "ci_lo": -0.1372726643749856,
+      "ci_hi": 0.5747995031447527,
+      "expected_sign": "+",
+      "verdict": "inconclusive"
+    },
+    {
+      "test": "ref combined vs CPBL K-BB%",
+      "n": 15,
+      "rho": 0.1876676352592329,
+      "ci_lo": -0.25237174211127106,
+      "ci_hi": 0.574840383862123,
+      "expected_sign": "+",
+      "verdict": "inconclusive"
+    },
+    {
+      "test": "ref Fit vs CPBL K-BB%",
+      "n": 15,
+      "rho": -0.16443259470332788,
+      "ci_lo": -0.6022433010027948,
+      "ci_hi": 0.2894499063831517,
+      "expected_sign": "+",
+      "verdict": "inconclusive"
+    }
+  ],
+  "exploratory": [
+    {
+      "test": "X1 F1 vs CPBL whiff% residual after AAA whiff%",
+      "n": 15,
+      "rho": 0.2964285714285714,
+      "ci_lo": -0.2402376069584895,
+      "ci_hi": 0.7086078293698038,
+      "expected_sign": "+"
+    },
+    {
+      "test": "X2 AAA whiff% vs Δwhiff% (regression to the mean)",
+      "n": 15,
+      "rho": -0.5285714285714286,
+      "ci_lo": -0.810943346508564,
+      "ci_hi": -0.08694082561607287,
+      "expected_sign": "-"
+    },
+    {
+      "test": "X3 F1 vs AAA whiff%",
+      "n": 15,
+      "rho": -0.42499999999999993,
+      "ci_lo": -0.7693835334420343,
+      "ci_hi": 0.09692782665198756,
+      "expected_sign": "-"
+    },
+    {
+      "test": "X4 F1 vs CPBL whiff% (level)",
+      "n": 15,
+      "rho": 0.017857142857142853,
+      "ci_lo": -0.4515715153103715,
+      "ci_hi": 0.5276980464904467,
+      "expected_sign": "+"
+    },
+    {
+      "test": "X5 H1 within outcome season 2024",
+      "n": 8,
+      "rho": -0.09523809523809526,
+      "ci_lo": NaN,
+      "ci_hi": NaN,
+      "expected_sign": "+"
+    },
+    {
+      "test": "X5 H1 within outcome season 2025",
+      "n": 7,
+      "rho": 0.4642857142857144,
+      "ci_lo": NaN,
+      "ci_hi": NaN,
+      "expected_sign": "+"
+    }
+  ],
+  "h1_leave_one_out_range": [
+    0.46373626373626364,
+    0.6439560439560439
+  ]
+}
