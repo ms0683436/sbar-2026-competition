@@ -8,6 +8,7 @@
 
 - **分析快照**：2026-10-13
 - **Go / No-Go**：有條件 GO（細球種可行；AAA 2025–26 逐球已補齊，但中職沒有 2026 逐球、也沒有轉速與位移）
+- **修正 3、4（2026-10-13）**：修正 3 把 Fit 的中職環境差異改在「同一投手、同一進壘位置」內估計，去掉投手品質混雜；修正 4 把 baseline 權重從人工判斷改成用 2025→2026 AAA 資料估計。兩項規則都在計算前 commit。球場校正尚未做。
 - **修正 2（2026-10-13）**：建立 REBAS 洋投 → MLBAM ID 對照表，並以 2024–25 來台洋投回測投手 Fit。規則在計算前先 commit；回測不改變推薦。
 - **修正 1（2026-10-13）**：官方 `statsapi.mlb.com` 開放後，補上 2025 下半季與 2026 AAA 逐球資料、MLB 40 人名單與異動事實，並以官方數據交叉核對出賽資格。所有權重在修正前已預先登錄、沒有改動（見 `config/scoring.yaml` 與 git 歷史）。
 
@@ -15,9 +16,9 @@
 
 | | 結論 |
 |---|---|
-| **A. 技術可行？** | **可行，但有條件。** AAA 端改用官方 statsapi，2024–26 逐球完整；CPBL 端用 REBAS 2024–25（ODC-By）。中職官方站可連線，但使用條款要求書面授權，所以沒有使用。整條流程可以重現，有 60 個自動化測試。限制：中職缺 2026 逐球、轉速與位移；中職球種為人工標記。 |
-| **B. 找到 baseline 沒有的適性資訊？** | **投手：有獨立且穩定的資訊，但未證實能預測來台成績。** 投手 Fit 與 baseline 的 ρ = −0.05，2025 對 2026 跨季可靠度 0.82，主要內容是速球球速與球種組合。「中職怕高速球」這個訊號經投手內斜率檢驗，主要是投手品質混雜（findings D1）。<br>**打者：沒有可用的。** 打者 Fit 跨季可靠度 0.22，未達預先登錄的 0.30 門檻，H3 不成立。<br>**回測（修正 2）**：15 位從 AAA 直接來台的洋投中，揮空面 Fit 的方向正確（ρ = 0.56），但大部分可用均值回歸解釋；Fit 沒有預測中職 K-BB% 或被打 wOBA。見 [`reports/backtest.md`](reports/backtest.md)。 |
-| **C. 推薦與依據** | **洋投：Tyson Hardin**（RHP，25 歲，Nashville）。組合排名第 1，非 40 人名單中 bootstrap 首位機率 0.47、前 3 機率 0.82，客場第 4。依據**中等**。<br>**洋打：James Tibbs III**（左打 RF，24 歲，Oklahoma City）。非 40 人名單 baseline 第 1；客場整體第 7、非 40 人名單中第 1，但 bootstrap 首位機率只有 0.08。依據**弱**。<br>修正前的首選 Whisenhunt（巨人 60 天傷兵名單）與 Thompson（洛磯 40 人名單）都在 MLB 40 人名單上。兩位新首選都不在任何 40 人名單上，2026 也沒有 MLB 出賽；合約與意願**未評估**。候補見 [`reports/recommendations.md`](reports/recommendations.md)。 |
+| **A. 技術可行？** | **可行，但有條件。** AAA 端改用官方 statsapi，2024–26 逐球完整；CPBL 端用 REBAS 2024–25（ODC-By）。中職官方站可連線，但使用條款要求書面授權，所以沒有使用。整條流程可以重現，有 73 個自動化測試。限制：中職缺 2026 逐球、轉速與位移；中職球種為人工標記；AAA 沒有球場校正。 |
+| **B. 找到 baseline 沒有的適性資訊？** | **投手：有獨立且穩定的資訊，但沒有證據能預測來台成績。** 投手 Fit 與 baseline 的 ρ = −0.07，跨季可靠度 0.74。修正 3 扣掉投手品質後，中職「怕高速球、擅打 SPL」的揮空面差異大多消失，剩下的差異跨季不穩定（ρ = 0.27）。<br>**打者：沒有可用的。** 打者 Fit 跨季可靠度 0.22，未達 0.30 門檻。<br>**回測**：修正 3 之後主要檢驗 ρ = 0.24（90% CI −0.29 至 0.70），無法判定；Fit 與來台後 K-BB% ρ = −0.36。見 [`reports/backtest.md`](reports/backtest.md)。<br>**baseline 本身**：AAA 傳統指標預測下一季 AAA 表現的交叉驗證相關只有 0.11（投手）、0.20（打者）。 |
+| **C. 推薦與依據** | **洋投：Tyson Hardin**（RHP，25 歲，Nashville）。不變。組合排名第 1，非 40 人名單中 bootstrap 首位機率 0.58、前 3 機率 0.81；人工權重與資料權重下都是非 40 人名單第 1。依據**中等**。<br>**洋打：Ralphy Velazquez**（左打 1B，21 歲，Columbus），依規則取代 Tibbs。但客場排名第 77，而且讓他排第 2 的資料權重在樣本外沒有勝過人工權重。依據**很弱**，球場校正之前不應採用。<br>兩人都不在 40 人名單上，2026 也沒有 MLB 出賽；合約與意願**未評估**。候補見 [`reports/recommendations.md`](reports/recommendations.md)。 |
 | **D. 下一步** | 見本頁最後一節。 |
 
 ## 專案結構
@@ -43,10 +44,11 @@ cpbl-foreign-player-fit/
 │   ├── cpbl_profile.py          # Phase 1 環境輪廓、H1 GLM、fig1–4
 │   ├── milb_candidates.py       # Phase 2 候選池與篩選紀錄
 │   ├── baseline.py              # Phase 3 傳統排名
+│   ├── baseline_weights.py      # 修正 4：用 2025→2026 AAA 官方季成績估計 baseline 權重
 │   ├── fit_score.py             # Phase 4 Pitcher／Hitter Fit
 │   ├── evaluate.py              # Phase 5 Test A–D、bootstrap、fig5–6
 │   └── backtest.py              # 修正 2：洋投回測（AAA 來台前 Fit vs 中職成績）
-├── tests/                       # 60 tests：資格邊界、計算、跨來源一致性、官方交叉核對、回測規則
+├── tests/                       # 73 tests：資格邊界、計算、跨來源一致性、官方交叉核對、回測規則、權重估計
 ├── reports/
 │   ├── data_feasibility.md      # Phase 0 稽核與 Go/No-Go
 │   ├── data_audit_summary.md    # 自動產生的覆蓋率表
@@ -67,7 +69,8 @@ cpbl-foreign-player-fit/
 | `aaa_batter_profile.parquet`、`aaa_pitching_environment.parquet` | AAA 對照組，定義完全相同 |
 | `env_whiff_contrast.parquet`、`env_damage_contrast.parquet`、`fit_environment_cells.csv` | 中職 vs AAA 的對比 |
 | `screening_log_pitchers.csv`、`screening_log_hitters.csv` | 每位 2026 AAA 球員的篩選結果、MLBAM ID、MLB 出賽數與證據、排除原因 |
-| `baseline_pitchers.csv`、`baseline_hitters.csv` | 傳統排名，包含所有 z 分數 |
+| `baseline_pitchers.csv`、`baseline_hitters.csv` | 傳統排名，包含所有 z 分數；`baseline_rank_judgment` 是人工權重下的排名 |
+| `baseline_weights.csv` | 修正 4 的估計權重、90% CI、樣本數、交叉驗證相關，以及人工權重對照 |
 | `pitcher_fit_results.csv`、`hitter_fit_results.csv` | Fit 各成分、Fit／baseline／組合排名；招募可行性另立欄位 |
 | `bootstrap_ranks_*.csv`、`evaluation_summary.json` | 穩定性與反證檢驗的原始結果 |
 | `mlb_season_lines.csv`、`mlb_season_audit.csv` | Retrosheet 衍生的 MLB 2024–25 球員賽季 PA 與出局數 |
@@ -88,9 +91,10 @@ python -m src.statsapi_pbp      # 3,681 場 AAA game feed（約 90 MB gzip，可
 python -m src.eligibility       # MLB 2024/2025 球員賽季行
 python -m src.cpbl_profile      # 環境輪廓 + fig1–4（約 1 分鐘）
 python -m src.data_audit
+python -m src.baseline_weights  # 修正 4 權重（evaluate 找不到時會自動執行）
 python -m src.evaluate          # 候選人 → 名單事實 → baseline → Fit → Test A–D（300 次 bootstrap，約 30 分鐘）
 python -m src.backtest          # 修正 2 回測；首次執行會另外下載 2023 AAA 2,156 場
-pytest -q                       # 60 passed
+pytest -q                       # 73 passed
 ```
 
 各步驟都是 deterministic 的：bootstrap 的 seed 寫在 `config/scoring.yaml`。
@@ -98,7 +102,7 @@ pytest -q                       # 60 passed
 ## 方法要點
 
 - **同一套定義**：兩聯盟都用「揮空 ÷ 揮棒」計算 Whiff%，觸擊排除，界外擦棒算接觸；wOBA 用同一組通用權重。所有分子與分母都由逐球原始計數重新計算。
-- **Baseline 權重預先登錄**：權重在任何排名產生前就已 commit（git 第一個 commit）。z 分數在 ±2.5 截尾；AAA 兩聯盟分別做聯盟校正。
+- **Baseline 權重**：原本的人工權重在任何排名產生前就已 commit；修正 4 改用資料估計（以 2025 指標預測 2026 聯盟校正 FIP／wOBA 的非負迴歸），人工權重保留作為對照。z 分數在 ±2.5 截尾；AAA 兩聯盟分別做聯盟校正。
 - **Fit 只看「形狀」**：中職與 AAA 的整體實力落差先扣除，再看球種、球速、左右手的相對匹配。AAA 平均型投手或打者的 Fit 恰為 0，有單元測試保證。
 - **穩定性檢驗**：比賽層級的 Poisson bootstrap、權重 Dirichlet 擾動、2024 與 2025 分季、移除極端值。反證檢驗包含投手內／投手間球速斜率、分類合併、測速 ±1 mph、洋投代理、選樣偏差，以及只看客場。
 
@@ -111,8 +115,8 @@ pytest -q                       # 60 passed
 
 ## 下一步：若要正式參賽，最值得投入的事
 
-1. **取得中職 2026 逐球資料的授權**：這是目前最大的缺口。`stats.cpbl.com.tw` 已可連線，但數據由 robots.txt 禁止的 `/api/` 載入，使用條款要求書面授權。請先確認競賽規則是否已授權參賽者使用；若沒有，向中職申請。取得後可補上 2026 中職環境，以及 TrackMan 的轉速與位移，做「球路形狀（IVB、HB、轉速）」的匹配。
-2. **擴大回測樣本**：修正 2 已做 2024–25（n = 15），結果見 `reports/backtest.md`。樣本要變大，需要 2026 來台洋投的中職成績（REBAS 2026 尚未釋出，或開放 zh.wikipedia.org），或更早年份的中職逐球資料（需中職授權）。
-3. **把投手 Fit 改寫成投手內的效應**：D1 顯示速球溢價主要是投手間的混雜。可改用投手固定效應或 Mundlak 分解估計中職環境對比，並把擊球傷害對比（兩季同向，ρ = 0.95）當作主要成分。
-4. **打者 Fit 改用穩定得較快的成分**：例如對各球種的接觸率、好球帶內揮空率，並要求至少兩季樣本。
-5. **人工查證招募可行性**：Hardin、Tibbs 與候補的合約類型、選擇權與意願；Hardin 9 月短暫進傷兵名單的原因。11 月小聯盟自由球員申報後，名單事實需要重查。
+1. **AAA 球場校正**：目前影響推薦最大的已知偏誤。打者首選 Velazquez 客場排名第 77。可用 2025–26 AAA 各球場主客場的事件率估球場係數，再校正 baseline 與估權重的樣本。
+2. **取得中職 2026 逐球資料的授權**：請先確認競賽規則是否已授權參賽者使用中職官方資料；若沒有，向中職申請。
+3. **擴大回測樣本**：需要 2026 來台洋投的中職成績（REBAS 2026 尚未釋出，或開放 zh.wikipedia.org）。
+4. **改善 baseline 的預測力**：修正 4 顯示傳統指標預測下一季的能力很弱。可考慮把 2026 升上大聯盟的球員以換算成績補進樣本，或加入穩定得較快的指標（例如 K%、BB% 分開、逐球的揮空與擊球品質），但新增指標必須先登錄規則。
+5. **人工查證招募可行性**：Hardin 與候補的合約類型、選擇權與意願；Velazquez 是 21 歲高潛力新秀，釋出可能性低。
