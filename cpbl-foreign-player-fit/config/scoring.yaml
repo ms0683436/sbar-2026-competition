@@ -266,3 +266,72 @@ backtest:
   # Reporting rule: if H1's 90% CI lies entirely below 0, recommendations.md says the
   # backtest contradicts Fit; if it lies entirely above 0 it says the backtest supports it;
   # otherwise "inconclusive". The 2026 picks are not changed by any outcome.
+
+# AMENDMENT 6 (2026-10-14; committed BEFORE any amendment-6 ranking, tier table or recruitment
+# backtest was computed or viewed). Johnny asked to make the ranking closer to how CPBL clubs
+# actually recruit and chose "可簽性＋擴池" after a Codex (gpt-6-astra) discussion. Already
+# seen before this registration (exploratory, outside the repo): the 34 import pitchers CPBL
+# clubs signed for 2026 (public news) re-ranked with the amendment-5 rules on 2025 AAA only;
+# the six with a 2025 AAA starter workload ranked 44, 84, 89, 94, 105 and 112 of 122, and the
+# top of that list was MLB prospects. Sample transaction histories of those six and of a few
+# 2026 candidates were also read (all six "elected free agency" on 2025-11-06).
+# Nothing here uses 2026 CPBL data.
+#
+# 1. Pool: two AAA seasons instead of one. Ability metrics are computed on both seasons'
+#    counting stats pooled (park-adjusted per club stint, statsapi per-club tables as in
+#    amendment 4); each player's league average is his BF / PA-weighted mix of the season x
+#    league averages, so the metric equals the BF / PA-weighted mean of the per-season
+#    league-adjusted metrics. Recent form (hitters) stays the 2026 Aug-Sep window. The
+#    amendment-4/5 weights are NOT re-estimated. The bootstrap resamples games of both
+#    seasons (2025 per-game lines from the statsapi gameLog, park-adjusted like the 2026
+#    mirror logs). The MLB-eligibility screen (contest rule) is unchanged. The old one-season
+#    ranking is reported next to the new one.
+# 2. Signability tiers from statsapi transactions and 40-man rosters (src/signability.py).
+#    Only transactions to or from an affiliated club (MLB, AAA-Rookie) count; winter-league
+#    and foreign-league assignments are ignored.
+#      T4_40man      on a 40-man roster on as_of
+#      T1_free       not on a 40-man; latest affiliated status event is "Declared Free Agency"
+#                    or "Released" (nothing that re-establishes control after it)
+#      T2_expiring   still controlled, and either his latest affiliated signing is a free-agent
+#                    minor-league signing ("Signed as Free Agent"; such contracts normally end
+#                    with the season) or his first professional season is <= as_of year - 6
+#      T3_controlled every other non-40-man player
+#    Signable = T1 + T2. The primary pick is the best-ranked signable candidate (replaces the
+#    amendment-1 "not on a 40-man" rule, which is still reported). The T2 rule is checked once
+#    on 2025: tiers as of 2025-10-13 vs who actually became a free agent or was released
+#    between 2025-10-14 and 2025-11-30 (precision, recall; reported, nothing tuned).
+# 3. Recruitment backtest (src/recruitment_backtest.py), pitchers only, descriptive only.
+#    Ability = amendment-5 baseline (K% .50, BB% .25, FIP .25) on the fold's seasons, park
+#    factors re-estimated from the fold's own seasons; no Fit and no MLB-eligibility screen in
+#    either arm (the contest rule is season-specific). Two arms per fold:
+#      old: one-season pool (latest season GS >= 10 & IP >= 60), drop 40-man players
+#      new: two-season pool (rule 1) + signable tiers (rule 2), same as_of
+#    Fold A (primary): as_of 2024-10-13, seasons 2023-24; positives = pitchers whose first
+#      REBAS season is 2025 (data/reference/cpbl_foreign_pitchers.csv).
+#    Fold B (exploratory, its 2025 ranks were already seen): as_of 2025-10-13, seasons
+#      2024-25; positives = data/reference/cpbl_imports_2026_news.csv minus REBAS 2024-25.
+#    Reported per arm: list size N, positives in list n, hits@10 and @20 with the random
+#    expectation k*n/N, coverage (positives in list / positives with any AAA pitch in the
+#    fold's seasons), median percentile rank of positives. Overlap only measures how much the
+#    list resembles what clubs did, not whether the picks are better; no outcome changes the
+#    method or the picks.
+amendment6:
+  pool:
+    seasons: [2025, 2026]
+    pitcher: {min_gs: 10, min_ip: 60, latest_min_ip: 20}
+    hitter: {min_pa: 300, latest_min_pa: 100}
+  signability:
+    as_of: "2026-10-13"
+    affiliated_sport_ids: [1, 11, 12, 13, 14, 16]
+    free_events: [DFA, REL]                   # Declared Free Agency, Released
+    control_events: [SFA, SGN, CLW, TR, SE, OUT, OPT, CU, DES]
+    expiring_signing: SFA
+    expiring_years: 6
+    signable: [T1_free, T2_expiring]
+    t2_check: {as_of: "2025-10-13", until: "2025-11-30"}
+  backtest:
+    role: pitcher
+    folds:
+      A: {as_of: "2024-10-13", seasons: [2023, 2024], positives: rebas_first_2025, primary: true}
+      B: {as_of: "2025-10-13", seasons: [2024, 2025], positives: news_2026, primary: false}
+    ks: [10, 20]
