@@ -238,11 +238,16 @@ def pitcher_cohort(exp: pd.DataFrame, ids: pd.DataFrame) -> tuple[pd.DataFrame, 
     coh["aaa_season"] = coh.season - 1
     bl = pd.concat([pitcher_baseline(y) for y in sorted(coh.aaa_season.unique())], ignore_index=True)
     coh = coh.merge(bl, on=["mlbam_id", "aaa_season"], how="left")
+    sf = processed("stuff_plus_pitchers.csv")                 # amendment 8, S4
+    if sf.exists():
+        st = pd.read_csv(sf).rename(columns={"season": "aaa_season", "pitcher_id": "mlbam_id"})
+        coh = coh.merge(st[["mlbam_id", "aaa_season", "stuff_plus"]], on=["mlbam_id", "aaa_season"], how="left")
     aw = _aaa_league_whiff(aaa_all)
     coh["fit"] = 0.6 * zscore(coh.fit_mix_whiff) + 0.4 * zscore(coh.fit_mix_damage)
     coh["cpbl_k_c"] = coh.cpbl_k_pct - coh.lg_k_pct
     coh["cpbl_bb_c"] = coh.cpbl_bb_pct - coh.lg_bb_pct
     coh["cpbl_kbb_c"] = coh.cpbl_k_c - coh.cpbl_bb_c
+    coh["cpbl_whiff_c"] = coh.cpbl_whiff_pct - coh.lg_whiff_pct
     coh["d_whiff_c"] = (coh.cpbl_whiff_pct - coh.lg_whiff_pct) - (coh.aaa_whiff_pct - coh.aaa_season.map(aw))
     d = coh[["baseline_score", "cpbl_kbb_c"]].dropna()
     b = np.polyfit(d.baseline_score, d.cpbl_kbb_c, 1)
@@ -256,6 +261,11 @@ P_TESTS = [
     ("P3 AAA BB% vs centred CPBL BB%", "bb_pct_adj", "cpbl_bb_c", 1),
     ("P4 Fit vs CPBL K-BB% residual after baseline", "fit", "kbb_resid_baseline", 1),
     ("P5 F1 vs centred whiff% change", "fit_mix_whiff", "d_whiff_c", 1),
+]
+S_TESTS = [  # amendment 8, S4 (reported next to P1 and Fit)
+    ("S4a Stuff+ vs centred CPBL K-BB%", "stuff_plus", "cpbl_kbb_c", 1),
+    ("S4b Stuff+ vs centred CPBL whiff%", "stuff_plus", "cpbl_whiff_c", 1),
+    ("S4c Fit vs centred CPBL K-BB% (reference)", "fit", "cpbl_kbb_c", 1),
 ]
 Q_TESTS = [
     ("Q1 baseline (estimated weights) vs CPBL wOBA (primary)", "baseline_score", "cpbl_woba", 1),
@@ -314,11 +324,12 @@ def run() -> dict:
     desc = []
     for name, part in (("2026 cohort", pc[pc.season == 2026]), ("amendment-2 cohort", pc[pc.season < 2026])):
         desc += [dict(t, test=f"{t['test']} — {name}") for t in _tests(part, P_TESTS[:1], rng)]
+    sres = _tests(pc, S_TESTS, rng) if "stuff_plus" in pc else []
     hres = _tests(hc, Q_TESTS, rng)
     aaa_all = pd.concat([backtest.aaa_extra(), milb_loader.load()], ignore_index=True)
     tr = translation(pc, _aaa_league_whiff(aaa_all))
     summ = {"pitchers": {"n": len(pc), "by_season": pc.season.value_counts().sort_index().to_dict(),
-                         "n_with_baseline": int(pc.baseline_score.notna().sum()), "tests": pres, "descriptive": desc},
+                         "n_with_baseline": int(pc.baseline_score.notna().sum()), "tests": pres, "descriptive": desc, "stuff_plus": sres},
             "hitters": {"n": len(hc), "tests": hres}, "translation": tr}
     for name, df in (("backtest2026_pitcher_screening.csv", psc), ("backtest2026_pitcher_cohort.csv", pc),
                      ("backtest2026_hitter_screening.csv", hsc), ("backtest2026_hitter_cohort.csv", hc)):
@@ -329,7 +340,7 @@ def run() -> dict:
 
 
 def report(psc, pc, hsc, hc, summ) -> None:
-    pcols = ["season", "source", "english_name", "aaa_bf", "baseline_score", "k_pct_adj", "bb_pct_adj", "fit",
+    pcols = ["season", "source", "english_name", "aaa_bf", "baseline_score", "k_pct_adj", "bb_pct_adj", "fit", "stuff_plus",
              "cpbl_k_c", "cpbl_bb_c", "cpbl_kbb_c"]
     hcols = ["english_name", "aaa_pa", "baseline_score", "baseline_score_judgment", "aaa_woba", "aaa_k_pct",
              "aaa_iso", "cpbl_pa", "cpbl_woba", "cpbl_k_pct", "cpbl_iso"]
@@ -338,6 +349,7 @@ def report(psc, pc, hsc, hc, summ) -> None:
              "(see limitations L10). 2024-25 outcomes: REBAS (資料來源：野球革命 Rebas Open Data).", "",
              f"## Pitchers (pooled n = {summ['pitchers']['n']}, by outcome season {summ['pitchers']['by_season']})", "",
              md_table(pd.DataFrame(summ["pitchers"]["tests"]), floatfmt=".2f"), "",
+             "Amendment 8 (Stuff+, S4):", "", md_table(pd.DataFrame(summ["pitchers"]["stuff_plus"]), floatfmt=".2f"), "",
              "Descriptive (P1 by cohort):", "", md_table(pd.DataFrame(summ["pitchers"]["descriptive"]), floatfmt=".2f"), "",
              md_table(pc[[c for c in pcols if c in pc]].sort_values("baseline_score", ascending=False), floatfmt=".3f"), "",
              "Screened out (2026):", "", md_table(psc[psc.excluded.ne("")]), "",
