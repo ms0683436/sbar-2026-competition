@@ -14,6 +14,19 @@ Environment (per cell, pooled 2024-25 unless stated):
   profile scores exactly 0: Fit isolates the *shape* match, not the overall
   level difference between leagues (that level is the baseline's job).
 
+  AMENDMENT 3 (config fit.environment_method = within_pitcher): the per-cell gaps above
+  mix "how hitters react to a pitch" with "who throws it" (CPBL 94+ mph fastballs come
+  from its best pitchers). Each league's cell effects are therefore estimated WITHIN
+  pitcher, with a pitcher fixed effect absorbing his overall level and a location effect
+  (in zone / out of zone / unknown) so a pitch type is compared at the same location:
+      whiffs ~ Binomial(swings, expit(α_pitcher + β_cell + γ_zone))   (per league)
+      mean wOBA = α_pitcher + β_cell + γ_zone, weighted by PA          (per league)
+  and the contrasts become w_c = (β^CPBL_c - β^AAA_c) - Σ_c s_c (β^CPBL_c - β^AAA_c),
+  with s_c the AAA swing (PA) shares, i.e. the same centering as above. The pooled
+  contrasts are kept as whiff_contrast_pooled / damage_contrast_pooled. The overall
+  level Δ̄ and the AAA cell rates are unchanged, and F1 uses
+  L_cpbl_fit = logit W_AAA(c) + Δ̄ + w_c (identical to logit W_CPBL(c) in pooled mode).
+
 PITCHER FIT (AAA tracked pitches, player_seasons)
   a_pc  = logit(shrunk whiff%_p,c) - logit W_AAA(c)            pitcher's skill on that pitch
   F1 mix_whiff  = 100 * {Σ_c s_pc [σ(logit W_CPBL(c) + a_pc) - σ(logit W_AAA(c) + Δ̄ + a_pc)] - REF}
@@ -64,6 +77,10 @@ def _agg(df: pd.DataFrame, keys: list[str]) -> pd.DataFrame:
             .reset_index())
 
 
+def _zone(df: pd.DataFrame) -> pd.DataFrame:
+    return df.assign(zone=df.in_zone.map({True: "in", False: "out"}).fillna("unknown"))
+
+
 def build_tables(cpbl: pd.DataFrame, aaa: pd.DataFrame, pitcher_ids, hitter_ids,
                  cpbl_velo_shift: float = 0.0) -> dict:
     smp = config()["samples"]
@@ -75,6 +92,9 @@ def build_tables(cpbl: pd.DataFrame, aaa: pd.DataFrame, pitcher_ids, hitter_ids,
     t = {
         "env_cpbl": _agg(cpbl, ["season", "game_id", "cell"]),
         "env_aaa": _agg(env_aaa, ["season", "game_id", "cell"]),
+        # per-pitcher environment tables for the within-pitcher contrasts (amendment 3)
+        "envp_cpbl": _agg(_zone(cpbl), ["pitcher_id", "season", "game_id", "cell", "zone"]),
+        "envp_aaa": _agg(_zone(env_aaa), ["pitcher_id", "season", "game_id", "cell", "zone"]),
         "pit": _agg(aaa[aaa.pitcher_id.isin(pitcher_ids)], ["pitcher_id", "season", "game_id", "cell"]),
         "hit": _agg(aaa[aaa.batter_id.isin(hitter_ids)], ["batter_id", "season", "game_id", "cell"]),
     }
@@ -102,7 +122,54 @@ def _weighted(df: pd.DataFrame, weights: pd.Series | None, seasons=None) -> pd.D
     return df
 
 
-def environment(t: dict, w_cpbl=None, w_aaa=None, cpbl_seasons=None, aaa_seasons=None) -> pd.DataFrame:
+def _fe_effects(factors: list[np.ndarray], y: np.ndarray, n: np.ndarray, logistic: bool, target: int,
+               iters: int = 500, tol: float = 1e-9) -> pd.Series:
+    """Effects of factors[target] in y ~ Σ_k effect_k(factor_k), by cyclic block updates.
+
+    logistic: y = successes out of n trials (logit link, one Newton step per block per sweep);
+    otherwise y = weighted mean outcome with weight n (least squares, exact block solves).
+    The target effects are returned relative to their n-weighted mean (only differences
+    are identified).
+    """
+    levels, idx = zip(*(np.unique(f, return_inverse=True) for f in factors))
+    eff = [np.zeros(len(lv)) for lv in levels]
+    ridge = 1e-6
+    for _ in range(iters):
+        old = eff[target].copy()
+        for k in range(len(factors)):
+            eta = sum(e[i] for e, i in zip(eff, idx))
+            if logistic:
+                mu = expit(eta)
+                g = np.bincount(idx[k], y - n * mu, len(levels[k]))
+                h = np.bincount(idx[k], n * mu * (1 - mu), len(levels[k])) + ridge
+            else:
+                g = np.bincount(idx[k], n * (y - eta), len(levels[k]))
+                h = np.bincount(idx[k], n, len(levels[k])) + ridge
+            eff[k] = eff[k] + g / h
+        if np.max(np.abs(eff[target] - old)) < tol:
+            break
+    w = np.bincount(idx[target], n, len(levels[target]))
+    b = eff[target] - np.average(eff[target], weights=w)
+    return pd.Series(b, index=levels[target])
+
+
+def within_pitcher_effects(tp: pd.DataFrame, min_swings: float, min_pa: float) -> pd.DataFrame:
+    """Per-cell whiff (logit) and damage (wOBA) effects for one league, within pitcher and location."""
+    g = tp.groupby(["pitcher_id", "cell", "zone"])[["swings", "whiffs", "pa", "woba_num"]].sum().reset_index()
+    sw = g.groupby("pitcher_id").swings.transform("sum")
+    w = g[(sw >= min_swings) & (g.swings > 0)]
+    bw = _fe_effects([w.pitcher_id.values, w.cell.values, w.zone.values], w.whiffs.values.astype(float),
+                     w.swings.values.astype(float), logistic=True, target=1)
+    pa = g.groupby("pitcher_id").pa.transform("sum")
+    d = g[(pa >= min_pa) & (g.pa > 0)]
+    bd = _fe_effects([d.pitcher_id.values, d.cell.values, d.zone.values], (d.woba_num / d.pa).values,
+                     d.pa.values.astype(float), logistic=False, target=1)
+    return pd.DataFrame({"beta_whiff": bw, "beta_woba": bd}).reindex(CELLS)
+
+
+def environment(t: dict, w_cpbl=None, w_aaa=None, cpbl_seasons=None, aaa_seasons=None,
+                method: str | None = None) -> pd.DataFrame:
+    method = method or config()["fit"].get("environment_method", "pooled")
     k = config()["samples"]["shrink_k_env_swings"]
     c = _weighted(t["env_cpbl"], w_cpbl, cpbl_seasons).groupby("cell")[["pitches", "swings", "whiffs", "pa", "woba_num"]].sum()
     a = _weighted(t["env_aaa"], w_aaa, aaa_seasons).groupby("cell")[["pitches", "swings", "whiffs", "pa", "woba_num"]].sum()
@@ -121,6 +188,18 @@ def environment(t: dict, w_cpbl=None, w_aaa=None, cpbl_seasons=None, aaa_seasons
     e["dmg_gap"] = e.woba_cpbl - e.woba_aaa
     e["dmg_level_gap"] = (pw * e.dmg_gap).sum()
     e["damage_contrast"] = e.dmg_gap - e.dmg_level_gap
+    e["whiff_contrast_pooled"], e["damage_contrast_pooled"] = e.whiff_contrast, e.damage_contrast
+    if method == "within_pitcher":
+        wp = config()["fit"]["within_pitcher"]
+        bc = within_pitcher_effects(_weighted(t["envp_cpbl"], w_cpbl, cpbl_seasons), wp["min_swings"], wp["min_pa"])
+        ba = within_pitcher_effects(_weighted(t["envp_aaa"], w_aaa, aaa_seasons), wp["min_swings"], wp["min_pa"])
+        dw = bc.beta_whiff - ba.beta_whiff
+        dd = bc.beta_woba - ba.beta_woba
+        e["whiff_contrast"] = dw - (sw * dw).sum()
+        e["damage_contrast"] = dd - (pw * dd).sum()
+    elif method != "pooled":
+        raise ValueError(f"unknown environment_method {method!r}")
+    e["L_cpbl_fit"] = e.L_aaa + e.level_gap + e.whiff_contrast
     e["usage_cpbl"] = e.pitches_cpbl / e.pitches_cpbl.sum()
     e["usage_aaa"] = e.pitches_aaa / e.pitches_aaa.sum()
     e["pa_share_cpbl"] = e.pa_cpbl / e.pa_cpbl.sum()
@@ -139,20 +218,20 @@ def environment(t: dict, w_cpbl=None, w_aaa=None, cpbl_seasons=None, aaa_seasons
 def pitcher_fit(t: dict, env: pd.DataFrame, w_aaa=None, seasons=None) -> pd.DataFrame:
     k = config()["samples"]["shrink_k_whiff_swings"]
     p = _weighted(t["pit"], w_aaa, seasons).groupby(["pitcher_id", "cell"])[["pitches", "swings", "whiffs"]].sum()
-    p = p.reset_index().merge(env[["W_aaa", "L_aaa", "L_cpbl", "level_gap", "damage_contrast"]],
+    p = p.reset_index().merge(env[["W_aaa", "L_aaa", "L_cpbl_fit", "level_gap", "damage_contrast"]],
                               left_on="cell", right_index=True)
     p["whiff_shrunk"] = (p.whiffs + k * p.W_aaa) / (p.swings + k)
     p["a"] = logit(p.whiff_shrunk) - p.L_aaa
     tot = p.groupby("pitcher_id")[["pitches", "swings"]].transform("sum")
     p["s"] = p.swings / tot.swings
     p["u"] = p.pitches / tot.pitches
-    p["f1_term"] = p.s * (expit(p.L_cpbl + p.a) - expit(p.L_aaa + p.level_gap + p.a))
+    p["f1_term"] = p.s * (expit(p.L_cpbl_fit + p.a) - expit(p.L_aaa + p.level_gap + p.a))
     p["f2_term"] = -p.u * p.damage_contrast
     g = p.groupby("pitcher_id")
     # reference: AAA-average swing mix with AAA-average skill (a = 0); subtracting it makes
     # the AAA-average profile score exactly 0 despite the logistic non-linearity
     sw = env.swings_aaa / env.swings_aaa.sum()
-    ref = float((sw * (expit(env.L_cpbl) - expit(env.L_aaa + env.level_gap))).sum())
+    ref = float((sw * (expit(env.L_cpbl_fit) - expit(env.L_aaa + env.level_gap))).sum())
     out = pd.DataFrame({
         "tracked_pitches_used": g.pitches.sum(), "tracked_swings_used": g.swings.sum(),
         "fit_mix_whiff": 100 * (g.f1_term.sum() - ref), "fit_mix_damage": 1000 * g.f2_term.sum(),

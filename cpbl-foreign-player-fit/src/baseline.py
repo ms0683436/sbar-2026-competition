@@ -11,7 +11,9 @@ Hitters:
   recent wOBA  = game logs 2026-08-01..09-30, shrunk toward own season wOBA (k PA)
 
 Scoring: z-score within the eligible candidate pool, clipped to +-winsor_z, sign-aligned,
-weighted sum with the pre-registered weights. Higher = better.
+weighted sum. Higher = better. Weights: amendment 4 estimates them from 2025 -> 2026 AAA data
+(src.baseline_weights); the original judgment weights stay in config as the fallback and are
+reported next to it (baseline_score_judgment / baseline_rank_judgment).
 xwOBA / HardHit% / Barrel% are not in the hitter baseline: the weights were pre-registered
 when 2026 AAA pitch data was unavailable, and adding stats after seeing rankings is not allowed.
 """
@@ -24,12 +26,15 @@ from . import milb_candidates, milb_loader
 from .common import config, processed, zscore
 
 
-def _league_table(kind: str, year: int) -> pd.DataFrame:
-    s = milb_loader.season_stats(kind, year)
+def _league_table(kind: str, year: int, s: pd.DataFrame | None = None) -> pd.DataFrame:
+    """League (PCL / INT) totals and rates; `s` overrides the mirror season file (amendment 4)."""
+    s = milb_loader.season_stats(kind, year) if s is None else s
     if kind == "pitching":
         g = s.groupby("team_league")[["pitching_BF", "pitching_SO", "pitching_BB", "pitching_HBP", "pitching_HR",
                                       "pitching_ER", "pitching_IP"]].sum()
         g["k_minus_bb_pct"] = (g.pitching_SO - g.pitching_BB) / g.pitching_BF
+        g["k_pct"] = g.pitching_SO / g.pitching_BF
+        g["bb_pct"] = g.pitching_BB / g.pitching_BF
         g["era"] = 9 * g.pitching_ER / g.pitching_IP
         raw = (13 * g.pitching_HR + 3 * (g.pitching_BB + g.pitching_HBP) - 2 * g.pitching_SO) / g.pitching_IP
         g["cfip"] = g.era - raw
@@ -65,10 +70,13 @@ def _league_mix(df: pd.DataFrame, lg: pd.DataFrame, col: str) -> pd.Series:
     return val
 
 
-def _recent(year: int, role: str) -> pd.DataFrame:
-    lo, hi = config()["baseline"]["recent_window"]
-    g = milb_loader.game_logs(year)
-    g = g[(g.game_date >= lo) & (g.game_date <= hi)]
+def _recent(year: int, role: str, g: pd.DataFrame | None = None) -> pd.DataFrame:
+    """Recent-window counting stats per player; `g` = rows already limited to the window
+    (amendment 4 passes statsapi date-range stats), else the 2026 game logs are filtered."""
+    if g is None:
+        lo, hi = config()["baseline"]["recent_window"]
+        g = milb_loader.game_logs(year)
+        g = g[(g.game_date >= lo) & (g.game_date <= hi)]
     if role == "pitcher":
         r = g.groupby("player_id")[["pitching_BF", "pitching_SO", "pitching_BB"]].sum()
         return r.rename(columns=lambda c: "recent_" + c)
@@ -79,9 +87,12 @@ def _recent(year: int, role: str) -> pd.DataFrame:
     return r[["batting_PA", "woba_num", "woba_den"]].rename(columns=lambda c: "recent_" + c)
 
 
-def pitcher_metrics(cand: pd.DataFrame) -> pd.DataFrame:
-    year = config()["candidate_filters"]["pitcher"]["season"]
-    lg = _league_table("pitching", year)
+def pitcher_metrics(cand: pd.DataFrame, year: int | None = None, season: pd.DataFrame | None = None,
+                    recent: pd.DataFrame | None = None) -> pd.DataFrame:
+    """Baseline metrics. Defaults: the 2026 candidates from the mirror files; amendment 4
+    passes another season's statsapi tables to build the weight-estimation sample."""
+    year = year or config()["candidate_filters"]["pitcher"]["season"]
+    lg = _league_table("pitching", year, season)
     k = config()["samples"]["recent_shrink_bf"]
     d = cand.copy()
     d["k_pct"] = d.pitching_SO / d.pitching_BF
@@ -95,11 +106,15 @@ def pitcher_metrics(cand: pd.DataFrame) -> pd.DataFrame:
     d["lg_fip"] = _league_mix(d, lg, "fip")
     adj = config().get("league_adjust", True)
     d["k_minus_bb_pct"] = d.k_minus_bb_pct_raw - (d.lg_k_minus_bb if adj else 0)
+    d["lg_k_pct"] = _league_mix(d, lg, "k_pct")
+    d["lg_bb_pct"] = _league_mix(d, lg, "bb_pct")
+    d["k_pct_adj"] = d.k_pct - (d.lg_k_pct if adj else 0)           # amendment 5
+    d["bb_pct_adj"] = d.bb_pct - (d.lg_bb_pct if adj else 0)
     d["fip"] = d.fip_raw - (d.lg_fip if adj else 0)
     d["ip_per_gs"] = d.IP / d.pitching_GS
     d["gs"] = d.pitching_GS
-    d["swstr_pct_aaa"] = d.pitching_swing_and_misses / d.pitching_PI
-    rec = _recent(year, "pitcher")
+    d["swstr_pct_aaa"] = d.pitching_swing_and_misses / d.pitching_PI if "pitching_PI" in d else np.nan
+    rec = _recent(year, "pitcher", recent)
     d = d.join(rec, on="player_id")
     for c in rec.columns:
         d[c] = d[c].fillna(0)
@@ -109,9 +124,10 @@ def pitcher_metrics(cand: pd.DataFrame) -> pd.DataFrame:
     return d
 
 
-def hitter_metrics(cand: pd.DataFrame) -> pd.DataFrame:
-    year = config()["candidate_filters"]["hitter"]["season"]
-    lg = _league_table("batting", year)
+def hitter_metrics(cand: pd.DataFrame, year: int | None = None, season: pd.DataFrame | None = None,
+                   recent: pd.DataFrame | None = None) -> pd.DataFrame:
+    year = year or config()["candidate_filters"]["hitter"]["season"]
+    lg = _league_table("batting", year, season)
     k = config()["samples"]["recent_shrink_bf"]
     d = _hitter_rates(cand.set_index("player_id")).reset_index()
     for c in ("woba", "iso", "bb_pct", "k_pct"):
@@ -122,8 +138,8 @@ def hitter_metrics(cand: pd.DataFrame) -> pd.DataFrame:
     d["obp"] = (d.batting_H + d.batting_BB + d.batting_HBP) / (d.batting_AB + d.batting_BB + d.batting_HBP + d.batting_SF)
     d["slg"] = d.batting_TB / d.batting_AB
     d["ops"] = d.obp + d.slg
-    d["whiff_pct_aaa"] = d.batting_whiffs / d.batting_swings
-    rec = _recent(year, "hitter")
+    d["whiff_pct_aaa"] = d.batting_whiffs / d.batting_swings if "batting_swings" in d else np.nan
+    rec = _recent(year, "hitter", recent)
     d = d.join(rec, on="player_id")
     for c in rec.columns:
         d[c] = d[c].fillna(0)
@@ -132,13 +148,31 @@ def hitter_metrics(cand: pd.DataFrame) -> pd.DataFrame:
     return d
 
 
+def judgment_weights(role: str) -> dict:
+    """The weights pre-registered by judgment before any ranking (kept as amendment 4's fallback)."""
+    return {m: s["weight"] for m, s in config()["baseline"][role].items()}
+
+
+def active_weights(role: str) -> dict:
+    """Weights the baseline uses. Amendment 4: estimated from 2025 -> 2026 AAA data
+    (src.baseline_weights) unless the estimate fell back to the judgment weights."""
+    src = config()["baseline"].get("weights_source", "judgment")
+    src = src.get(role, "judgment") if isinstance(src, dict) else src      # amendment 5: per role
+    if src != "estimated":
+        return judgment_weights(role)
+    from . import baseline_weights
+    return baseline_weights.weights(role)
+
+
 def score(d: pd.DataFrame, role: str, weights: dict | None = None) -> pd.DataFrame:
+    """Weighted sum of sign-aligned, clipped z-scores. `weights` defaults to active_weights(role)."""
     spec = config()["baseline"][role]
     clip = config()["baseline"]["winsor_z"]
+    weights = weights or active_weights(role)
     d = d.copy()
     total = 0
     for metric, s in spec.items():
-        w = (weights or {}).get(metric, s["weight"])
+        w = weights.get(metric, s["weight"])
         z = s["sign"] * zscore(d[metric], clip)
         d[f"z_{metric}"] = z
         total = total + w * z
@@ -147,19 +181,28 @@ def score(d: pd.DataFrame, role: str, weights: dict | None = None) -> pd.DataFra
     return d.sort_values("baseline_rank")
 
 
+def _with_judgment(d: pd.DataFrame, role: str) -> pd.DataFrame:
+    """Adds the judgment-weight score and rank next to the active one (amendment 4 sensitivity row)."""
+    j = score(d, role, judgment_weights(role))
+    d["baseline_score_judgment"] = j.baseline_score.reindex(d.index)
+    d["baseline_rank_judgment"] = j.baseline_rank.reindex(d.index)
+    return d
+
+
 def run(cands: dict) -> dict:
     out = {}
-    p = score(pitcher_metrics(cands["pitcher"]), "pitcher")
-    h = score(hitter_metrics(cands["hitter"]), "hitter")
+    p = _with_judgment(score(pitcher_metrics(cands["pitcher"]), "pitcher"), "pitcher")
+    h = _with_judgment(score(hitter_metrics(cands["hitter"]), "hitter"), "hitter")
     pcols = ["baseline_rank", "mlbam_id", "name", "teams", "leagues", "age_2026", "pitching_GS", "IP",
              "pitching_BF", "k_pct", "bb_pct", "k_minus_bb_pct_raw", "k_minus_bb_pct", "era", "fip_raw", "fip",
              "whip", "swstr_pct_aaa", "recent_pitching_BF", "recent_k_minus_bb_pct_raw", "ip_per_gs",
-             *[c for c in p.columns if c.startswith("z_")], "baseline_score", "mlb_ip_2024", "mlb_ip_2025",
+             *[c for c in p.columns if c.startswith("z_")], "baseline_score", "baseline_score_judgment",
+             "baseline_rank_judgment", "mlb_ip_2024", "mlb_ip_2025",
              "eligibility_status", "tracked_pitches", *milb_candidates.REC_COLS]
     hcols = ["baseline_rank", "mlbam_id", "name", "position", "teams", "leagues", "age_2026", "batting_PA",
              "woba_raw", "woba", "obp", "slg", "ops", "iso_raw", "bb_pct_raw", "k_pct_raw", "whiff_pct_aaa",
              "recent_batting_PA", "recent_woba_raw", *[c for c in h.columns if c.startswith("z_")],
-             "baseline_score", "mlb_pa_2024", "mlb_pa_2025", "eligibility_status", "tracked_pa",
+             "baseline_score", "baseline_score_judgment", "baseline_rank_judgment", "mlb_pa_2024", "mlb_pa_2025", "eligibility_status", "tracked_pa",
              *milb_candidates.REC_COLS]
     p[[c for c in pcols if c in p.columns]].to_csv(processed("baseline_pitchers.csv"), index=False)
     h[[c for c in hcols if c in h.columns]].to_csv(processed("baseline_hitters.csv"), index=False)

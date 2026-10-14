@@ -121,12 +121,20 @@ woba_weights:
 
 baseline:
   winsor_z: 2.5               # z-scores clipped so one extreme stat cannot dominate
+  # AMENDMENT 5 (2026-10-13; Johnny's choice "K%+BB% 分開"): the pitcher baseline is rebuilt
+  # around strikeout ability, because CPBL hitters make contact (whiff% 19.4% vs AAA 24.8%).
+  # Chosen after a check of 2025 vs 2026 AAA (statsapi totals, 178 pitchers with >= 150 BF in
+  # both seasons; no candidate ranking involved): year-to-year Spearman K% 0.42, BB% 0.53,
+  # K-BB% 0.12, K/BB 0.17, FIP 0.11; same-season Spearman with ERA K% -0.40, BB% +0.16,
+  # K-BB% -0.53, FIP +0.72. K% and BB% are each stable; their difference is not. Weights are
+  # judgment (K% leads, FIP supports); amendment 4's estimate is still computed for these
+  # metrics and reported, but not used for pitchers (weights_source below).
+  # Previous pitcher spec (amendments 0-4): K-BB% 0.40, FIP 0.25, recent K-BB% 0.15,
+  # IP/GS 0.10, GS 0.10 (git history).
   pitcher:                    # sign: +1 higher is better, -1 lower is better
-    k_minus_bb_pct:  {weight: 0.40, sign: 1}
+    k_pct_adj:       {weight: 0.50, sign: 1}    # SO / BF minus league SO / BF
+    bb_pct_adj:      {weight: 0.25, sign: -1}   # BB / BF minus league BB / BF
     fip:             {weight: 0.25, sign: -1}
-    recent_k_minus_bb_pct: {weight: 0.15, sign: 1}   # 2026-08-01 .. 2026-09-30 game logs
-    ip_per_gs:       {weight: 0.10, sign: 1}
-    gs:              {weight: 0.10, sign: 1}
   hitter:
     woba:            {weight: 0.40, sign: 1}
     iso:             {weight: 0.20, sign: 1}
@@ -134,6 +142,48 @@ baseline:
     k_pct:           {weight: 0.15, sign: -1}
     recent_woba:     {weight: 0.10, sign: 1}
   recent_window: ["2026-08-01", "2026-09-30"]
+  # AMENDMENT 4 (2026-10-13; committed BEFORE the estimated weights, or any ranking that uses
+  # them, were computed or viewed). The weights above were set by judgment. From now on the
+  # baseline uses weights estimated from data (src/baseline_weights.py docstring): which mix of
+  # the SAME metrics in 2025 AAA best predicts next-season (2026) AAA quality. Metrics, signs,
+  # league adjustment, clipping and the 0.7 / 0.3 combination are unchanged; no metric is added.
+  # The judgment weights stay as the fallback and are reported next to the new ranking
+  # (baseline_rank_judgment). The weight perturbation in Test B perturbs the weights in use.
+  # Nothing about the estimated weights was looked at before this registration; only the fact
+  # that the mirror's 2025 season file stops in May (so 2025 comes from statsapi) was checked.
+  weights_source: {pitcher: judgment, hitter: estimated}   # amendment 5; amendment 4 had "estimated" for both
+  estimation:
+    predictor_season: 2025
+    target_season: 2026
+    recent_window: ["2025-08-01", "2025-09-30"]     # same calendar window as the 2026 recent form
+    source: statsapi season and byDateRange stats, sportId 11, gameType R, both seasons
+    sample: 2025 AAA players passing candidate_filters workload (any MLB status)
+    target_min: {pitcher: 150, hitter: 150}        # 2026 AAA BF / PA
+    target:
+      pitcher: "-(FIP - league FIP), 2026 AAA, league mix as in the baseline"
+      hitter: "wOBA - league wOBA, 2026 AAA, generic woba_weights"
+    method: weighted NNLS on centred sign-aligned clipped z-scores (z within the sample), player
+      weight = 2026 BF / PA, coefficients rescaled to sum to 1
+    min_n: 40                    # fewer players with a target -> judgment weights
+    cv_folds: 10                 # reported only: CV Spearman of estimated vs judgment weights
+    bootstrap: {draws: 1000, ci: 0.90, seed: 20261013}
+
+# AMENDMENT 5 (2026-10-13; committed BEFORE any park-adjusted ranking was computed or viewed).
+# Johnny: a player's home park is half of his games, so hitter / pitcher parks must be
+# accounted for. Park factors per AAA club and event (src/park.py docstring) are estimated
+# from 2025-26 AAA plate appearances (home vs road games of each club, regressed by
+# method-of-moments reliability, PA-weighted mean 1). Only the factors themselves were
+# looked at before this registration (e.g. HR: CLT 1.52, LV 1.47, NAS 0.69). Every AAA
+# counting stat is divided by (PF + 1) / 2 of the club it was compiled with (season totals,
+# the statsapi tables behind amendment 4) or, game by game, by PF in home games (game logs:
+# recent form, bootstrap). League adjustment, z-scores, the amendment-4 estimation and the
+# D7 road-only check (road games are not adjusted) all run on the adjusted numbers.
+# Fit (pitch-level shape) is not park-adjusted.
+park:
+  enabled: true
+  seasons: [2025, 2026]
+  events: [SO, uBB, HBP, 1B, 2B, 3B, HR]
+  player_factor: half_home    # (PF_home + 1) / 2 per club stint
 
 fit:
   pitcher:
@@ -145,6 +195,22 @@ fit:
     # are summed without subjective weights; the weights below only exist so the
     # sensitivity test can perturb them.
     components: {pitch_mix: 1.0, velocity: 1.0, hand: 1.0}
+  # AMENDMENT 3 (2026-10-13; committed BEFORE any Fit score, ranking or backtest result
+  # under this method was computed). Test D1 found that CPBL's per-cell contrasts mix
+  # hitter reaction with WHO throws each pitch. An exploratory check run before this
+  # registration (pitcher fixed-effect logits of whiff by cell vs FB91-94, CPBL vs AAA
+  # 2024-25, no location term) was seen: SL -0.23 -> -0.13, CU -0.24 -> -0.14,
+  # SPL -0.19 -> -0.01, FB94+ +0.16 -> +0.03 (pooled -> within). Nothing else was computed.
+  # From now on both environment contrasts are estimated within pitcher AND location
+  # (in zone / out of zone / unknown), per league, then centred exactly as before
+  # (fit_score.py docstring). F1/F2 formulas, weights, thresholds and the pick rule are
+  # unchanged. The rankings, bootstrap, weight perturbation, Tests A-D and the amendment-2
+  # backtest (same rules) are all re-run with this environment; the pooled-environment
+  # results stay in git history (merge 30f89ea) and are reported next to the new ones.
+  environment_method: within_pitcher   # was implicitly "pooled"
+  within_pitcher:
+    min_swings: 100            # a pitcher enters the whiff model with >= 100 swings in the window
+    min_pa: 50                 # ... and the damage model with >= 50 PA ended by a tracked pitch
   combined_heuristic:          # ONLY used for the illustrative "overall" column
     baseline: 0.7
     fit: 0.3
