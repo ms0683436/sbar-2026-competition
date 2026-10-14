@@ -2,56 +2,65 @@
 
 CPBL = REBAS 2024-25 (資料來源：野球革命 Rebas Open Data); AAA = statsapi / Statcast 2024-25. Complete, audited PAs only; bunt, intentional-walk, pitchout and interference PAs dropped. Two strikes = count before the pitch. Rates A1-A5 and A7 are standardised over balls x batter hand x pitcher hand x SP/RP to the average of the two leagues' distributions; A6 and A8 are raw. 95% CI from 2,000 game-cluster bootstrap draws.
 
-**A1 verdict (registered): unresolved.**
+**A1 verdict (registered): CPBL hitters battle more.**
 
 ## Sequence audit (PAs)
 
 | league | season | pas | kept | incomplete | special | inconsistent |
 |---|---|---|---|---|---|---|
-| AAA | 2024 | 172800 | 169412 | 549 | 2736 | 279 |
-| AAA | 2025 | 169808 | 166348 | 622 | 2764 | 241 |
-| CPBL | 2024 | 27488 | 26450 | 89 | 928 | 54 |
-| CPBL | 2025 | 27178 | 26245 | 121 | 800 | 32 |
+| AAA | 2024 | 172800 | 168811 | 549 | 2769 | 2213 |
+| AAA | 2025 | 169808 | 165688 | 622 | 2786 | 2253 |
+| CPBL | 2024 | 27488 | 26450 | 89 | 928 | 430 |
+| CPBL | 2025 | 27178 | 26244 | 121 | 800 | 375 |
+
+Pitch-sequence totals vs season box totals (AAA: statsapi season stats; CPBL: no league box totals in hand, REBAS matched Baseball-Reference per pitcher in the amendment-12 check; CPBL has 360 regular-season games a year):
+
+| league | season | games | pa | so | bb | pa_bad_numbering | box_bf | box_so | box_bb |
+|---|---|---|---|---|---|---|---|---|---|
+| AAA | 2024 | 2232 | 172251 | 39455 | 18715 | 0 | 172462.000 | 39455.000 | 18848.000 |
+| AAA | 2025 | 2198 | 169186 | 38328 | 18382 | 0 | 171483.000 | 38803.000 | 18747.000 |
+| CPBL | 2024 | 360 | 27399 | 4721 | 2164 | 0 |  |  |  |
+| CPBL | 2025 | 360 | 27057 | 4530 | 1956 | 0 |  |  |  |
 
 ## League comparison
 
 | metric | CPBL 2024 | AAA 2024 | diff 2024 (95% CI) | CPBL 2025 | AAA 2025 | diff 2025 (95% CI) | mean diff (95% CI) |
 |---|---|---|---|---|---|---|---|
-| A1 continuation-foul rate | 0.2437 | 0.2219 | +0.0217 (+0.0161 to +0.0272) | 0.2427 | 0.2156 | +0.0271 (+0.0204 to +0.0337) | +0.0244 (+0.0199 to +0.0286) |
-| A2 foul per swing | 0.3885 | 0.3788 | +0.0097 (+0.0015 to +0.0174) | 0.3823 | 0.3712 | +0.0111 (+0.0021 to +0.0195) | +0.0104 (+0.0042 to +0.0160) |
-| A3 contact | 0.8014 | 0.7604 | +0.0410 (+0.0339 to +0.0482) | 0.8114 | 0.7602 | +0.0512 (+0.0441 to +0.0584) | +0.0461 (+0.0410 to +0.0511) |
-| A4 put-away (pitch) | 0.1628 | 0.2033 | -0.0404 (-0.0460 to -0.0349) | 0.1597 | 0.2033 | -0.0436 (-0.0488 to -0.0382) | -0.0420 (-0.0458 to -0.0382) |
-| A5 conversion (PA) | 0.3554 | 0.4368 | -0.0813 (-0.0915 to -0.0710) | 0.3440 | 0.4351 | -0.0912 (-0.1010 to -0.0815) | -0.0862 (-0.0934 to -0.0790) |
-| A7 two-strike pitches per PA reaching two strikes | 2.1829 | 2.1487 | +0.0342 (+0.0079 to +0.0596) | 2.1562 | 2.1403 | +0.0159 (-0.0103 to +0.0436) | +0.0251 (+0.0061 to +0.0437) |
-| A6 pitches per PA | 3.8113 | 3.9164 | -0.1051 (-0.1318 to -0.0808) | 3.8099 | 3.9140 | -0.1041 (-0.1298 to -0.0796) | -0.1046 (-0.1228 to -0.0872) |
-| A8 share of PAs reaching two strikes | 0.4921 | 0.5261 | -0.0340 (-0.0413 to -0.0270) | 0.4940 | 0.5243 | -0.0303 (-0.0371 to -0.0235) | -0.0321 (-0.0370 to -0.0269) |
-| A6 PA length 1-3 | 0.4645 | 0.4303 | +0.0342 (+0.0274 to +0.0417) | 0.4656 | 0.4294 | +0.0362 (+0.0298 to +0.0425) | +0.0352 (+0.0304 to +0.0402) |
-| A6 PA length 4-5 | 0.3458 | 0.3616 | -0.0159 (-0.0222 to -0.0097) | 0.3504 | 0.3635 | -0.0131 (-0.0194 to -0.0074) | -0.0145 (-0.0190 to -0.0102) |
-| A6 PA length 6-7 | 0.1580 | 0.1779 | -0.0199 (-0.0248 to -0.0151) | 0.1523 | 0.1778 | -0.0256 (-0.0301 to -0.0207) | -0.0228 (-0.0261 to -0.0192) |
-| A6 PA length 8+ | 0.0317 | 0.0301 | +0.0016 (-0.0007 to +0.0040) | 0.0318 | 0.0293 | +0.0024 (+0.0002 to +0.0048) | +0.0020 (+0.0005 to +0.0036) |
+| A1 continuation-foul rate | 0.2437 | 0.2216 | +0.0221 (+0.0163 to +0.0275) | 0.2426 | 0.2153 | +0.0273 (+0.0206 to +0.0339) | +0.0247 (+0.0202 to +0.0288) |
+| A2 foul per swing | 0.3885 | 0.3783 | +0.0103 (+0.0021 to +0.0180) | 0.3822 | 0.3707 | +0.0115 (+0.0025 to +0.0201) | +0.0109 (+0.0047 to +0.0166) |
+| A3 contact | 0.8014 | 0.7600 | +0.0414 (+0.0343 to +0.0485) | 0.8114 | 0.7599 | +0.0515 (+0.0444 to +0.0586) | +0.0464 (+0.0414 to +0.0515) |
+| A4 put-away (pitch) | 0.1628 | 0.2035 | -0.0407 (-0.0461 to -0.0352) | 0.1597 | 0.2035 | -0.0438 (-0.0490 to -0.0384) | -0.0422 (-0.0460 to -0.0384) |
+| A5 conversion (PA) | 0.3555 | 0.4370 | -0.0815 (-0.0917 to -0.0712) | 0.3441 | 0.4355 | -0.0914 (-0.1012 to -0.0817) | -0.0864 (-0.0937 to -0.0793) |
+| A7 two-strike pitches per PA reaching two strikes | 2.1831 | 2.1473 | +0.0358 (+0.0095 to +0.0613) | 2.1562 | 2.1392 | +0.0170 (-0.0092 to +0.0448) | +0.0264 (+0.0072 to +0.0449) |
+| A6 pitches per PA | 3.8113 | 3.9148 | -0.1035 (-0.1303 to -0.0791) | 3.8098 | 3.9123 | -0.1025 (-0.1281 to -0.0782) | -0.1030 (-0.1211 to -0.0855) |
+| A8 share of PAs reaching two strikes | 0.4921 | 0.5255 | -0.0334 (-0.0408 to -0.0264) | 0.4940 | 0.5236 | -0.0295 (-0.0364 to -0.0227) | -0.0315 (-0.0364 to -0.0263) |
+| A6 PA length 1-3 | 0.4645 | 0.4308 | +0.0337 (+0.0270 to +0.0412) | 0.4656 | 0.4299 | +0.0357 (+0.0293 to +0.0419) | +0.0347 (+0.0299 to +0.0397) |
+| A6 PA length 4-5 | 0.3458 | 0.3612 | -0.0154 (-0.0218 to -0.0092) | 0.3504 | 0.3629 | -0.0125 (-0.0187 to -0.0068) | -0.0140 (-0.0185 to -0.0097) |
+| A6 PA length 6-7 | 0.1580 | 0.1780 | -0.0200 (-0.0248 to -0.0151) | 0.1523 | 0.1779 | -0.0256 (-0.0302 to -0.0208) | -0.0228 (-0.0262 to -0.0193) |
+| A6 PA length 8+ | 0.0317 | 0.0301 | +0.0017 (-0.0007 to +0.0040) | 0.0317 | 0.0293 | +0.0024 (+0.0001 to +0.0048) | +0.0020 (+0.0005 to +0.0036) |
 
 Raw rates of the standardised metrics, and the weight outside the common cells:
 
 | metric | CPBL raw 2024 | CPBL raw 2025 | AAA raw 2024 | AAA raw 2025 | excluded 2024 | excluded 2025 |
 |---|---|---|---|---|---|---|
-| A1 continuation-foul rate | 0.2443 | 0.2416 | 0.2224 | 0.2162 | 0.0000 | 0.0040 |
-| A2 foul per swing | 0.3896 | 0.3826 | 0.3785 | 0.3717 | 0.0000 | 0.0041 |
-| A3 contact | 0.8023 | 0.8118 | 0.7590 | 0.7598 | 0.0000 | 0.0041 |
-| A4 put-away (pitch) | 0.1619 | 0.1584 | 0.2047 | 0.2037 | 0.0000 | 0.0040 |
-| A5 conversion (PA) | 0.3553 | 0.3439 | 0.4373 | 0.4340 | 0.0000 | 0.0038 |
-| A7 two-strike pitches per PA reaching two strikes | 2.1947 | 2.1713 | 2.1368 | 2.1301 | 0.0000 | 0.0038 |
+| A1 continuation-foul rate | 0.2443 | 0.2416 | 0.2220 | 0.2159 | 0.0000 | 0.0153 |
+| A2 foul per swing | 0.3896 | 0.3826 | 0.3780 | 0.3712 | 0.0000 | 0.0146 |
+| A3 contact | 0.8023 | 0.8118 | 0.7586 | 0.7595 | 0.0000 | 0.0146 |
+| A4 put-away (pitch) | 0.1619 | 0.1584 | 0.2049 | 0.2039 | 0.0000 | 0.0153 |
+| A5 conversion (PA) | 0.3553 | 0.3439 | 0.4376 | 0.4343 | 0.0000 | 0.0146 |
+| A7 two-strike pitches per PA reaching two strikes | 2.1947 | 2.1710 | 2.1357 | 2.1296 | 0.0000 | 0.0146 |
 
-## Within pitcher: two-strike minus one-strike, per swing (descriptive)
+## Within pitcher: two-strike minus one-strike (A1 per pitch, whiff per swing; descriptive)
 
 | league_season | foul_change | whiff_change | cells |
 |---|---|---|---|
-| AAA_2024 | -0.0172 | -0.0191 | 14485.0000 |
-| AAA_2025 | -0.0196 | -0.0198 | 15019.0000 |
-| CPBL_2024 | -0.0003 | -0.0100 | 2133.0000 |
-| CPBL_2025 | -0.0088 | -0.0129 | 2081.0000 |
+| AAA_2024 | 0.0232 | -0.0187 | 17564.0000 |
+| AAA_2025 | 0.0202 | -0.0193 | 18345.0000 |
+| CPBL_2024 | 0.0288 | -0.0100 | 2527.0000 |
+| CPBL_2025 | 0.0248 | -0.0129 | 2490.0000 |
 
 ## Part B (exploratory): AAA two-strike put-away rate and CPBL K-BB%
 
-Cohort 17 (amendment 11), eligible 17 (>= 100 two-strike pitches and >= 50 PAs reaching two strikes in the pre-arrival AAA window). Partial Spearman controlling AAA K-BB%: -0.37 (95% CI -0.79 to +0.31; leave-one-out -0.54 to -0.26); verdict: no signal. Secondary, continuation-foul rate vs CPBL K-BB%: +0.34.
+Cohort 17 (amendment 11), eligible 17 (>= 100 two-strike pitches and >= 50 PAs reaching two strikes in the pre-arrival AAA window). Partial Spearman controlling AAA K-BB%: -0.40 (95% CI -0.84 to +0.29; leave-one-out -0.58 to -0.29); verdict: no signal. Secondary, continuation-foul rate vs CPBL K-BB%: +0.34.
 
-AAA 2024 -> 2025 reliability (pitchers with >= 100 two-strike pitches both years, n 315): put-away 0.35, continuation-foul rate 0.21.
+AAA 2024 -> 2025 reliability (pitchers with >= 100 two-strike pitches both years, n 314): put-away 0.34, continuation-foul rate 0.19.

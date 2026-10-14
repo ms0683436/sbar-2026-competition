@@ -9,9 +9,9 @@ Marcel adapted to AAA: last three AAA seasons (hitters 5/4/3, pitchers 3/2/1), r
 | fold | n | outcome | marcel | judgment | estimated |
 |---|---|---|---|---|---|
 | 2025 | 93 | y_kbb | 0.315 | 0.284 | 0.223 |
-| 2025 | 93 | y_neg_fip | 0.113 | 0.170 | 0.137 |
+| 2025 | 93 | y_neg_fip | 0.287 | 0.170 | 0.137 |
 | 2026 | 92 | y_kbb | 0.097 | 0.064 | 0.019 |
-| 2026 | 92 | y_neg_fip | -0.039 | -0.042 | -0.036 |
+| 2026 | 92 | y_neg_fip | 0.047 | -0.042 | -0.036 |
 
 Paired difference Marcel minus comparator (90% CI):
 
@@ -19,8 +19,17 @@ Paired difference Marcel minus comparator (90% CI):
 |---|---|---|---|---|
 | y_kbb | judgment | +0.031 (-0.035 to +0.095) | +0.033 (-0.069 to +0.146) | +0.032 (-0.031 to +0.094) |
 | y_kbb | estimated | +0.092 (-0.023 to +0.200) | +0.078 (-0.101 to +0.250) | +0.085 (-0.020 to +0.185) |
-| y_neg_fip | judgment | -0.057 (-0.127 to +0.016) | +0.004 (-0.109 to +0.118) | -0.027 (-0.094 to +0.043) |
-| y_neg_fip | estimated | -0.024 (-0.139 to +0.094) | -0.002 (-0.204 to +0.180) | -0.013 (-0.129 to +0.093) |
+| y_neg_fip | judgment | +0.117 (+0.007 to +0.228) | +0.089 (-0.065 to +0.240) | +0.103 (+0.005 to +0.198) |
+| y_neg_fip | estimated | +0.150 (+0.050 to +0.248) | +0.083 (+0.020 to +0.143) | +0.116 (+0.055 to +0.175) |
+
+Registered sensitivities, Marcel rho on the primary outcome (reported only; they never choose the model):
+
+| fold | outcome | marcel_R0.5 | marcel_R2 | marcel_no_age |
+|---|---|---|---|---|
+| 2025 | y_kbb | 0.303 | 0.329 | 0.264 |
+| 2026 | y_kbb | 0.090 | 0.109 | 0.077 |
+
+Seasons without single-year park factors (PF = 1, flagged): 2022.
 
 ### Hitters (verdict on the primary outcome: **non-inferior**)
 
@@ -35,6 +44,17 @@ Paired difference Marcel minus comparator (90% CI):
 |---|---|---|---|---|
 | y_woba | judgment | +0.022 (-0.024 to +0.066) | +0.006 (-0.044 to +0.056) | +0.014 (-0.019 to +0.048) |
 | y_woba | estimated | +0.030 (-0.029 to +0.095) | +0.025 (-0.038 to +0.091) | +0.027 (-0.015 to +0.074) |
+
+Registered sensitivities, Marcel rho on the primary outcome (reported only; they never choose the model):
+
+| fold | outcome | marcel_R0.5 | marcel_R2 | marcel_no_age |
+|---|---|---|---|---|
+| 2025 | y_woba | 0.304 | 0.319 | 0.282 |
+| 2026 | y_woba | 0.344 | 0.352 | 0.335 |
+
+Seasons without single-year park factors (PF = 1, flagged): 2022.
+
+For pitchers, the -FIP rows use Marcel's projected FIP; the judgment and estimated baselines are their composite scores for both outcomes.
 
 ## V2: CPBL K-BB% (centred)
 
@@ -61,4 +81,17 @@ Paired difference Marcel minus the comparator above: +0.08 (90% CI -0.03 to +0.2
 | cohort | n_held_out | mae_mean | mae_marcel | diff | ci |
 |---|---|---|---|---|---|
 | census_k-bb | 52 | 0.0491 | 0.0459 | -0.0032 | -0.0066 to +0.0002 |
+| census_k | 52 | 0.0357 | 0.0304 | -0.0053 | -0.0095 to -0.0011 |
+| census_bb | 52 | 0.0245 | 0.0234 | -0.0010 | -0.0029 to +0.0010 |
 | a11_k-bb | 9 | 0.0505 | 0.0539 | 0.0034 | -0.0012 to +0.0113 |
+| a11_k | 9 | 0.0414 | 0.0428 | 0.0014 | -0.0019 to +0.0062 |
+| a11_bb | 9 | 0.0212 | 0.0204 | -0.0008 | -0.0019 to +0.0000 |
+
+## Use in the ranking: signable top 3 before / after Marcel
+
+Pitchers: amendment 13 (old baseline in the 0.5 slot) vs amendment 15 (Marcel K-BB%); hitters: old baseline rank vs Marcel wOBA rank.
+
+| role | before | after | rank corr (signable) | P(top 1 among signable), pick |
+|---|---|---|---|---|
+| pitcher | Joey Gerber, José Urquidy, Seth Shuman | Joey Gerber, José Urquidy, Elieser Hernández | 0.94 | 0.59 |
+| hitter | Daz Cameron, Carlos Pérez, Ryan Ward | Daz Cameron, Ryan Ward, Pablo Reyes | 0.75 | 0.70 |
