@@ -335,3 +335,73 @@ amendment6:
       A: {as_of: "2024-10-13", seasons: [2023, 2024], positives: rebas_first_2025, primary: true}
       B: {as_of: "2025-10-13", seasons: [2024, 2025], positives: news_2026, primary: false}
     ks: [10, 20]
+
+# AMENDMENT 7 (2026-10-14; committed BEFORE any 2026 CPBL rate statistic of the cohort was
+# parsed, computed or viewed). Johnny reversed the 2026-10-14 decision "no unlicensed 2026
+# data" for ONE use: 2026 CPBL first-team regular-season stats of import players, taken from
+# stats.cpbl.com.tw (CPBL's Trackman-based advanced-stats site), serve as BACKTEST OUTCOMES.
+# The site's terms (使用條款 §4) require written authorization; it is used without one at
+# Johnny's decision and this is disclosed in reports/limitations.md (L10) and data/sources.md.
+# Access: never /api/ (robots.txt); public player pages as Markdown (the site's documented AI
+# path, `Accept: text/markdown`) for identities only; the stats come from Johnny's in-browser
+# "匯出表單" export of the 2026 一軍例行賽 PR table (pitchers and batters). The export is not
+# redistributed; only cohort-level derived numbers are. No 2026 CPBL number enters the 2026
+# ranking or changes the picks.
+# Already seen before this registration: names, team, first/second-team level and the PA count
+# of each player page's default view (517 pages read for identities); one 2026 line quoted in
+# the Q&A thread (Mario Sanchez: K% 20.2, BB% 2.9, whiff% 21.3, wOBA allowed .292).
+#
+# Identity: an "import" is a player of the export whose MLBAM id is found (statsapi people
+# search on the site's original name / news name) and whose birth country is not Taiwan; the
+# mapping is listed with a source per row in data/reference/cpbl_imports_2026_site.csv. A
+# pitcher's AAA throwing hand must equal the site's hand.
+#
+# Pitchers: pooled cohort = amendment-2 cohort (2024-25 arrivals, REBAS outcomes, unchanged
+#   screening) + 2026 cohort: import pitchers with >= 400 tracked AAA pitches in the 2025
+#   regular season and >= 60 CPBL 2026 first-team BF. A pitcher counts once (earliest season).
+#   Predictors (AAA, before arrival):
+#     baseline  amendment-5 pitcher score (K% .50, BB% .25, FIP .25; league- and park-adjusted)
+#               on the AAA season preceding the outcome season (2023 / 2024 / 2025), z against
+#               all AAA pitchers of that season with >= 100 BF; park factors from that season
+#               and the next (park.factors_for([Y, Y+1])). Needs >= 100 AAA BF that season.
+#     K%, BB%   league-adjusted, same season
+#     F1, F2, Fit  as amendment 2; for 2026 the AAA window is the 2025 regular season and the
+#               environment is CPBL 2024-25 vs AAA 2024-25; Fit z over the pooled cohort.
+#   Outcomes: CPBL K%, BB%, K-BB%, whiff% (REBAS for 2024-25, the export for 2026), each
+#   centred on its season's league value (REBAS all pitchers for 2024-25; BF-weighted mean of
+#   all pitchers in the export for 2026).
+#   Tests (Spearman, 90% bootstrap CI over pitchers, verdict rule and min n as amendment 2):
+#     P1 (primary)  baseline vs centred CPBL K-BB%              expected +
+#     P2            AAA K% vs centred CPBL K%                   +
+#     P3            AAA BB% vs centred CPBL BB%                 +
+#     P4            Fit vs residual of centred CPBL K-BB% after OLS on baseline   +
+#     P5            F1 vs (centred CPBL whiff% - AAA window whiff% centred on its season)  +
+#   Descriptive: P1 within the 2026 cohort and within the amendment-2 cohort.
+# Hitters (first hitter backtest; 2026 only): import non-pitchers with >= 150 AAA PA in 2025
+#   and >= 100 CPBL 2026 first-team PA.
+#   Predictors on 2025 AAA (park- and league-adjusted, recent window 2025-08-01..09-30), z
+#   against all 2025 AAA non-pitchers with >= 150 PA: baseline score with the amendment-4
+#   estimated weights (in use), the judgment-weight score, AAA K%, ISO, wOBA.
+#   Outcomes: CPBL 2026 wOBA, K%, ISO from the export (site definitions; one season, so
+#   ranks only).
+#   Tests: Q1 (primary) estimated-weight baseline vs CPBL wOBA +; Q2 judgment-weight baseline
+#   vs CPBL wOBA +; Q3 AAA K% vs CPBL K% +; Q4 AAA ISO vs CPBL ISO +; Q5 AAA wOBA vs CPBL wOBA +.
+# Reporting rule: as amendment 2 (supports / contradicts / inconclusive from the 90% CI;
+# below 15 players everything is descriptive only). No outcome changes the method or picks.
+amendment7:
+  source: stats.cpbl.com.tw export, 2026 一軍例行賽 PR table (pitchers, batters)
+  identities: data/reference/cpbl_imports_2026_site.csv
+  pitcher:
+    outcome_season: 2026
+    aaa_season: 2025
+    min_aaa_tracked_pitches: 400
+    min_cpbl_bf: 60
+    baseline_min_bf: 100
+    env_seasons: [2024, 2025]
+  hitter:
+    aaa_season: 2025
+    min_aaa_pa: 150
+    min_cpbl_pa: 100
+    recent_window: ["2025-08-01", "2025-09-30"]
+  bootstrap: {draws: 2000, ci: 0.90, seed: 20261014}
+  min_n_for_conclusion: 15
