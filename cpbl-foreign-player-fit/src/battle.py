@@ -67,10 +67,14 @@ def _audit(d: pd.DataFrame) -> pd.DataFrame:
     jump = same & ((d.balls.shift(-1) != nb) | (d.strikes.shift(-1) != ns.clip(upper=2)))
     first = d.pitch_seq.eq(1) & d.balls.eq(0) & d.strikes.eq(0)
     misnumbered = d.pitch_seq.ne(g.cumcount() + 1)
-    bad_ft = code.isin(["T", "FT"]) & d.strikes.eq(2) & ~term
-    bad = (jump | bad_ft | misnumbered).groupby(d.pa_id).any() | ~first.groupby(d.pa_id).first()
-    so_ok = ~last.pa_event.eq("SO") | last.strikes.eq(2)
-    bb_ok = ~last.pa_event.eq("uBB") | (last.balls.eq(3) & code.groupby(d.pa_id).last().isin(BALL_CODES))
+    # a third strike (called, swinging, foul tip) must end the PA; ball four too
+    k3 = (d.called_strike.astype(bool) | d.whiff.astype(bool) | code.isin(["T", "FT"])) & d.strikes.eq(2) & ~term
+    b4 = ball & d.balls.eq(3) & ~term
+    bad = (jump | k3 | b4 | misnumbered).groupby(d.pa_id).any() | ~first.groupby(d.pa_id).first()
+    last_code = code.groupby(d.pa_id).last()
+    k_last = (last.called_strike.astype(bool) | last.whiff.astype(bool)) | last_code.reindex(last.index).isin(["T", "FT"])
+    so_ok = ~last.pa_event.eq("SO") | (last.strikes.eq(2) & k_last)
+    bb_ok = ~last.pa_event.eq("uBB") | (last.balls.eq(3) & last_code.reindex(last.index).isin(BALL_CODES))
     pa["consistent"] = ~bad.reindex(pa.index) & so_ok & bb_ok
     pa["keep"] = pa.complete & ~pa.special & pa.consistent
     return pa

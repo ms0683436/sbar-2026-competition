@@ -22,7 +22,7 @@ import numpy as np
 import pandas as pd
 
 from . import backtest, baseline, baseline_weights, eligibility, milb_candidates, park
-from .common import config, md_table, path, processed
+from .common import config, ip_to_outs, md_table, path, processed
 
 PITCH_COUNTS = ["pitching_BF", "pitching_SO", "pitching_BB", "pitching_HR", "pitching_HBP", "pitching_IP",
                 "pitching_ER", "pitching_GS"]
@@ -173,9 +173,9 @@ def log_scale(logs: pd.DataFrame, w: pd.Series) -> pd.DataFrame:
     """Bootstrap multipliers per (player, season, team): re-weighted / original game-log totals."""
     cols = [c for c in logs.columns if c.startswith(("pitching_", "batting_"))]
     g = logs.assign(season=pd.to_datetime(logs.game_date).dt.year)
-    if "pitching_IP" in g:              # log IP is in x.1 / x.2 notation: scale by outs
-        ip = pd.to_numeric(g.pitching_IP, errors="coerce").fillna(0)
-        g["pitching_IP"] = np.floor(ip) * 3 + np.round((ip - np.floor(ip)) * 10)
+    if "pitching_IP" in g:              # scale innings by outs (statsapi logs: outs; mirror: x.1 / x.2 notation)
+        conv = g.pitching_IP.map(lambda v: np.nan if pd.isna(v) else ip_to_outs(v))
+        g["pitching_IP"] = (g.outs.fillna(conv) if "outs" in g else conv).fillna(0)
     f = g.game_id.astype(str).map(w).fillna(0).to_numpy()
     keys = [g.player_id.astype(int), g.season.astype(int), g.team_id.astype(int)]
     base = g[cols].groupby(keys).sum()

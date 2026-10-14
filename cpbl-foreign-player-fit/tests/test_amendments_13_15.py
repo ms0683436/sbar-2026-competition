@@ -68,8 +68,13 @@ def test_audit_keeps_clean_pas_and_drops_the_rest():
                      (0, 2, "X", True, "OUT")])                                        # non-terminal two-strike tip
     walk = _pa("g", [(0, 0, "B", False, None), (1, 0, "B", False, None), (2, 0, "*B", False, None),
                      (3, 0, "B", True, "uBB")])
-    a = battle._audit(pd.DataFrame(ok + early + jump + bunt + pitchout + tip2 + walk))
-    assert a.keep.to_dict() == {"a": True, "b": False, "c": False, "d": False, "e": False, "f": False, "g": True}
+    k3 = _pa("h", [(0, 0, "C", False, None), (0, 1, "C", False, None), (0, 2, "S", False, None),
+                   (0, 2, "X", True, "OUT")])                                          # strike three not terminal
+    so_ball = _pa("i", [(0, 0, "C", False, None), (0, 1, "C", False, None), (0, 2, "B", True, "SO")])
+    hbp = _pa("j", [(0, 0, "F", False, None), (0, 1, "H", True, "HBP")])
+    a = battle._audit(pd.DataFrame(ok + early + jump + bunt + pitchout + tip2 + walk + k3 + so_ball + hbp))
+    assert a.keep.to_dict() == {"a": True, "b": False, "c": False, "d": False, "e": False, "f": False, "g": True,
+                                "h": False, "i": False, "j": True}
 
 
 def test_partial_spearman_removes_the_control():
@@ -87,6 +92,9 @@ def test_age_factor_shape():
 
 
 def test_log_scale_identity_and_ratio():
+    sl = pd.DataFrame({"player_id": [1, 1], "team_id": [5, 5], "game_id": ["g1", "g2"], "game_date": ["2025-05-01"] * 2,
+                       "pitching_BF": [3, 3], "pitching_IP": [1 / 3, 1.0], "outs": [1, 3]})     # statsapi: true thirds
+    assert np.isclose(marcel.log_scale(sl, pd.Series({"g1": 2.0, "g2": 0.0})).pitching_IP.iat[0], 0.5)
     logs = pd.DataFrame({"player_id": [1, 1, 1], "team_id": [5, 5, 5], "game_id": ["g1", "g2", "g3"],
                          "game_date": ["2026-05-01", "2026-05-02", "2026-05-03"],
                          "pitching_BF": [20, 10, 30], "pitching_SO": [5, 0, 5], "pitching_IP": [5.0, 2.1, 6.0]})
