@@ -50,6 +50,9 @@ def pitches(seasons) -> pd.DataFrame:
     if min(seasons) < a.season.min():
         a = pd.concat([backtest.aaa_extra(), a], ignore_index=True)
     a = a[a.season.isin(seasons)].copy()
+    tr = a.season.eq(cfg()["train_season"])
+    a["rv"] = np.nan                                       # on full PA sequences, before any filter
+    a.loc[tr, "rv"] = run_values(a[tr])
     a["game_pk"] = a.game_id.astype(int)
     a["at_bat_number"] = a.pa_id.str.split("-").str[1].astype(int)
     a["pitch_number"] = a.pitch_seq.astype(int)
@@ -103,18 +106,28 @@ def fastball_diffs(a: pd.DataFrame) -> pd.DataFrame:
 
 
 def run_values(a: pd.DataFrame) -> pd.Series:
-    """Pitch run value from the training season's count values (wOBA scale)."""
+    """Pitch run value from the training season's count values (wOBA scale). Needs every pitch
+    of each PA in order (call it before filtering pitches). A count's value is the mean wOBA
+    value of the PAs that pass through it, each PA once (repeated two-strike fouls do not
+    weight a PA twice).
+
+    WOBA_SCALE is a fixed divisor, not the estimated league scale the registration names: a
+    constant rescaling of the target rescales every fitted tree leaf by the same factor
+    (squared loss; min_samples_leaf and the L2 term act on the hessian side), so the per-pitcher
+    z-score, i.e. Stuff+, is unchanged."""
+    a = a.sort_values(["pa_id", "pitch_seq"])
     pa_end = a[a.pa_end.astype(bool)]
     val = pa_end.set_index("pa_id").woba_value.where(pa_end.set_index("pa_id").woba_denom > 0)
     v = a.pa_id.map(val)
     ok = v.notna() & ~a.groupby("pa_id").is_bunt.transform("any")
-    cv = a[ok].assign(v=v[ok]).groupby(["balls", "strikes"]).v.mean()
+    cv = (a[ok].assign(v=v[ok]).drop_duplicates(["pa_id", "balls", "strikes"])
+          .groupby(["balls", "strikes"]).v.mean())
     before = cv.reindex(pd.MultiIndex.from_arrays([a.balls, a.strikes])).to_numpy()
     nxt = a.groupby("pa_id")[["balls", "strikes"]].shift(-1)
     after = cv.reindex(pd.MultiIndex.from_arrays([nxt.balls.fillna(0).astype(int), nxt.strikes.fillna(0).astype(int)])).to_numpy()
     after = np.where(a.pa_end.astype(bool), v, after)
     rv = pd.Series((after - before) / WOBA_SCALE, index=a.index)
-    return rv.where(ok)
+    return rv.where(ok).reindex(a.index)
 
 
 def features(fam: str) -> list[str]:
@@ -133,25 +146,28 @@ def fit_predict() -> tuple[pd.DataFrame, dict]:
     a = pitches(seasons)
     off = park_offsets(a)
     a = fastball_diffs(adjust(a, off))
-    a["rv"] = np.nan
     tr = a.season.eq(tr_y)
-    a.loc[tr, "rv"] = run_values(a[tr])
+    # one fold per 2025 pitcher, over ALL his pitches (also those without a target, e.g. bunt or
+    # IBB PAs), so every 2025 pitch is predicted by a model that never saw that pitcher
+    pids = np.array(sorted(a.loc[tr, "pitcher_id"].unique()))
+    fold_of = {}
+    for k, (_, j) in enumerate(GroupKFold(c["folds"]).split(pids, groups=pids)):
+        fold_of.update({p: k for p in pids[j]})
+    a["fold"] = np.where(tr, a.pitcher_id.map(fold_of), -1)
     a["pred"] = np.nan
     diag = {}
     for fam in c["families"]:
         X = features(fam)
-        t = a[tr & a.family.eq(fam) & a.rv.notna()]
-        oof = pd.Series(np.nan, index=t.index)
-        for k, (i, j) in enumerate(GroupKFold(c["folds"]).split(t, groups=t.pitcher_id)):
-            m = _model().fit(t.iloc[i][X], t.iloc[i].rv)
-            oof.iloc[j] = m.predict(t.iloc[j][X])
-        a.loc[oof.index, "pred"] = oof
+        f = a.family.eq(fam)
+        t = a[tr & f & a.rv.notna()]
+        for k in range(c["folds"]):
+            m = _model().fit(t.loc[t.fold != k, X], t.loc[t.fold != k, "rv"])
+            held = tr & f & a.fold.eq(k)
+            a.loc[held, "pred"] = m.predict(a.loc[held, X])
         full = _model().fit(t[X], t.rv)
-        rest = a.family.eq(fam) & ~tr
+        rest = f & ~tr
         a.loc[rest, "pred"] = full.predict(a.loc[rest, X])
-        tr_other = tr & a.family.eq(fam) & a.rv.isna()             # bunt / IBB PAs: predict with full model
-        a.loc[tr_other, "pred"] = full.predict(a.loc[tr_other, X])
-        diag[fam] = {"n_train": int(len(t)), "oof_corr": float(np.corrcoef(oof, t.rv)[0, 1])}
+        diag[fam] = {"n_train": int(len(t)), "oof_corr": float(np.corrcoef(a.loc[t.index, "pred"], t.rv)[0, 1])}
     return a, {"models": diag, "park_offsets": off.reset_index().to_dict("records")}
 
 
@@ -205,7 +221,7 @@ def validate(stuff: pd.DataFrame) -> dict:
                      "stuff_wins": bool(lo > 0)}
     k, c0 = np.polyfit(d.baseline_score, d.neg_fip26, 1)
     d["resid"] = d.neg_fip26 - (c0 + k * d.baseline_score)
-    est, lo, hi = backtest.boot_ci(d, "stuff_plus", "resid", b["draws"], b["ci"], rng)
+    est, lo, hi = backtest.boot_resid_ci(d, "stuff_plus", "baseline_score", "neg_fip26", b["draws"], b["ci"], rng)
     res["S3 Stuff+ vs -FIP residual after baseline"] = {"rho": est, "ci": [lo, hi], "supports": bool(lo > 0)}
     res["stuff_vs_baseline_2025"] = _spear(d.stuff_plus, d.baseline_score)
     d.to_csv(processed("stuff_plus_validation.csv"), index=False)

@@ -84,6 +84,7 @@ def translation(coh: pd.DataFrame, aaa_whiff: dict) -> dict:
         boots = np.array(boots)
         row = {"metric": m, "n": len(d), "a": aa, "b": bb,
                "b_ci": [float(np.quantile(boots[:, 0], a_)), float(np.quantile(boots[:, 0], 1 - a_))],
+               "a_ci": [float(np.quantile(boots[:, 1], a_)), float(np.quantile(boots[:, 1], 1 - a_))],
                "aaa_mean": float(d[:, 0].mean()), "cpbl_mean": float(d[:, 1].mean())}
         for v in at:
             pred = boots[:, 1] + boots[:, 0] * v
@@ -105,11 +106,11 @@ def hitter_predictors(year: int) -> pd.DataFrame:
     d = baseline.hitter_metrics(df, year, s, rec)
     est = baseline.score(d, "hitter", baseline.active_weights("hitter"))
     jud = baseline.score(d, "hitter", baseline.judgment_weights("hitter"))
-    out = est[["player_id", "batting_PA", "baseline_score", "k_pct_raw", "iso_raw", "woba_raw"]].copy()
+    out = est[["player_id", "batting_PA", "baseline_score", "k_pct", "iso", "woba"]].copy()   # league/park-adjusted
     out["baseline_score_judgment"] = jud.baseline_score.reindex(est.index)
     out["mlbam_id"] = out.player_id.astype(int)
-    return out.drop(columns="player_id").rename(columns={"batting_PA": "aaa_pa", "k_pct_raw": "aaa_k_pct",
-                                                         "iso_raw": "aaa_iso", "woba_raw": "aaa_woba"})
+    return out.drop(columns="player_id").rename(columns={"batting_PA": "aaa_pa", "k_pct": "aaa_k_pct",
+                                                         "iso": "aaa_iso", "woba": "aaa_woba"})
 
 
 # ------------------------------------------------------------------ identities and outcomes
@@ -178,6 +179,20 @@ def _aaa_league_whiff(aaa: pd.DataFrame) -> dict:
     d = aaa[~aaa.is_bunt.astype(bool)]
     g = d.groupby("season")[["whiff", "swing"]].sum()
     return (g.whiff / g.swing).to_dict()
+
+
+def _window_league_whiff(r, old: pd.DataFrame, aaa_all: pd.DataFrame, aw: dict) -> float:
+    """League whiff% matching a pitcher's AAA window: the amendment-2 window (aaa_window_days
+    before his first CPBL game) can span two AAA seasons, so each season's league value is
+    weighted by his swings in that season. The 2026 cohort's window is the 2025 season."""
+    if r.source != "REBAS":
+        return aw[int(r.aaa_season)]
+    o = old[(old.mlbam_id.astype(int) == r.mlbam_id) & (old.season == r.season)].iloc[0]
+    first = pd.Timestamp(o.cpbl_first_date)
+    lo = first - pd.Timedelta(days=backtest.cfg()["aaa_window_days"])
+    w = aaa_all[(aaa_all.pitcher_id == str(r.mlbam_id)) & (aaa_all.date >= lo) & (aaa_all.date < first)]
+    sw = w[~w.is_bunt.astype(bool)].groupby("season").swing.sum()
+    return float(sum(sw[s] * aw[s] for s in sw.index) / sw.sum())
 
 
 def pitcher_cohort(exp: pd.DataFrame, ids: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
@@ -264,7 +279,8 @@ def pitcher_cohort(exp: pd.DataFrame, ids: pd.DataFrame) -> tuple[pd.DataFrame, 
     coh["cpbl_bb_c"] = coh.cpbl_bb_pct - coh.lg_bb_pct
     coh["cpbl_kbb_c"] = coh.cpbl_k_c - coh.cpbl_bb_c
     coh["cpbl_whiff_c"] = coh.cpbl_whiff_pct - coh.lg_whiff_pct
-    coh["d_whiff_c"] = (coh.cpbl_whiff_pct - coh.lg_whiff_pct) - (coh.aaa_whiff_pct - coh.aaa_season.map(aw))
+    coh["aaa_lg_whiff"] = coh.apply(lambda r: _window_league_whiff(r, old, aaa_all, aw), axis=1)
+    coh["d_whiff_c"] = (coh.cpbl_whiff_pct - coh.lg_whiff_pct) - (coh.aaa_whiff_pct - coh.aaa_lg_whiff)
     d = coh[["baseline_score", "cpbl_kbb_c"]].dropna()
     b = np.polyfit(d.baseline_score, d.cpbl_kbb_c, 1)
     coh["kbb_resid_baseline"] = coh.cpbl_kbb_c - np.polyval(b, coh.baseline_score)
@@ -275,7 +291,7 @@ P_TESTS = [
     ("P1 baseline vs centred CPBL K-BB% (primary)", "baseline_score", "cpbl_kbb_c", 1),
     ("P2 AAA K% vs centred CPBL K%", "k_pct_adj", "cpbl_k_c", 1),
     ("P3 AAA BB% vs centred CPBL BB%", "bb_pct_adj", "cpbl_bb_c", 1),
-    ("P4 Fit vs CPBL K-BB% residual after baseline", "fit", "kbb_resid_baseline", 1),
+    ("P4 Fit vs CPBL K-BB% residual after baseline", "fit", "cpbl_kbb_c", 1, "baseline_score"),
     ("P5 F1 vs centred whiff% change", "fit_mix_whiff", "d_whiff_c", 1),
 ]
 S_TESTS = [  # amendment 8, S4 (reported next to P1 and Fit)
@@ -295,13 +311,14 @@ Q_TESTS = [
 def _tests(df: pd.DataFrame, tests, rng) -> list[dict]:
     b = cfg()["bootstrap"]
     out = []
-    for label, x, y, sign in tests:
-        d = df[[x, y]].astype(float).dropna()
+    for label, x, y, sign, *base in tests:            # base: residual of y after OLS on it
+        d = df[[x, y] + base].astype(float).dropna()
         if len(d) < 3:
             out.append({"test": label, "n": len(d), "rho": np.nan, "ci_lo": np.nan, "ci_hi": np.nan,
                         "verdict": "too few"})
             continue
-        est, lo, hi = backtest.boot_ci(d, x, y, b["draws"], b["ci"], rng)
+        est, lo, hi = (backtest.boot_resid_ci(d, x, base[0], y, b["draws"], b["ci"], rng) if base
+                       else backtest.boot_ci(d, x, y, b["draws"], b["ci"], rng))
         v = ("descriptive only (n below minimum)" if len(d) < cfg()["min_n_for_conclusion"]
              else "supports" if sign * lo > 0 and sign * hi > 0
              else "contradicts" if sign * lo < 0 and sign * hi < 0 else "inconclusive")
@@ -312,7 +329,9 @@ def _tests(df: pd.DataFrame, tests, rng) -> list[dict]:
 # ------------------------------------------------------------------ hitters
 def hitter_cohort(exp: pd.DataFrame, ids: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     h = cfg()["hitter"]
-    exp = exp if "pa" in exp else exp.assign(pa=np.nan)      # the export has no PA column
+    if "pa" not in exp:                                       # the export has no PA column: >= 100 PA
+        m100 = set(load_export("batter_2026_min100").site_name)  # = listed in the min-PA-100 export
+        exp = exp.assign(pa=np.where(exp.site_name.isin(m100), 100, 0))
     e = ids[ids.role.eq("hitter")].merge(exp, on="site_name", how="left")
     pr = hitter_predictors(h["aaa_season"])
     e = e.merge(pr, on="mlbam_id", how="left")
@@ -361,7 +380,7 @@ def _translation_rows(ols: list[dict]) -> pd.DataFrame:
     for r in ols:
         at = {k: v for k, v in r.items() if k.startswith("at_")}
         rows.append({"metric": r["metric"], "n": r["n"], "slope b (90% CI)": f"{r['b']:.2f} ({r['b_ci'][0]:.2f} to {r['b_ci'][1]:.2f})",
-                     "intercept a": f"{r['a']:.3f}",
+                     "intercept a (90% CI)": f"{r['a']:.3f} ({r['a_ci'][0]:.3f} to {r['a_ci'][1]:.3f})",
                      "AAA -> CPBL": "; ".join(f"{float(k[3:]):.0%} -> {v[0]:.1%} ({v[1]:.1%}-{v[2]:.1%})" for k, v in at.items())})
     return pd.DataFrame(rows)
 

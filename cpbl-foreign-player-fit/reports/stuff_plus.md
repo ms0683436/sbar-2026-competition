@@ -6,9 +6,9 @@ Modelled on FanGraphs Stuff+ (physical characteristics only); AAA statsapi game 
 
 | family | n_train | oof_corr |
 |---|---|---|
-| FB | 355680 | 0.028 |
-| BR | 201584 | 0.019 |
-| OS | 79633 | 0.004 |
+| FB | 355969 | 0.028 |
+| BR | 201764 | 0.023 |
+| OS | 79654 | 0.006 |
 
 Pitch-level run value is mostly noise, so per-pitch correlations are small; this amendment judges Stuff+ by what the pitcher average predicts the next season (S1-S3 below).
 
@@ -16,11 +16,11 @@ Pitch-level run value is mostly noise, so per-pitch correlations are small; this
 
 | test | rho_stuff | rho_baseline | estimate | ci_lo | ci_hi | verdict |
 |---|---|---|---|---|---|---|
-| S1 -FIP 2026 (Stuff+ minus baseline) | 0.17 | 0.06 | 0.11 | -0.05 | 0.27 | no difference shown |
-| S2 K% 2026 (Stuff+ minus baseline) | 0.34 | 0.23 | 0.10 | -0.05 | 0.25 | no difference shown |
-| S3 Stuff+ vs 2026 -FIP residual after baseline | 0.15 |  | 0.15 | 0.04 | 0.27 | supports (adds to baseline) |
+| S1 -FIP 2026 (Stuff+ minus baseline) | 0.13 | 0.06 | 0.07 | -0.09 | 0.22 | no difference shown |
+| S2 K% 2026 (Stuff+ minus baseline) | 0.31 | 0.23 | 0.08 | -0.07 | 0.22 | no difference shown |
+| S3 Stuff+ vs 2026 -FIP residual after baseline | 0.11 |  | 0.11 | -0.01 | 0.22 | not shown |
 
-Spearman(2025 Stuff+, 2025 baseline) = 0.24. Pre-registered rule: Stuff+ may enter the ranking in a later amendment only if S1 or S3 passes.
+Spearman(2025 Stuff+, 2025 baseline) = 0.30. Pre-registered rule: Stuff+ may enter the ranking in a later amendment only if S1 or S3 passes.
 
 ## Largest park offsets (inches for pfx, mph, rpm, feet)
 

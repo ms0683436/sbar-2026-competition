@@ -185,6 +185,24 @@ def spearman(a, b) -> float:
     return float(s.iloc[:, 0].rank().corr(s.iloc[:, 1].rank())) if len(s) > 2 else np.nan
 
 
+def boot_resid_ci(df: pd.DataFrame, x: str, base: str, y: str, draws: int, ci: float,
+                  rng) -> tuple[float, float, float]:
+    """Spearman(x, residual of y after OLS on base) with the OLS refitted inside every draw, so
+    the interval also carries the uncertainty of the baseline regression."""
+    d = df[[x, base, y]].astype(float).dropna().to_numpy()
+
+    def stat(m):
+        if np.ptp(m[:, 1]) == 0:
+            return np.nan
+        k, c0 = np.polyfit(m[:, 1], m[:, 2], 1)
+        return spearman(m[:, 0], m[:, 2] - (c0 + k * m[:, 1]))
+
+    est = stat(d)
+    vals = [v for v in (stat(d[rng.integers(0, len(d), len(d))]) for _ in range(draws)) if not np.isnan(v)]
+    a = (1 - ci) / 2
+    return est, float(np.quantile(vals, a)), float(np.quantile(vals, 1 - a))
+
+
 def boot_ci(df: pd.DataFrame, x: str, y: str, draws: int, ci: float, rng) -> tuple[float, float, float]:
     d = df[[x, y]].astype(float).dropna().to_numpy()
     est = spearman(d[:, 0], d[:, 1])

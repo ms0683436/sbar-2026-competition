@@ -14,6 +14,8 @@ dependencies = [
     "requests>=2.31",
     "statsmodels>=0.14",
     "scipy>=1.11",
+    "scikit-learn>=1.3",   # amendment 8 Stuff+
+    "openpyxl>=3.1",       # amendment 7: reads the stats.cpbl.com.tw xlsx exports
 ]
 
 [project.optional-dependencies]

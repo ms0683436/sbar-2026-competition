@@ -9,15 +9,15 @@
 | P1 baseline vs centred CPBL K-BB% (primary) | 17 | 0.13 | -0.31 | 0.52 | inconclusive |
 | P2 AAA K% vs centred CPBL K% | 17 | 0.35 | -0.05 | 0.66 | inconclusive |
 | P3 AAA BB% vs centred CPBL BB% | 17 | 0.37 | -0.02 | 0.68 | inconclusive |
-| P4 Fit vs CPBL K-BB% residual after baseline | 17 | -0.07 | -0.50 | 0.40 | inconclusive |
+| P4 Fit vs CPBL K-BB% residual after baseline | 17 | -0.07 | -0.51 | 0.38 | inconclusive |
 | P5 F1 vs centred whiff% change | 17 | 0.24 | -0.30 | 0.70 | inconclusive |
 
 Amendment 8 (Stuff+, S4):
 
 | test | n | rho | ci_lo | ci_hi | verdict |
 |---|---|---|---|---|---|
-| S4a Stuff+ vs centred CPBL K-BB% | 17 | -0.03 | -0.46 | 0.41 | inconclusive |
-| S4b Stuff+ vs centred CPBL whiff% | 17 | 0.30 | -0.18 | 0.72 | inconclusive |
+| S4a Stuff+ vs centred CPBL K-BB% | 17 | 0.19 | -0.21 | 0.55 | inconclusive |
+| S4b Stuff+ vs centred CPBL whiff% | 17 | 0.35 | -0.07 | 0.73 | inconclusive |
 | S4c Fit vs centred CPBL K-BB% (reference) | 17 | -0.26 | -0.62 | 0.20 | inconclusive |
 
 Descriptive (P1 by cohort):
@@ -29,23 +29,23 @@ Descriptive (P1 by cohort):
 
 | season | source | english_name | aaa_bf | baseline_score | k_pct_adj | bb_pct_adj | fit | stuff_plus | cpbl_k_c | cpbl_bb_c | cpbl_kbb_c |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| 2025 | REBAS | Jackson Stephens | 201 | 0.556 | 0.020 | -0.025 | -0.661 | 91.501 | 0.045 | -0.050 | 0.095 |
-| 2024 | REBAS | Eric Stout | 182 | 0.407 | 0.021 | -0.002 | -0.087 | 101.641 | 0.063 | -0.020 | 0.083 |
-| 2025 | REBAS | Humberto Castellanos | 428 | 0.306 | 0.030 | -0.020 | -0.197 | 89.057 | 0.015 | -0.009 | 0.024 |
-| 2024 | REBAS | Héctor Pérez | 281 | 0.279 | 0.052 | 0.028 | -1.273 | 114.115 | 0.058 | 0.024 | 0.034 |
-| 2025 | REBAS | Brandon Leibrandt | 352 | 0.244 | -0.003 | -0.049 | -1.346 | 81.665 | -0.003 | -0.021 | 0.018 |
-| 2024 | REBAS | Angel Sánchez | 249 | 0.110 | 0.007 | -0.006 | 1.327 | 93.646 | -0.039 | -0.007 | -0.032 |
-| 2024 | REBAS | Rio Gomez | 259 | 0.042 | 0.019 | 0.005 | -0.943 | 85.021 | 0.096 | -0.038 | 0.134 |
-| 2025 | REBAS | Jonathan Bermúdez | 121 | -0.127 | -0.001 | 0.015 | -1.118 | 78.660 | 0.008 | 0.024 | -0.016 |
-| 2025 | REBAS | Spenser Watkins | 507 | -0.288 | -0.055 | -0.031 | -0.219 | 97.913 | -0.012 | 0.008 | -0.020 |
-| 2024 | REBAS | Nick Margevicius | 211 | -0.302 | -0.067 | -0.052 | 0.310 | 85.777 | 0.016 | -0.034 | 0.050 |
-| 2024 | REBAS | Pedro Fernández | 290 | -0.338 | -0.027 | -0.022 | -0.090 | 103.854 | 0.001 | -0.024 | 0.025 |
-| 2025 | REBAS | David Buchanan | 514 | -0.381 | -0.065 | -0.038 | 1.100 | 93.391 | -0.025 | -0.009 | -0.015 |
-| 2026 | stats.cpbl.com.tw | Jordan Balazovic | 235 | -0.395 | -0.038 | -0.010 | 0.457 | 88.564 | 0.102 | 0.024 | 0.078 |
-| 2025 | REBAS | Beau Sulser | 312 | -0.555 | -0.044 | -0.039 | 1.035 | 92.136 | -0.001 | 0.017 | -0.018 |
-| 2024 | REBAS | Daniel Mengden | 244 | -0.560 | -0.047 | 0.009 | 1.396 | 98.661 | 0.006 | -0.011 | 0.017 |
-| 2026 | stats.cpbl.com.tw | John Gant | 375 | -0.634 | -0.042 | 0.012 | 0.941 | 106.584 | 0.095 | 0.003 | 0.092 |
-| 2024 | REBAS | Aaron Leasher | 235 | -0.710 | -0.036 | 0.052 | -0.633 | 89.695 | 0.034 | -0.000 | 0.034 |
+| 2025 | REBAS | Jackson Stephens | 201 | 0.556 | 0.020 | -0.025 | -0.661 | 100.166 | 0.045 | -0.050 | 0.095 |
+| 2024 | REBAS | Eric Stout | 182 | 0.407 | 0.021 | -0.002 | -0.087 | 101.947 | 0.063 | -0.020 | 0.083 |
+| 2025 | REBAS | Humberto Castellanos | 428 | 0.306 | 0.030 | -0.020 | -0.197 | 90.811 | 0.015 | -0.009 | 0.024 |
+| 2024 | REBAS | Héctor Pérez | 281 | 0.279 | 0.052 | 0.028 | -1.273 | 115.690 | 0.058 | 0.024 | 0.034 |
+| 2025 | REBAS | Brandon Leibrandt | 352 | 0.244 | -0.003 | -0.049 | -1.346 | 86.199 | -0.003 | -0.021 | 0.018 |
+| 2024 | REBAS | Angel Sánchez | 249 | 0.110 | 0.007 | -0.006 | 1.327 | 91.283 | -0.039 | -0.007 | -0.032 |
+| 2024 | REBAS | Rio Gomez | 259 | 0.042 | 0.019 | 0.005 | -0.943 | 87.712 | 0.096 | -0.038 | 0.134 |
+| 2025 | REBAS | Jonathan Bermúdez | 121 | -0.127 | -0.001 | 0.015 | -1.118 | 83.752 | 0.008 | 0.024 | -0.016 |
+| 2025 | REBAS | Spenser Watkins | 507 | -0.288 | -0.055 | -0.031 | -0.219 | 99.409 | -0.012 | 0.008 | -0.020 |
+| 2024 | REBAS | Nick Margevicius | 211 | -0.302 | -0.067 | -0.052 | 0.310 | 85.785 | 0.016 | -0.034 | 0.050 |
+| 2024 | REBAS | Pedro Fernández | 290 | -0.338 | -0.027 | -0.022 | -0.090 | 100.493 | 0.001 | -0.024 | 0.025 |
+| 2025 | REBAS | David Buchanan | 514 | -0.381 | -0.065 | -0.038 | 1.100 | 93.211 | -0.025 | -0.009 | -0.015 |
+| 2026 | stats.cpbl.com.tw | Jordan Balazovic | 235 | -0.395 | -0.038 | -0.010 | 0.457 | 96.427 | 0.102 | 0.024 | 0.078 |
+| 2025 | REBAS | Beau Sulser | 312 | -0.555 | -0.044 | -0.039 | 1.035 | 93.575 | -0.001 | 0.017 | -0.018 |
+| 2024 | REBAS | Daniel Mengden | 244 | -0.560 | -0.047 | 0.009 | 1.396 | 100.654 | 0.006 | -0.011 | 0.017 |
+| 2026 | stats.cpbl.com.tw | John Gant | 375 | -0.634 | -0.042 | 0.012 | 0.941 | 105.383 | 0.095 | 0.003 | 0.092 |
+| 2024 | REBAS | Aaron Leasher | 235 | -0.710 | -0.036 | 0.052 | -0.633 | 82.241 | 0.034 | -0.000 | 0.034 |
 
 Screened out (2026):
 
@@ -104,10 +104,10 @@ Screened out:
 
 | site_name | english_name | mlbam_id | cpbl_pa | aaa_pa | excluded |
 |---|---|---|---|---|---|
-| 邦力多 | Luis Liberato | 642451 |  |  | AAA 2025 PA < 150 |
-| 魔鷹 | Steven Moya | 570615 |  |  | AAA 2025 PA < 150 |
-| 道威聖 | Ronnie Dawson | 669008 |  |  | AAA 2025 PA < 150 |
-| 威克 | Adam Brett Walker | 608724 |  |  | AAA 2025 PA < 150 |
+| 邦力多 | Luis Liberato | 642451 | 0 |  | AAA 2025 PA < 150 |
+| 魔鷹 | Steven Moya | 570615 | 100 |  | AAA 2025 PA < 150 |
+| 道威聖 | Ronnie Dawson | 669008 | 0 |  | AAA 2025 PA < 150 |
+| 威克 | Adam Brett Walker | 608724 | 100 |  | AAA 2025 PA < 150 |
 
 ## AAA -> CPBL translation (amendment 7b item 3, descriptive; survivors only)
 
@@ -121,8 +121,8 @@ League ratio (CPBL league / AAA league of the season before):
 
 Cohort OLS (CPBL = a + b * AAA) and translated values (90% CI):
 
-| metric | n | slope b (90% CI) | intercept a | AAA -> CPBL |
+| metric | n | slope b (90% CI) | intercept a (90% CI) | AAA -> CPBL |
 |---|---|---|---|---|
-| K% | 17 | 0.35 (-0.09 to 0.72) | 0.121 | 20% -> 19.2% (17.6%-20.9%); 25% -> 21.0% (18.5%-23.2%); 30% -> 22.7% (18.4%-26.6%) |
-| BB% | 17 | 0.25 (0.02 to 0.52) | 0.042 | 6% -> 5.7% (4.3%-7.1%); 8% -> 6.2% (5.1%-7.3%); 10% -> 6.7% (5.9%-7.5%) |
-| whiff% | 17 | 0.66 (0.23 to 0.94) | 0.063 | 22% -> 20.9% (19.4%-22.7%); 26% -> 23.5% (21.3%-25.9%); 30% -> 26.2% (22.4%-29.4%) |
+| K% | 17 | 0.35 (-0.09 to 0.72) | 0.121 (0.044 to 0.214) | 20% -> 19.2% (17.6%-20.9%); 25% -> 21.0% (18.5%-23.2%); 30% -> 22.7% (18.4%-26.6%) |
+| BB% | 17 | 0.25 (0.02 to 0.52) | 0.042 (0.013 to 0.070) | 6% -> 5.7% (4.3%-7.1%); 8% -> 6.2% (5.1%-7.3%); 10% -> 6.7% (5.9%-7.5%) |
+| whiff% | 17 | 0.66 (0.23 to 0.94) | 0.063 (0.005 to 0.157) | 22% -> 20.9% (19.4%-22.7%); 26% -> 23.5% (21.3%-25.9%); 30% -> 26.2% (22.4%-29.4%) |

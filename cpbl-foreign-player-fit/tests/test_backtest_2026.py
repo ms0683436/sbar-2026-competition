@@ -21,3 +21,16 @@ def test_small_cohort_is_descriptive_only():
     out = backtest_2026._tests(d, [("t", "x", "y", 1)], np.random.default_rng(0))
     assert out[0]["n"] == 10 and np.isclose(out[0]["rho"], 1.0)
     assert out[0]["verdict"].startswith("descriptive only")
+
+
+def test_residual_bootstrap_refits_the_baseline_regression():
+    from src import backtest
+    rng = np.random.default_rng(1)
+    base = rng.normal(size=200)
+    x = rng.normal(size=200)
+    d = pd.DataFrame({"x": x, "base": base, "y": 2 * base + x + rng.normal(scale=0.5, size=200)})
+    est, lo, hi = backtest.boot_resid_ci(d, "x", "base", "y", 300, 0.9, np.random.default_rng(0))
+    assert est > 0.7 and lo > 0.5 and hi <= 1
+    noise = d.assign(x=rng.normal(size=200))
+    est, lo, hi = backtest.boot_resid_ci(noise, "x", "base", "y", 300, 0.9, np.random.default_rng(0))
+    assert lo < 0 < hi
