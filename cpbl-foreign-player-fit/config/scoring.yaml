@@ -594,3 +594,60 @@ amendment10:
   pass_rho: 0.30
   report_rho: 0.50
   bootstrap: {draws: 2000, ci: 0.90, seed: 20261018}
+
+# AMENDMENT 11 (2026-10-14; committed BEFORE any chronological score or test below was
+# computed). Johnny chose 「先修回測」 after Codex pointed out that the pitcher backtest is not a
+# historical forecast: the amendment-2 Fit for 2024 arrivals uses the 2025 CPBL environment
+# (leave-season-out), the amendment-7 baseline uses park factors from the AAA season before
+# AND the arrival season, Fit is z-scored over the backtest cohort itself, and the P4 residual
+# regression is fitted on the whole cohort. This amendment rebuilds every predictor with only
+# information available before the arrival season. ALREADY SEEN: the cohort, its CPBL
+# outcomes and every non-chronological result (amendments 2 and 7). So this is a re-analysis
+# of known outcomes with stricter inputs, not a fresh confirmation; that is disclosed.
+#
+# Cohort: the amendment-7 pooled pitcher cohort, screening unchanged (2024: 8, 2025: 7,
+#   2026: 2). Outcomes unchanged: CPBL K-BB%, K%, BB% centred on the arrival season's league
+#   value; whiff% change centred as in amendment 7 (P5). Survivorship (>= 60 CPBL BF) stays.
+# Information rule: for arrival season Y, a predictor may use AAA data up to season Y-1 (or
+#   the amendment-2 window, which ends before the first CPBL game), CPBL REBAS seasons < Y, and
+#   CPBL outcomes of arrivals in seasons < Y. Nothing from Y or later.
+#   (i)   Baseline: amendment-5 pitcher baseline on AAA Y-1, park factors from AAA Y-1 only
+#         (was Y-1 and Y). Judgment weights K% .50 / BB% .25 / FIP .25 are kept; they were
+#         chosen from AAA diagnostics, never from CPBL outcomes (disclosed).
+#   (ii)  Fit: environment from CPBL REBAS seasons < Y and AAA of the same seasons (within-
+#         pitcher method, amendment 3). Y = 2025 -> 2024; Y = 2026 -> 2024-25. Y = 2024 has no
+#         earlier REBAS season, so 2024 arrivals have no chronological Fit and leave every
+#         Fit test. Pitch window unchanged.
+#   (iii) Standardisation against a reference pool R(Y) = AAA Y-1 pitchers with >= 100 BF and
+#         >= 400 tracked AAA Y-1 pitches, scored with the same inputs as the cohort. Cohort
+#         values are z-scored with R(Y)'s mean and SD (ddof 0; F1, F2 clipped at 2.5 as in the
+#         ranking). fit = 0.6 z(F1) + 0.4 z(F2); combined = 0.7 z(baseline) + 0.3 fit (the
+#         ranking's illustrative mix).
+#   (iv)  Anything fitted to CPBL outcomes uses only arrivals before Y (rolling origin).
+# Tests (Spearman, 90% bootstrap over pitchers, 2000 draws, seed below; verdict rule and
+#   min_n 15 as amendment 7: below 15 a result is descriptive only):
+#   C1 (primary) combined vs centred CPBL K-BB%, 2025-26 arrivals with chronological Fit.
+#   C2 baseline vs the same outcome, same pitchers as C1.
+#   C3 C1 minus C2, paired bootstrap: does adding Fit improve the ranking?
+#   C4 Fit vs centred CPBL K-BB%, same pitchers.
+#   C5 F1 vs centred whiff% change, same pitchers.
+#   C6 baseline vs centred CPBL K-BB%, all arrivals 2024-26 (chronological park factors).
+#   C7 AAA K% (league- and park-adjusted) vs centred CPBL K%, all arrivals.
+#   C8 AAA BB% vs centred CPBL BB%, all arrivals.
+#   R1 rolling-origin forecast of centred CPBL K-BB% for arrivals in 2025 (trained on 2024)
+#      and 2026 (trained on 2024-25): M0 = training mean, M1 = OLS on baseline. Reported: MAE
+#      of M0 and M1 over the held-out pitchers and M1 minus M0 with a paired bootstrap 90% CI.
+#      No Fit model: 2024 arrivals, the only training data for 2025, have no chronological Fit.
+# Reporting: these chronological results become the primary backtest in findings and
+#   recommendations; amendments 2 and 7 stay as the retrospective version next to them. The
+#   recruitment replay (amendment 6 / 9 folds) already used only data as of each fold date
+#   and is unchanged. Hitters stay n = 0. Nothing here changes the ranking or the picks.
+amendment11:
+  arrival_seasons: [2024, 2025, 2026]
+  fit_arrival_seasons: [2025, 2026]
+  rebas_seasons: [2024, 2025]
+  pool: {min_bf: 100, min_tracked_pitches: 400}
+  fit_clip: 2.5
+  forecast_origins: [2025, 2026]
+  bootstrap: {draws: 2000, ci: 0.90, seed: 20261019}
+  min_n_for_conclusion: 15
