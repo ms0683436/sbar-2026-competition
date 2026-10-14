@@ -6,16 +6,16 @@
 | arm | pool | list N | positives in list | coverage | hits@10 | random@10 | hits@20 | random@20 | median pct rank |
 |---|---|---|---|---|---|---|---|---|---|
 | old | 149 | 85 | 5 | 0.42 | 0 | 0.59 | 1 | 1.18 | 0.54 |
-| new | 217 | 95 | 6 | 0.50 | 1 | 0.63 | 1 | 1.26 | 0.54 |
+| new | 217 | 86 | 6 | 0.50 | 1 | 0.70 | 1 | 1.40 | 0.54 |
 
 | name | new | old |
 |---|---|---|
-| Beau Sulser | 77 | 56 |
-| Cam Alldred | 25 |  |
-| David Buchanan | 56 | 46 |
-| Dinelson Lamet | 51 | 67 |
+| Beau Sulser | 71 | 56 |
+| Cam Alldred | 23 |  |
+| David Buchanan | 51 | 46 |
+| Dinelson Lamet | 46 | 67 |
 | Humberto Castellanos | 10 | 12 |
-| Spenser Watkins | 52 | 43 |
+| Spenser Watkins | 47 | 43 |
 
 Missed by `old` (positives with AAA pitching): Roenis Elías (not in pool), Jonathan Bermúdez (not in pool), Caleb Baragar (not in pool), Jackson Stephens (not in pool), Cam Alldred (not in pool), Brandon Leibrandt (T4_40man), William Cuevas (not in pool)
 
@@ -26,16 +26,16 @@ Missed by `new` (positives with AAA pitching): Roenis Elías (not in pool), Jona
 | arm | pool | list N | positives in list | coverage | hits@10 | random@10 | hits@20 | random@20 | median pct rank |
 |---|---|---|---|---|---|---|---|---|---|
 | old | 148 | 81 | 6 | 0.67 | 0 | 0.74 | 0 | 1.48 | 0.67 |
-| new | 225 | 95 | 6 | 0.67 | 0 | 0.63 | 0 | 1.26 | 0.55 |
+| new | 225 | 82 | 6 | 0.67 | 0 | 0.73 | 0 | 1.46 | 0.57 |
 
 | name | new | old |
 |---|---|---|
-| Aaron Wilkerson | 24 | 22 |
-| Erick Leal | 35 | 32 |
-| John Gant | 77 | 70 |
-| Kyle Tyler | 43 | 66 |
-| Morgan McSweeney | 62 | 51 |
-| Tyler Ivey | 68 | 58 |
+| Aaron Wilkerson | 23 | 22 |
+| Erick Leal | 31 | 32 |
+| John Gant | 68 | 70 |
+| Kyle Tyler | 38 | 66 |
+| Morgan McSweeney | 55 | 51 |
+| Tyler Ivey | 61 | 58 |
 
 Missed by `old` (positives with AAA pitching): Nick Nelson (not in pool), Angel Macuare (not in pool), Jordan Balazovic (not in pool)
 

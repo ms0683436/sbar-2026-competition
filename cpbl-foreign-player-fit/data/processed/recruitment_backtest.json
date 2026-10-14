@@ -20,8 +20,8 @@
       "pool_before_tiers": 149,
       "tier_counts": {
         "T4_40man": 64,
-        "T2_expiring": 40,
-        "T3_controlled": 27,
+        "T3_controlled": 34,
+        "T2_expiring": 33,
         "T1_free": 18
       },
       "missed": {
@@ -35,20 +35,20 @@
       }
     },
     "new": {
-      "N": 95,
+      "N": 86,
       "positives_in_list": 6,
       "coverage": 0.5,
-      "median_percentile": 0.5421052631578948,
+      "median_percentile": 0.5406976744186046,
       "hits@10": 1,
-      "random@10": 0.63,
+      "random@10": 0.7,
       "hits@20": 1,
-      "random@20": 1.26,
+      "random@20": 1.4,
       "pool_before_tiers": 217,
       "tier_counts": {
         "T4_40man": 91,
-        "T2_expiring": 54,
+        "T2_expiring": 45,
         "T1_free": 41,
-        "T3_controlled": 31
+        "T3_controlled": 40
       },
       "missed": {
         "Roenis Elías": "not in pool",
@@ -105,35 +105,35 @@
       {
         "mlbam_id": 682027,
         "name": "Cam Alldred",
-        "list_rank": 25,
+        "list_rank": 23,
         "fold": "A",
         "arm": "new"
       },
       {
         "mlbam_id": 659275,
         "name": "Dinelson Lamet",
-        "list_rank": 51,
+        "list_rank": 46,
         "fold": "A",
         "arm": "new"
       },
       {
         "mlbam_id": 657093,
         "name": "Spenser Watkins",
-        "list_rank": 52,
+        "list_rank": 47,
         "fold": "A",
         "arm": "new"
       },
       {
         "mlbam_id": 571527,
         "name": "David Buchanan",
-        "list_rank": 56,
+        "list_rank": 51,
         "fold": "A",
         "arm": "new"
       },
       {
         "mlbam_id": 676641,
         "name": "Beau Sulser",
-        "list_rank": 77,
+        "list_rank": 71,
         "fold": "A",
         "arm": "new"
       }
@@ -160,8 +160,8 @@
       "pool_before_tiers": 148,
       "tier_counts": {
         "T4_40man": 67,
-        "T2_expiring": 49,
-        "T3_controlled": 21,
+        "T2_expiring": 39,
+        "T3_controlled": 31,
         "T1_free": 11
       },
       "missed": {
@@ -171,19 +171,19 @@
       }
     },
     "new": {
-      "N": 95,
+      "N": 82,
       "positives_in_list": 6,
       "coverage": 0.6666666666666666,
-      "median_percentile": 0.5526315789473685,
+      "median_percentile": 0.5670731707317074,
       "hits@10": 0,
-      "random@10": 0.63,
+      "random@10": 0.73,
       "hits@20": 0,
-      "random@20": 1.26,
+      "random@20": 1.46,
       "pool_before_tiers": 225,
       "tier_counts": {
         "T4_40man": 105,
-        "T2_expiring": 72,
-        "T3_controlled": 25,
+        "T2_expiring": 59,
+        "T3_controlled": 38,
         "T1_free": 23
       },
       "missed": {
@@ -238,42 +238,42 @@
       {
         "mlbam_id": 658792,
         "name": "Aaron Wilkerson",
-        "list_rank": 24,
+        "list_rank": 23,
         "fold": "B",
         "arm": "new"
       },
       {
         "mlbam_id": 612797,
         "name": "Erick Leal",
-        "list_rank": 35,
+        "list_rank": 31,
         "fold": "B",
         "arm": "new"
       },
       {
         "mlbam_id": 667725,
         "name": "Kyle Tyler",
-        "list_rank": 43,
+        "list_rank": 38,
         "fold": "B",
         "arm": "new"
       },
       {
         "mlbam_id": 669682,
         "name": "Morgan McSweeney",
-        "list_rank": 62,
+        "list_rank": 55,
         "fold": "B",
         "arm": "new"
       },
       {
         "mlbam_id": 663959,
         "name": "Tyler Ivey",
-        "list_rank": 68,
+        "list_rank": 61,
         "fold": "B",
         "arm": "new"
       },
       {
         "mlbam_id": 607231,
         "name": "John Gant",
-        "list_rank": 77,
+        "list_rank": 68,
         "fold": "B",
         "arm": "new"
       }
