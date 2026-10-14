@@ -504,3 +504,54 @@ amendment8:
           l2_regularization: 1.0, random_state: 20261014}
   validation: {min_bf: 150, target_season: 2026}
   bootstrap: {draws: 2000, ci: 0.90, seed: 20261016}
+
+# AMENDMENT 9 (2026-10-14; committed BEFORE any conversion-pool member, role adjustment or
+# backtest arm was computed). Johnny chose "另加轉先發池" after asking why the pitcher pool is
+# AAA starters only. Facts seen before this registration (not rankings): in REBAS 2024-25,
+# 55 of 62 import pitcher-seasons were mainly starters and 94% of import pitches came in
+# starts; of 29 import pitcher-seasons with >= 400 AAA pitches the prior season, 12 were mainly
+# AAA relievers (GS/G < 0.5); amendment 6 fold A missed Elias, Bermudez, Baragar, Stephens and
+# Cuevas as "not in pool", fold B missed Nelson, Macuare, Balazovic. Codex discussed the design
+# (separate pool, starter-equivalent adjustment, flags instead of exclusion, three-policy
+# replay). Because those positives were already seen, every backtest number here is
+# exploratory; confirmation needs arrivals after this commit.
+#
+# 1. Conversion pool (pitchers; src/conversion_pool.py). Same two pool seasons as amendment 6
+#    (2025-26 for the 2026 list; the fold's seasons in the backtest). A pitcher enters if he is
+#    NOT in the amendment-6 starter pool and has >= min_tracked_pitches tracked AAA pitches over
+#    the two seasons and >= latest_min_ip AAA IP in the latest season. 2026 list only: the same
+#    MLB-eligibility screen as the starter pool. Signability tiers as amendment 6; the list is
+#    T1 + T2.
+# 2. Starter-equivalent adjustment. From pitch-level AAA data of the same two seasons, every
+#    appearance is a start (pitcher_role SP) or relief. Role effect = BF-weighted mean over
+#    pitcher-seasons with >= min_bf_each_role BF in BOTH roles of (relief rate - start rate),
+#    weight = harmonic mean of the two BF counts, for SO / BF, BB / BF (uBB + IBB, as the
+#    season stats count BB; HBP not adjusted) and HR / BF; BF = PA-ending pitches except
+#    OTHER; 90% bootstrap CI over pitcher-seasons.
+#    A conversion candidate's season-stat counts become SO - relief_BF * d_SO, BB - relief_BF
+#    * d_BB, HR - relief_BF * d_HR, where relief_BF is his relief BF in the pitch data scaled
+#    to his season-stat BF. One adjustment only (no separate times-through-order term).
+# 3. Score. Amendment-5 pitcher baseline (K% .50, BB% .25, FIP .25, league- and park-adjusted)
+#    with each metric's z computed against the mean and SD of the STARTER pool, so adding the
+#    conversion pool moves no starter. No Fit for the conversion pool (exploratory only).
+# 4. Flags, not exclusions: AAA GS and the largest single-appearance pitch count over the two
+#    seasons; starting evidence "stretched" if max pitches >= 75, "partial" 50-74, "none" < 50.
+# 5. Recruitment replay (amendment-6 folds and metrics; A primary, B exploratory), three arms:
+#      starter      amendment-6 "new" arm (two-season starter pool, T1 + T2)
+#      expanded_raw starter pool + conversion pool, conversion scored on unadjusted stats
+#      expanded_adj starter pool + conversion pool, starter-equivalent adjustment
+#    One list per arm ranked by baseline score. Reported: list N, positives in list, coverage,
+#    hits@10 / @20 vs random k*n/N, median percentile rank of positives, and the same for the
+#    conversion-pool positives alone. Also descriptive: the amendment-7 pooled CPBL cohort's
+#    P1 (baseline vs centred CPBL K-BB%) with the starter-equivalent adjustment applied to the
+#    AAA relievers, next to the unadjusted P1.
+# Decision rule: the primary picks stay with the starter pool in this amendment whatever the
+# replay shows. The best signable conversion candidate is reported separately as a reference,
+# with its flags. Merging the lists would need a new amendment, evidence from arrivals after
+# this commit, and Johnny's decision.
+amendment9:
+  pool: {min_tracked_pitches: 400, latest_min_ip: 20}
+  role_effect: {min_bf_each_role: 30, rates: [SO, BB, HR]}
+  flags: {stretched_min_pitches: 75, partial_min_pitches: 50}
+  arms: [starter, expanded_raw, expanded_adj]
+  bootstrap: {draws: 2000, ci: 0.90, seed: 20261017}
