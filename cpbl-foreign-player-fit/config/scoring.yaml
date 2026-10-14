@@ -716,3 +716,36 @@ amendment12:
   request_interval_s: 3.5
   bootstrap: {draws: 2000, ci: 0.90, seed: 20261020}
   min_n_for_conclusion: 15
+
+# AMENDMENT 13 (2026-10-14; committed BEFORE any 2026 Stuff+ value or new ranking was computed).
+# Johnny chose 「加進排名」 on the card "要不要把 Stuff+ 加進洋投排名?" after the wOBA weight
+# correction made amendment 8's S3 pass narrowly (0.14, 90% CI 0.02 to 0.25; S1 still not shown).
+# Amendment 8 allowed Stuff+ into the ranking only through a later amendment; this is it.
+# Facts seen before this registration: amendment 8 Stuff+ for 2023-25 (Gerber 2025 = 112) and its
+# validation; the current ranking without Stuff+. The 2026 release-point feeds were downloaded
+# (src/statsapi_release.py 2026) but no 2026 Stuff+ was computed.
+#
+# Stuff+ per candidate: the amendment-8 model unchanged (trained on AAA 2025, 5 pitcher-grouped
+#   folds). 2025 pitches use the out-of-fold predictions; 2026 pitches use the model fit on all of
+#   2025 (2026 was never in training). Per pitcher-season Stuff+ = 100 - 10 z of the mean predicted
+#   run value, z over AAA pitchers with >= 300 tracked pitches that season (amendment-8 scale).
+#   Candidate value = pitch-weighted mean of his 2025 and 2026 Stuff+; available if >= 300 tracked
+#   pitches over 2025-26, else missing.
+# Ranking (pitchers only; hitters unchanged):
+#   combined = 0.5 z(baseline) + 0.2 z(Stuff+) + 0.3 Fit, z over the Fit-available candidates
+#   (Stuff+ z clipped at 2.5 like Fit; missing Stuff+ -> z = 0, flagged). Fit keeps its 0.3; the
+#   old 0.7 baseline share is split 0.5 / 0.2 because Stuff+ passed only S3 (adds to the
+#   baseline) and not S1 (beats the baseline), so it gets less weight than the baseline.
+#   The pick rule is unchanged: primary pick = best combined rank among signable (T1 + T2).
+# Bootstrap: the Stuff+ term is resampled with the same AAA game weights as baseline and Fit
+#   (per-game sums of predicted run value; the model itself is not refit).
+# Reported next to the new ranking: the amendment-6 ranking (old pick), and a sensitivity of the
+#   signable top 3 with Stuff+ weight 0.1 and 0.3 (baseline 0.6 and 0.4; Fit 0.3).
+# Not changed: Fit, baseline, the backtests (amendments 2, 7, 11 keep their registered combined
+#   score), the conversion pool (amendment 9) and the hitter ranking.
+amendment13:
+  weights: {baseline: 0.5, stuff: 0.2, fit: 0.3}
+  stuff_clip: 2.5
+  min_pitches: 300
+  seasons: [2025, 2026]
+  sensitivity_stuff_weights: [0.1, 0.3]
