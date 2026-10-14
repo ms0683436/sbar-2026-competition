@@ -811,3 +811,68 @@ amendment14:
   appendix_min: {usage_flag: 50, whiff: {pitches: 200, swings: 100, games: 10},
                  run_value: {pitches: 500, pas: 100, games: 10},
                  two_strike: {pitches: 100, games: 10, whiff_swings: 50}}
+
+# AMENDMENT 15 (2026-10-14; committed BEFORE any Marcel projection or comparison was computed).
+# Johnny asked whether our estimated baseline weights beat the Marcel ("monkey") projection and,
+# since that was never tested, said to replace every place that can use Marcel. Design discussed
+# with Codex. Facts seen before: amendment-4 out-of-sample correlations (hitters 0.21 / 0.21,
+# pitchers 0.08 / 0.01), the amendment-13 interim run had just finished (its output not opened).
+#
+# "AAA Marcel" (Tango's Marcel adapted to AAA; AAA lines only, MLB / foreign seasons not used):
+#   For forecast season Y use seasons Y-1, Y-2, Y-3 (calendar; 2020 had no AAA season and keeps
+#   its weight slot, contributing nothing). Per statistic, with park-neutral rate r_s, its
+#   season x league (PCL / INT) average L_s and the pooled AAA average L0 of Y-1:
+#     r_hat = L0 + sum_s w_s n_s (r_s - L_s) / (sum_s w_s n_s + R)
+#   deviations computed per team stint before combining.
+#   Hitters: weights 5/4/3, R = 1200 PA (scaled to each denominator: wOBA denominator
+#     R * L_den / L_PA, ISO R * L_AB / L_PA); stats wOBA (config woba_weights), ISO, K%, BB%.
+#     Ranking score = projected wOBA (ISO, K%, BB% shown, no ranking weight). The recent-form
+#     (Aug-Sep) term is dropped.
+#   Pitchers: weights 3/2/1, R = 600 BF for every component (about 134 IP); stats SO/BF, BB/BF,
+#     HR/BF, HBP/BF, IP/BF. Ranking score = projected K% - BB%. Projected FIP (components, last
+#     season's league cFIP) is shown and used as a secondary validation outcome.
+#   Park: each stint's events divided by (PF + 1) / 2 with that season's single-year factors where
+#     they exist (2023-2025 files; 2026 estimated the same way from 2026 alone), PF = 1 otherwise
+#     (flagged); league averages computed on the same adjusted counts.
+#   Age (a = Y - birth year), applied once after shrinkage: A = 1 + 0.006 (29 - a) below 29, 1 at
+#     29, 1 / (1 + 0.003 (a - 29)) above 29; multiply hitter wOBA, ISO, BB% and pitcher K%;
+#     divide hitter K%, pitcher BB% and HR/BF; HBP and IP/BF unchanged. Missing birth year: A = 1.
+#     Projections re-centred to L0 over the Y-1 AAA population (exposure-weighted).
+#   No per-statistic tuning. Sensitivities (never select the model): R x 0.5 and x 2; A = 1.
+# Use in the ranking (current candidates: Y = 2027, seasons 2024-26):
+#   pitchers: combined = 0.5 z(Marcel K-BB%) + 0.2 z(Stuff+) + 0.3 Fit (amendment 13 with the
+#     Marcel score in the baseline slot); hitters: rank by projected wOBA (Fit still unused for
+#     hitters). Pool, signability tiers and pick rules unchanged.
+# Validation (reported; the switch is Johnny's decision and happens unless "clearly worse"):
+#   V1 AAA next season, folds 2023-25 -> 2026 and 2022-24 -> 2025. Players: preceding two seasons
+#     >= 10 GS and >= 60 IP with latest season >= 20 IP (pitchers); >= 300 PA with latest >= 100 PA
+#     (hitters); target season >= 150 BF / PA in AAA. Outcomes: league-relative K-BB% (pitchers,
+#     primary), -FIP (pitchers, secondary), wOBA (hitters, primary). Methods: Marcel, judgment
+#     baseline, estimated baseline (weights fit only on transitions ending before the target season;
+#     NNLS, min n 40, judgment fallback). Spearman rho and paired differences, 2,000 player
+#     bootstrap draws (seed 20261022), 90% CI, per fold and the equal-weighted mean.
+#     Non-inferior: lower bound of rho(Marcel) - rho(comparator) > -0.05 against both.
+#     Clearly worse: upper bound < -0.05 against either comparator on the primary outcome; then that
+#     role's pick keeps the amendment-13 ranking and Marcel is reported only.
+#   V2 CPBL: amendment-11 pitchers (n 17) and the amendment-12 census pitchers: Spearman(Marcel
+#     K-BB%, centred CPBL K-BB%) next to the registered single-season predictor, paired bootstrap
+#     as in those amendments. Census: AAA seasons back to 2015 are fetched (statsapi season stats);
+#     PF = 1 throughout (primary). 2021 arrivals use weights 2020:3 (empty), 2019:2, 2018:1.
+#   V3 translation (amendment 7b): rolling fit of centred CPBL K%, BB%, K-BB% on the Marcel
+#     projection, earlier arrivals only, >= 15 training pitchers else the training mean; MAE vs the
+#     mean, paired bootstrap.
+# Not changed by Marcel: Fit, Stuff+, the pitch-level environment, velocity calibration,
+#   eligibility, signability, the conversion pool (amendment 9) and amendment 11's registered C1.
+amendment15:
+  hitter: {weights: [5, 4, 3], regress_pa: 1200}
+  pitcher: {weights: [3, 2, 1], regress_bf: 600}
+  age: {peak: 29, young: 0.006, old: 0.003}
+  forecast_season: 2027
+  sensitivity_regress: [0.5, 2.0]
+  validation:
+    folds: {2026: [2023, 2024, 2025], 2025: [2022, 2023, 2024]}
+    pitcher: {min_gs_2y: 10, min_ip_2y: 60, min_ip_last: 20, min_bf_target: 150}
+    hitter: {min_pa_2y: 300, min_pa_last: 100, min_pa_target: 150}
+    noninferiority: -0.05
+    bootstrap: {draws: 2000, ci: 0.90, seed: 20261022}
+  census_first_season: 2015
