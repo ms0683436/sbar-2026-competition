@@ -405,3 +405,44 @@ amendment7:
     recent_window: ["2025-08-01", "2025-09-30"]
   bootstrap: {draws: 2000, ci: 0.90, seed: 20261014}
   min_n_for_conclusion: 15
+
+# AMENDMENT 7b (2026-10-14; Johnny added items 3 and 4; committed BEFORE any velocity table was
+# parsed and before any 2026 CPBL rate statistic of the cohort was seen). Already seen: one
+# page's 2026 velocity table (Mario Sanchez: 快速球 avg 145.8 km/h, 變化球 129.4 km/h).
+# Same source rules as amendment 7 (public pages as Markdown, Johnny's exports, no /api/).
+# Both items are descriptive; neither changes the ranking, the picks or any registered test.
+#
+# Item 3, AAA -> CPBL translation (pitchers, the amendment-7 pooled cohort):
+#   AAA K%, BB% = park-adjusted raw rates of the season preceding arrival (statsapi stints);
+#   AAA whiff% = amendment-2 window (2025 season for 2026 arrivals). CPBL K%, BB%, whiff% =
+#   REBAS (2024-25) or the site export (2026), not centred.
+#   Reported per metric: league ratio (CPBL league / AAA league of the matching seasons), OLS
+#   CPBL = a + b * AAA over the cohort with 90% bootstrap CI for a, b (2000 draws over
+#   pitchers, seed below), and the translated CPBL value at AAA K% 20/25/30%, BB% 6/8/10%,
+#   whiff% 22/26/30%. Survivorship (only pitchers clubs kept for >= 60 BF) is disclosed.
+# Item 4, REBAS broadcast velocity vs site Trackman:
+#   Pitchers with >= 100 REBAS 2025 fastballs (FF + SI, velocity present) and a 2026 一軍例行賽
+#   "快速球" row with >= 100 pitches on the site (player page default view, or Johnny's export
+#   of the 球種x球速轉速 table). Joined on the display name with leading #/* removed; names that
+#   are not unique on either side are dropped.
+#   Primary: mean (site 2026 快速球 avg - REBAS 2025 FF+SI avg) in km/h, 90% bootstrap CI over
+#   pitchers; OLS slope of site on REBAS. Cross-season, so it mixes measurement offset with
+#   true year-to-year change; the AAA Statcast same-pitcher 2025 -> 2026 FF+SI change (pitchers
+#   with >= 100 fastballs in both seasons) is reported as the reference for that change, and
+#   offset = mean difference - AAA mean change. Sensitivity: REBAS FF only; FF + SI + FC.
+#   If a same-season 2025 site table can be exported, it replaces the cross-season comparison
+#   as primary (same rules, no AAA correction). Reporting: if |offset| > 1.6 km/h (1 mph),
+#   findings D4 is said not to cover the calibration; Fit is not recomputed.
+amendment7b:
+  translation:
+    k_pct_at: [0.20, 0.25, 0.30]
+    bb_pct_at: [0.06, 0.08, 0.10]
+    whiff_pct_at: [0.22, 0.26, 0.30]
+  velocity:
+    rebas_season: 2025
+    site_season: 2026
+    min_pitches: 100
+    rebas_fastball: [FF, SI]
+    sensitivity: [[FF], [FF, SI, FC]]
+    d4_threshold_kmh: 1.6
+  bootstrap: {draws: 2000, ci: 0.90, seed: 20261015}
