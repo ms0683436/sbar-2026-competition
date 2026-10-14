@@ -360,11 +360,12 @@ def run(baseline: dict, cpbl=None, aaa=None) -> dict:
             m = D.fit_available
             D.loc[m, "marcel_rank_tracked"] = D.loc[m, "marcel_score"].rank(ascending=False, method="first")
         m = P.fit_available
-        P.loc[m, "combined_a13"] = P.loc[m, "combined_heuristic"]
-        P.loc[m, "combined_rank_a13"] = P.loc[m, "combined_rank"]
-        P.loc[m, "combined_heuristic"] = stuff_rank.combined(P.loc[m, "marcel_score"], P.loc[m, "stuff_plus"],
-                                                             P.loc[m, "fit_score"])
-        P.loc[m, "combined_rank"] = P.loc[m, "combined_heuristic"].rank(ascending=False, method="first")
+        if marcel.active("pitcher"):             # unless V1 found Marcel "clearly worse"
+            P.loc[m, "combined_a13"] = P.loc[m, "combined_heuristic"]
+            P.loc[m, "combined_rank_a13"] = P.loc[m, "combined_rank"]
+            P.loc[m, "combined_heuristic"] = stuff_rank.combined(P.loc[m, "marcel_score"], P.loc[m, "stuff_plus"],
+                                                                 P.loc[m, "fit_score"])
+            P.loc[m, "combined_rank"] = P.loc[m, "combined_heuristic"].rank(ascending=False, method="first")
     P = P.sort_values(["fit_available", "combined_rank"], ascending=[False, True])
     H = H.sort_values(["fit_available", "combined_rank"], ascending=[False, True])
     P.drop(columns="pid").to_csv(processed("pitcher_fit_results.csv"), index=False)

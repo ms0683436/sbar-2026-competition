@@ -41,23 +41,37 @@ def cfg() -> dict:
 
 
 # ------------------------------------------------------------------ data
+BALL_CODES = {"B", "*B", "I", "P"}          # AAA call codes (REBAS: "B"); I / P drop the PA anyway
+DROP_CODES = {"I", "P", "Q", "R"}           # intentional ball, pitchouts (AAA only; REBAS records none)
+
+
 def _audit(d: pd.DataFrame) -> pd.DataFrame:
-    """Per PA: complete, no special play, consistent count sequence. Returns PA-level flags."""
+    """Per PA: complete, no special play, consistent sequence. Consistent = pitches numbered 1..n,
+    first pitch at 0-0, every next count equal to the count implied by the previous pitch (a jump,
+    e.g. from an automatic ball or strike that the loader drops, excludes the PA), no non-terminal
+    foul tip at two strikes, strikeouts / walks ending at a full count of strikes / balls."""
     d = d.sort_values(["pa_id", "pitch_seq"])
     g = d.groupby("pa_id", sort=False)
-    last = d.groupby("pa_id").tail(1).set_index("pa_id")
-    ball = ~d.swing.astype(bool) & ~d.called_strike.astype(bool)
-    strike_like = d.called_strike.astype(bool) | d.whiff.astype(bool)
+    last = g.tail(1).set_index("pa_id")
+    code = d.pitch_code.astype(str)
+    term = d.pa_end.astype(bool)
+    ball = code.isin(BALL_CODES)
+    foul = code.eq("F")
+    strike = d.called_strike.astype(bool) | d.whiff.astype(bool) | code.isin(["T", "FT"]) | (foul & d.strikes.lt(2))
     pa = pd.DataFrame(index=last.index)
     pa["complete"] = last.pa_end.astype(bool)
     pa["special"] = (g.is_bunt.any() | last.pa_event.isin(["IBB", "SH", "CI", "OTHER"]).reindex(pa.index)
-                     | d.assign(po=d.pitch_type_raw.isin(["PO", "FO_PO"])).groupby("pa_id").po.any())
-    # a strike without contact at two strikes must end the PA; four balls must end it
-    early_k = (strike_like & d.strikes.eq(2)).groupby(d.pa_id).sum() - (last.pa_event.eq("SO") & True).astype(int)
-    so_ok = ~last.pa_event.eq("SO") | (last.strikes.eq(2) & ~(~last.swing.astype(bool) & ~last.called_strike.astype(bool)))
-    bb_ok = ~last.pa_event.eq("uBB") | (last.balls.eq(3) & ~last.swing.astype(bool) & ~last.called_strike.astype(bool))
-    nballs = ball.groupby(d.pa_id).sum()
-    pa["consistent"] = (early_k.reindex(pa.index) <= 0) & so_ok & bb_ok & (nballs.reindex(pa.index) <= 4)
+                     | code.isin(DROP_CODES).groupby(d.pa_id).any().reindex(pa.index))
+    nb, ns = d.balls + ball.astype(int), d.strikes + strike.astype(int)
+    same = d.pa_id.eq(d.pa_id.shift(-1))
+    jump = same & ((d.balls.shift(-1) != nb) | (d.strikes.shift(-1) != ns.clip(upper=2)))
+    first = d.pitch_seq.eq(1) & d.balls.eq(0) & d.strikes.eq(0)
+    misnumbered = d.pitch_seq.ne(g.cumcount() + 1)
+    bad_ft = code.isin(["T", "FT"]) & d.strikes.eq(2) & ~term
+    bad = (jump | bad_ft | misnumbered).groupby(d.pa_id).any() | ~first.groupby(d.pa_id).first()
+    so_ok = ~last.pa_event.eq("SO") | last.strikes.eq(2)
+    bb_ok = ~last.pa_event.eq("uBB") | (last.balls.eq(3) & code.groupby(d.pa_id).last().isin(BALL_CODES))
+    pa["consistent"] = ~bad.reindex(pa.index) & so_ok & bb_ok
     pa["keep"] = pa.complete & ~pa.special & pa.consistent
     return pa
 
@@ -67,7 +81,7 @@ def load(seasons=None) -> tuple[pd.DataFrame, pd.DataFrame]:
     seasons = seasons or cfg()["seasons"]
     cols = ["league", "season", "game_id", "pa_id", "pitch_seq", "pitcher_id", "batter_id", "p_throws", "stand",
             "pitcher_role", "balls", "strikes", "pitch_type_raw", "pitch_group", "swing", "whiff", "is_bunt",
-            "called_strike", "pa_end", "pa_event"]
+            "called_strike", "pa_end", "pa_event", "pitch_code"]
     c = rebas_loader.load()[cols]
     a = milb_loader.load()[cols]
     d = pd.concat([c[c.season.isin(seasons)], a[a.season.isin(seasons)]], ignore_index=True)
@@ -87,7 +101,7 @@ def _flags(d: pd.DataFrame) -> pd.DataFrame:
     sw = d.swing.astype(bool) & ~d.is_bunt.astype(bool)
     d["n2"] = two.astype(int)
     d["sw2"] = (two & sw).astype(int)
-    d["foul2"] = (two & sw & ~d.whiff.astype(bool) & ~term).astype(int)
+    d["foul2"] = (two & d.pitch_code.astype(str).eq("F") & ~term).astype(int)    # ordinary foul, not a tip
     d["contact2"] = (two & sw & ~d.whiff.astype(bool)).astype(int)
     d["so2"] = (two & term & d.pa_event.eq("SO")).astype(int)
     d["whiff1"] = (d.strikes.eq(1) & sw & d.whiff.astype(bool)).astype(int)
@@ -137,26 +151,27 @@ def _game_cells(d: pd.DataFrame, p: pd.DataFrame) -> dict:
     return out
 
 
-def _std_rate(tot: dict, num: str, den: str, ref: dict) -> float:
-    """Standardised rate: cell rates of this league weighted by the reference cell shares."""
-    r = (tot[num] / tot[den].replace(0, np.nan))
-    w = ref[den]
-    ok = r.notna() & w.notna() & (w > 0)
-    return float((r[ok] * w[ok]).sum() / w[ok].sum()) if ok.any() else np.nan
+def _std_rate(num: pd.Series, den: pd.Series, target: pd.Series) -> float:
+    """Standardised rate: this league's cell rates weighted by the common target shares."""
+    return float((num / den * target).sum() / target.sum())
 
 
 def _season_stats(cpbl: dict, aaa: dict) -> dict:
-    """Raw and standardised metrics of both leagues for one season from total vectors."""
+    """Raw and standardised metrics of both leagues for one season from total vectors. Target =
+    the equal-weighted average of the two leagues' full cell distributions, restricted to cells
+    with a positive denominator in both leagues (common support); the target mass outside is
+    reported as excluded weight."""
     res = {}
     for name, (num, den, _) in METRICS.items():
-        cells = cpbl[den].index.intersection(aaa[den].index)
-        sh = {den: (cpbl[den][cells] / cpbl[den][cells].sum() + aaa[den][cells] / aaa[den][cells].sum()) / 2}
-        c_ = {k: v[cells] for k, v in cpbl.items() if isinstance(v, pd.Series) and k in (num, den)}
-        a_ = {k: v[cells] for k, v in aaa.items() if isinstance(v, pd.Series) and k in (num, den)}
+        cells = cpbl[den].index.union(aaa[den].index)
+        cd, ad = cpbl[den].reindex(cells, fill_value=0), aaa[den].reindex(cells, fill_value=0)
+        target = (cd / cd.sum() + ad / ad.sum()) / 2
+        common = (cd > 0) & (ad > 0)
+        t = target[common]
+        cn, an = cpbl[num].reindex(cells, fill_value=0)[common], aaa[num].reindex(cells, fill_value=0)[common]
         res[name] = {"cpbl_raw": float(cpbl[num].sum() / cpbl[den].sum()), "aaa_raw": float(aaa[num].sum() / aaa[den].sum()),
-                     "cpbl_std": _std_rate(c_, num, den, sh), "aaa_std": _std_rate(a_, num, den, sh),
-                     "excluded_weight": float(1 - (cpbl[den][cells].sum() + aaa[den][cells].sum())
-                                              / (cpbl[den].sum() + aaa[den].sum()))}
+                     "cpbl_std": _std_rate(cn, cd[common], t), "aaa_std": _std_rate(an, ad[common], t),
+                     "excluded_weight": float(1 - t.sum())}
         res[name]["diff"] = res[name]["cpbl_std"] - res[name]["aaa_std"]
     for lg, t in (("cpbl", cpbl), ("aaa", aaa)):
         res.setdefault("A6 pitches per PA", {})[f"{lg}_raw"] = float(t["pitches"] / t["pas"])
@@ -224,7 +239,7 @@ def within_pitcher(d: pd.DataFrame) -> dict:
     of the two counts (descriptive)."""
     s = d[d.strikes.isin([1, 2]) & ~d.is_bunt.astype(bool)].copy()
     sw = s.swing.astype(bool)
-    s["foul"] = (sw & ~s.whiff.astype(bool) & ~s.pa_end.astype(bool)).astype(int)
+    s["foul"] = (s.pitch_code.astype(str).eq("F") & ~s.pa_end.astype(bool)).astype(int)
     s["wh"] = (sw & s.whiff.astype(bool)).astype(int)
     s["sw"] = sw.astype(int)
     keys = ["pitcher_id", "balls", "pitch_group", "stand"]
@@ -428,7 +443,7 @@ def appendix(mlbam_id: int | None = None) -> pd.DataFrame:
             two.append({"season": yr, "pitch": pt, "batter": st, "two-strike pitches": len(g),
                         "usage at two strikes": len(g) / (t2.stand == st).sum(),
                         "put-away": (g.pa_end.astype(bool) & g.pa_event.eq("SO")).mean() if ok else "insufficient sample",
-                        "continuation foul": (g.sw & ~g.whiff.astype(bool) & ~g.pa_end.astype(bool)).mean() if ok else "insufficient sample",
+                        "continuation foul": (g.pitch_code.astype(str).eq("F") & ~g.pa_end.astype(bool)).mean() if ok else "insufficient sample",
                         "whiff/swing": (g.whiff.sum() / g.sw.sum()) if ok and g.sw.sum() >= mt["whiff_swings"] else "insufficient sample"})
     # LHB share faced by RHP / LHP, both leagues 2024-25 (PA-ending pitches)
     c = rebas_loader.load()

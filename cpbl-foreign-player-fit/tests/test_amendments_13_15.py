@@ -37,33 +37,39 @@ def test_candidate_stuff_scale_and_minimum():
 
 # ------------------------------------------------------------------ amendment 14
 def _pa(pa_id, seq):
-    """seq: list of (balls, strikes, swing, whiff, called_strike, pa_end, event)."""
+    """seq: list of (balls, strikes, AAA call code, pa_end, event)."""
     rows = []
-    for i, (b, k, sw, wh, cs, end, ev) in enumerate(seq, 1):
-        rows.append({"pa_id": pa_id, "pitch_seq": i, "balls": b, "strikes": k, "swing": sw, "whiff": wh,
-                     "called_strike": cs, "pa_end": end, "pa_event": ev if end else None, "is_bunt": False,
-                     "pitch_type_raw": "FF"})
+    for i, (b, k, code, end, ev) in enumerate(seq, 1):
+        rows.append({"pa_id": pa_id, "pitch_seq": i, "balls": b, "strikes": k, "pitch_code": code,
+                     "swing": code in {"S", "W", "T", "F", "X", "Q", "R"}, "whiff": code in {"S", "W", "Q"},
+                     "called_strike": code == "C", "pa_end": end, "pa_event": ev if end else None,
+                     "is_bunt": code in {"L", "M", "O"}, "pitch_type_raw": "FF"})
     return rows
 
 
 def test_flags_foul_tip_strikeout_is_not_a_continuation_foul():
-    d = pd.DataFrame(_pa("p1", [(0, 0, False, False, True, False, None),
-                                (0, 1, False, False, True, False, None),
-                                (0, 2, True, False, False, False, None),     # two-strike foul: continuation
-                                (0, 2, True, False, False, True, "SO")]))   # foul tip strikeout: terminal
+    d = pd.DataFrame(_pa("p1", [(0, 0, "C", False, None), (0, 1, "T", False, None),     # one-strike foul tip
+                                (0, 2, "F", False, None),                               # two-strike foul: continuation
+                                (0, 2, "T", True, "SO")]))                             # foul-tip strikeout: terminal
     f = battle._flags(d)
     assert f.n2.sum() == 2 and f.sw2.sum() == 2
     assert f.foul2.sum() == 1 and f.contact2.sum() == 2 and f.so2.sum() == 1
 
 
-def test_audit_drops_bunts_and_impossible_sequences():
-    ok = _pa("a", [(0, 0, True, True, False, False, None), (0, 1, True, True, False, False, None),
-                   (0, 2, True, True, False, True, "SO")])
-    early = _pa("b", [(0, 2, True, True, False, False, None), (0, 2, False, False, False, True, "uBB")])
-    bunt = _pa("c", [(0, 0, True, False, False, True, "SH")])
-    d = pd.DataFrame(ok + early + bunt)
-    a = battle._audit(d)
-    assert a.keep.to_dict() == {"a": True, "b": False, "c": False}
+def test_audit_keeps_clean_pas_and_drops_the_rest():
+    ok = _pa("a", [(0, 0, "S", False, None), (0, 1, "F", False, None), (0, 2, "F", False, None),
+                   (0, 2, "S", True, "SO")])
+    early = _pa("b", [(0, 2, "S", False, None), (0, 2, "B", True, "uBB")])             # not 0-0 at the start
+    jump = _pa("c", [(0, 0, "B", False, None), (2, 0, "B", False, None),               # 1-0 expected
+                     (3, 0, "B", True, "uBB")])
+    bunt = _pa("d", [(0, 0, "L", False, None), (0, 1, "X", True, "OUT")])
+    pitchout = _pa("e", [(0, 0, "P", False, None), (1, 0, "X", True, "OUT")])
+    tip2 = _pa("f", [(0, 0, "C", False, None), (0, 1, "C", False, None), (0, 2, "T", False, None),
+                     (0, 2, "X", True, "OUT")])                                        # non-terminal two-strike tip
+    walk = _pa("g", [(0, 0, "B", False, None), (1, 0, "B", False, None), (2, 0, "*B", False, None),
+                     (3, 0, "B", True, "uBB")])
+    a = battle._audit(pd.DataFrame(ok + early + jump + bunt + pitchout + tip2 + walk))
+    assert a.keep.to_dict() == {"a": True, "b": False, "c": False, "d": False, "e": False, "f": False, "g": True}
 
 
 def test_partial_spearman_removes_the_control():
@@ -89,7 +95,7 @@ def test_log_scale_identity_and_ratio():
     sc = marcel.log_scale(logs, pd.Series({"g1": 2.0, "g2": 0.0, "g3": 1.0}))
     r = sc.loc[(1, 2026, 5)]
     assert np.isclose(r.pitching_BF, 70 / 60) and np.isclose(r.pitching_SO, 15 / 10)
-    assert r.pitching_IP == r.pitching_BF                    # innings follow batters faced
+    assert np.isclose(r.pitching_IP, (2 * 15 + 18) / (15 + 7 + 18))   # outs, not x.1 / x.2 notation
 
 
 def test_scaled_only_touches_matching_stints():
@@ -99,3 +105,15 @@ def test_scaled_only_touches_matching_stints():
                       index=pd.MultiIndex.from_tuples([(1, 2026, 5)], names=["player_id", "season", "team_id"]))
     out = marcel._scaled(s, sc)
     assert out.pitching_BF.tolist() == [200.0, 100.0] and out.pitching_SO.tolist() == [10.0, 20.0]
+
+
+def test_standardisation_uses_full_target_on_common_support():
+    S = lambda **kw: pd.Series(kw, dtype=float)
+    blank = {"pitches": 1.0, "pas": 1.0, "pa2_all": 1.0, **{f"len_{lo}": 0.0 for lo in (1, 4, 6, 8)}}
+    q = {k: S(A=1, B=1) for k in ("n2", "sw2", "foul2", "contact2", "so2", "pa2", "so_pa", "n2_pa")}
+    cpbl = {**blank, **q, "n2": S(A=100, B=0), "foul2": S(A=30, B=0)}
+    aaa = {**blank, **q, "n2": S(A=100, B=300), "foul2": S(A=20, B=30)}
+    r = battle._season_stats(cpbl, aaa)["A1 continuation-foul rate"]
+    # target: cpbl (1, 0), aaa (.25, .75) -> (.625, .375); only A is common
+    assert np.isclose(r["excluded_weight"], 0.375)
+    assert np.isclose(r["cpbl_std"], 0.30) and np.isclose(r["aaa_std"], 0.20)

@@ -131,6 +131,7 @@ def to_schema(df: pd.DataFrame) -> pd.DataFrame:
     out = finalize(df)
     out = pd.concat([out, extra.drop(columns="_pt")], axis=1)
     out["launch_speed"] = df["launch_speed"]
+    out["pitch_code"] = code.to_numpy()          # raw call code (amendment 14 audit: pitchouts, foul tips)
     return out
 
 

@@ -171,17 +171,32 @@ def _scaled(s: pd.DataFrame, scale: pd.DataFrame) -> pd.DataFrame:
 
 def log_scale(logs: pd.DataFrame, w: pd.Series) -> pd.DataFrame:
     """Bootstrap multipliers per (player, season, team): re-weighted / original game-log totals."""
-    cols = [c for c in logs.columns if c.startswith(("pitching_", "batting_")) and c != "pitching_IP"]
+    cols = [c for c in logs.columns if c.startswith(("pitching_", "batting_"))]
     g = logs.assign(season=pd.to_datetime(logs.game_date).dt.year)
+    if "pitching_IP" in g:              # log IP is in x.1 / x.2 notation: scale by outs
+        ip = pd.to_numeric(g.pitching_IP, errors="coerce").fillna(0)
+        g["pitching_IP"] = np.floor(ip) * 3 + np.round((ip - np.floor(ip)) * 10)
     f = g.game_id.astype(str).map(w).fillna(0).to_numpy()
     keys = [g.player_id.astype(int), g.season.astype(int), g.team_id.astype(int)]
     base = g[cols].groupby(keys).sum()
     rw = g[cols].mul(f, axis=0).groupby(keys).sum()
     out = (rw / base.replace(0, np.nan)).fillna(1.0)
-    if "pitching_BF" in out:            # innings follow batters faced (log IP is in x.1 / x.2 notation)
-        out["pitching_IP"] = out.pitching_BF
     out.index.names = ["player_id", "season", "team_id"]
     return out
+
+
+def active(role: str) -> bool:
+    """Amendment 15 switch for one role: on unless V1 found Marcel "clearly worse" on the primary
+    outcome (then that role keeps the amendment-13 ranking and Marcel is reported only)."""
+    if "amendment15" not in config():
+        return False
+    f = processed("marcel_v1.json")
+    key = json.loads(json.dumps({"amendment15": cfg(), "woba_weights": config()["woba_weights"]}))
+    v = json.loads(f.read_text()) if f.exists() else {}
+    if v.get("key") != key:
+        v = {"key": key, "v1": v1()}
+        f.write_text(json.dumps(v, indent=2, default=float))
+    return v["v1"][role]["verdict"] != "clearly worse"
 
 
 def candidate_scores(role: str, ids, scale: pd.DataFrame | None = None) -> pd.DataFrame:
@@ -273,13 +288,22 @@ def v1_fold(role: str, target_year: int) -> pd.DataFrame:
     d["estimated"] = baseline.score(d, role, _estimated_weights(role, target_year)).baseline_score.reindex(d.index)
     m = project(role, target_year).set_index("player_id")
     d["marcel"] = d.player_id.astype(int).map(m.score)
+    if role == "pitcher":                        # secondary outcome -FIP: Marcel's own projected FIP
+        d["marcel_neg_fip"] = -d.player_id.astype(int).map(m.fip)
+    for mult in cfg()["sensitivity_regress"]:    # registered sensitivities (reported, never select the model)
+        d[f"marcel_R{mult:g}"] = d.player_id.astype(int).map(project(role, target_year, mult=mult).set_index("player_id").score)
+    d["marcel_no_age"] = d.player_id.astype(int).map(project(role, target_year, age=False).set_index("player_id").score)
     d["fold"] = target_year
     return d
 
 
+def _pred(method: str, outcome_col: str) -> str:
+    return "marcel_neg_fip" if method == "marcel" and outcome_col == "y_neg_fip" else method
+
+
 def _paired(folds: list[pd.DataFrame], a: str, b: str, y: str, rng) -> dict:
     v = cfg()["validation"]["bootstrap"]
-    mats = [f[[a, b, y]].astype(float).dropna().to_numpy() for f in folds]
+    mats = [f[[_pred(a, y), b, y]].astype(float).dropna().to_numpy() for f in folds]
 
     def diff(x):
         return backtest.spearman(x[:, 0], x[:, 2]) - backtest.spearman(x[:, 1], x[:, 2])
@@ -303,25 +327,33 @@ def v1() -> dict:
     for role, prim, outs in (("pitcher", "y_kbb", ["y_kbb", "y_neg_fip"]), ("hitter", "y_woba", ["y_woba"])):
         folds = [v1_fold(role, y) for y in sorted(cfg()["validation"]["folds"])]
         rhos = [{"fold": int(f.fold.iat[0]), "n": len(f), "outcome": y_,
-                 **{m: backtest.spearman(f[m], f[y_]) for m in ("marcel", "judgment", "estimated")}}
+                 **{m: backtest.spearman(f[_pred(m, y_)], f[y_]) for m in ("marcel", "judgment", "estimated")}}
                 for f in folds for y_ in outs]
+        sens = [{"fold": int(f.fold.iat[0]), "outcome": prim,
+                 **{c: backtest.spearman(f[c], f[prim]) for c in f.columns if c.startswith("marcel_R") or c == "marcel_no_age"}}
+                for f in folds]
         pairs = [_paired(folds, "marcel", b, y_, rng) for y_ in outs for b in ("judgment", "estimated")]
         prim_pairs = [p for p in pairs if p["outcome"] == prim]
         verdict = ("clearly worse" if any(p["ci_mean"][1] < ni for p in prim_pairs)
                    else "non-inferior" if all(p["ci_mean"][0] > ni for p in prim_pairs) else "not shown non-inferior")
-        res[role] = {"rho": rhos, "paired": pairs, "verdict": verdict}
+        res[role] = {"rho": rhos, "paired": pairs, "verdict": verdict, "sensitivity": sens,
+                     "pf1_seasons": sorted({y for f in cfg()["validation"]["folds"].values() for y in f} - set(PF_SEASONS))}
         pd.concat(folds).to_csv(processed(f"marcel_v1_{role}.csv"), index=False)
     return res
 
 
 # ------------------------------------------------------------------ V2 / V3: CPBL
-def _cpbl_marcel(coh: pd.DataFrame, neutral: bool, year_col: str = "season") -> pd.Series:
-    out = pd.Series(np.nan, index=coh.index)
+def _cpbl_marcel(coh: pd.DataFrame, neutral: bool, year_col: str = "season") -> pd.DataFrame:
+    """Centred Marcel K-BB%, K%, BB% (projection minus that season's AAA average) per cohort row."""
+    out = pd.DataFrame(np.nan, index=coh.index, columns=["kbb", "k", "bb"])
     for y, g in coh.groupby(year_col):
         y = int(y)
         seasons = [y - 1, y - 2, y - 3]
         m = project("pitcher", y, neutral=neutral, seasons=seasons).set_index("player_id")
-        out[g.index] = g.mlbam_id.astype(int).map(m.score_c).values
+        ids = g.mlbam_id.astype(int)
+        out.loc[g.index, "kbb"] = ids.map(m.score_c).values
+        out.loc[g.index, "k"] = ids.map(m.k - m.lg_k).values
+        out.loc[g.index, "bb"] = ids.map(m.bb - m.lg_bb).values
     return out
 
 
@@ -330,13 +362,13 @@ def v2_v3() -> dict:
     rng = np.random.default_rng(cfg()["validation"]["bootstrap"]["seed"] + 1)
     res = {}
     a11 = pd.read_csv(processed("backtest_chrono_cohort.csv"))
-    a11["marcel"] = _cpbl_marcel(a11, neutral=False)
+    a11[["marcel", "marcel_k", "marcel_bb"]] = _cpbl_marcel(a11, neutral=False).to_numpy()
     res["a11"] = {"n": int(a11.marcel.notna().sum()),
                   "marcel": backtest_chrono._corr_test("Marcel K-BB% vs CPBL K-BB%", a11, "marcel", "cpbl_kbb_c", rng),
                   "baseline": backtest_chrono._corr_test("baseline vs CPBL K-BB%", a11, "baseline_score", "cpbl_kbb_c", rng),
                   "paired": backtest_chrono.paired_diff(a11, "marcel", "baseline_score", "cpbl_kbb_c", rng)}
     cen = pd.read_csv(processed("cpbl_census_pitchers.csv"))
-    cen["marcel"] = _cpbl_marcel(cen, neutral=True)
+    cen[["marcel", "marcel_k", "marcel_bb"]] = _cpbl_marcel(cen, neutral=True).to_numpy()
     res["census"] = {"n": int(cen.marcel.notna().sum()),
                      "marcel": cpbl_census._test("Marcel K-BB% vs CPBL K-BB%", cen, "marcel", "cpbl_kbb_c", rng),
                      "single_season": cpbl_census._test("CP1 AAA K-BB% vs CPBL K-BB%", cen, "aaa_kbb_c", "cpbl_kbb_c", rng),
@@ -344,8 +376,8 @@ def v2_v3() -> dict:
     # V3: rolling translation on the Marcel projection (>= 15 earlier arrivals, else the mean)
     v3 = {}
     for name, d in (("census", cen), ("a11", a11)):
-        for comp, ycol in (("k-bb", "cpbl_kbb_c"),):
-            v3[f"{name}_{comp}"] = _rolling(d, "marcel", ycol, rng)
+        for comp, x, ycol in (("k-bb", "marcel", "cpbl_kbb_c"), ("k", "marcel_k", "cpbl_k_c"), ("bb", "marcel_bb", "cpbl_bb_c")):
+            v3[f"{name}_{comp}"] = _rolling(d, x, ycol, rng)
     res["v3"] = v3
     a11.to_csv(processed("marcel_v2_a11.csv"), index=False)
     cen.to_csv(processed("marcel_v2_census.csv"), index=False)
@@ -377,8 +409,29 @@ def _rolling(d: pd.DataFrame, x: str, y: str, rng, min_train: int = 15) -> dict:
 
 
 # ------------------------------------------------------------------ run
+def ranking_effect() -> dict:
+    """Signable top 3 under the old baseline vs Marcel (after evaluate has written the results)."""
+    out = {}
+    sh = pd.read_csv(processed("recommendation_shortlist.csv"))
+    for role, f, old, new in (("pitcher", "pitcher_fit_results.csv", "combined_rank_a13", "combined_rank"),
+                              ("hitter", "hitter_fit_results.csv", "baseline_rank_tracked", "marcel_rank_tracked")):
+        D = pd.read_csv(processed(f))
+        if new not in D or old not in D:
+            continue
+        D = D[D.fit_available & D.signable.fillna(False).astype(bool)]
+        a, b = D.sort_values(old), D.sort_values(new)
+        pk = sh[(sh.role == role) & (sh.rule_rank_signable == 1)]
+        out[role] = {"before": a.name.head(3).tolist(), "after": b.name.head(3).tolist(),
+                     "rank_corr_signable": float(D[old].corr(D[new], method="spearman")),
+                     "p_top1_signable_pick": float(pk.boot_p_top1_signable.iat[0]) if len(pk) else None}
+    return out
+
+
 def run() -> dict:
-    out = {"v1": v1(), "v2_v3": v2_v3()}
+    v = v1()
+    key = json.loads(json.dumps({"amendment15": cfg(), "woba_weights": config()["woba_weights"]}))
+    processed("marcel_v1.json").write_text(json.dumps({"key": key, "v1": v}, indent=2, default=float))
+    out = {"v1": v, "v2_v3": v2_v3(), "ranking": ranking_effect()}
     processed("marcel_summary.json").write_text(json.dumps(out, indent=2, ensure_ascii=False, default=float))
     report(out)
     return out
@@ -403,6 +456,13 @@ def report(out: dict) -> None:
                     row[yr] = f"{v:+.3f} ({ci[0]:+.3f} to {ci[1]:+.3f})"
             rows.append(row)
         L += [md_table(pd.DataFrame(rows)), ""]
+        if r.get("sensitivity"):
+            L += ["Registered sensitivities, Marcel rho on the primary outcome (reported only; they never choose the "
+                  "model):", "", md_table(pd.DataFrame(r["sensitivity"]), ".3f"), ""]
+        if r.get("pf1_seasons"):
+            L += [f"Seasons without single-year park factors (PF = 1, flagged): {', '.join(map(str, r['pf1_seasons']))}.", ""]
+    L += ["For pitchers, the -FIP rows use Marcel's projected FIP; the judgment and estimated baselines are their "
+          "composite scores for both outcomes.", ""]
     v = out["v2_v3"]
     L += ["## V2: CPBL K-BB% (centred)", ""]
     for name, lab in (("a11", "Amendment-11 cohort (pre-arrival, park-adjusted)"), ("census", "Census 2018-2026 (PF = 1)")):
@@ -413,6 +473,14 @@ def report(out: dict) -> None:
     L += ["## V3: rolling translation on the Marcel projection (>= 15 earlier arrivals, else the training mean)", "",
           md_table(pd.DataFrame(v["v3"]).T.reset_index(names="cohort").assign(
               ci=lambda d: d["ci"].map(lambda c: f"{c[0]:+.4f} to {c[1]:+.4f}")), ".4f"), ""]
+    if out.get("ranking"):
+        L += ["## Use in the ranking: signable top 3 before / after Marcel", "",
+              "Pitchers: amendment 13 (old baseline in the 0.5 slot) vs amendment 15 (Marcel K-BB%); hitters: old "
+              "baseline rank vs Marcel wOBA rank.", "",
+              md_table(pd.DataFrame([{"role": k, "before": ", ".join(v["before"]), "after": ", ".join(v["after"]),
+                                      "rank corr (signable)": v["rank_corr_signable"],
+                                      "P(top 1 among signable), pick": v["p_top1_signable_pick"]}
+                                     for k, v in out["ranking"].items()]), ".2f"), ""]
     (path("reports") / "marcel.md").write_text("\n".join(L), encoding="utf-8")
 
 

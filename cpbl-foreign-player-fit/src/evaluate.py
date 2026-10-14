@@ -90,12 +90,13 @@ def _league_cached(kind: str) -> pd.DataFrame:
 
 def old_vs_new(P: pd.DataFrame, H: pd.DataFrame) -> pd.DataFrame:
     """Amendment 6: the amendment-5 ranking (frozen copy of the merged results) next to the new one."""
+    from . import marcel
     rows = []
     for role, D in (("pitcher", P), ("hitter", H)):
         old = pd.read_csv(processed("amendment5_frozen", f"{role}_fit_results.csv"))
         basis = "combined_rank" if role == "pitcher" else "baseline_rank_tracked"
         old = old[old.fit_available].sort_values(basis)
-        if role == "hitter" and "amendment15" in config():
+        if role == "hitter" and marcel.active("hitter"):
             basis = "marcel_rank_tracked"
         old["old_rank"] = np.arange(1, len(old) + 1)
         old["old_rank_non40"] = np.nan
@@ -201,9 +202,8 @@ def test_b(r: dict, P: pd.DataFrame, H: pd.DataFrame, reps: int | None = None) -
     aaa_games = pd.unique(np.concatenate([t[k].game_id.astype(str).unique() for k in ("env_aaa", "pit", "hit", "hand_hit")]
                                          + [plogs.game_id.unique(), hlogs.game_id.unique()]
                                          + ([sums.game_pk.astype(str).unique()] if a13 else [])))
-    a15 = "amendment15" in config()
-    if a15:
-        from . import marcel
+    from . import marcel
+    a15p, a15h = marcel.active("pitcher"), marcel.active("hitter")
     ch = config()["fit"]["combined_heuristic"]
     store = {k: [] for k in ("p_fit", "p_comb", "p_base", "h_fit", "h_comb", "h_base")}
     for _ in range(reps):
@@ -213,12 +213,11 @@ def test_b(r: dict, P: pd.DataFrame, H: pd.DataFrame, reps: int | None = None) -
         hf = fit_score.hitter_fit(t, env, wa).reindex(Ht.bid)
         pfit = fit_score.combine_pitcher(pf).values
         hfit = zscore(hf.fit_total, 2.5).values
-        if a15:     # amendment 15: Marcel from the re-weighted 2025-26 stints (2024 held fixed)
-            pb = marcel.candidate_scores("pitcher", Pt.mlbam_id, marcel.log_scale(plogs, wa)).score.values
-            hb = marcel.candidate_scores("hitter", Ht.mlbam_id, marcel.log_scale(hlogs, wa)).score.values
-        else:
-            pb = baseline_boot("pitcher", Pt, plogs, wa).reindex(Pt.mlbam_id).values
-            hb = baseline_boot("hitter", Ht, hlogs, wa).reindex(Ht.mlbam_id).values
+        # amendment 15: Marcel from the re-weighted 2025-26 stints (2024 and league averages held fixed)
+        pb = (marcel.candidate_scores("pitcher", Pt.mlbam_id, marcel.log_scale(plogs, wa)).score.values if a15p
+              else baseline_boot("pitcher", Pt, plogs, wa).reindex(Pt.mlbam_id).values)
+        hb = (marcel.candidate_scores("hitter", Ht.mlbam_id, marcel.log_scale(hlogs, wa)).score.values if a15h
+              else baseline_boot("hitter", Ht, hlogs, wa).reindex(Ht.mlbam_id).values)
         if a13:
             st = stuff_rank.candidate_stuff(sums, wa).set_index("pitcher_id").stuff_plus
             pstuff = Pt.mlbam_id.map(st).reset_index(drop=True)
@@ -494,9 +493,13 @@ def recommend(P: pd.DataFrame, H: pd.DataFrame, season: dict, boot: dict) -> dic
     keep = ["name", "mlbam_id", "age_2026", "teams", "baseline_rank", "baseline_rank_tracked", "marcel_rank_tracked",
             "marcel_score", "stuff_plus", "fit_rank", "combined_rank", "combined_rank_a13", *milb_candidates.REC_COLS, *milb_candidates.SIGN_COLS]
     rows = []
-    hitter_base = "marcel_rank_tracked" if "amendment15" in config() else "baseline_rank_tracked"
+    from . import marcel
+    a15h = marcel.active("hitter")      # amendment 15: hitters ranked by Marcel wOBA, Fit unused
+    if a15h:
+        hitter_uses_fit = out["hitter_uses_fit"] = False
     for role, D, key, rank_col in (("pitcher", P, "p", "combined_rank"),
-                                   ("hitter", H, "h", "combined_rank" if hitter_uses_fit else hitter_base)):
+                                   ("hitter", H, "h", "marcel_rank_tracked" if a15h else
+                                    "combined_rank" if hitter_uses_fit else "baseline_rank_tracked")):
         d = D[D.fit_available].sort_values(rank_col).copy()
         d["rule_rank"] = np.arange(1, len(d) + 1)
         d["on_40man"] = d.on_40man.fillna(False).astype(bool)
