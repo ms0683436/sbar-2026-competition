@@ -446,3 +446,51 @@ amendment7b:
     sensitivity: [[FF], [FF, SI, FC]]
     d4_threshold_kmh: 1.6
   bootstrap: {draws: 2000, ci: 0.90, seed: 20261015}
+
+# AMENDMENT 8 (2026-10-14; committed BEFORE any Stuff+ model was trained or any Stuff+ value
+# computed). Johnny reversed "do not self-build AAA Stuff+" and asked to model it on
+# FanGraphs Stuff+ (public description: physical pitch characteristics only, no location or
+# count, separate models by pitch family, target = pitch run value, 100 = average). It is a
+# VALIDATION in this amendment: no Stuff+ value enters the ranking or changes the picks; only
+# a later amendment could add it, and only if it passes S1 or S3 below.
+#
+# Data: AAA statsapi game feeds, one source for every season (src/statsapi_release.py adds
+#   release x0 / z0 and spin axis). Training season 2025; Stuff+ for 2023-24 (backtest) comes
+#   from the model fit on all of 2025; 2025 values are out-of-fold (5 folds grouped by pitcher).
+# Inputs per pitch (handedness-mirrored so arm side is positive): velocity, spin rate, spin
+#   axis, pfx_x, pfx_z, release height z0, release side x0, extension; for non-fastballs also
+#   velocity, pfx_x and pfx_z minus the pitcher-season average of his primary fastball (his
+#   most-thrown FF / SI, else FC). No location, count, batter or park feature.
+# Park / altitude: each input except spin axis is corrected by a park offset = mean over that
+#   home club's pitches of (input - the pitcher x pitch type x season mean), estimated within
+#   the season, subtracted before modelling; offsets of the high-altitude PCL parks are reported.
+# Target: pitch run value from AAA 2025 count values (mean run value of PAs passing through
+#   each count; wOBA event values converted to runs with the league wOBA scale): value after
+#   the pitch minus value before.
+# Model: scikit-learn HistGradientBoostingRegressor per family (FB: FF, SI, FC; BR: SL, ST, SV,
+#   CU, KC, CS; OS: CH, FS, FO, SC), fixed settings, no tuning: max_iter 300, learning_rate
+#   0.05, max_leaf_nodes 31, min_samples_leaf 200, l2_regularization 1.0, random_state below.
+# Scale: pitcher Stuff+ = 100 - 10 * z of his mean predicted run value per pitch, z over
+#   pitchers with >= 300 tracked pitches in the season (lower run value = better = higher Stuff+).
+# Validation (pitchers with >= 150 AAA BF in 2025 and in 2026, >= 300 tracked 2025 pitches):
+#   S1 (primary) Spearman(2025 Stuff+, 2026 league- and park-adjusted -FIP; the amendment-4
+#      target) minus Spearman(2025 amendment-5 baseline, same target); 90% bootstrap CI of the
+#      difference over pitchers. "Stuff+ wins" if the CI lies above 0.
+#   S2 the same with 2026 K% as target.
+#   S3 Spearman(2025 Stuff+, residual of the 2026 target after OLS on the 2025 baseline) > 0.
+#   S4 amendment-7 pooled CPBL cohort: Spearman(pre-arrival Stuff+, centred CPBL K-BB%) and
+#      (pre-arrival Stuff+, centred CPBL whiff%), reported next to P1 and Fit; amendment-2
+#      verdict rule and minimum n.
+amendment8:
+  train_season: 2025
+  predict_seasons: [2023, 2024, 2025]
+  folds: 5
+  min_pitches_scale: 300
+  families:
+    FB: [FF, SI, FC]
+    BR: [SL, ST, SV, CU, KC, CS]
+    OS: [CH, FS, FO, SC]
+  model: {max_iter: 300, learning_rate: 0.05, max_leaf_nodes: 31, min_samples_leaf: 200,
+          l2_regularization: 1.0, random_state: 20261014}
+  validation: {min_bf: 150, target_season: 2026}
+  bootstrap: {draws: 2000, ci: 0.90, seed: 20261016}
