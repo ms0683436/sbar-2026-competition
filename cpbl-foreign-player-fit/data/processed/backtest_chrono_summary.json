@@ -1,0 +1,262 @@
+{
+  "tests": [
+    {
+      "test": "C1 combined vs centred CPBL K-BB% (primary)",
+      "n": 9,
+      "rho": 0.7333333333333334,
+      "ci_lo": 0.14529914529914528,
+      "ci_hi": 1.0,
+      "verdict": "descriptive only (n below minimum)"
+    },
+    {
+      "test": "C2 baseline vs centred CPBL K-BB% (C1 pitchers)",
+      "n": 9,
+      "rho": 0.18333333333333335,
+      "ci_lo": -0.5964912280701754,
+      "ci_hi": 0.8290598290598289,
+      "verdict": "descriptive only (n below minimum)"
+    },
+    {
+      "test": "C3 C1 minus C2 (does Fit add to baseline)",
+      "n": 9,
+      "rho": 0.55,
+      "ci_lo": 0.0,
+      "ci_hi": 1.1428571428571428,
+      "verdict": "descriptive only (n below minimum)"
+    },
+    {
+      "test": "C4 Fit vs centred CPBL K-BB%",
+      "n": 9,
+      "rho": 0.11666666666666665,
+      "ci_lo": -0.48717948717948706,
+      "ci_hi": 0.6925979680696658,
+      "verdict": "descriptive only (n below minimum)"
+    },
+    {
+      "test": "C5 F1 vs centred whiff% change",
+      "n": 9,
+      "rho": 0.5,
+      "ci_lo": -0.23076923076923073,
+      "ci_hi": 0.9487179487179486,
+      "verdict": "descriptive only (n below minimum)"
+    },
+    {
+      "test": "C6 baseline vs centred CPBL K-BB% (all arrivals)",
+      "n": 17,
+      "rho": 0.17401960784313728,
+      "ci_lo": -0.2718432878200538,
+      "ci_hi": 0.5627444214400737,
+      "verdict": "inconclusive"
+    },
+    {
+      "test": "C7 AAA K% vs centred CPBL K% (all arrivals)",
+      "n": 17,
+      "rho": 0.31127450980392163,
+      "ci_lo": -0.10948009950248758,
+      "ci_hi": 0.6332197696588764,
+      "verdict": "inconclusive"
+    },
+    {
+      "test": "C8 AAA BB% vs centred CPBL BB% (all arrivals)",
+      "n": 17,
+      "rho": 0.36764705882352944,
+      "ci_lo": -0.04359199195277385,
+      "ci_hi": 0.672090327645524,
+      "verdict": "inconclusive"
+    }
+  ],
+  "forecast": {
+    "n_held_out": 9,
+    "mae_m0": 0.05047434956598049,
+    "mae_m1": 0.05307572268368072,
+    "m1_minus_m0": 0.0026013731177002286,
+    "ci": [
+      -0.0060630318778465446,
+      0.010931708746220035
+    ],
+    "slopes": {
+      "2025": 0.031161060367937306,
+      "2026": 0.0533064945162997
+    },
+    "rows": [
+      {
+        "origin": 2025,
+        "english_name": "David Buchanan",
+        "n_train": 8,
+        "actual": -0.0154624616663983,
+        "m0": 0.04313829324082542,
+        "m1": 0.03606387390951088,
+        "m1_slope": 0.031161060367937306
+      },
+      {
+        "origin": 2025,
+        "english_name": "Brandon Leibrandt",
+        "n_train": 8,
+        "actual": 0.0177239128373414,
+        "m0": 0.04313829324082542,
+        "m1": 0.055890013719938826,
+        "m1_slope": 0.031161060367937306
+      },
+      {
+        "origin": 2025,
+        "english_name": "Beau Sulser",
+        "n_train": 8,
+        "actual": -0.0183005529763395,
+        "m0": 0.04313829324082542,
+        "m1": 0.03054048820867863,
+        "m1_slope": 0.031161060367937306
+      },
+      {
+        "origin": 2025,
+        "english_name": "Jackson Stephens",
+        "n_train": 8,
+        "actual": 0.0954408194496487,
+        "m0": 0.04313829324082542,
+        "m1": 0.06465481840804321,
+        "m1_slope": 0.031161060367937306
+      },
+      {
+        "origin": 2025,
+        "english_name": "Spenser Watkins",
+        "n_train": 8,
+        "actual": -0.0197773558118009,
+        "m0": 0.04313829324082542,
+        "m1": 0.036573691783807746,
+        "m1_slope": 0.031161060367937306
+      },
+      {
+        "origin": 2025,
+        "english_name": "Jonathan Bermúdez",
+        "n_train": 8,
+        "actual": -0.0162613082099257,
+        "m0": 0.04313829324082542,
+        "m1": 0.04192440331840327,
+        "m1_slope": 0.031161060367937306
+      },
+      {
+        "origin": 2025,
+        "english_name": "Humberto Castellanos",
+        "n_train": 8,
+        "actual": 0.023951457747521,
+        "m0": 0.04313829324082542,
+        "m1": 0.05640191863611303,
+        "m1_slope": 0.031161060367937306
+      },
+      {
+        "origin": 2026,
+        "english_name": "Jordan Balazovic",
+        "n_train": 15,
+        "actual": 0.078,
+        "m0": 0.027494723819776676,
+        "m1": 0.009757577946569826,
+        "m1_slope": 0.0533064945162997
+      },
+      {
+        "origin": 2026,
+        "english_name": "John Gant",
+        "n_train": 15,
+        "actual": 0.092,
+        "m0": 0.027494723819776676,
+        "m1": -0.0011323834020364812,
+        "m1_slope": 0.0533064945162997
+      }
+    ]
+  },
+  "exploratory": {
+    "baseline_fit_corr": -0.7666666666666667,
+    "c1_by_baseline_weight": {
+      "0.5": 0.6333333333333333,
+      "0.6": 0.6666666666666667,
+      "0.7": 0.7333333333333334,
+      "0.8": 0.35,
+      "0.9": 0.2333333333333333,
+      "1.0": 0.18333333333333335
+    },
+    "c1_leave_one_out": [
+      0.6190476190476191,
+      0.8571428571428572
+    ],
+    "c1_2025_only": 1.0,
+    "retro_combined_same_pitchers": 0.35,
+    "retro_combined_all_17": 0.13725490196078433
+  },
+  "input_change": {
+    "baseline_rank_corr_retro_vs_chrono": 0.985294117647059,
+    "fit_rank_corr_retro_vs_chrono_2025_26": 0.9500000000000001
+  },
+  "n": 17,
+  "by_season": {
+    "2024": 8,
+    "2025": 7,
+    "2026": 2
+  },
+  "pools": {
+    "2024": {
+      "aaa_season": 2023,
+      "baseline_pool": 658
+    },
+    "2025": {
+      "aaa_season": 2024,
+      "baseline_pool": 624,
+      "env_seasons": [
+        2024
+      ],
+      "reference_pool": 611,
+      "pool_fit_mean": -0.0013995992644260005,
+      "pool_fit_sd": 0.9073509704473358
+    },
+    "2026": {
+      "aaa_season": 2025,
+      "baseline_pool": 634,
+      "env_seasons": [
+        2024,
+        2025
+      ],
+      "reference_pool": 611,
+      "pool_fit_mean": -0.0016060259920483344,
+      "pool_fit_sd": 0.9162609507555929
+    }
+  },
+  "retrospective": [
+    {
+      "test": "P1 baseline vs centred CPBL K-BB% (primary)",
+      "n": 17,
+      "rho": 0.12745098039215688,
+      "ci_lo": -0.3118012422360249,
+      "ci_hi": 0.5173610171576164,
+      "verdict": "inconclusive"
+    },
+    {
+      "test": "P2 AAA K% vs centred CPBL K%",
+      "n": 17,
+      "rho": 0.34558823529411764,
+      "ci_lo": -0.04581188618096174,
+      "ci_hi": 0.658010642538635,
+      "verdict": "inconclusive"
+    },
+    {
+      "test": "P3 AAA BB% vs centred CPBL BB%",
+      "n": 17,
+      "rho": 0.36764705882352944,
+      "ci_lo": -0.02487109963285252,
+      "ci_hi": 0.6841314644489728,
+      "verdict": "inconclusive"
+    },
+    {
+      "test": "P4 Fit vs CPBL K-BB% residual after baseline",
+      "n": 17,
+      "rho": -0.07107843137254903,
+      "ci_lo": -0.5074581821536192,
+      "ci_hi": 0.3753711400511067,
+      "verdict": "inconclusive"
+    },
+    {
+      "test": "P5 F1 vs centred whiff% change",
+      "n": 17,
+      "rho": 0.24019607843137256,
+      "ci_lo": -0.3040504036252371,
+      "ci_hi": 0.69639419968597,
+      "verdict": "inconclusive"
+    }
+  ]
+}
