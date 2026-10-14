@@ -46,10 +46,50 @@ def pitcher_baseline(year: int) -> pd.DataFrame:
     empty = pd.DataFrame(columns=["player_id", "pitching_BF", "pitching_SO", "pitching_BB"])
     d = baseline.pitcher_metrics(df, year, s, empty)
     d = baseline.score(d, "pitcher", baseline.judgment_weights("pitcher"))
-    out = d[["player_id", "pitching_BF", "baseline_score", "k_pct_adj", "bb_pct_adj", "fip"]].copy()
+    out = d[["player_id", "pitching_BF", "baseline_score", "k_pct_adj", "bb_pct_adj", "fip", "k_pct", "bb_pct"]].copy()
     out["mlbam_id"] = out.player_id.astype(int)
     out["aaa_season"] = year
-    return out.drop(columns="player_id").rename(columns={"pitching_BF": "aaa_bf"})
+    return out.drop(columns="player_id").rename(columns={"pitching_BF": "aaa_bf", "k_pct": "aaa_k_pct",
+                                                         "bb_pct": "aaa_bb_pct"})
+
+
+def aaa_league(year: int) -> dict:
+    s = baseline_weights.fetch("pitching", year)
+    return {"k_pct": s.pitching_SO.sum() / s.pitching_BF.sum(), "bb_pct": s.pitching_BB.sum() / s.pitching_BF.sum()}
+
+
+def translation(coh: pd.DataFrame, aaa_whiff: dict) -> dict:
+    """Amendment 7b item 3: AAA -> CPBL translation of K%, BB% and whiff% (descriptive)."""
+    c = config()["amendment7b"]
+    b = c["bootstrap"]
+    rng = np.random.default_rng(b["seed"])
+    out = {"league_ratio": [], "ols": []}
+    for s, g in coh.groupby("season"):
+        y = int(s) - 1
+        al = aaa_league(y)
+        out["league_ratio"].append({"cpbl_season": int(s), "aaa_season": y,
+                                    "k_pct": g.lg_k_pct.iat[0] / al["k_pct"], "bb_pct": g.lg_bb_pct.iat[0] / al["bb_pct"],
+                                    "whiff_pct": g.lg_whiff_pct.iat[0] / aaa_whiff[y]})
+    a_ = (1 - b["ci"]) / 2
+    for m, x, y, at in (("K%", "aaa_k_pct", "cpbl_k_pct", c["translation"]["k_pct_at"]),
+                        ("BB%", "aaa_bb_pct", "cpbl_bb_pct", c["translation"]["bb_pct_at"]),
+                        ("whiff%", "aaa_whiff_pct", "cpbl_whiff_pct", c["translation"]["whiff_pct_at"])):
+        d = coh[[x, y]].astype(float).dropna().to_numpy()
+        bb, aa = np.polyfit(d[:, 0], d[:, 1], 1)
+        boots = []
+        for _ in range(b["draws"]):
+            i = rng.integers(0, len(d), len(d))
+            if np.ptp(d[i, 0]) > 0:
+                boots.append(np.polyfit(d[i, 0], d[i, 1], 1))
+        boots = np.array(boots)
+        row = {"metric": m, "n": len(d), "a": aa, "b": bb,
+               "b_ci": [float(np.quantile(boots[:, 0], a_)), float(np.quantile(boots[:, 0], 1 - a_))],
+               "aaa_mean": float(d[:, 0].mean()), "cpbl_mean": float(d[:, 1].mean())}
+        for v in at:
+            pred = boots[:, 1] + boots[:, 0] * v
+            row[f"at_{v:.2f}"] = [float(aa + bb * v), float(np.quantile(pred, a_)), float(np.quantile(pred, 1 - a_))]
+        out["ols"].append(row)
+    return out
 
 
 def hitter_predictors(year: int) -> pd.DataFrame:
@@ -275,9 +315,11 @@ def run() -> dict:
     for name, part in (("2026 cohort", pc[pc.season == 2026]), ("amendment-2 cohort", pc[pc.season < 2026])):
         desc += [dict(t, test=f"{t['test']} — {name}") for t in _tests(part, P_TESTS[:1], rng)]
     hres = _tests(hc, Q_TESTS, rng)
+    aaa_all = pd.concat([backtest.aaa_extra(), milb_loader.load()], ignore_index=True)
+    tr = translation(pc, _aaa_league_whiff(aaa_all))
     summ = {"pitchers": {"n": len(pc), "by_season": pc.season.value_counts().sort_index().to_dict(),
                          "n_with_baseline": int(pc.baseline_score.notna().sum()), "tests": pres, "descriptive": desc},
-            "hitters": {"n": len(hc), "tests": hres}}
+            "hitters": {"n": len(hc), "tests": hres}, "translation": tr}
     for name, df in (("backtest2026_pitcher_screening.csv", psc), ("backtest2026_pitcher_cohort.csv", pc),
                      ("backtest2026_hitter_screening.csv", hsc), ("backtest2026_hitter_cohort.csv", hc)):
         df.to_csv(processed(name), index=False)
@@ -302,7 +344,10 @@ def report(psc, pc, hsc, hc, summ) -> None:
              f"## Hitters (2026, n = {summ['hitters']['n']})", "",
              md_table(pd.DataFrame(summ["hitters"]["tests"]), floatfmt=".2f"), "",
              md_table(hc[[c for c in hcols if c in hc]].sort_values("baseline_score", ascending=False), floatfmt=".3f"), "",
-             "Screened out:", "", md_table(hsc[hsc.excluded.ne("")]), ""]
+             "Screened out:", "", md_table(hsc[hsc.excluded.ne("")]), "",
+             "## AAA -> CPBL translation (amendment 7b item 3, descriptive; survivors only)", "",
+             md_table(pd.DataFrame(summ["translation"]["league_ratio"]), floatfmt=".3f"), "",
+             md_table(pd.DataFrame(summ["translation"]["ols"]).astype(str)), ""]
     (path("reports") / "backtest_2026.md").write_text("\n".join(lines), encoding="utf-8")
 
 

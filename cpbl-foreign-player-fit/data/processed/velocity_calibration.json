@@ -1,0 +1,41 @@
+{
+  "aaa_same_pitcher_change_2025_2026": {
+    "n": 414,
+    "mean_kmh": -0.0029876357722003095,
+    "median_kmh": 0.03155684627327558,
+    "sd_kmh": 1.551158380223217
+  },
+  "variants": [
+    {
+      "rebas_types": "FF+SI",
+      "n": 44,
+      "mean_diff_kmh": 0.6129825700432157,
+      "ci_lo": 0.2302669186220644,
+      "ci_hi": 0.9876632503095218,
+      "median_diff_kmh": 0.3671494428787412,
+      "slope_site_on_rebas": 0.9308593573077358,
+      "offset_kmh": 0.615970205815416
+    },
+    {
+      "rebas_types": "FF",
+      "n": 42,
+      "mean_diff_kmh": 0.47203947579818767,
+      "ci_lo": 0.10519368058643015,
+      "ci_hi": 0.8410363109396329,
+      "median_diff_kmh": 0.2793485598559755,
+      "slope_site_on_rebas": 0.9332448198001143,
+      "offset_kmh": 0.47502711157038796
+    },
+    {
+      "rebas_types": "FF+SI+FC",
+      "n": 44,
+      "mean_diff_kmh": 1.3702049900295008,
+      "ci_lo": 0.885275084674519,
+      "ci_hi": 1.8494376715091037,
+      "median_diff_kmh": 1.155657370517929,
+      "slope_site_on_rebas": 0.8661522540593042,
+      "offset_kmh": 1.373192625801701
+    }
+  ],
+  "d4_covered": true
+}
