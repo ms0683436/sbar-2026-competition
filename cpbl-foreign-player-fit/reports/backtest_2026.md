@@ -12,6 +12,14 @@
 | P4 Fit vs CPBL K-BB% residual after baseline | 17 | -0.07 | -0.50 | 0.40 | inconclusive |
 | P5 F1 vs centred whiff% change | 17 | 0.24 | -0.30 | 0.70 | inconclusive |
 
+Amendment 8 (Stuff+, S4):
+
+| test | n | rho | ci_lo | ci_hi | verdict |
+|---|---|---|---|---|---|
+| S4a Stuff+ vs centred CPBL K-BB% | 17 | -0.03 | -0.46 | 0.41 | inconclusive |
+| S4b Stuff+ vs centred CPBL whiff% | 17 | 0.30 | -0.18 | 0.72 | inconclusive |
+| S4c Fit vs centred CPBL K-BB% (reference) | 17 | -0.26 | -0.62 | 0.20 | inconclusive |
+
 Descriptive (P1 by cohort):
 
 | test | n | rho | ci_lo | ci_hi | verdict |
@@ -19,25 +27,25 @@ Descriptive (P1 by cohort):
 | P1 baseline vs centred CPBL K-BB% (primary) — 2026 cohort | 2 |  |  |  | too few |
 | P1 baseline vs centred CPBL K-BB% (primary) — amendment-2 cohort | 15 | 0.33 | -0.11 | 0.69 | inconclusive |
 
-| season | source | english_name | aaa_bf | baseline_score | k_pct_adj | bb_pct_adj | fit | cpbl_k_c | cpbl_bb_c | cpbl_kbb_c |
-|---|---|---|---|---|---|---|---|---|---|---|
-| 2025 | REBAS | Jackson Stephens | 201 | 0.556 | 0.020 | -0.025 | -0.661 | 0.045 | -0.050 | 0.095 |
-| 2024 | REBAS | Eric Stout | 182 | 0.407 | 0.021 | -0.002 | -0.087 | 0.063 | -0.020 | 0.083 |
-| 2025 | REBAS | Humberto Castellanos | 428 | 0.306 | 0.030 | -0.020 | -0.197 | 0.015 | -0.009 | 0.024 |
-| 2024 | REBAS | Héctor Pérez | 281 | 0.279 | 0.052 | 0.028 | -1.273 | 0.058 | 0.024 | 0.034 |
-| 2025 | REBAS | Brandon Leibrandt | 352 | 0.244 | -0.003 | -0.049 | -1.346 | -0.003 | -0.021 | 0.018 |
-| 2024 | REBAS | Angel Sánchez | 249 | 0.110 | 0.007 | -0.006 | 1.327 | -0.039 | -0.007 | -0.032 |
-| 2024 | REBAS | Rio Gomez | 259 | 0.042 | 0.019 | 0.005 | -0.943 | 0.096 | -0.038 | 0.134 |
-| 2025 | REBAS | Jonathan Bermúdez | 121 | -0.127 | -0.001 | 0.015 | -1.118 | 0.008 | 0.024 | -0.016 |
-| 2025 | REBAS | Spenser Watkins | 507 | -0.288 | -0.055 | -0.031 | -0.219 | -0.012 | 0.008 | -0.020 |
-| 2024 | REBAS | Nick Margevicius | 211 | -0.302 | -0.067 | -0.052 | 0.310 | 0.016 | -0.034 | 0.050 |
-| 2024 | REBAS | Pedro Fernández | 290 | -0.338 | -0.027 | -0.022 | -0.090 | 0.001 | -0.024 | 0.025 |
-| 2025 | REBAS | David Buchanan | 514 | -0.381 | -0.065 | -0.038 | 1.100 | -0.025 | -0.009 | -0.015 |
-| 2026 | stats.cpbl.com.tw | Jordan Balazovic | 235 | -0.395 | -0.038 | -0.010 | 0.457 | 0.102 | 0.024 | 0.078 |
-| 2025 | REBAS | Beau Sulser | 312 | -0.555 | -0.044 | -0.039 | 1.035 | -0.001 | 0.017 | -0.018 |
-| 2024 | REBAS | Daniel Mengden | 244 | -0.560 | -0.047 | 0.009 | 1.396 | 0.006 | -0.011 | 0.017 |
-| 2026 | stats.cpbl.com.tw | John Gant | 375 | -0.634 | -0.042 | 0.012 | 0.941 | 0.095 | 0.003 | 0.092 |
-| 2024 | REBAS | Aaron Leasher | 235 | -0.710 | -0.036 | 0.052 | -0.633 | 0.034 | -0.000 | 0.034 |
+| season | source | english_name | aaa_bf | baseline_score | k_pct_adj | bb_pct_adj | fit | stuff_plus | cpbl_k_c | cpbl_bb_c | cpbl_kbb_c |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 2025 | REBAS | Jackson Stephens | 201 | 0.556 | 0.020 | -0.025 | -0.661 | 91.501 | 0.045 | -0.050 | 0.095 |
+| 2024 | REBAS | Eric Stout | 182 | 0.407 | 0.021 | -0.002 | -0.087 | 101.641 | 0.063 | -0.020 | 0.083 |
+| 2025 | REBAS | Humberto Castellanos | 428 | 0.306 | 0.030 | -0.020 | -0.197 | 89.057 | 0.015 | -0.009 | 0.024 |
+| 2024 | REBAS | Héctor Pérez | 281 | 0.279 | 0.052 | 0.028 | -1.273 | 114.115 | 0.058 | 0.024 | 0.034 |
+| 2025 | REBAS | Brandon Leibrandt | 352 | 0.244 | -0.003 | -0.049 | -1.346 | 81.665 | -0.003 | -0.021 | 0.018 |
+| 2024 | REBAS | Angel Sánchez | 249 | 0.110 | 0.007 | -0.006 | 1.327 | 93.646 | -0.039 | -0.007 | -0.032 |
+| 2024 | REBAS | Rio Gomez | 259 | 0.042 | 0.019 | 0.005 | -0.943 | 85.021 | 0.096 | -0.038 | 0.134 |
+| 2025 | REBAS | Jonathan Bermúdez | 121 | -0.127 | -0.001 | 0.015 | -1.118 | 78.660 | 0.008 | 0.024 | -0.016 |
+| 2025 | REBAS | Spenser Watkins | 507 | -0.288 | -0.055 | -0.031 | -0.219 | 97.913 | -0.012 | 0.008 | -0.020 |
+| 2024 | REBAS | Nick Margevicius | 211 | -0.302 | -0.067 | -0.052 | 0.310 | 85.777 | 0.016 | -0.034 | 0.050 |
+| 2024 | REBAS | Pedro Fernández | 290 | -0.338 | -0.027 | -0.022 | -0.090 | 103.854 | 0.001 | -0.024 | 0.025 |
+| 2025 | REBAS | David Buchanan | 514 | -0.381 | -0.065 | -0.038 | 1.100 | 93.391 | -0.025 | -0.009 | -0.015 |
+| 2026 | stats.cpbl.com.tw | Jordan Balazovic | 235 | -0.395 | -0.038 | -0.010 | 0.457 | 88.564 | 0.102 | 0.024 | 0.078 |
+| 2025 | REBAS | Beau Sulser | 312 | -0.555 | -0.044 | -0.039 | 1.035 | 92.136 | -0.001 | 0.017 | -0.018 |
+| 2024 | REBAS | Daniel Mengden | 244 | -0.560 | -0.047 | 0.009 | 1.396 | 98.661 | 0.006 | -0.011 | 0.017 |
+| 2026 | stats.cpbl.com.tw | John Gant | 375 | -0.634 | -0.042 | 0.012 | 0.941 | 106.584 | 0.095 | 0.003 | 0.092 |
+| 2024 | REBAS | Aaron Leasher | 235 | -0.710 | -0.036 | 0.052 | -0.633 | 89.695 | 0.034 | -0.000 | 0.034 |
 
 Screened out (2026):
 

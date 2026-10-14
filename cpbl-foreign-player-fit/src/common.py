@@ -120,6 +120,6 @@ def md_table(df: pd.DataFrame, floatfmt: str = ".3f", index: bool = False) -> st
         return str(v)
 
     lines = ["| " + " | ".join(map(str, cols)) + " |", "|" + "---|" * len(cols)]
-    for _, row in d.iterrows():
+    for _, row in d.astype(object).iterrows():  # keep ints as ints in mixed rows
         lines.append("| " + " | ".join(fmt(v) for v in row.values) + " |")
     return "\n".join(lines)
