@@ -1,0 +1,47 @@
+# Amendment 7: 2026 CPBL import players on stats.cpbl.com.tw (identities only; no statistics).
+# From the public player pages (sitemap, read as Markdown on 2026-10-14): players whose original name is in Latin script,
+# Taiwanese players removed by hand; MLBAM id from statsapi.mlb.com people search, matched on birth date.
+# site_name is the display name used to join the site's export. Released imports missing from the sitemap are added
+# when the export shows them.
+site_id,site_name,original_name,english_name,role,throws,birth,mlbam_id,birth_country,source
+762,伍鐸,Bryan WOODALL,Bryan Woodall,pitcher,R,1986-10-24,543941,USA,statsapi people search on the site's original name; birth date matches
+5151,羅戈,Nivaldo RODRIGUEZ,Nivaldo Rodriguez,pitcher,R,1997-04-16,670550,Venezuela,statsapi people search on the site's original name; birth date matches
+5604,勝騎士,Mario SANCHEZ,Mario Sanchez,pitcher,R,1994-10-31,532936,Venezuela,statsapi people search on the site's original name; birth date matches
+5731,布雷克,Brock DYKXHOORN,Brock Dykxhoorn,pitcher,R,1994-07-02,621245,Canada,statsapi people search on the site's original name; birth date matches
+6006,德保拉,José DE PAULA,Jose De Paula,pitcher,L,1988-03-04,517059,Dominican Republic,statsapi people search on the site's original name; birth date matches
+6063,邦力多,Luis LIBERATO,Luis Liberato,hitter,L,1995-12-18,642451,Dominican Republic,statsapi people search on the site's original name; birth date matches
+6269,愛力戈,Erick LEAL,Erick Leal,pitcher,R,1995-03-17,612797,Venezuela,statsapi people search on the site's original name; birth date matches
+6295,銳力獅,Denyi REYES,Denyi Reyes,pitcher,R,1996-11-02,660593,Dominican Republic,statsapi people search on the site's original name; birth date matches
+6497,鋼龍,Andrew GAGNON,Drew Gagnon,pitcher,R,1990-06-26,543193,USA,statsapi people 543193 (birth date matches the site)
+6507,後勁,Bradin HAGENS/豪勁,Bradin Hagens,pitcher,R,1989-05-12,543266,USA,statsapi people search on the site's original name; birth date matches
+6555,梅賽鍶,Cristopher MERCEDES/梅賽斯,Cristopher Mercedes,pitcher,L,1994-03-08,,,no MLBAM id (statsapi people search)
+6749,魔力藍,Shawn MORIMANDO/象魔力,Shawn Morimando,pitcher,L,1992-11-20,596049,USA,statsapi people search on the site's original name; birth date matches
+6815,大瀧幸治,OTAKI Kouji,Otaki Kouji,pitcher,R,1997-10-01,,,no MLBAM id (statsapi people search)
+6906,艾菩樂,Tyler EPPLER/艾普勒/艾璞樂,Tyler Eppler,pitcher,R,1993-01-05,621169,USA,statsapi people search on the site's original name; birth date matches
+7053,艾速特,Eric STOUT/艾士特,Eric Stout,pitcher,L,1993-03-27,657770,USA,statsapi people search on the site's original name; birth date matches
+7062,威能帝,Pedro FERNANDEZ,Pedro Fernandez,pitcher,R,1994-05-25,613548,Dominican Republic,statsapi people search on the site's original name; birth date matches
+7228,鈴木駿輔,SUZUKI Shunsuke,Suzuki Shunsuke,pitcher,R,1998-06-12,,,no MLBAM id (statsapi people search)
+7239,魔鷹,Steven MOYA,Steven Moya,hitter,R,1991-08-09,570615,Puerto Rico,statsapi people search on the site's original name; birth date matches
+7264,魔神龍,Marcelo MARTINEZ/魔神樂,Marcelo Martinez,pitcher,L,1996-08-10,,,no MLBAM id (statsapi people search)
+7560,菲力士,Felix PENA,Félix Peña,pitcher,R,1990-01-25,570240,Dominican Republic,"statsapi people 570240; MLB birth date 1990-02-25 vs site 1990-01-25, same club as the news list"
+7567,櫻井周斗,SAKURAI Shuto,Sakurai Shuto,pitcher,L,1999-06-25,,,no MLBAM id (statsapi people search)
+7570,坎南,David BUCHANAN/布坎南,David Buchanan,pitcher,R,1989-05-11,571527,USA,statsapi people search on the site's original name; birth date matches
+7597,獅帝芬,Jackson STEPHENS,Jackson Stephens,pitcher,R,1994-05-11,623451,USA,statsapi people search on the site's original name; birth date matches
+7778,喬登,Jordan BALAZOVIC,Jordan Balazovic,pitcher,R,1998-09-17,666364,Canada,statsapi people search on the site's original name; birth date matches
+7779,蔣銲,John GANT,John Gant,pitcher,R,1992-08-06,607231,USA,statsapi people search on the site's original name; birth date matches
+7782,威戈神,Aaron WILKERSON,Aaron Wilkerson,pitcher,R,1989-05-24,658792,USA,statsapi people search on the site's original name; birth date matches
+7783,阿部雄大,ABE Yudai,Abe Yudai,pitcher,L,2000-07-28,,,no MLBAM id (statsapi people search)
+7787,黎克,Nick NELSON,Nick Nelson,pitcher,R,1995-12-05,656793,USA,statsapi people search on the site's original name; birth date matches
+7788,陶樂,Kyle TYLER,Kyle Tyler,pitcher,R,1996-12-27,667725,USA,statsapi people search on the site's original name; birth date matches
+7789,麥斯威尼,Morgan MCSWEENEY,Morgan McSweeney,pitcher,R,1997-09-21,669682,USA,statsapi people search on the site's original name; birth date matches
+7790,魔爾曼,Kyle MARMAN,Kyle Marman,pitcher,R,1997-03-03,663613,USA,statsapi people search on the site's original name; birth date matches
+7794,馬奎爾,Angel MACUARE,Angel Macuare,pitcher,R,2000-03-03,672836,Venezuela,statsapi people search on the site's original name; birth date matches
+7801,飯村将太,Shota Iimura,Shota Iimura,pitcher,R,1998-04-28,,,no MLBAM id (statsapi people search)
+7804,瑪帝斯,Quinton Martinez,Quinton Martinez,pitcher,L,1999-01-23,,,no MLBAM id (statsapi people search)
+7805,山崎正義,Yamazaki Seigi,Yamazaki Seigi,pitcher,R,2003-05-01,,,no MLBAM id (statsapi people search)
+7806,道威聖,Ronnie DAWSON,Ronnie Dawson,hitter,R,1995-05-19,669008,USA,statsapi people search on the site's original name; birth date matches
+7822,威克,Adam WALKER,Adam Brett Walker,hitter,R,1991-10-18,608724,USA,statsapi people search (surname + birth date)
+7827,杰克,Jack O'Loughlin,Jack O'Loughlin,pitcher,L,2000-03-14,672552,Australia,statsapi people search on the site's original name; birth date matches
+7832,悍里歐,Antonio Joseph Candelario,Antonio Joseph Candelario,pitcher,R,1997-12-17,,,no MLBAM id (statsapi people search)
+7834,泰威,Tyler IVEY,Tyler Ivey,pitcher,R,1996-05-12,663959,USA,statsapi people search on the site's original name; birth date matches
+7836,威鳳山,Wilmer FONT,Wilmer Font,pitcher,R,1990-05-24,521655,Venezuela,statsapi people search on the site's original name; birth date matches
