@@ -29,6 +29,7 @@ BR = "https://www.baseball-reference.com"
 UA = "Mozilla/5.0 (research; sbar-2026 CPBL import census; <= 20 requests/min)"
 AAA_LEAGUES = {"IL", "PCL", "AAAE", "AAAW"}
 NPB_LEAGUES = {"CL", "PL", "NPB", "JPCL", "JPPL", "JCL", "JPL"}
+NPB_FARM = {"JPEL", "JPWL"}          # Eastern / Western League (NPB farm); not in the registered list
 _last = [0.0]
 
 
@@ -149,13 +150,34 @@ def _category(lg: str, level: str) -> str:
         return "KBO"
     if lg in NPB_LEAGUES or "NPB" in lg:
         return "NPB"
+    if lg in NPB_FARM:
+        return "NPB farm"
     if level in {"AA", "A+", "A", "A-", "Rk", "FRk", "A--Rk"}:
         return "AA or lower"
     return "other"
 
 
+def _ip(v) -> float:
+    """B-R innings '149.1' = 149 1/3."""
+    v = pd.to_numeric(v, errors="coerce")
+    return np.floor(v) + (v - np.floor(v)) * 10 / 3
+
+
+def _workload(d: pd.DataFrame, col: str) -> pd.Series:
+    """BF / PA; when blank, BF = 3 IP + H + BB + HBP and PA = AB + BB + HBP + SF (NaN if unknown)."""
+    def c(k, fill=None):
+        v = d[k] if k in d else pd.Series(np.nan, index=d.index)
+        return v.fillna(fill) if fill is not None else v
+    if col == "batters_faced":
+        est = 3 * _ip(c("IP")) + c("H") + c("BB") + c("HBP", 0)
+    else:
+        est = c("AB") + c("BB") + c("HBP", 0) + c("SF", 0)
+    return c(col).fillna(est)
+
+
 def history(p: dict) -> pd.DataFrame:
-    """One row per (season, category) with BF and PA, summary rows ('N Lgs') dropped."""
+    """One row per (season, category) with BF and PA. Cross-league summaries ('N Lgs') are dropped;
+    within one league, a multi-team summary ('N Teams') replaces its stints (stints can be blank)."""
     rows = []
     for kind, col in (("pitching", "batters_faced"), ("batting", "PA")):
         d = p[kind]
@@ -163,6 +185,13 @@ def history(p: dict) -> pd.DataFrame:
             continue
         lg = d["lg_ID"].astype(str) if "lg_ID" in d else pd.Series("", index=d.index)
         d = _num(d[d.year_ID.str.fullmatch(r"\d{4}", na=False) & ~lg.str.contains("Lgs")])
+        if "lg_ID" not in d:
+            d["lg_ID"] = ""
+        team = d.get("team_ID", pd.Series("", index=d.index)).astype(str)
+        agg = team.str.fullmatch(r"\d+ Teams")
+        has_agg = d.assign(a=agg).groupby(["year_ID", "lg_ID"]).a.transform("any")
+        d = d[agg | ~has_agg].copy()
+        d[col] = _workload(d, col).fillna(0)      # listed with no numbers: 0, so "played" != "absent"
         d["cat"] = [_category(a, b) for a, b in zip(d.get("lg_ID", ""), d.get("level", ""))]
         g = d.groupby([d.year_ID.astype(int), "cat"])[col].sum(min_count=1).rename(col)
         rows.append(g)
@@ -176,20 +205,18 @@ def census() -> tuple[pd.DataFrame, dict]:
     y0, y1 = c["seasons"]
     tabs = {y: team_tables(y) for y in range(y0, y1 + 1)}
     roster = pd.concat([t["roster"] for t in tabs.values()], ignore_index=True)
-    roster["country"] = roster.birth_city.fillna("").map(_country)
     reg = _register()
     roster["mlbam_id"] = roster.bbref_id.map(reg)
-    # player pages: everyone born outside Taiwan, and blank birthplaces that have an MLBAM id
-    todo = roster[(roster.country.ne("") & roster.country.ne("TW")) | (roster.country.eq("") & roster.mlbam_id.notna())]
+    # every listed player's register page: the birthplace there decides who is an import
     hist, born = {}, {}
-    for pid in sorted(todo.bbref_id.dropna().unique()):
+    for pid in sorted(roster.bbref_id.dropna().unique()):
         p = player_rows(pid)
         born[pid] = p["born"]
         hist[pid] = history(p)
     leagues = {y: _cpbl_league(t) for y, t in tabs.items()}
     rows = []
     for pid, h in hist.items():
-        ctry = _country(born[pid]) or roster.loc[roster.bbref_id == pid, "country"].iat[0]
+        ctry = _country(born[pid])
         cp = h[h.cat.eq("CPBL")]
         if cp.empty:
             continue
@@ -197,16 +224,17 @@ def census() -> tuple[pd.DataFrame, dict]:
         r = roster[roster.bbref_id == pid].iloc[0]
         prev = h[h.season.eq(first - 1)]
         def top(col):
-            if col not in prev:
-                return "none"
-            q = prev.dropna(subset=[col])
+            q = prev.dropna(subset=[col]) if col in prev else prev.iloc[0:0]
+            if not len(q):
+                return "none"                       # no record in Y-1
             q = q[q[col] > 0]
-            return q.sort_values(col).cat.iat[-1] if len(q) else "none"
+            return q.sort_values(col).cat.iat[-1] if len(q) else "unknown workload"
         rows.append({"bbref_id": pid, "name": r.player.rstrip("*#").strip(), "mlbam_id": r.mlbam_id, "born": born[pid],
                      "country": ctry, "import": bool(ctry) and ctry != "TW", "first_cpbl": first,
                      "cpbl_seasons": sorted(cp.season.astype(int).tolist()),
                      "origin_pitch": top("batters_faced"), "origin_bat": top("PA"),
-                     "returned_next": bool(((cp.season == first + 1)).any())})
+                     # Y + 1 not yet played for the last season: unknown, not a failure
+                     "returned_next": bool((cp.season == first + 1).any()) if first < c["seasons"][1] else None})
     cen = pd.DataFrame(rows)
     return cen, {"tabs": tabs, "leagues": leagues, "roster": roster}
 
@@ -391,6 +419,14 @@ def analyse(P: pd.DataFrame, H: pd.DataFrame) -> dict:
                        "sensitivity_2021_on": [_test(l, H[H.season >= s0] if len(H) else H, x, y, rng) for l, x, y in H_TESTS],
                        "slopes": [_slope(l.split(" vs ")[0][4:], H, x, y, rng) for l, x, y in H_TESTS],
                        "rolling": rolling(H, "aaa_woba_c", "cpbl_woba_c", rng) if len(H) else {}}}
+    # the 2021+ sensitivity for the slopes and the rolling forecast (added after Codex review; own rng
+    # so the draws above are unchanged)
+    rng2 = np.random.default_rng(cfg()["bootstrap"]["seed"] + 1)
+    for role, d, tests, (x, y) in (("pitchers", P, P_TESTS[:3], ("aaa_kbb_c", "cpbl_kbb_c")),
+                                   ("hitters", H, H_TESTS, ("aaa_woba_c", "cpbl_woba_c"))):
+        d = d[d.season >= s0] if len(d) else d
+        out[role]["slopes_2021_on"] = [_slope(l.split(" vs ")[0][4:], d, a, b, rng2) for l, a, b in tests]
+        out[role]["rolling_2021_on"] = rolling(d, x, y, rng2) if len(d) else {}
     return out
 
 
@@ -399,7 +435,9 @@ def describe(cen: pd.DataFrame) -> dict:
     imp = cen[cen["import"]]
     arr = imp[imp.first_cpbl.between(y0, y1)].copy()
     arr["origin"] = np.where(arr.origin_pitch.ne("none"), arr.origin_pitch, arr.origin_bat)
-    by = arr.groupby("origin").agg(n=("name", "size"), returned_next=("returned_next", "mean"))
+    arr["returned_next"] = arr.returned_next.astype(float)      # NaN for the last season (not observable)
+    by = arr.groupby("origin").agg(n=("name", "size"), n_observable=("returned_next", "count"),
+                                   returned_next=("returned_next", "mean"))
     return {"imports_seen": int(len(imp)), "arrivals_in_range": int(len(arr)),
             "returnees_first_before_range": int((imp.first_cpbl < y0).sum()),
             "unknown_birthplace": int((cen.country.eq("")).sum()),
@@ -423,16 +461,17 @@ def data_check(P: pd.DataFrame, ctx: dict) -> dict:
                 continue
             g = cp[(cp.season == y) & (cp.pitcher_id == r.rebas_id)]
             pa = g[g.pa_end.astype(bool) & g.pa_event.ne("OTHER")]
-            if len(pa) < 60:
+            if not len(pa):
                 continue
             q = pt.loc[bid]
             rows.append({"season": y, "name": r.english_name, "bf_br": q.batters_faced, "bf_rebas": len(pa),
                          "k_br": q.SO / q.batters_faced, "k_rebas": pa.pa_event.eq("SO").mean(),
-                         "bb_br": q.BB / q.batters_faced, "bb_rebas": pa.pa_event.eq("uBB").mean()})
+                         "bb_br": q.BB / q.batters_faced, "bb_rebas": pa.pa_event.isin(["uBB", "IBB"]).mean(),   # B-R BB includes IBB
+                         "pitcher": r.english_name})
     d = pd.DataFrame(rows)
     if d.empty:
         return {"n": 0}
-    return {"n": len(d), "mad_k": float((d.k_br - d.k_rebas).abs().mean()), "mad_bb": float((d.bb_br - d.bb_rebas).abs().mean()),
+    return {"n": len(d), "n_pitchers": int(d.pitcher.nunique()), "mad_k": float((d.k_br - d.k_rebas).abs().mean()), "mad_bb": float((d.bb_br - d.bb_rebas).abs().mean()),
             "mean_bf_ratio": float((d.bf_br / d.bf_rebas).mean())}
 
 
@@ -459,9 +498,12 @@ def report(cen, P, H, out) -> None:
          f"{c['arrivals_in_range']} (with an MLBAM id: {c['with_mlbam']}); first seen before 2018: "
          f"{c['returnees_first_before_range']}; players with unknown birthplace (excluded): {c['unknown_birthplace']}.", "",
          "Arrivals by season: " + ", ".join(f"{k}: {v}" for k, v in c["arrivals_by_season"].items()), "",
-         "Where arrivals pitched / batted most in the season before (and share back in the CPBL the next season):", "",
+         "Where arrivals pitched / batted most in the season before (pitchers by BF, others by PA; blank BF / PA "
+         "estimated from IP or AB; 'unknown workload' = listed with no numbers; 'none' = no record). Share back in "
+         "the CPBL the next season, among arrivals whose next season has been played (n_observable):", "",
          md_table(pd.DataFrame(c["origin"]), ".2f"), "",
-         f"Data check vs REBAS 2024-25 (pitchers, n {out['data_check'].get('n', 0)}): "
+         f"Data check vs REBAS 2024-25 ({out['data_check'].get('n', 0)} pitcher-seasons, "
+         f"{out['data_check'].get('n_pitchers', 0)} pitchers; BB includes IBB on both sides): "
          + (f"mean |K% diff| {out['data_check']['mad_k']:.4f}, mean |BB% diff| {out['data_check']['mad_bb']:.4f}, "
             f"BF ratio B-R/REBAS {out['data_check']['mean_bf_ratio']:.3f}." if out["data_check"].get("n") else "none."), ""]
     for role in ("pitchers", "hitters"):
@@ -476,6 +518,13 @@ def report(cen, P, H, out) -> None:
             L += [f"Rolling forecast (primary outcome, trained on earlier arrivals): held-out {f['n_held_out']}, "
                   f"MAE training mean {f['mae_m0']:.4f}, MAE OLS on AAA {f['mae_m1']:.4f}, difference "
                   f"{f['m1_minus_m0']:+.4f} (90% CI {f['ci'][0]:+.4f} to {f['ci'][1]:+.4f}).", ""]
+        if r.get("slopes_2021_on"):
+            L += ["Sensitivity, arrivals 2021-2026 (slopes):", "", md_table(pd.DataFrame(r["slopes_2021_on"]), ".2f"), ""]
+        f = r.get("rolling_2021_on", {})
+        if f.get("n_held_out"):
+            L += [f"Sensitivity, arrivals 2021-2026 (rolling forecast): held-out {f['n_held_out']}, MAE training mean "
+                  f"{f['mae_m0']:.4f}, MAE OLS on AAA {f['mae_m1']:.4f}, difference {f['m1_minus_m0']:+.4f} "
+                  f"(90% CI {f['ci'][0]:+.4f} to {f['ci'][1]:+.4f}).", ""]
     (path("reports") / "cpbl_census.md").write_text("\n".join(L), encoding="utf-8")
 
 

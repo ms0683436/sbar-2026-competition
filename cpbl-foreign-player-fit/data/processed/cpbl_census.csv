@@ -1,298 +1,703 @@
 bbref_id,name,mlbam_id,born,country,import,first_cpbl,cpbl_seasons,origin_pitch,origin_bat,returned_next
+abe---000yud,Yudai Abe,,"July 28, 2000",,False,2026,[2026],none,none,
 addito001nic,Nick Additon,502836.0,"December 16, 1987 in Davie, FL us",US,True,2016,"[2016, 2017, 2018, 2019]",AAA,AAA,True
-alldre000cam,Cam Alldred,682027.0,"July 25, 1996 in Batavia, OH us",US,True,2025,[2025],KBO,none,False
+alldre000cam,Cam Alldred,682027.0,"July 25, 1996 in Batavia, OH us",US,True,2025,[2025],KBO,unknown workload,False
 anders000tan,Tanner Anderson,664196.0,"May 27, 1993 in Boynton Beach, FL us",US,True,2022,"[2022, 2023]",AAA,AAA,True
 asher-001ale,Alec Asher,594742.0,"October 4, 1991 in Lakeland, FL us",US,True,2019,[2019],AAA,AAA,False
-balazo000jor,Jordan Balazovic,666364.0,"September 17, 1998 in Mississauga, ON, Canada ca",CA,True,2026,[2026],AAA,none,False
-banuel001man,Manny Banuelos,544365.0,"March 13, 1991 in Gomez Palacio, Mexico mx",MX,True,2020,"[2020, 2021, 2024]",MLB,none,True
-banwar001tra,Travis Banwart,518432.0,"February 14, 1986 in Wichita, KS us",US,True,2019,[2019],other,none,False
-barage000cal,Caleb Baragar,670056.0,"April 9, 1994 in Jenison, MI us",US,True,2025,[2025],AAA,none,False
-barred001man,Manny Barreda,518435.0,"October 8, 1988 in Sahuarita, AZ us",US,True,2025,[2025],other,none,False
+balazo000jor,Jordan Balazovic,666364.0,"September 17, 1998 in Mississauga, ON, Canada ca",CA,True,2026,[2026],AAA,unknown workload,
+banuel001man,Manny Banuelos,544365.0,"March 13, 1991 in Gomez Palacio, Mexico mx",MX,True,2020,"[2020, 2021, 2024]",MLB,unknown workload,True
+banwar001tra,Travis Banwart,518432.0,"February 14, 1986 in Wichita, KS us",US,True,2019,[2019],other,unknown workload,False
+barage000cal,Caleb Baragar,670056.0,"April 9, 1994 in Jenison, MI us",US,True,2025,[2025],AAA,unknown workload,False
+barred001man,Manny Barreda,518435.0,"October 8, 1988 in Sahuarita, AZ us",US,True,2025,[2025],other,unknown workload,False
 batist001xav,Xavier Batista,570234.0,"January 18, 1992 in San Pedro de Macoris, Dominican Republic do",DO,True,2022,[2022],none,other,False
 bauman001geo,Buddy Baumann,571473.0,"December 9, 1987 in Chicago, IL us",US,True,2022,[2022],none,none,False
-bermud000jon,Jonathan Bermúdez,642834.0,"October 16, 1995 in Coamo, Puerto Rico pr",PR,True,2025,[2025],AA or lower,none,False
+bermud000jon,Jonathan Bermúdez,642834.0,"October 16, 1995 in Coamo, Puerto Rico pr",PR,True,2025,[2025],AA or lower,unknown workload,False
 bernad001rog,Roger Bernadina,465668.0,"June 12, 1984 in Willemstad, Curacao cw",CW,True,2019,[2019],none,KBO,False
-bibens001aus,Austin Bibens-Dirkx,502212.0,"April 29, 1985 in Salem, OR us",US,True,2019,[2019],AAA,none,False
+bibens001aus,Austin Bibens-Dirkx,502212.0,"April 29, 1985 in Salem, OR us",US,True,2019,[2019],AAA,unknown workload,False
 billin001bru,Bruce Billings,501852.0,"November 18, 1985 in San Diego, CA us",US,True,2016,"[2016, 2017, 2018]",AAA,AAA,True
-blewet000sco,Scott Blewett,656240.0,"April 10, 1996 in Syracuse, NY us",US,True,2023,[2023],AA or lower,none,False
-bollin001rya,Ryan Bollinger,571503.0,"February 4, 1991 in Maple Grove, MN us",US,True,2019,"[2019, 2021, 2022]",AA or lower,none,False
-bonill001lis,Lisalverto Bonilla,570810.0,"June 18, 1990 in Samana, Dominican Republic do",DO,True,2020,"[2020, 2021]",other,none,True
-brayme000ben,Ben Braymer,664069.0,"April 28, 1994 in Baton Rouge, LA us",US,True,2024,[2024],AAA,none,False
-brenna001bra,Brandon Brennan,592165.0,"July 26, 1991 in Mission Viejo, CA us",US,True,2024,[2024],other,none,False
-brigha001jac,Jake Brigham,502010.0,"February 10, 1988 in Winter Garden, FL us",US,True,2021,"[2021, 2022, 2023]",KBO,none,True
-buchan001dav,David Buchanan,571527.0,"May 11, 1989 in Atlanta, GA us",US,True,2025,"[2025, 2026]",AAA,none,True
-candel000aj-,A.J. Candelario,668826.0,"December 17, 1997 in Bayonne, NJ us",US,True,2026,[2026],none,none,False
+blewet000sco,Scott Blewett,656240.0,"April 10, 1996 in Syracuse, NY us",US,True,2023,[2023],AA or lower,unknown workload,False
+bollin001rya,Ryan Bollinger,571503.0,"February 4, 1991 in Maple Grove, MN us",US,True,2019,"[2019, 2021, 2022]",AA or lower,unknown workload,False
+bonill001lis,Lisalverto Bonilla,570810.0,"June 18, 1990 in Samana, Dominican Republic do",DO,True,2020,"[2020, 2021]",other,unknown workload,True
+brayme000ben,Ben Braymer,664069.0,"April 28, 1994 in Baton Rouge, LA us",US,True,2024,[2024],AAA,unknown workload,False
+brenna001bra,Brandon Brennan,592165.0,"July 26, 1991 in Mission Viejo, CA us",US,True,2024,[2024],other,unknown workload,False
+brigha001jac,Jake Brigham,502010.0,"February 10, 1988 in Winter Garden, FL us",US,True,2021,"[2021, 2022, 2023]",KBO,unknown workload,True
+buchan001dav,David Buchanan,571527.0,"May 11, 1989 in Atlanta, GA us",US,True,2025,"[2025, 2026]",AAA,unknown workload,True
+cai---000zhe,Chen Yu Tsai,,"November 20, 1996",,False,2021,"[2021, 2022, 2023, 2024, 2025]",none,none,True
+candel000aj-,A.J. Candelario,668826.0,"December 17, 1997 in Bayonne, NJ us",US,True,2026,[2026],none,none,
 carpen001rya,Ryan Carpenter,543001.0,"August 22, 1990 in Glendale, AZ us",US,True,2020,[2020],AAA,MLB,False
-castel001hum,Humberto Castellanos,528748.0,"April 3, 1998 in Tepatitlan de Morelos, Mexico mx",MX,True,2025,[2025],AAA,none,False
-chang-000dan,Danny Chang,682528.0,"February 11, 2000 in Kaohsiung City, Taiwan tw",TW,False,2023,"[2023, 2024, 2025]",AA or lower,none,True
+castel001hum,Humberto Castellanos,528748.0,"April 3, 1998 in Tepatitlan de Morelos, Mexico mx",MX,True,2025,[2025],AAA,unknown workload,False
+chang-000dan,Danny Chang,682528.0,"February 11, 2000 in Kaohsiung City, Taiwan tw",TW,False,2023,"[2023, 2024, 2025]",AA or lower,unknown workload,True
+chang-000hsi,Hsiang Chang,,"January 22, 2003",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
+chang-000jen,Jen Wei Chang,,"May 1, 2003",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
+chang-000shr,Shr Lun Chang,,"March 16, 2005",,False,2024,"[2024, 2025, 2026]",none,none,True
+chang-000tsu,Tsu En Chang,,"May 6, 2004",,False,2023,"[2023, 2026]",none,none,False
+chang-000tzu,Tzu Hsuan Chang,,"March 30, 1999",,False,2022,"[2022, 2023]",none,none,True
+chang-000you,You Jia Chang,,"May 24, 2003",,False,2024,"[2024, 2025, 2026]",none,none,True
 chang-000yu-,Yu Chang,644374.0,"August 18, 1995 in Taitung, Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",none,MLB,True
+chang-000yuh,Yu Hao Chang,,"March 17, 2007",,False,2026,[2026],none,none,
+chang-000yum,Yu Ming Chang,,"March 15, 1997",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+chang-001che,Cheng En Chang,,"September 17, 2004",,False,2025,"[2025, 2026]",none,none,True
+chang-001she,Sheng Hao Chang,,"May 11, 2001",,False,2023,[2023],none,none,False
+chang-001yuc,Yu Chien Chang,,"July 1, 2006",,False,2025,"[2025, 2026]",none,none,True
+chen--000cho,Chung Ting Chen,,"September 14, 1995",,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+chen--000fei,Fei Lin Chen,,"December 18, 2000",,False,2024,"[2024, 2025, 2026]",none,none,True
+chen--000gua,Guan Xun Chen,,"December 23, 1998",,False,2021,"[2021, 2022, 2023, 2024]",none,none,True
+chen--000hu-,Hu Chen,,"April 29, 1998",,False,2018,"[2018, 2019, 2021, 2023, 2024, 2025, 2026]",none,none,True
+chen--000jhi,Jhih Jia Chen,,"May 14, 2002",,False,2024,"[2024, 2025, 2026]",none,none,True
 chen--000jie,Chieh Hsien Chen,808993.0,"January 7, 1994 in Kaohsiung City, Taiwan tw",TW,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
-chen--000min,Min Tzu Chen,600881.0,"December 6, 1989 in Taitung, Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018]",AA or lower,none,True
+chen--000jui,Jui Teng Chen,,"December 20, 2004",,False,2025,"[2025, 2026]",none,none,True
+chen--000kai,Kai Lun Chen,,"October 31, 1987",,False,2012,"[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]",none,none,True
+chen--000key,Ke Yi Chen,,"October 27, 1999",,False,2022,"[2022, 2023, 2024, 2025, 2026]",none,none,True
+chen--000kua,Kuan Yu Chen,,"October 29, 1990",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",NPB,unknown workload,True
+chen--000min,Min Tzu Chen,600881.0,"December 6, 1989 in Taitung, Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018]",AA or lower,unknown workload,True
+chen--000poc,Po Ching Chen,,"October 25, 1998",,False,2024,"[2024, 2025, 2026]",none,none,True
+chen--000qin,Chin Tsung Chen,,"February 27, 1993",,False,2018,[2018],none,none,False
 chen--000she,Sheng-Ping Chen,691283.0,"October 27, 2000 in New Taipei, Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",AA or lower,AA or lower,True
 chen--000shi,Shih Peng Chen,808995.0,"September 20, 1997 in Taiwan tw",TW,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+chen--000si-,Si Chung Chen,,"October 18, 2000",,False,2021,"[2021, 2023, 2024, 2025, 2026]",none,none,False
+chen--000ton,Tong En Chen,,"September 19, 2001",,False,2024,"[2024, 2025, 2026]",none,none,True
 chen--000zho,Chung Yu Chen,830727.0,"September 14, 1995 in Chiayi County, Taiwan tw",TW,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+chen--000zi-,Tzu Hong Chen,,"December 5, 1992",,False,2017,"[2017, 2019]",none,none,False
 chen--001bo-,Bo Hao Chen,831342.0,"January 28, 1999 in Taiwan tw",TW,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 chen--001che,Chen Wei Chen,808992.0,"December 12, 1997 in Taiwan tw",TW,False,2018,"[2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 chen--001chu,Chun-Hsiu Chen,544560.0,"November 1, 1988 in Hualian County, Taiwan tw",TW,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,AAA,True
-chen--001hun,Hung Wen Chen,526269.0,"February 3, 1986 in Hualien, Taiwan tw",TW,False,2013,"[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]",other,none,True
+chen--001hun,Hung Wen Chen,526269.0,"February 3, 1986 in Hualien, Taiwan tw",TW,False,2013,"[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]",other,unknown workload,True
+chen--001kai,Kai Yu Chen,,"July 2, 2004",,False,2025,[2025],none,none,False
 chen--001pin,Pin Chieh Chen,596874.0,"July 23, 1991 in Kaohsiung City, Taiwan tw",TW,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]",none,AA or lower,True
+chen--001poc,Po Chun Chen,,"May 7, 2001",,False,2024,"[2024, 2025, 2026]",none,none,True
+chen--001yic,Yi Chung Chen,,"September 9, 2002",,False,2025,"[2025, 2026]",none,none,True
 chen--001yu-,Yu-Hsun Chen,611562.0,"May 20, 1989 in Taiwan tw",TW,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+chen--001yuh,Yu Hung Chen,,"May 12, 2001",,False,2024,"[2024, 2025, 2026]",none,none,True
 chen--001yun,Yung Chi Chen,472594.0,"July 13, 1983 in Taitung County, Taiwan tw",TW,False,2011,"[2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,AA or lower,True
+chen--001zi-,Tzu Hao Chen,,"July 29, 1995",,False,2013,"[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+chen--002min,Ming Hsuan Chen,,"September 17, 1993",,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022]",none,none,True
 chen--002pin,Kuan Chieh Chen,628710.0,"July 8, 1994 in Taipei, Taiwan tw",TW,False,2019,[2019],none,none,False
 chen--002wen,Wun Jie Chen,830715.0,"October 11, 1997 in Taiwan tw",TW,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2026]",none,none,True
+chen--002yu-,Yu Hsuan Chen,,"October 25, 1995",,False,2016,"[2016, 2017, 2018, 2019]",none,none,True
 chen--002yun,Yun Wen Chen,673466.0,"November 28, 1995 in Pintung, Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+chen--003che,Chen Chen,,"October 22, 1998",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 chen--003chi,Chia Chu Chen,544515.0,"April 7, 1989 in Kaohsiung City, Taiwan tw",TW,False,2014,"[2014, 2015, 2016, 2017, 2018, 2020, 2021, 2022, 2023, 2024]",none,none,True
+chen--003chu,Chung Kuang Chen,,"February 17, 2002",,False,2026,[2026],none,none,
 chen--003jia,Chiang Ho Chen,493290.0,"January 15, 1982 in Tainan City, Taiwan tw",TW,False,2007,"[2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]",none,none,True
 chen--003kua,Kuan Wei Chen,808994.0,"October 28, 1996 in Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
-cheng-000hao,Mei Mei Cheng,692059.0,"September 17, 1997 in Taitung, Taiwan tw",TW,False,2022,"[2022, 2023, 2025, 2026]",AA or lower,none,True
+chen--004gua,Guan Hao Chen,,"June 14, 2003",,False,2024,"[2024, 2026]",none,none,False
+chen--004kua,Kuan Ying Chen,,"August 20, 2003",,False,2025,"[2025, 2026]",none,none,True
+chen--004pin,Ping Hong Chen,,"January 13, 2005",,False,2024,"[2024, 2026]",none,none,False
+chen--005she,Sheng Wen Chen,,"June 30, 2003",,False,2023,[2023],none,none,False
+chen--005shi,Shih Chia Chen,,"June 1, 2003",,False,2024,"[2024, 2025, 2026]",none,none,True
+chen--006shi,Shih Chan Chen,,"May 11, 2007",,False,2026,[2026],none,none,
+chen--006wei,Wei Han Chen,,"August 29, 1989",,False,2014,"[2014, 2015, 2018, 2019, 2021, 2022]",none,none,True
+chen--007che,Cheng Yi Chen,,"June 14, 2000",,False,2024,"[2024, 2025, 2026]",none,none,True
+chen--007chi,Chih Chieh Chen,,"December 9, 2002",,False,2025,[2025],none,none,False
+chen--007jia,Jia Le Chen,,"September 26, 2003",,False,2023,"[2023, 2025, 2026]",none,none,False
+chen--009wei,Wei Lin Chen,,"June 30, 1995",,False,2020,"[2020, 2021, 2022, 2023]",none,none,True
+chen--012wei,Wei Xiang Chen,,"June 9, 1999",,False,2024,"[2024, 2025, 2026]",none,none,True
+cheng-000hao,Mei Mei Cheng,692059.0,"September 17, 1997 in Taitung, Taiwan tw",TW,False,2022,"[2022, 2023, 2025, 2026]",AA or lower,unknown workload,True
 cheng-000jin,Chin Cheng,808996.0,"November 13, 1998 in Taiwan tw",TW,False,2018,"[2018, 2019, 2020, 2021, 2022, 2023, 2025, 2026]",none,none,True
 cheng-001chi,Chi-Hung Cheng,430687.0,"June 20, 1985 in Kaohsiung City, Taiwan tw",TW,False,2011,"[2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018]",none,none,True
-cheng-001kai,Kai Wen Cheng,547872.0,"July 26, 1988 in Taiwan tw",TW,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",other,NPB,True
+cheng-001kai,Kai Wen Cheng,547872.0,"July 26, 1988 in Taiwan tw",TW,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",NPB farm,NPB,True
+cheng-002hao,Hao Cheng,,"February 11, 2002",,False,2024,"[2024, 2026]",none,none,False
+chi---000enc,En Chi Chi,,"August 3, 2003",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
 chiang000sha,Shao Ching Chiang,623992.0,"November 10, 1993 in Hualien, Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2026]",none,none,True
 chiang001chi,Chih Hsien Chiang,499614.0,"February 21, 1988 in Taitung, Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]",none,AA or lower,True
-cho---000yak,Yi Chang,838359.0,"February 26, 1994 in Wanrong, Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",NPB,none,True
+chieh-000kol,Ko Lun Chieh,,"May 10, 2004",,False,2026,[2026],none,none,
+chiu--000chi,Chih Cheng Chiu,,"November 26, 2000",,False,2020,"[2020, 2022, 2023, 2024, 2025, 2026]",none,none,False
+chiu--000lih,Li Hsuan Chiu,,"October 21, 2006",,False,2026,[2026],none,none,
+chiu--000wei,Wei Lun Chiu,,"July 25, 2004",,False,2026,[2026],none,none,
+chiu--003chi,Chia Ching Chiu,,"October 10, 2001",,False,2025,"[2025, 2026]",none,none,True
+cho---000yak,Yi Chang,838359.0,"February 26, 1994 in Wanrong, Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",NPB,unknown workload,True
+chou--000yen,Yen Nung Chou,,"February 6, 2005",,False,2025,"[2025, 2026]",none,none,True
+chou--001chi,Chia Le Chou,,"December 2, 1999",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
+chou--001wei,Wei Hung Chou,,"November 17, 2002",,False,2024,"[2024, 2025]",none,none,True
 chu---000---,Kungkuan Giljegiljaw,644375.0,"March 13, 1994 in Taichung, Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+chu---000boh,Bo Han Chu,,"November 28, 2005",,False,2026,[2026],none,none,
 chu---000hsi,Namoh Iyang,829505.0,"September 21, 1998 in Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+chu---000men,Meng Chu,,"December 12, 2006",,False,2026,[2026],none,none,
+chuan-000hao,Hao Wei Chuan,,"May 30, 1998",,False,2021,"[2021, 2023, 2024, 2025]",none,none,False
+chuan-000sha,Shao Kai Chuan,,"January 12, 2006",,False,2026,[2026],none,none,
+chuang000hsi,Hsin Yen Chuang,,"October 19, 2000",,False,2020,"[2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+chuang000wei,Wei En Chuang,,"January 7, 1998",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+chuang000yub,Yu Bin Chuang,,"May 29, 2001",,False,2021,"[2021, 2023]",none,none,False
+chung-000ien,I En Chung,,"January 15, 2007",,False,2026,[2026],none,none,
+chung-000yun,Yun Hua Chung,,"September 27, 2003",,False,2025,"[2025, 2026]",none,none,True
 corcin001dan,Daniel Corcino,542289.0,"August 26, 1990 in Azua, Dominican Republic do",DO,True,2021,[2021],none,none,False
-covey-001dyl,Dylan Covey,592229.0,"August 14, 1991 in Glendale, CA us",US,True,2021,"[2021, 2022]",MLB,none,True
+covey-001dyl,Dylan Covey,592229.0,"August 14, 1991 in Glendale, CA us",US,True,2021,"[2021, 2022]",MLB,unknown workload,True
 crisos000chr,Cristopher Crisostomo,608571.0,"March 8, 1994 in La Romana, Dominican Republic do",DO,True,2025,"[2025, 2026]",NPB,NPB,True
-cuevas001wil,William Cuevas,571035.0,"October 14, 1990 in Caracas, Venezuela ve",VE,True,2025,[2025],KBO,none,False
-dahlbe000jak,Jake Dahlberg,676804.0,"December 1, 1993 in Vancouver, WA us",US,True,2023,"[2023, 2024]",AA or lower,none,True
-darnel001log,Logan Darnell,592244.0,"February 2, 1989 in Nashville, TN us",US,True,2020,[2020],other,none,False
-dawson002ron,Ronnie Dawson,669008.0,"May 19, 1995 in Grove City, OH us",US,True,2026,[2026],none,other,False
+cuevas001wil,William Cuevas,571035.0,"October 14, 1990 in Caracas, Venezuela ve",VE,True,2025,[2025],KBO,unknown workload,False
+dahlbe000jak,Jake Dahlberg,676804.0,"December 1, 1993 in Vancouver, WA us",US,True,2023,"[2023, 2024]",AA or lower,unknown workload,True
+dai---000pei,Pei Feng Dai,,"January 7, 2000",,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+dai---000yun,Yun Chen Tai,,"April 20, 1997",,False,2021,"[2021, 2022, 2023]",none,none,True
+darnel001log,Logan Darnell,592244.0,"February 2, 1989 in Nashville, TN us",US,True,2020,[2020],other,unknown workload,False
+dawson002ron,Ronnie Dawson,669008.0,"May 19, 1995 in Grove City, OH us",US,True,2026,[2026],none,other,
 delgad001ran,Randall Delgado,517414.0,"February 9, 1990 in Las Tablas, Panama pa",PA,True,2023,[2023],other,other,False
-depaul001jos,José De Paula,517059.0,"March 4, 1988 in Villa Mella, Dominican Republic do",DO,True,2020,"[2020, 2021, 2022, 2023, 2024, 2025, 2026]",other,none,True
-dormin000tho,Thomas Dorminy,592271.0,"June 1, 1992 in Lutz, FL us",US,True,2019,[2019],other,none,False
+deng--000zhi,Chih Wei Teng,,"September 15, 1988",,False,2012,"[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]",none,none,True
+depaul001jos,José De Paula,517059.0,"March 4, 1988 in Villa Mella, Dominican Republic do",DO,True,2020,"[2020, 2021, 2022, 2023, 2024, 2025, 2026]",other,unknown workload,True
+dong--000bin,Ping Hsuan Tung,,"January 9, 1998",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+dong--000zi-,Tzu Hao Tung,,"August 11, 1996",,False,2017,"[2017, 2021]",none,none,False
+dong--000zie,Tzu En Tung,,"February 28, 2003",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+dormin000tho,Thomas Dorminy,592271.0,"June 1, 1992 in Lutz, FL us",US,True,2019,[2019],other,unknown workload,False
 doubro001fel,Félix Doubront,467094.0,"October 23, 1987 in Puerto Cabello, Venezuela ve",VE,True,2021,[2021],none,none,False
-downs-001dar,Darin Downs,445153.0,"December 26, 1984 in Southfield, MI us",US,True,2016,"[2016, 2017, 2018]",other,none,True
-dykxho000bro,Brock Dykxhoorn,621245.0,"July 2, 1994 in Goderich, ON, Canada ca",CA,True,2020,"[2020, 2021, 2022, 2023, 2024, 2025, 2026]",KBO,none,True
-elias-000roe,Roenis Elías,606273.0,"August 1, 1988 in Guantanamo, Cuba cu",CU,True,2025,[2025],KBO,none,False
-eppler000tyl,Tyler Eppler,621169.0,"January 5, 1993 in College Station, TX us",US,True,2023,"[2023, 2024, 2025, 2026]",KBO,none,True
+downs-001dar,Darin Downs,445153.0,"December 26, 1984 in Southfield, MI us",US,True,2016,"[2016, 2017, 2018]",other,unknown workload,True
+du----000jia,Chia Ming Tu,,"February 3, 1996",,False,2015,"[2015, 2016, 2020, 2021, 2022, 2024, 2025, 2026]",none,none,True
+dykxho000bro,Brock Dykxhoorn,621245.0,"July 2, 1994 in Goderich, ON, Canada ca",CA,True,2020,"[2020, 2021, 2022, 2023, 2024, 2025, 2026]",KBO,unknown workload,True
+elias-000roe,Roenis Elías,606273.0,"August 1, 1988 in Guantanamo, Cuba cu",CU,True,2025,[2025],KBO,unknown workload,False
+eppler000tyl,Tyler Eppler,621169.0,"January 5, 1993 in College Station, TX us",US,True,2023,"[2023, 2024, 2025, 2026]",KBO,unknown workload,True
+fan---000bai,Po Chieh Fan,,"August 13, 2000",,False,2021,"[2021, 2023, 2024, 2025]",none,none,False
 fan---000guo,Kuo Chen Fan,808998.0,"November 25, 1994 in Taiwan tw",TW,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
-feiera001rya,Ryan Feierabend,456387.0,"August 22, 1985 in Cleveland, OH us",US,True,2020,[2020],AAA,none,False
-fernan003ped,Pedro Fernandez,613548.0,"May 25, 1994 in Puerto Plata, Dominican Republic do",DO,True,2023,"[2023, 2024, 2025, 2026]",other,none,True
-font--001wil,Wilmer Font,521655.0,"May 24, 1990 in La Guaira, Venezuela ve",VE,True,2026,[2026],other,none,False
+fan---000yu-,Yu Yu Fan,,"April 27, 1995",,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]",none,none,True
+fang--000cha,Chang Yung Fang,,"January 29, 1990",,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019]",none,none,True
+fang--000jia,Chien Te Fang,,"November 11, 1995",,False,2019,"[2019, 2020, 2023]",none,none,True
+fang--000ke-,Ko Wei Fang,,"May 10, 1988",,False,2010,"[2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]",none,none,True
+feiera001rya,Ryan Feierabend,456387.0,"August 22, 1985 in Cleveland, OH us",US,True,2020,[2020],AAA,unknown workload,False
+feng--000hao,Hao Feng,,"November 21, 2003",,False,2025,[2025],none,none,False
+feng--000jia,Chien Ting Feng,,"January 5, 1992",,False,2016,"[2016, 2017, 2018, 2020, 2021, 2022, 2023, 2024, 2025]",none,none,True
+fernan003ped,Pedro Fernandez,613548.0,"May 25, 1994 in Puerto Plata, Dominican Republic do",DO,True,2023,"[2023, 2024, 2025, 2026]",other,unknown workload,True
+flande000yom,Yomar Flande,,"May 6, 1992",,False,2021,"[2021, 2022]",none,none,True
+font--001wil,Wilmer Font,521655.0,"May 24, 1990 in La Guaira, Venezuela ve",VE,True,2026,[2026],other,unknown workload,
 franco001car,Carlos Franco,554238.0,"December 20, 1991 in Bani, Dominican Republic do",DO,True,2022,[2022],none,other,False
-franco001end,Enderson Franco,575070.0,"December 29, 1992 in Anaco, Venezuela ve",VE,True,2022,"[2022, 2023, 2024, 2025]",KBO,none,True
+franco001end,Enderson Franco,575070.0,"December 29, 1992 in Anaco, Venezuela ve",VE,True,2022,"[2022, 2023, 2024, 2025]",KBO,unknown workload,True
 fu----000yu-,Yu Kang Fu,627383.0,"January 18, 1988",,False,2012,"[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]",none,none,True
-gagnon001and,Drew Gagnon,543193.0,"June 26, 1990 in Columbia, CA us",US,True,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",KBO,none,True
-gant--000joh,John Gant,607231.0,"August 6, 1992 in Savannah, GA us",US,True,2026,[2026],AAA,none,False
+gagnon001and,Drew Gagnon,543193.0,"June 26, 1990 in Columbia, CA us",US,True,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",KBO,unknown workload,True
+gant--000joh,John Gant,607231.0,"August 6, 1992 in Savannah, GA us",US,True,2026,[2026],AAA,unknown workload,
+gao---000she,Sheng En Gao,,"November 19, 2000",,False,2024,"[2024, 2025, 2026]",none,none,True
 garcia000eln,Elniery García,622556.0,"December 24, 1994 in Cotui, Dominican Republic do",DO,True,2023,[2023],none,none,False
-gomez-000rio,Rio Gomez,677013.0,"October 20, 1994 in Miami, FL us",US,True,2024,"[2024, 2025]",AAA,none,True
+ghang-000hao,Hao Wei Ghang,,"June 3, 2005",,False,2024,"[2024, 2025, 2026]",none,none,True
+gomez-000rio,Rio Gomez,677013.0,"October 20, 1994 in Miami, FL us",US,True,2024,"[2024, 2025]",AAA,unknown workload,True
 goodwi001bri,Brian Goodwin,571718.0,"November 2, 1990 in Rocky Mount, NC us",US,True,2022,[2022],none,MLB,False
-grills001eva,Evan Grills,592361.0,"June 13, 1992 in Whitby, ON, Canada ca",CA,True,2021,[2021],other,none,False
-grimes001mat,Matthew Grimes,592362.0,"September 4, 1991 in Snellville, GA us",US,True,2019,[2019],AA or lower,none,False
-guduan001rey,Reymin Guduan,594056.0,"March 16, 1992 in San Pedro de Macoris, Dominican Republic do",DO,True,2024,[2024],none,none,False
-hagens001bra,Bradin Hagens,543266.0,"May 12, 1989 in Modesto, CA us",US,True,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",other,none,True
-hall--001bro,Brooks Hall,571736.0,"June 26, 1990 in Anderson, SC us",US,True,2023,[2023],other,none,False
-harman001cas,Casey Harman,594848.0,"March 17, 1989 in Fort Myers, FL us",US,True,2019,[2019],other,none,False
+grills001eva,Evan Grills,592361.0,"June 13, 1992 in Whitby, ON, Canada ca",CA,True,2021,[2021],other,unknown workload,False
+grimes001mat,Matthew Grimes,592362.0,"September 4, 1991 in Snellville, GA us",US,True,2019,[2019],AA or lower,unknown workload,False
+guduan001rey,Reymin Guduan,594056.0,"March 16, 1992 in San Pedro de Macoris, Dominican Republic do",DO,True,2024,[2024],other,unknown workload,False
+guo---000yu-,Yu Cheng Kuo,,"December 1, 1997",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+guo---000yuy,Yu Yan Guo,,"September 8, 2003",,False,2024,[2024],none,none,False
+hagens001bra,Bradin Hagens,543266.0,"May 12, 1989 in Modesto, CA us",US,True,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",other,unknown workload,True
+hall--001bro,Brooks Hall,571736.0,"June 26, 1990 in Anderson, SC us",US,True,2023,[2023],other,unknown workload,False
+hao---000zhe,Kacaw Kaniw,,"May 20, 1987",,False,2011,"[2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018]",none,none,True
+harman001cas,Casey Harman,594848.0,"March 17, 1989 in Fort Myers, FL us",US,True,2019,[2019],other,unknown workload,False
 herrer001ros,Rosell Herrera,594011.0,"October 16, 1992 in Santo Domingo, Dominican Republic do",DO,True,2021,[2021],none,none,False
+ho----000hen,Heng Yu Ho,,"October 12, 2001",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+hong--000wei,Wei Han Hong,,"December 3, 1995",,False,2021,"[2021, 2022, 2024]",none,none,True
+hong--000xin,Hsin Chi Hung,,"March 13, 1994",,False,2016,"[2016, 2017, 2018, 2019]",none,none,True
 hong--001she,Sheng Cin Hung,574868.0,"November 15, 1990 in Taichung City, Taiwan tw",TW,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]",none,none,True
+hong--003min,Min Yang Hong,,"June 10, 2004",,False,2024,[2024],none,none,False
+hopin-000shi,Shin Jung Ho Pin,,"September 18, 2005",,False,2025,"[2025, 2026]",none,none,True
+hsieh-000hsi,Hsiu Chuan Hsieh,,"November 5, 1995",,False,2022,[2022],none,none,False
 hsieh-000pao,Pao Chi Hsieh,829511.0,"September 10, 1999 in Taichung City, Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",none,none,True
+hsin--000yua,Yuan Hsu Hsin,,"June 4, 1999",,False,2020,"[2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+hsu---000che,Che Yen Hsu,,"January 16, 1998",,False,2020,"[2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+hsu---000hec,He Chieh Hsu,,"February 9, 2003",,False,2025,"[2025, 2026]",none,none,True
 hsu---000joh,Jo Hsi Hsu,830717.0,"November 1, 2000 in Taoyuan City, Taiwan tw",TW,False,2021,"[2021, 2023, 2024, 2025]",none,none,False
+hsu---000poh,Po Hung Hsu,,"May 19, 2006",,False,2025,"[2025, 2026]",none,none,True
+hsu---000pow,Po Wei Hsu,,"March 11, 2001",,False,2024,"[2024, 2025, 2026]",none,none,True
+hsu---000sha,Shao Yu Hsu,,"November 19, 2005",,False,2026,[2026],none,none,
+hsu---000tin,Ting Lun Hsu,,"October 30, 2005",,False,2024,"[2024, 2025, 2026]",none,none,True
+hsu---000yum,Yu Ming Hsu,,"September 25, 1998",,False,2024,"[2024, 2025, 2026]",none,none,True
 hsu---002chi,Chi Hung Hsu,673630.0,"July 22, 1992 in Kaohsuing County, Taiwan tw",TW,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+hsu---003che,Cheng En Hsu,,"August 10, 2007",,False,2026,[2026],none,none,
 hsu---003chi,Chi-Ling Hsu,683455.0,"August 9, 1999 in Linyuen, Taiwan tw",TW,False,2023,"[2023, 2024]",none,none,True
+hu----000gua,Kuan Yu Hu,,"May 18, 2000",,False,2021,"[2021, 2022, 2024, 2025, 2026]",none,none,True
 hu----001chi,Chin-lung Hu,464341.0,"February 2, 1984 in Tainan City, Taiwan tw",TW,False,2013,"[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024, 2025]",none,other,True
 hu----002chi,Chih-Wei Hu,629496.0,"November 4, 1993 in Taichung, Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+huang-000don,Dong Yu Huang,,"April 27, 1998",,False,2021,"[2021, 2022]",none,none,True
+huang-000hao,Hao Jan Huang,,"February 13, 1982",,False,2006,"[2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018]",none,none,True
 huang-000hun,Hung Yi Huang,807618.0,"April 6, 2001 in Taiwan tw",TW,False,2023,[2023],none,none,False
+huang-000jin,Ching Wei Huang,,"December 21, 1994",,False,2018,"[2018, 2019, 2021, 2022]",none,none,True
+huang-000pao,Pao Lo Huang,,"April 16, 2004",,False,2023,"[2023, 2024, 2025]",none,none,True
+huang-000po-,Po Hao Huang,,"September 14, 1996",,False,2021,"[2021, 2022, 2024, 2025, 2026]",none,none,True
+huang-000poj,Po Jui Huang,,"July 2, 1997",,False,2025,[2025],none,none,False
 huang-000qun,Qun Huang,830719.0,"March 18, 2003 in New Taipei City, Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",none,none,True
 huang-000she,Sheng Hsiung Huang,673481.0,"December 3, 1990 in Taitung, Taiwan tw",TW,False,2014,"[2014, 2015, 2016, 2017, 2018]",none,none,True
+huang-000tin,Ting Shan Huang,,"March 22, 2002",,False,2026,[2026],none,none,
+huang-000wi-,Chun Sheng Huang,,"January 19, 1989",,False,2012,"[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]",none,none,True
+huang-000yi-,Yi Chih Huang,,"June 1, 1992",,False,2016,"[2016, 2017, 2018, 2019, 2020]",none,none,True
+huang-000yun,Yung Chuan Huang,,"March 12, 2004",,False,2023,"[2023, 2024]",none,none,True
+huang-000yus,Yu Sheng Huang,,"April 16, 2007",,False,2026,[2026],none,none,
+huang-000zha,Zhao Wei Huang,,"November 3, 2001",,False,2025,[2025],none,none,False
+huang-000zhi,Chih Feng Huang,,"May 22, 1993",,False,2018,[2018],none,none,False
 huang-000zi-,Tzu Peng Huang,808999.0,"March 19, 1994 in Taiwan tw",TW,False,2018,"[2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+huang-000zih,Zi Hao Huang,,"December 25, 2004",,False,2025,"[2025, 2026]",none,none,True
+huang-001en-,En Sih Huang,,"May 17, 1996",,False,2019,"[2019, 2020, 2021, 2022, 2024, 2025]",none,none,True
+huang-001pin,Ping Yang Huang,,"May 17, 2003",,False,2024,"[2024, 2025, 2026]",none,none,True
+huang-001sha,Shao Hsi Huang,,"May 6, 1994",,False,2021,[2021],none,none,False
 huang-001wei,Wei Huang,573648.0,"March 6, 1990 in Makung City, Taiwan tw",TW,False,2013,"[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]",none,none,True
+huang-002en-,En Tzu Huang,,"February 12, 1988",,False,2012,"[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]",none,none,True
+huang-002sha,Shao Ray Huang,,"March 31, 2003",,False,2024,"[2024, 2025, 2026]",none,none,True
+huang-002tzu,Tzu Chen Huang,,"July 1, 2003",,False,2023,[2023],none,none,False
 huang-002wei,Wei-Chieh Huang,658791.0,"September 26, 1993 in Taitung, Taiwan tw",TW,False,2025,"[2025, 2026]",none,none,True
+huang-003jun,Chun Yen Huang,,"October 6, 1993",,False,2018,"[2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+huang-003wei,Wei Sheng Huang,,"February 19, 1999",,False,2021,"[2021, 2022, 2023, 2025, 2026]",none,none,True
+huang-006jun,Jun Lin Huang,,"July 21, 2003",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
+huang-007jun,Jun Cheng Huang,,"March 9, 2005",,False,2026,[2026],none,none,
+huang-008chi,Chieh Hsi Huang,,"June 21, 2004",,False,2024,"[2024, 2025, 2026]",none,none,True
+hung--002che,Chen Yu Hung,,"March 27, 1989",,False,2012,"[2012, 2013, 2015, 2016, 2017, 2018, 2019]",none,none,True
+jan---000che,Cheng Lin Jan,,"July 4, 2001",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
 jhang-000jin,Jin-De Jang,618085.0,"May 17, 1993 in Taitung City, Taiwan tw",TW,False,2020,"[2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,AA or lower,True
+ji----000qin,Qing Ran Ji,,"April 24, 2002",,False,2024,"[2024, 2025, 2026]",none,none,True
+jiang-000che,Chen Yen Chiang,,"June 3, 1995",,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+jiang-000guo,Kuo Chien Chiang,,"October 1, 1999",,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024]",none,none,True
 jiang-000kun,Kun Yu Chiang,808997.0,"July 4, 2000 in Taiwan tw",TW,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+jiang-000lia,Liang Wei Chiang,,"December 21, 1996",,False,2018,"[2018, 2019, 2020, 2021, 2022, 2023]",none,none,True
 jiang-000sha,Shao Hong Jiang,830725.0,"July 13, 1997 in Taipei City, Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+jiang-001che,Cheng Feng Chiang,,"October 14, 1988",,False,2013,"[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+jiang-001guo,Kuo Hao Chiang,,"December 29, 1997",,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+jiang-001zho,Chung Chen Chiang,,"March 10, 1990",,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2022, 2023, 2025, 2026]",none,none,True
 jordan001tay,Taylor Jordan,518863.0,"January 17, 1989 in Merritt Island, FL us",US,True,2018,[2018],none,none,False
+kai---000qiz,Chi Che Tsai,,"December 18, 1995",,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+kai---000you,Yu Ta Tsai,,"May 16, 1990",,False,2015,"[2015, 2016, 2017, 2018, 2019]",none,none,True
 kai---001min,Ming Chin Tsai,673550.0,"September 28, 1984 in Tainan City, Taiwan tw",TW,False,2008,"[2008, 2009, 2010, 2011, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]",none,none,True
 kai---001yi-,Yi Hsuan Tsai,683878.0,"May 14, 1994 in Taiwan tw",TW,False,2016,"[2016, 2017, 2018, 2019, 2020]",none,none,True
+kao---000guo,Kuo Lin Kao,,"January 2, 1993",,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+kao---000jie,Jie Kao,,"August 22, 2002",,False,2025,"[2025, 2026]",none,none,True
 kao---000kuo,Kuo Ching Kao,493097.0,"October 6, 1978",,False,2004,"[2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2024]",none,none,True
+kao---000xia,Hsiao Yi Kao,,"May 29, 1990",,False,2014,"[2014, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]",none,none,False
 kao---000yu-,Yu Chieh Kao,809000.0,"July 17, 1997 in Taiwan tw",TW,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 kao---000zhi,Chih Kang Kao,493096.0,"February 7, 1981 in Taoyuan, Taiwan tw",TW,False,2005,"[2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018]",none,none,True
-kasaha001sho,Shotaro Kasahara,683829.0,"March 17, 1995 in Nigata, Japan jp",JP,True,2024,[2024],other,NPB,False
-kent--003mat,Matthew Kent,664236.0,"September 13, 1992 in Waco, TX us",US,True,2023,"[2023, 2024]",AAA,none,True
+kao---002wei,Wei Chiang Kao,,"September 18, 1999",,False,2026,[2026],none,none,
+kasaha001sho,Shotaro Kasahara,683829.0,"March 17, 1995 in Nigata, Japan jp",JP,True,2024,[2024],NPB farm,NPB,False
+ke----000yu-,Yu Min Ko,,"November 14, 1997",,False,2019,"[2019, 2022, 2023, 2024, 2025, 2026]",none,none,False
+kent--003mat,Matthew Kent,664236.0,"September 13, 1992 in Waco, TX us",US,True,2023,"[2023, 2024]",AAA,unknown workload,True
 kern--001bru,Bruce Kern,571845.0,"April 24, 1988 in Stony Brook, NY us",US,True,2016,"[2016, 2017, 2018]",other,other,True
-kingha001nic,Nick Kingham,592468.0,"November 8, 1991 in Houston, TX us",US,True,2023,[2023],KBO,none,False
+kingha001nic,Nick Kingham,592468.0,"November 8, 1991 in Houston, TX us",US,True,2023,[2023],KBO,unknown workload,False
+kong--000nie,Nien En Kung,,"September 1, 2003",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 ku----000lin,Ruei Yang Gu Lin,830716.0,"June 12, 2000 in Taichung City, Taiwan tw",TW,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024]",none,none,True
 kuan--000da-,Ta Yuan Kuan,627498.0,"September 9, 1983",,False,2011,"[2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]",none,none,True
 kuo---000chu,Chun Lin Kuo,611561.0,"February 2, 1992 in Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+kuo---000hen,Hen Hsiao Kuo,,"March 23, 1989",,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020]",none,none,True
+kuo---000li-,Li Wei Kuo,,"January 10, 1997",,False,2019,[2019],none,none,False
+kuo---000tai,Tai Cheng Kuo,,"November 17, 2003",,False,2026,[2026],none,none,
 kuo---000tia,Tian Shin Kuo,809001.0,"April 15, 2000 in Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 kuo---001chu,Chun Wei Kuo,684158.0,"July 18, 1992",,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021]",none,none,True
 kuo---001fu-,Fu Lin Kuo,596736.0,"January 7, 1991 in Guiren Township, Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
-kuo---001hon,Hung-Chih Kuo,425539.0,"July 23, 1981 in Tainan City, Taiwan tw",TW,False,2014,"[2014, 2015, 2017, 2018]",other,none,True
+kuo---001hon,Hung-Chih Kuo,425539.0,"July 23, 1981 in Tainan City, Taiwan tw",TW,False,2014,"[2014, 2015, 2017, 2018]",other,unknown workload,True
 kuo---001yen,Yen Wen Kuo,544370.0,"October 25, 1988 in Tainan, Taiwan tw",TW,False,2011,"[2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]",none,none,True
+kuo---001yon,Yung Wei Kuo,,"April 13, 1988",,False,2011,"[2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 labosk000jac,Jack Labosky,676361.0,"July 19, 1996 in Clovis, CA us",US,True,2024,[2024],none,none,False
-lambso000mit,Mitchell Lambson,605328.0,"July 20, 1990 in Montclair, CA us",US,True,2023,[2023],other,none,False
-lamet-000din,Dinelson Lamet,659275.0,"July 18, 1992 in Santiago, Dominican Republic do",DO,True,2025,[2025],AAA,none,False
+lai---000hon,Hung Cheng Lai,,"April 26, 1988",,False,2012,"[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+lai---000po-,Bo Kai Lai,,"June 23, 1989",,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019]",none,none,True
+lai---000wei,Wei Cheng Lai,,"February 24, 2006",,False,2026,[2026],none,none,
+lai---000yin,Yin Hao Lai,,"March 26, 2005",,False,2024,"[2024, 2025, 2026]",none,none,True
+lai---000zhi,Chih Yuan Lai,,"February 28, 1997",,False,2019,"[2019, 2020, 2022, 2023, 2024, 2025, 2026]",none,none,True
+lai---001chi,Chin Chi Lai,,"July 26, 2003",,False,2022,"[2022, 2023]",none,none,True
+lambso000mit,Mitchell Lambson,605328.0,"July 20, 1990 in Montclair, CA us",US,True,2023,[2023],other,unknown workload,False
+lamet-000din,Dinelson Lamet,659275.0,"July 18, 1992 in Santiago, Dominican Republic do",DO,True,2025,[2025],AAA,unknown workload,False
+lan---000kai,Kai Ching Lan,,"September 6, 1998",,False,2021,"[2021, 2022, 2023, 2024, 2025]",none,none,True
 lan---000yin,Yin Lun Lan,611571.0,"May 7, 1990 in Taiwan tw",TW,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
-leashe000aar,Aaron Leasher,669468.0,"April 28, 1996 in Mount Pleasant, MI us",US,True,2024,"[2024, 2025]",AAA,none,True
-lee---000chi,Chi Feng Lee,672535.0,"October 14, 1997 in Taichung, Taiwan tw",TW,False,2020,"[2020, 2021, 2022, 2023, 2024, 2026]",AA or lower,none,True
+leashe000aar,Aaron Leasher,669468.0,"April 28, 1996 in Mount Pleasant, MI us",US,True,2024,"[2024, 2025]",AAA,unknown workload,True
+lee---000chi,Chi Feng Lee,672535.0,"October 14, 1997 in Taichung, Taiwan tw",TW,False,2020,"[2020, 2021, 2022, 2023, 2024, 2026]",AA or lower,unknown workload,True
+lee---000hsi,Hsin Yin Lee,,"August 18, 2000",,False,2025,"[2025, 2026]",none,none,True
+lee---000hsu,Hsun Chieh Lee,,"January 20, 2005",,False,2024,"[2024, 2025, 2026]",none,none,True
+lee---000poy,Po Yu Lee,,"December 11, 2005",,False,2026,[2026],none,none,
 lee---001che,C.C. Lee,547348.0,"October 21, 1986 in Peng-Hu County, Taiwan tw",TW,False,2018,"[2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",AAA,AAA,True
-leibra000bra,Brandon Leibrandt,605335.0,"December 13, 1992 in Alpharetta, GA us",US,True,2025,[2025],AAA,none,False
-leyva-000eli,Elián Leyva,673140.0,"March 17, 1989 in La Habana, Cuba cu",CU,True,2023,[2023],other,none,False
+lee---001chi,Chien Hsun Lee,,"September 8, 1996",,False,2020,"[2020, 2021, 2022, 2023, 2024, 2026]",none,none,True
+lee---002chi,Chin Lin Lee,,"October 6, 2005",,False,2025,"[2025, 2026]",none,none,True
+lee---004che,Cheng Feng Lee,,"January 17, 2000",,False,2025,[2025],none,none,False
+lee---004chu,Chun Lee,,"March 28, 2006",,False,2025,"[2025, 2026]",none,none,True
+lee---005che,Cheng Hung Lee,,"March 11, 2003",,False,2022,[2022],none,none,False
+leibra000bra,Brandon Leibrandt,605335.0,"December 13, 1992 in Alpharetta, GA us",US,True,2025,[2025],AAA,unknown workload,False
+leu---000wei,Wei Chieh Lo,,"January 15, 2001",,False,2020,"[2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+leyva-000eli,Elián Leyva,673140.0,"March 17, 1989 in La Habana, Cuba cu",CU,True,2023,[2023],other,unknown workload,False
+li----000cha,Chao Li,,"October 23, 1999",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
+li----000che,Andrew Li,,"August 8, 2000",,False,2021,"[2021, 2022, 2023, 2025, 2026]",none,none,True
+li----000cin,Cing Long Li,,"September 10, 2001",,False,2021,"[2021, 2024]",none,none,False
+li----000kai,Kai Wei Li,,"September 11, 1997",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+li----000she,Sheng Yu Li,,"May 6, 1997",,False,2021,"[2021, 2022, 2023, 2024, 2026]",none,none,True
+li----000zha,Chan I Li,,"January 30, 2003",,False,2022,"[2022, 2023, 2024, 2026]",none,none,True
+li----000zi-,Zi Qiang Li,,"December 29, 1999",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 li----000zon,Tsung Hsien Lee,831347.0,"June 29, 1994 in Taiwan tw",TW,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+li----001che,Cheng Chen Lee,,"September 14, 2000",,False,2021,[2021],none,none,False
 li----001jia,Jia Ming Li,829504.0,"December 15, 2000 in Taiwan tw",TW,False,2024,[2024],none,none,False
+li----004wei,Wei Li,,"October 2, 1999",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
+liang-000jia,Chia Jung Liang,,"March 25, 1995",,False,2013,"[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 liao--000jen,Jen-Lei Liao,650220.0,"August 30, 1993 in Taoyuen, Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
-libera000lui,Luis Liberato,642451.0,"December 18, 1995 in La Canela, Dominican Republic do",DO,True,2026,[2026],none,KBO,False
+liao--000jia,Chien Fu Liao,,"September 28, 1998",,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+liao--000poh,Po Hsun Liao,,"March 26, 1997",,False,2022,"[2022, 2023]",none,none,True
+liao--000wen,Wen Yang Liao,,"October 10, 1987",,False,2011,"[2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022]",none,none,True
+liao--000yi-,Yi Chung Liao,,"November 2, 1995",,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024, 2026]",none,none,True
+liao--000yia,Yi An Liao,,"June 30, 2003",,False,2025,[2025],none,none,False
+libera000lui,Luis Liberato,642451.0,"December 18, 1995 in La Canela, Dominican Republic do",DO,True,2026,[2026],none,KBO,
 liddi-001ale,Alex Liddi,499926.0,"August 14, 1988 in Sanremo, Italy it",IT,True,2019,[2019],AA or lower,AA or lower,False
 lin---000an-,An Ko Lin,838360.0,"May 19, 1997 in Tainan City, Taiwan tw",TW,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024, 2025]",none,none,True
+lin---000boy,Bo You Lin,,"September 2, 2004",,False,2026,[2026],none,none,
 lin---000chi,Chia-Ching Lin,608073.0,"January 4, 1992 in Taichung City, Taiwan tw",TW,False,2021,[2021],none,none,False
+lin---000guo,Kuo Yu Lin,,"December 13, 1989",,False,2014,"[2014, 2015, 2016, 2017, 2018]",none,none,True
+lin---000han,Hang Lin,,"March 1, 1993",,False,2017,"[2017, 2018, 2019, 2020]",none,none,True
 lin---000hsi,Hsin-Chieh Lin,683059.0,"March 18, 1999 in Taipei, Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",none,none,True
-lin---000hue,Huei-Sheng Lin,684284.0,"October 9, 1998 in Chiayi, Taiwan tw",TW,False,2023,"[2023, 2024, 2025, 2026]",AA or lower,none,True
-lin---000kai,Kai-Wei Lin,666020.0,"March 19, 1996 in New Taipei, Taiwan tw",TW,False,2022,"[2022, 2023, 2024, 2025, 2026]",AA or lower,none,True
+lin---000hua,Hua Ching Lin,,"October 3, 1994",,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020]",none,none,True
+lin---000hue,Huei-Sheng Lin,684284.0,"October 9, 1998 in Chiayi, Taiwan tw",TW,False,2023,"[2023, 2024, 2025, 2026]",AA or lower,unknown workload,True
+lin---000jin,Ching Kai Lin,,"July 22, 2000",,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+lin---000jui,Jui Hsiang Lin,,"September 24, 1999",,False,2024,"[2024, 2026]",none,none,False
+lin---000kai,Kai-Wei Lin,666020.0,"March 19, 1996 in New Taipei, Taiwan tw",TW,False,2022,"[2022, 2023, 2024, 2025, 2026]",AA or lower,unknown workload,True
 lin---000ko-,Ko Chien Lin,547870.0,"May 5, 1986",,False,2009,"[2009, 2011, 2012, 2013, 2015, 2016, 2017, 2018, 2019]",none,none,False
 lin---000li-,Li Lin,809003.0,"January 1, 1996 in Taiwan tw",TW,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+lin---000pei,Pei Wei Lin,,"January 26, 2004",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
+lin---000qi-,Chi Wei Lin,,"April 7, 1984",,False,2008,"[2008, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]",none,none,False
+lin---000rui,Jui Chun Lin,,"April 6, 2001",,False,2022,"[2022, 2023, 2024, 2025, 2026]",none,none,True
+lin---000she,Jun Han Lin,,"April 23, 1995",,False,2019,"[2019, 2021, 2022]",none,none,False
+lin---000shu,Shu Yi Lin,,"May 20, 1993",,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 lin---000tzu,Tzu-Wei Lin,624407.0,"February 15, 1994 in Kaohsiung County, Taiwan tw",TW,False,2023,"[2023, 2024, 2025, 2026]",none,AAA,True
 lin---000yao,Yao Huang Lin,829318.0,"December 22, 2003 in Kaohsuing City, Taiwan tw",TW,False,2024,"[2024, 2026]",none,none,False
+lin---000yit,Yi Ting Lin,,"March 7, 2006",,False,2025,"[2025, 2026]",none,none,True
 lin---000yo-,Dai An Lin,809002.0,"June 23, 1992 in Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+lin---000ze-,Ze Bin Lin,,"December 23, 1998",,False,2020,"[2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+lin---000zhe,Cheng Hsien Lin,,"September 13, 1995",,False,2016,"[2016, 2017, 2018, 2021]",none,none,True
+lin---000zhi,Chih Yang Lin,,"July 21, 1994",,False,2018,"[2018, 2019]",none,none,True
 lin---000zi-,Tzu Wei Lin,829315.0,"September 17, 1995 in Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
-lin---001che,Che-Hsuan Lin,521428.0,"September 21, 1988 in Hualien, Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",AA or lower,none,True
+lin---000zu-,Tzu Chieh Lin,,"May 13, 1991",,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+lin---001che,Che-Hsuan Lin,521428.0,"September 21, 1988 in Hualien, Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",AA or lower,unknown workload,True
 lin---001chi,Ngayaw Ake,493098.0,"January 1, 1982 in Taiwan tw",TW,False,2004,"[2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]",none,none,True
 lin---001hon,Hung Yu Lin,583462.0,"March 21, 1986 in Tainan, Taiwan tw",TW,False,2010,"[2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+lin---001hua,Hua Wei Lin,,"November 8, 2003",,False,2023,"[2023, 2024]",none,none,True
+lin---001kai,Kai Chi Lin,,"June 12, 1998",,False,2022,[2022],none,none,False
+lin---001min,Ming Chieh Lin,,"March 18, 1991",,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]",none,none,True
 lin---001po-,Po Yu Lin,520370.0,"September 16, 1986 in Taipei, Taiwan tw",TW,False,2013,"[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]",none,none,True
+lin---001sha,Shao En Lin,,"February 13, 2004",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
 lin---001shu,Yu Ching Lin,611557.0,"December 29, 1988 in Taiwan tw",TW,False,2012,"[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020]",none,none,True
-lin---001yi-,Yi Hao Lin,611556.0,"January 2, 1991 in Taiwan tw",TW,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]",other,none,True
+lin---001tzu,Tzu Yu Lin,,"September 19, 1993",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+lin---001xia,Xiao Cheng Lin,,"November 30, 1999",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+lin---001yi-,Yi Hao Lin,611556.0,"January 2, 1991 in Taiwan tw",TW,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]",NPB farm,unknown workload,True
+lin---001yo-,Yu Ying Lin,,"March 8, 1987",,False,2011,"[2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]",none,none,True
+lin---001zhi,Chih Yu Lin,,"March 30, 1993",,False,2018,"[2018, 2022]",none,none,False
+lin---001zi-,Tzu Wei Lin,,"March 22, 2002",,False,2021,"[2021, 2022, 2023, 2025, 2026]",none,none,True
 lin---002che,Chen Hua Lin,611559.0,"December 16, 1988 in Taiwan tw",TW,False,2012,"[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]",none,none,True
+lin---002hon,Hong Xian Lin,,"August 11, 2005",,False,2024,"[2024, 2025, 2026]",none,none,True
 lin---002shi,Shi Xiang Lin,838361.0,"July 31, 2001 in Taitung City, Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",none,none,True
+lin---002tin,Ting Yu Lin,,"April 16, 2001",,False,2025,[2025],none,none,False
+lin---002tzu,Tzu Hao Lin,,"March 29, 2002",,False,2021,"[2021, 2022, 2023, 2025, 2026]",none,none,True
 lin---002wan,Wang Wei Lin,521348.0,"June 28, 1988 in Tainan County, Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018, 2021, 2022]",none,none,True
+lin---002wei,Wei Chih Lin,,"September 29, 1992",,False,2017,"[2017, 2018, 2019, 2020, 2021]",none,none,True
 lin---002yi-,Yi Hsiang Lin,614184.0,"December 16, 1992 in Tainan City, Taiwan tw",TW,False,2018,"[2018, 2019, 2020, 2021]",none,none,True
+lin---002yue,Yue Ku Lin,,"October 20, 2001",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
+lin---002zhi,Chih Ping Lin,,"March 23, 1985",,False,2009,"[2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+lin---003che,Chen Fei Lin,,"April 8, 1997",,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+lin---003wei,Wei En Lin,,"March 22, 1988",,False,2012,"[2012, 2013, 2014, 2015, 2016, 2017, 2018]",none,none,True
+lin---004che,Chen Hsun Lin,,"December 10, 2001",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+lin---004wan,Wang Shi Lin,,"August 26, 2003",,False,2024,"[2024, 2025, 2026]",none,none,True
+lin---004zhe,Cheng I Lin,,"December 5, 1986",,False,2011,"[2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018]",none,none,True
+lin---004zhi,Chih Kang Lin,,"February 13, 1999",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 lin---005che,Cheng Hsuan Lin,807657.0,"June 22, 1993 in Taiwan tw",TW,False,2022,[2022],none,none,False
 lin---005jia,Jia Hong Lin,829316.0,"March 10, 2002 in Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",none,none,True
 lin---005wei,Wei Ting Lin,611565.0,"August 16, 1989 in Taiwan tw",TW,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]",none,none,True
 lin---005yi-,Yi Chuan Lin,493299.0,"November 11, 1985 in Tainan, Taiwan tw",TW,False,2009,"[2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]",none,none,True
+lin---005zhe,Cheng Hua Lin,,"September 22, 2001",,False,2022,"[2022, 2023, 2024, 2025, 2026]",none,none,True
+lin---006zhe,Zhen Cheng Lin,,"June 7, 2000",,False,2024,"[2024, 2025, 2026]",none,none,True
+lin---007yi-,Yi Da Lin,,"December 26, 2000",,False,2021,"[2021, 2022, 2023, 2024, 2026]",none,none,True
+lin---008wei,Wei Ha Lin,,"February 1, 2004",,False,2025,[2025],none,none,False
 lin---012chi,Chia Wei Lin,806842.0,"January 11, 2005 in Taiwan tw",TW,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
+linwu-000jin,Chen Wei Lin Wu,,"February 4, 2002",,False,2022,"[2022, 2023, 2024, 2025, 2026]",none,none,True
+liu---000chi,Chia Kai Liu,,"March 25, 1994",,False,2021,"[2021, 2022, 2023, 2024]",none,none,True
+liu---000chu,Chun Hao Liu,,"February 20, 2002",,False,2022,"[2022, 2023, 2024, 2025, 2026]",none,none,True
+liu---000fu-,Fu Hao Liu,,"November 14, 1978",,False,2004,"[2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018]",none,none,True
 liu---000jih,Ji Hong Liu,830722.0,"November 3, 2000 in Taichung City, Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+liu---000kue,Kuei Yuan Liu,,"January 19, 2002",,False,2024,"[2024, 2026]",none,none,False
+liu---000sha,Shao Wei Liu,,"March 26, 1996",,False,2021,[2021],none,none,False
+liu---000shi,Shih Hao Liu,,"March 21, 1991",,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2026]",none,none,True
+liu---000xua,Hsuan Ta Liu,,"November 23, 1996",,False,2018,"[2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+liu---000yi-,Yu Yen Liu,,"July 27, 1994",,False,2016,"[2016, 2017, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+liu---000zij,Zi Jie Liu,,"August 5, 2002",,False,2026,[2026],none,none,
 liu---001jun,Jun Wei Liu,829330.0,"September 17, 2004 in Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",none,none,True
-lively001mit,Mitch Lively,518944.0,"September 7, 1985 in Susanville, CA us",US,True,2018,"[2018, 2019, 2020, 2021]",other,none,True
+liu---004yu-,Yu Cheng Liu,,"February 3, 2002",,False,2022,"[2022, 2023, 2024, 2025, 2026]",none,none,True
+liu---006chi,Chia Hsiang Liu,,"October 7, 2003",,False,2024,"[2024, 2025, 2026]",none,none,True
+lively001mit,Mitch Lively,518944.0,"September 7, 1985 in Susanville, CA us",US,True,2018,"[2018, 2019, 2020, 2021]",other,unknown workload,True
+liwu--000yun,Yung Qin Li Wu,,"March 29, 1998",,False,2020,"[2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 liz---001rad,Radhames Liz,467785.0,"October 6, 1983 in El Seibo, Dominican Republic do",DO,True,2019,[2019],AAA,AAA,False
 lo----000hua,Hua Wei Lo,597511.0,"December 1, 1990 in Taitung County, Taiwan tw",TW,False,2016,"[2016, 2017, 2018, 2019, 2021, 2022, 2023, 2024, 2025]",none,none,True
-lo----001chi,Ching-Lung Lo,465615.0,"August 20, 1985 in Qi Shan, Taiwan tw",TW,False,2013,"[2013, 2014, 2017, 2019]",other,none,True
+lo----001chi,Ching-Lung Lo,465615.0,"August 20, 1985 in Qi Shan, Taiwan tw",TW,False,2013,"[2013, 2014, 2017, 2019]",other,unknown workload,True
 lo----001kuo,Kuo Hui Kao,493101.0,"September 26, 1985 in Hualien County, Taiwan tw",TW,False,2013,"[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]",none,other,True
-lo----002chi,Chia-Jen Lo,547568.0,"April 7, 1986 in Pingtung County, Taiwan tw",TW,False,2014,"[2014, 2015, 2017, 2018, 2019]",MLB,none,True
-lo----002kuo,Kuo Hua Lo,623920.0,"October 28, 1992 in Chiayi, Taiwan tw",TW,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023]",AA or lower,none,True
+lo----002chi,Chia-Jen Lo,547568.0,"April 7, 1986 in Pingtung County, Taiwan tw",TW,False,2014,"[2014, 2015, 2017, 2018, 2019]",MLB,unknown workload,True
+lo----002kuo,Kuo Hua Lo,623920.0,"October 28, 1992 in Chiayi, Taiwan tw",TW,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023]",AA or lower,unknown workload,True
 loree-001mik,Mike Loree,518951.0,"September 14, 1984 in Gillette, NJ us",US,True,2012,"[2012, 2013, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]",other,AA or lower,True
-lowthe000zac,Zac Lowther,675912.0,"April 30, 1996 in Middleburg Heights, OH us",US,True,2025,[2025],other,none,False
-lu----000yen,Yen-Ching Lu,673506.0,"March 10, 1996 in Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",other,none,True
+lowthe000zac,Zac Lowther,675912.0,"April 30, 1996 in Middleburg Heights, OH us",US,True,2025,[2025],other,unknown workload,False
+lu----000boh,Bo Hua Lu,,"September 14, 2003",,False,2026,[2026],none,none,
+lu----000gua,Guan-Yu Lu,,"September 21, 2001",,False,2024,"[2024, 2025, 2026]",none,none,True
+lu----000men,Meng Yang Lu,,,,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
+lu----000wei,Wei Cheng Lu,,"July 10, 1999",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+lu----000yen,Yen-Ching Lu,673506.0,"March 10, 1996 in Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",NPB farm,unknown workload,True
 lu----001yun,Yung Chen Lu,831346.0,"December 24, 1998 in Taiwan tw",TW,False,2022,"[2022, 2023, 2024, 2025, 2026]",none,none,True
-makita000kaz,Kazuhisa Makita,628318.0,"November 10, 1984 in Yaizu, Japan jp",JP,True,2022,[2022],other,none,False
-mann--001bra,Brandon Mann,448167.0,"May 16, 1984 in Tacoma, WA us",US,True,2020,[2020],other,none,False
-margev000nic,Nick Margevicius,676606.0,"June 18, 1996 in Cleveland, OH us",US,True,2024,[2024],AAA,none,False
+luo---002guo,Guo Long Lo,,"June 24, 1989",,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]",none,none,True
+ma----000chi,Chieh Sen Ma,,"May 15, 2002",,False,2020,"[2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+ma----000kan,Kang Ma,,"April 14, 2002",,False,2022,"[2022, 2023, 2024, 2025]",none,none,True
+mai---001jia,Chia Yi Mai,,"January 17, 1986",,False,2011,"[2011, 2012, 2015, 2016, 2017, 2018, 2019]",none,none,True
+makita000kaz,Kazuhisa Makita,628318.0,"November 10, 1984 in Yaizu, Japan jp",JP,True,2022,[2022],NPB farm,unknown workload,False
+mann--001bra,Brandon Mann,448167.0,"May 16, 1984 in Tacoma, WA us",US,True,2020,[2020],NPB farm,unknown workload,False
+mao---000yin,Ying Chieh Mao,,"April 4, 2003",,False,2023,"[2023, 2024, 2025]",none,none,True
+margev000nic,Nick Margevicius,676606.0,"June 18, 1996 in Cleveland, OH us",US,True,2024,[2024],AAA,unknown workload,False
 mariot001mic,Michael Mariot,592527.0,"October 20, 1988 in West Hills, CA us",US,True,2022,[2022],AAA,AAA,False
-marman000kyl,Kyle Marman,663613.0,"March 3, 1997 in Cincinnati, OH us",US,True,2026,[2026],other,none,False
-martin002qui,Quinton Martinez,689703.0,"January 23, 1999 in Orlando, FL us",US,True,2026,[2026],other,none,False
-martin013dav,David Martínez,451075.0,"August 4, 1987 in Cumana, Venezuela ve",VE,True,2018,[2018],AAA,none,False
-martin022mar,Marcelo Martinez,666502.0,"August 10, 1996 in Reynosa, Mexico mx",MX,True,2024,"[2024, 2025, 2026]",AAA,none,True
-mccart000kir,Kirk McCarty,668948.0,"October 12, 1995 in Hattiesburg, MS us",US,True,2024,[2024],KBO,none,False
+marman000kyl,Kyle Marman,663613.0,"March 3, 1997 in Cincinnati, OH us",US,True,2026,[2026],other,unknown workload,
+martin002qui,Quinton Martinez,689703.0,"January 23, 1999 in Orlando, FL us",US,True,2026,[2026],other,unknown workload,
+martin013dav,David Martínez,451075.0,"August 4, 1987 in Cumana, Venezuela ve",VE,True,2018,[2018],AAA,unknown workload,False
+martin022mar,Marcelo Martinez,666502.0,"August 10, 1996 in Reynosa, Mexico mx",MX,True,2024,"[2024, 2025, 2026]",AAA,unknown workload,True
+mccart000kir,Kirk McCarty,668948.0,"October 12, 1995 in Hattiesburg, MS us",US,True,2024,[2024],KBO,unknown workload,False
 mcgowi000kyl,Kyle McGowin,641851.0,"November 27, 1991 in Southampton, NY us",US,True,2023,[2023],none,none,False
 mcguir005wil,Deck McGuire,592547.0,"June 23, 1989 in Richmond, VA us",US,True,2021,[2021],none,none,False
-mcswee000mor,Morgan McSweeney,669682.0,"September 21, 1997 in Hudson, MA us",US,True,2026,[2026],AAA,none,False
+mcswee000mor,Morgan McSweeney,669682.0,"September 21, 1997 in Hudson, MA us",US,True,2026,[2026],AAA,unknown workload,
 mejia-000ada,Adalberto Mejía,606167.0,"June 20, 1993 in Bonao, Dominican Republic do",DO,True,2021,[2021],none,none,False
 mella-000keu,Keury Mella,622492.0,"August 2, 1993 in Bonao, Dominican Republic do",DO,True,2022,[2022],AAA,AAA,False
 melvil001tim,Tim Melville,543532.0,"October 9, 1989 in Alexandria, VA us",US,True,2020,"[2020, 2021, 2023]",AAA,AAA,True
-mendez000yoh,Yohander Méndez,622795.0,"January 17, 1995 in Valencia, Venezuela ve",VE,True,2025,[2025],other,other,False
-mengde000dan,Daniel Mengden,596043.0,"February 19, 1993 in Houston, TX us",US,True,2024,[2024],AAA,none,False
-mirand000ari,Aríel Miranda,664641.0,"January 10, 1989 in La Habana, Cuba cu",CU,True,2020,[2020],NPB,none,False
+mendez000yoh,Yohander Méndez,622795.0,"January 17, 1995 in Valencia, Venezuela ve",VE,True,2025,[2025],NPB farm,NPB farm,False
+mengde000dan,Daniel Mengden,596043.0,"February 19, 1993 in Houston, TX us",US,True,2024,[2024],AAA,unknown workload,False
+mirand000ari,Aríel Miranda,664641.0,"January 10, 1989 in La Habana, Cuba cu",CU,True,2020,[2020],NPB,unknown workload,False
 morima000sha,Shawn Morimando,596049.0,"November 20, 1992 in Canandaigua, NY us",US,True,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 moya--001ste,Steven Moya,570615.0,"August 9, 1991 in Rio Piedras, Puerto Rico pr",PR,True,2024,"[2024, 2025, 2026]",none,other,True
+nagata000sot,Sotaro Nagata,,"October 11, 2000",,False,2026,[2026],none,NPB farm,
 nash--001tel,Telvin Nash,571981.0,"February 20, 1991 in Griffin, GA us",US,True,2022,[2022],none,none,False
-nelson003nic,Nick Nelson,656793.0,"December 5, 1995 in Panama City, FL us",US,True,2026,[2026],NPB,NPB,False
-newson000lja,Ljay Newsome,664714.0,"November 8, 1996 in La Plata, MD us",US,True,2024,[2024],AA or lower,none,False
+nelson003nic,Nick Nelson,656793.0,"December 5, 1995 in Panama City, FL us",US,True,2026,[2026],NPB,NPB,
+newson000lja,Ljay Newsome,664714.0,"November 8, 1996 in La Plata, MD us",US,True,2024,[2024],AA or lower,unknown workload,False
 ni----001fut,Fu-Te Ni,547820.0,"November 14, 1982 in Pingtung County, Taiwan tw",TW,False,2007,"[2007, 2008, 2015, 2016, 2017, 2018, 2019, 2020]",none,none,True
-nicoli001jus,Justin Nicolino,592593.0,"November 22, 1991 in Orlando, FL us",US,True,2020,[2020],AAA,none,False
-nix---001mic,Michael Nix,489172.0,"May 21, 1983 in Auburn, AL us",US,True,2017,"[2017, 2018, 2019]",other,none,True
+nicoli001jus,Justin Nicolino,592593.0,"November 22, 1991 in Orlando, FL us",US,True,2020,[2020],AAA,unknown workload,False
+niu---000kai,Kai Ye Niu,,"January 2, 1994",,False,2021,[2021],none,none,False
+nix---001mic,Michael Nix,489172.0,"May 21, 1983 in Auburn, AL us",US,True,2017,"[2017, 2018, 2019]",other,unknown workload,True
 nunez-002edu,Eduardo Núñez,456488.0,"June 15, 1987 in Santo Domingo, Dominican Republic do",DO,True,2021,[2021],none,MLB,False
 ondrus001log,Logan Ondrusek,446185.0,"February 13, 1985 in Hallettsville, TX us",US,True,2022,"[2022, 2023, 2024]",AAA,AAA,True
+onoder000ken,Kento Onodera,,,,False,2024,[2024],none,none,False
+otaki-000kou,Kouji Otaki,,"October 1, 1997",,False,2026,[2026],none,none,
 otero-001and,Andy Otero,554241.0,"June 3, 1992 in David, Panama pa",PA,True,2022,[2022],AA or lower,AAA,False
+ou----000chi,Chin Ou,,"October 30, 1996",,False,2021,"[2021, 2023, 2024, 2025, 2026]",none,none,False
+ou----000shu,Su Chen Ou,,"February 11, 1993",,False,2018,"[2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]",none,none,True
 overto001dil,Dillon Overton,592614.0,"August 17, 1991 in Clinton, OK us",US,True,2021,[2021],none,none,False
+pan---000jie,Chieh Kai Pan,,"February 3, 1994",,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+pan---000lei,Lei Pan,,"April 27, 2004",,False,2025,"[2025, 2026]",none,none,True
 pan---000wux,Wu Hsiung Pan,547899.0,"March 11, 1981 in Pingtung, Taiwan tw",TW,False,2006,"[2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]",none,none,True
 pan---001wei,Wei Lun Pan,493102.0,"March 5, 1982 in Taiwan tw",TW,False,2003,"[2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]",none,none,True
 pan---001zhi,Chih Fang Pan,596849.0,"November 12, 1990 in Kaohsiung, Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]",none,AA or lower,True
-pena--002fel,Félix Peña,570240.0,"February 25, 1990 in San Pedro de Macoris, Dominican Republic do",DO,True,2025,"[2025, 2026]",KBO,none,True
+pan---003wei,Wei Siang Pan,,"September 4, 2002",,False,2024,"[2024, 2025]",none,none,True
+pena--002fel,Félix Peña,570240.0,"February 25, 1990 in San Pedro de Macoris, Dominican Republic do",DO,True,2025,"[2025, 2026]",KBO,unknown workload,True
 pena--005fra,Francisco Peña,506747.0,"October 12, 1989 in Santiago, Dominican Republic do",DO,True,2022,"[2022, 2023]",none,AAA,True
+peng--000shi,Hsuan Hong Peng,,"November 13, 1996",,False,2018,"[2018, 2019]",none,none,True
+peng--000zhi,Shih Ying Peng,,"July 2, 1992",,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]",none,none,True
 peng--001zhe,Cheng Min Peng,493103.0,"August 6, 1978 in Kaohsiung, Taiwan tw",TW,False,2001,"[2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]",none,none,True
-perez-008hec,Hector Perez,660431.0,"June 6, 1996 in Santo Domingo, Dominican Republic do",DO,True,2024,[2024],AAA,none,False
+perez-008hec,Hector Perez,660431.0,"June 6, 1996 in Santo Domingo, Dominican Republic do",DO,True,2024,[2024],AAA,unknown workload,False
 pin-ju000chi,Pin Jui Chiu,678514.0,"December 13, 1987 in Taiwan tw",TW,False,2012,"[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]",none,none,True
-pinto-000ric,Ricardo Pinto,620982.0,"January 20, 1994 in Guacara, Venezuela ve",VE,True,2022,[2022],AAA,none,False
+pinto-000ric,Ricardo Pinto,620982.0,"January 20, 1994 in Guacara, Venezuela ve",VE,True,2022,[2022],AAA,unknown workload,False
+qiu---000ban,Bang Qiu,,"October 25, 1998",,False,2026,[2026],none,none,
+qiu---000che,Chen Chiu,,"February 1, 1999",,False,2021,"[2021, 2022, 2023, 2024]",none,none,True
+qiu---000dan,Tan Chiu,,"July 11, 2000",,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024]",none,none,True
 qiu---000hao,Hao Chun Chiu,611560.0,"December 29, 1990 in Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+qiu---001jun,Chun Wei Chiu,,"November 10, 2002",,False,2022,"[2022, 2023, 2024, 2025, 2026]",none,none,True
 quiala003yoa,Yoanys Quiala,665240.0,"January 15, 1994 in Mayari, Cuba cu",CU,True,2020,[2020],AAA,AAA,False
 ramire006jua,JC Ramirez,500724.0,"August 16, 1988 in Managua, Nicaragua ni",NI,True,2021,[2021],none,none,False
-reyes-000art,Arturo Reyes,642007.0,"April 6, 1992 in Moses Lake, WA us",US,True,2020,[2020],AAA,none,False
-reyes-002den,Denyi Reyes,660593.0,"November 2, 1996 in San Cristobal, Dominican Republic do",DO,True,2026,[2026],KBO,none,False
-roach-001don,Donn Roach,543698.0,"December 14, 1989 in Las Vegas, NV us",US,True,2020,[2020],AAA,none,False
-rodrig000niv,Nivaldo Rodriguez,670550.0,"April 16, 1997 in Naguanagua, Venezuela ve",VE,True,2024,"[2024, 2025, 2026]",other,none,True
+reyes-000art,Arturo Reyes,642007.0,"April 6, 1992 in Moses Lake, WA us",US,True,2020,[2020],AAA,unknown workload,False
+reyes-002den,Denyi Reyes,660593.0,"November 2, 1996 in San Cristobal, Dominican Republic do",DO,True,2026,[2026],KBO,unknown workload,
+roach-001don,Donn Roach,543698.0,"December 14, 1989 in Las Vegas, NV us",US,True,2020,[2020],AAA,unknown workload,False
+rodrig000niv,Nivaldo Rodriguez,670550.0,"April 16, 1997 in Naguanagua, Venezuela ve",VE,True,2024,"[2024, 2025, 2026]",other,unknown workload,True
 rodrig003ron,Ronny Rodríguez,500135.0,"April 17, 1992 in Santiago, Dominican Republic do",DO,True,2022,[2022],none,NPB,False
-roenic001jos,Josh Roenicke,502158.0,"August 4, 1982 in Baltimore, MD us",US,True,2018,"[2018, 2019, 2020]",other,none,True
-rogers001esm,Esmil Rogers,469134.0,"August 14, 1985 in Santo Domingo, Dominican Republic do",DO,True,2020,"[2020, 2021]",other,none,True
+roenic001jos,Josh Roenicke,502158.0,"August 4, 1982 in Baltimore, MD us",US,True,2018,"[2018, 2019, 2020]",other,unknown workload,True
+rogers001esm,Esmil Rogers,469134.0,"August 14, 1985 in Santo Domingo, Dominican Republic do",DO,True,2020,"[2020, 2021]",other,unknown workload,True
 rosari001rai,Rainel Rosario,501731.0,"March 29, 1989 in Santo Domingo, Dominican Republic do",DO,True,2022,[2022],none,other,False
 rosari001wil,Wilin Rosario,501647.0,"February 23, 1989 in Bonao, Dominican Republic do",DO,True,2022,[2022],none,other,False
-sakura000shu,Shuto Sakurai,830592.0,"June 25, 1999 in Japan jp",JP,True,2025,[2025],other,none,False
-sampso001key,Keyvius Sampson,572102.0,"January 6, 1991 in Gainesville, FL us",US,True,2022,"[2022, 2023, 2024]",other,none,True
-sanche005mar,Mario Sanchez,532936.0,"October 31, 1994 in Maracaibo, Venezuela ve",VE,True,2023,"[2023, 2024, 2025, 2026]",AAA,none,True
-sanche008ang,Ángel Sánchez,605795.0,"November 28, 1989 in Tenares, Dominican Republic do",DO,True,2024,[2024],AAA,none,False
-segovi001zac,Zack Segovia,434564.0,"April 11, 1983 in Dallas, TX us",US,True,2015,"[2015, 2016, 2017, 2018]",other,none,True
+sakaki000mot,Motoki Sakakibara,,"May 19, 2000",,False,2026,[2026],none,none,
+sakura000shu,Shuto Sakurai,830592.0,"June 25, 1999 in Japan jp",JP,True,2025,[2025],NPB farm,unknown workload,False
+sampso001key,Keyvius Sampson,572102.0,"January 6, 1991 in Gainesville, FL us",US,True,2022,"[2022, 2023, 2024]",other,unknown workload,True
+sanche005mar,Mario Sanchez,532936.0,"October 31, 1994 in Maracaibo, Venezuela ve",VE,True,2023,"[2023, 2024, 2025, 2026]",AAA,unknown workload,True
+sanche008ang,Ángel Sánchez,605795.0,"November 28, 1989 in Tenares, Dominican Republic do",DO,True,2024,[2024],AAA,unknown workload,False
+sato--002yos,Yoshinori Satoh,,"December 5, 1989 in Sendai, Japan jp",JP,True,2023,[2023],none,none,False
+segovi001zac,Zack Segovia,434564.0,"April 11, 1983 in Dallas, TX us",US,True,2015,"[2015, 2016, 2017, 2018]",other,unknown workload,True
+sen---000ron,Rong Hong Sen,,"August 20, 1994",,False,2023,[2023],none,none,False
 shen--000hao,Hao Wei Shen,683951.0,"September 12, 1997",,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+shi---000gua,Kuan Yu Shih,,"December 30, 1995",,False,2019,"[2019, 2021, 2022, 2023, 2024]",none,none,False
+shi---000xia,Hsiang Yu Shih,,"November 1, 1996",,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+shi---000zi-,Tzu Chien Shih,,"December 19, 1994",,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+shih--000tzu,Tzu Lin Shih,,"January 8, 2005",,False,2026,[2026],none,none,
+shu---000chi,Chih Hao Shu,,"July 15, 2004",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
 song--000she,Cheng Jui Sung,830723.0,"August 14, 2002 in New Taipei City, Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
-sosa--001hen,Henry Sosa,464400.0,"July 28, 1985 in El Seibo, Dominican Republic do",DO,True,2019,"[2019, 2020, 2021, 2022]",KBO,none,True
-spruil001eze,Zeke Spruill,543809.0,"September 11, 1989 in Chesapeake, VA us",US,True,2017,"[2017, 2018, 2019]",KBO,none,True
-stanki000ted,Teddy Stankiewicz,621103.0,"November 25, 1993 in Keller, TX us",US,True,2020,"[2020, 2021, 2022]",AAA,none,True
-stephe003jac,Jackson Stephens,623451.0,"May 11, 1994 in Oxford, AL us",US,True,2025,"[2025, 2026]",AAA,none,True
-stout-000eri,Eric Stout,657770.0,"March 27, 1993 in Glen Ellyn, IL us",US,True,2023,"[2023, 2024, 2025, 2026]",AAA,none,True
-sulser000bea,Beau Sulser,676641.0,"May 5, 1994 in Escondido, CA us",US,True,2025,[2025],AAA,none,False
-sung--000wen,Wen-Hua Sung,672354.0,"September 2, 1996 in Taifung, Taiwan tw",TW,False,2022,"[2022, 2024]",AA or lower,none,False
+sosa--001hen,Henry Sosa,464400.0,"July 28, 1985 in El Seibo, Dominican Republic do",DO,True,2019,"[2019, 2020, 2021, 2022]",KBO,unknown workload,True
+spruil001eze,Zeke Spruill,543809.0,"September 11, 1989 in Chesapeake, VA us",US,True,2017,"[2017, 2018, 2019]",KBO,unknown workload,True
+stanki000ted,Teddy Stankiewicz,621103.0,"November 25, 1993 in Keller, TX us",US,True,2020,"[2020, 2021, 2022]",AAA,unknown workload,True
+stephe003jac,Jackson Stephens,623451.0,"May 11, 1994 in Oxford, AL us",US,True,2025,"[2025, 2026]",AAA,unknown workload,True
+stout-000eri,Eric Stout,657770.0,"March 27, 1993 in Glen Ellyn, IL us",US,True,2023,"[2023, 2024, 2025, 2026]",AAA,unknown workload,True
+su----000jun,Chun Chang Su,,"September 2, 1998",,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+su----000wei,Wei Ta Su,,"November 10, 1990",,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]",none,none,True
+su----000zhi,Chih Chieh Su,,"July 28, 1994",,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+su----001jun,Chun Yu Su,,"October 30, 1996",,False,2016,"[2016, 2017, 2018, 2019, 2022]",none,none,True
+su----002wei,Wei Chih Su,,"April 26, 1999",,False,2022,"[2022, 2023]",none,none,True
+sulser000bea,Beau Sulser,676641.0,"May 5, 1994 in Escondido, CA us",US,True,2025,[2025],AAA,unknown workload,False
+sung--000jia,Jia Xiang Sung,,"July 22, 2004",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
+sung--000poh,Po Han Sung,,"October 8, 2005",,False,2025,"[2025, 2026]",none,none,True
+sung--000wen,Wen-Hua Sung,672354.0,"September 2, 1996 in Taifung, Taiwan tw",TW,False,2022,"[2022, 2024]",AA or lower,unknown workload,False
+suzuki001shu,Shunsuke Suzuki,,"June 12, 1998",,False,2024,"[2024, 2025, 2026]",none,none,True
+tai---000poc,Po Cheng Tai,,"February 28, 2004",,False,2026,[2026],none,none,
+takano000kei,Keisuke Takano,,"December 28, 1991 in Japan jp",JP,True,2021,[2021],NPB farm,unknown workload,False
 takash001mas,Masaki Takashio,660361.0,"March 24, 1989 in Japan jp",JP,True,2024,"[2024, 2025, 2026]",none,none,True
+tang--000jia,Jia Hao Tang,,"January 27, 2000",,False,2025,"[2025, 2026]",none,none,True
 tang--001cha,Chao Ting Tang,544709.0,"October 12, 1987 in Kaoshiung City, Taiwan tw",TW,False,2013,"[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]",none,none,True
 tazawa001jun,Junichi Tazawa,547749.0,"June 6, 1986 in Yokohama, Japan jp",JP,True,2021,[2021],none,none,False
+teng--000cha,Chao Chun Teng,,"September 19, 2001",,False,2026,[2026],none,none,
+teoh--000xi-,Xi Kai Teoh,,"October 29, 1998",,False,2020,"[2020, 2021, 2024]",none,none,True
+tien--000tzu,Tzu Chieh Tien,,"September 10, 2003",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
 tsa---000chi,Chia Yen Tsa,829317.0,"July 9, 2002 in Taitung County, Taiwan tw",TW,False,2022,"[2022, 2023, 2024, 2025, 2026]",none,none,True
+tsai--000min,Ming Hsien Tsai,,"November 29, 1998",,False,2021,"[2021, 2022]",none,none,True
+tsai--000yua,Yuan Hua Chen Tsai,,"January 28, 2004",,False,2026,[2026],none,none,
+tsai--003she,Sheng Jie Tsai,,"February 10, 2007",,False,2025,"[2025, 2026]",none,none,True
+tsao--000you,Yu Chi Tsao,,"March 30, 2003",,False,2022,"[2022, 2023, 2024, 2025, 2026]",none,none,True
+tsehg-000kua,Kuah Chieh Tsehg,,"February 15, 2006",,False,2024,"[2024, 2025, 2026]",none,none,True
+tseng-000chu,Chuan Sheng Tseng,,"November 22, 2000",,False,2021,"[2021, 2022, 2023, 2024]",none,none,True
+tseng-000ihs,I Hsiang Tseng,,"October 7, 2004",,False,2025,[2025],none,none,False
 tseng-000jen,Jen-Ho Tseng,627500.0,"October 3, 1994 in Taipei, Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 tseng-000jyu,Jyun Yue Tseng,809004.0,"November 7, 2001 in Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+tseng-000pin,Pin Yang Tseng,,"June 2, 1999",,False,2024,"[2024, 2026]",none,none,False
 tseng-000tzu,Tzu Yu Tseng,830724.0,"September 16, 2003 in Taichung City, Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",none,none,True
+tseng-001yuc,Yu Ching Tseng,,"December 17, 2002",,False,2025,"[2025, 2026]",none,none,True
+tu----000yuf,Yu Feng Tu,,"February 22, 2005",,False,2024,"[2024, 2025, 2026]",none,none,True
+tung--000shu,Shun Chieh Tung,,"March 13, 2004",,False,2025,"[2025, 2026]",none,none,True
+tung--000yuc,Yu Cheng Tung,,"November 1, 1999",,False,2026,[2026],none,none,
 unswor001dyl,Dylan Unsworth,596842.0,"September 23, 1992 in Durban, South Africa za",ZA,True,2021,[2021],none,none,False
 valdez012jos,José Valdez,572308.0,"March 1, 1990 in Don Gregorio, Dominican Republic do",DO,True,2021,"[2021, 2022]",none,none,True
-vanhek001and,Andy Van Hekken,407843.0,"July 31, 1979 in Holland, MI us",US,True,2007,"[2007, 2018]",other,none,False
-vanmet001jos,Joe Van Meter,595018.0,"October 18, 1988 in Manhasset, NY us",US,True,2022,[2022],other,none,False
-vargas000emi,Emilio Vargas,642496.0,"August 12, 1996 in Moca, Dominican Republic do",DO,True,2023,[2023],AA or lower,none,False
-vargas000jes,Jesús Vargas,660788.0,"August 18, 1998 in Macuto, Venezuela ve",VE,True,2025,[2025],other,none,False
-verdug001rya,Ryan Verdugo,489400.0,"April 10, 1987 in Pasadena, CA us",US,True,2018,"[2018, 2019]",other,none,True
-villan002eli,Elih Villanueva,534631.0,"July 27, 1986 in Miami, FL us",US,True,2018,"[2018, 2019, 2020]",AA or lower,none,True
-viza--000tyl,Tyler Viza,643588.0,"October 21, 1994 in Phoenix, AZ us",US,True,2022,"[2022, 2023]",other,none,True
-waddel000bra,Brandon Waddell,663399.0,"June 3, 1994 in Houston, TX us",US,True,2023,[2023],KBO,none,False
-walker002ada,Adam Walker,608724.0,"October 18, 1991 in Milwaukee, WI us",US,True,2026,[2026],none,none,False
+vanhek001and,Andy Van Hekken,407843.0,"July 31, 1979 in Holland, MI us",US,True,2007,"[2007, 2018]",other,unknown workload,False
+vanmet001jos,Joe Van Meter,595018.0,"October 18, 1988 in Manhasset, NY us",US,True,2022,[2022],other,unknown workload,False
+vargas000emi,Emilio Vargas,642496.0,"August 12, 1996 in Moca, Dominican Republic do",DO,True,2023,[2023],AA or lower,unknown workload,False
+vargas000jes,Jesús Vargas,660788.0,"August 18, 1998 in Macuto, Venezuela ve",VE,True,2025,[2025],other,unknown workload,False
+verdug001rya,Ryan Verdugo,489400.0,"April 10, 1987 in Pasadena, CA us",US,True,2018,"[2018, 2019]",other,unknown workload,True
+villan002eli,Elih Villanueva,534631.0,"July 27, 1986 in Miami, FL us",US,True,2018,"[2018, 2019, 2020]",AA or lower,unknown workload,True
+viza--000tyl,Tyler Viza,643588.0,"October 21, 1994 in Phoenix, AZ us",US,True,2022,"[2022, 2023]",other,unknown workload,True
+waddel000bra,Brandon Waddell,663399.0,"June 3, 1994 in Houston, TX us",US,True,2023,[2023],KBO,unknown workload,False
+walker002ada,Adam Walker,608724.0,"October 18, 1991 in Milwaukee, WI us",US,True,2026,[2026],none,none,
+wan---000cha,Chao Ching Wan,,"January 18, 1999",,False,2020,"[2020, 2021]",none,none,True
+wang--000boy,Bo Yang Wang,,"February 17, 2000",,False,2026,[2026],none,none,
+wang--000hon,Kai Cheng Wang,,"September 8, 1991",,False,2017,"[2017, 2018, 2019, 2020, 2022, 2023, 2024, 2025, 2026]",none,none,True
+wang--000nia,Nian Hao Wang,,"April 29, 2005",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
 wang--000po-,Po Jung Wang,685555.0,"September 9, 1993 in Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018, 2024, 2025, 2026]",none,none,True
+wang--000poc,Po Chieh Wang,,"October 18, 2004",,False,2024,"[2024, 2025, 2026]",none,none,True
 wang--000poh,Po Hsuan Wang,831348.0,"April 1, 2000 in Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",none,none,True
 wang--000she,Sheng Wei Wang,493303.0,"April 1, 1984 in Taitung, Taiwan tw",TW,False,2008,"[2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 wang--000shu,Shun Ho Wang,829335.0,"October 26, 2001 in Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
-wang--000yiz,I Cheng Wang,628321.0,"October 9, 1985",,False,2013,"[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]",other,NPB,True
+wang--000xua,Xuan You Wang,,"July 4, 2007",,False,2026,[2026],none,none,
+wang--000yix,Yi Xiang Wang,,"February 17, 2007",,False,2026,[2026],none,none,
+wang--000yiz,I Cheng Wang,628321.0,"October 9, 1985",,False,2013,"[2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]",NPB farm,NPB,True
 wang--000yu-,Yi Kai Wang,807658.0,"August 29, 2000 in Taiwan tw",TW,False,2019,"[2019, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,False
+wang--000yuh,Yu Hsiang Wang,,"January 20, 2006",,False,2025,[2025],none,none,False
+wang--000ze-,Tse Chun Wang,,"August 7, 1995",,False,2014,"[2014, 2015, 2017, 2018]",none,none,True
+wang--000zhe,Cheng Tang Wang,,"September 17, 1995",,False,2018,"[2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+wang--001shi,Shih Tsung Wang,,"August 8, 1995",,False,2020,"[2020, 2021, 2022, 2023]",none,none,True
 wang--001tzu,Tzu An Wang,596873.0,"October 9, 1990 in Taoyuan County, Taiwan tw",TW,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2021]",none,none,True
-wang--001yao,Yao Lin Wang,595775.0,"February 5, 1991 in Tai-Tung, Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",AA or lower,none,True
+wang--001yao,Yao Lin Wang,595775.0,"February 5, 1991 in Tai-Tung, Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",AA or lower,unknown workload,True
 wang--001yin,Yi Cheng Wang,829507.0,"May 1, 2003 in Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2026]",none,none,True
+wang--001zhe,Cheng Shun Wang,,"October 30, 1996",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 wang--002wei,Wei-Chung Wang,623913.0,"April 25, 1992 in Taitung City, Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+wang--002yu-,Yu Pu Wang,,"January 18, 1996",,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2025, 2026]",none,none,True
+wang--003chi,Chih Hsuan Wang,,"September 5, 2001",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 wang--003jin,Ching Ming Wang,583451.0,"January 16, 1986 in Taitung County, Taiwan tw",TW,False,2010,"[2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 wang--003jun,Chun Chieh Wang,611564.0,"January 4, 1989 in Taiwan tw",TW,False,2013,"[2013, 2014, 2015, 2016, 2018]",none,none,True
 wang--003wei,Wei Chen Wang,809005.0,"July 3, 1991 in Taiwan tw",TW,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
-watkin000spe,Spenser Watkins,657093.0,"August 27, 1992 in Phoenix, AZ us",US,True,2025,[2025],AAA,none,False
-weiss-000rya,Ryan Weiss,680802.0,"December 10, 1996 in South Elgin, IL us",US,True,2023,[2023],AAA,none,False
+wang--004wei,Wei Yong Wang,,"September 18, 1995",,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+wang--010wei,Wei Syuan Wang,,"February 5, 1998",,False,2025,"[2025, 2026]",none,none,True
+wataru000hir,Hiro Wataru,,"December 18, 1989",,False,2018,"[2018, 2019]",none,none,True
+watkin000spe,Spenser Watkins,657093.0,"August 27, 1992 in Phoenix, AZ us",US,True,2025,[2025],AAA,unknown workload,False
+wei---000hon,Hong Liang Wei,,"October 18, 2005",,False,2025,"[2025, 2026]",none,none,True
+wei---000qua,Chuan Wei,,"January 13, 1998",,False,2022,"[2022, 2025]",none,none,False
+wei---000shu,Shuo Cheng Wei,,"June 17, 1997",,False,2020,"[2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+weiss-000rya,Ryan Weiss,680802.0,"December 10, 1996 in South Elgin, IL us",US,True,2023,[2023],AAA,unknown workload,False
+wen---000cha,Chan Le Wen,,"October 18, 2001",,False,2024,[2024],none,none,False
 weng--000wei,Wei Chun Weng,807615.0,"November 29, 1998 in Taiwan tw",TW,False,2019,"[2019, 2020, 2021, 2022]",none,none,True
-westph000luk,Luke Westphal,661332.0,"June 14, 1989 in Clintonville, WI us",US,True,2024,[2024],other,none,False
-wilker000aar,Aaron Wilkerson,658792.0,"May 24, 1989 in Fort Worth, TX us",US,True,2026,[2026],AAA,none,False
+westph000luk,Luke Westphal,661332.0,"June 14, 1989 in Clintonville, WI us",US,True,2024,[2024],other,unknown workload,False
+wilker000aar,Aaron Wilkerson,658792.0,"May 24, 1989 in Fort Worth, TX us",US,True,2026,[2026],AAA,unknown workload,
 wood--000eri,Eric Wood,607780.0,"November 22, 1992 in Toronto, ON, Canada ca",CA,True,2019,[2019],none,AAA,False
 woodal001bry,Bryan Woodall,543941.0,"October 24, 1986 in Phenix City, AL us",US,True,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",AA or lower,AA or lower,True
-woods-003ste,Stephen Woods,642225.0,"June 10, 1995 in Huntington, NY us",US,True,2023,[2023],AA or lower,none,False
-wu----000nie,Nien Ting Wu,809006.0,"June 7, 1993 in Taipei City, Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",none,other,True
+woods-003ste,Stephen Woods,642225.0,"June 10, 1995 in Huntington, NY us",US,True,2023,[2023],AA or lower,unknown workload,False
+wu----000bow,Bo Wei Wu,,"October 2, 2002",,False,2024,"[2024, 2026]",none,none,False
+wu----000chu,Chun Chieh Wu,,"November 7, 1996",,False,2021,"[2021, 2022, 2023, 2024, 2025]",none,none,True
+wu----000don,Tung Jung Wu,,"September 29, 1991",,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]",none,none,True
+wu----000guo,Kuo Hao Wu,,"January 9, 1996",,False,2015,"[2015, 2016, 2017, 2018, 2020, 2021]",none,none,True
+wu----000hao,Chieh Jui Wu,,"April 7, 1993",,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2024, 2025]",none,none,True
+wu----000jun,Chun Wei Wu,,"December 31, 1998",,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+wu----000lic,Li Chen Wu,,"March 6, 2002",,False,2025,"[2025, 2026]",none,none,True
+wu----000min,Ming Hung Wu,,"November 2, 1994",,False,2018,"[2018, 2021, 2022, 2024, 2025, 2026]",none,none,False
+wu----000nie,Nien Ting Wu,809006.0,"June 7, 1993 in Taipei City, Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",none,NPB farm,True
+wu----000poh,Po Hsuan Wu,,"January 16, 2004",,False,2025,"[2025, 2026]",none,none,True
+wu----000rui,Rui Sheng Wu,,"June 23, 1994",,False,2017,"[2017, 2021, 2023]",none,none,False
+wu----000shi,Shih Hao Wu,,"January 13, 1999",,False,2018,"[2018, 2019, 2020, 2021, 2023, 2024, 2025]",none,none,True
+wu----000wei,Wei Hua Wu,,"March 15, 1991",,False,2018,[2018],none,none,False
 wu----000wil,William Wu,666577.0,"January 9, 1997 in Taipei, Taiwan tw",TW,False,2019,"[2019, 2021, 2023, 2024, 2025, 2026]",none,none,False
 wu----000yuc,Yu Cheng Wu,806831.0,"February 15, 2004 in Taitung County, Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",none,none,True
+wu----000zon,Chung Chun Wu,,"December 31, 1984",,False,2010,"[2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018]",none,none,True
+wu----001poh,Po Hsien Wu,,"February 18, 2007",,False,2026,[2026],none,none,
 wu----001zhe,Che Yuan Wu,809679.0,"August 12, 1994 in Taiwan tw",TW,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023]",none,none,True
+wu----002che,Cheng Che Wu,,"April 9, 1995",,False,2017,"[2017, 2018, 2019, 2020]",none,none,True
+wu----004che,Cheng Hao Wu,,"August 18, 2007",,False,2026,[2026],none,none,
+wu----008jun,Jun Yi Wu,,"May 24, 2001",,False,2023,"[2023, 2024, 2026]",none,none,True
+xiao--001yi-,Yi Ming Siao,,"November 21, 1999",,False,2021,"[2021, 2022, 2023, 2024, 2025]",none,none,True
+xie---000ron,Jung Hao Hsieh,,"July 9, 1990",,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+xin---000jun,Jung Sheng Xin,,"June 22, 2004",,False,2024,"[2024, 2025, 2026]",none,none,True
+xu----000jun,Chun Yang Hsu,,"March 23, 1998",,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+xu----003yu-,Yu Hao Hsu,,"November 29, 1994",,False,2018,"[2018, 2019, 2021, 2022]",none,none,True
+xu----003zhe,Chen Hao Hu,,"August 25, 1995",,False,2017,"[2017, 2019]",none,none,False
+xue---000zho,Chung Wei Hsueh,,"June 29, 1990",,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019]",none,none,True
+yan---000hon,Hung Chun Yen,,"April 30, 1997",,False,2017,"[2017, 2018, 2020, 2021, 2022, 2023, 2024, 2026]",none,none,True
+yang--000bin,Bin Yang,,"January 18, 1996",,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024, 2026]",none,none,True
+yang--000da-,Ta Hsiang Yang,,"October 3, 1993",,False,2017,"[2017, 2024, 2025]",none,none,False
+yang--000dai,Tai Chun Yang,,"September 19, 1993",,False,2016,"[2016, 2017, 2018]",none,none,True
 yang--000jia,Chien Fu Yang,493106.0,"April 22, 1979 in Taiwan tw",TW,False,2003,"[2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2017, 2018]",none,none,True
+yang--000jin,Chin Hao Yang,,"September 16, 1998",,False,2019,"[2019, 2020, 2021, 2022, 2023]",none,none,True
+yang--000men,Meng Yuan Yang,,"March 14, 1999",,False,2022,"[2022, 2023, 2024, 2025]",none,none,True
+yang--000nia,Nian Zu Yang,,"February 8, 2005",,False,2024,"[2024, 2026]",none,none,False
+yang--000rui,Ruei Cheng Yang,,"October 4, 1993",,False,2019,"[2019, 2020, 2021, 2022, 2023]",none,none,True
 yang--000sia,Siang He Yang,829508.0,"January 12, 2003 in Taiwan tw",TW,False,2024,"[2024, 2025, 2026]",none,none,True
+yang--000zhi,Jhih Long Yang,,"April 7, 1993",,False,2017,"[2017, 2018, 2019, 2022, 2023, 2025]",none,none,True
+yang--001chi,Chiang Sen Yang,,"September 22, 2002",,False,2026,[2026],none,none,
+yang--001jia,Chia Wei Yang,,"August 3, 1995",,False,2014,"[2014, 2017, 2018, 2019, 2020, 2021]",none,none,False
+yang--001min,Min Yi Yang,,"March 7, 2002",,False,2024,"[2024, 2025, 2026]",none,none,True
 yang--001yao,Yao Hsun Yang,493109.0,"January 22, 1983 in Taitung, Taiwan tw",TW,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]",AA or lower,AA or lower,True
+yang--001yu-,Yu Siang Yang,,"July 5, 2002",,False,2021,"[2021, 2026]",none,none,False
+yang--002chu,Chun Siang Yang,,"March 6, 2000",,False,2022,"[2022, 2023, 2024, 2025]",none,none,True
+yang--002jia,Chia Sheng Yang,,"June 11, 1998",,False,2022,[2022],none,none,False
 yao---000chi,Chieh Hung Yao,829509.0,"April 15, 1998 in Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
-ynoa--001gab,Gabriel Ynoa,593679.0,"May 26, 1993 in La Vega, Dominican Republic do",DO,True,2021,[2021],other,NPB,False
+yao---000kua,Kuan Wei Yao,,"January 11, 1996",,False,2020,"[2020, 2021, 2022, 2023, 2024, 2026]",none,none,True
+yao---000yu-,Yu Hsiang Yao,,"May 23, 2000",,False,2019,"[2019, 2021, 2022, 2023]",none,none,False
+ye----000jia,Chia Chi Yeh,,"May 23, 1997",,False,2015,"[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2024]",none,none,True
+ye----000zhu,Chu Hsuan Yeh,,"March 29, 1987",,False,2011,"[2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]",none,none,True
+yeh---000pao,Pao Ti Yeh,,"February 23, 1999",,False,2024,"[2024, 2025]",none,none,True
+yen---000tsa,Tsai Cheng Yen,,"November 23, 2003",,False,2026,[2026],none,none,
+yen---000yuh,Yu Hsuan Yen,,"August 5, 1999",,False,2025,"[2025, 2026]",none,none,True
+yen---002chi,Ching Hong Yen,,"November 28, 2000",,False,2024,"[2024, 2025, 2026]",none,none,True
+yin---000poh,Po Huai Yin,,"April 30, 2004",,False,2024,[2024],none,none,False
+ynoa--001gab,Gabriel Ynoa,593679.0,"May 26, 1993 in La Vega, Dominican Republic do",DO,True,2021,[2021],NPB farm,NPB,False
 yoshid001kaz,Kazumasa Yoshida,666677.0,"September 24, 1989 in Japan jp",JP,True,2024,"[2024, 2025]",none,none,True
+you---000cha,Chao Wei Yu,,"April 16, 1993",,False,2019,"[2019, 2020, 2021]",none,none,True
+you---000che,Cheng Xun You,,"July 18, 2006",,False,2025,"[2025, 2026]",none,none,True
+you---000jun,Jun You You,,"July 2, 2003",,False,2025,"[2025, 2026]",none,none,True
+you---000tin,Ting Wei Yu,,"October 11, 1997",,False,2019,"[2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+you---000zon,Tsung Ju Yu,,"May 21, 1992",,False,2016,"[2016, 2017, 2018, 2021, 2022]",none,none,True
 yu----000chi,Chien Yu,807619.0,"April 9, 2001 in Taiwan tw",TW,False,2021,"[2021, 2023, 2024, 2025, 2026]",none,none,False
+yu----000de-,Te Lung Yu,,"June 12, 1988",,False,2012,"[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+yu----000ihs,I Hsien Yu,,"February 12, 2004",,False,2026,[2026],none,none,
+yu----000sen,Sen Shiu Yu,,"December 27, 1992",,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]",none,none,True
+yue---000don,Tung Hua Yueh,,"October 19, 1995",,False,2017,"[2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+yue---000sha,Shao Hua Yue,,"June 1, 1999",,False,2021,"[2021, 2022, 2023, 2024, 2025]",none,none,True
+yueh--000che,Cheng Hua Yueh,,"January 29, 2001",,False,2020,"[2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+zeng--000bai,Po Jung Tseng,,"May 1, 1998",,False,2021,[2021],none,none,False
+zeng--000she,Shen An Zeng,,"March 28, 2006",,False,2025,"[2025, 2026]",none,none,True
+zeng--000son,Song En Tseng,,"January 8, 2000",,False,2021,"[2021, 2023, 2024, 2025, 2026]",none,none,False
+zeng--000tao,Tao Jung Tseng,,"April 27, 1991",,False,2015,"[2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023]",none,none,True
+zeng--002jia,Jia Hui Zeng,,"April 19, 2003",,False,2023,"[2023, 2024, 2025, 2026]",none,none,True
 zhan--000zhi,Chih-Yao Chan,493288.0,"January 2, 1983 in Manchu, Taiwan tw",TW,False,2009,"[2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]",none,none,True
+zhan--000zi-,Tzu Hsien Chan,,"February 24, 1994",,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+zhang-000gen,Keng Hao Chang,,"April 11, 1991",,False,2010,"[2010, 2011, 2012, 2013, 2016, 2017, 2018, 2019, 2022]",none,none,True
+zhang-000gua,Kuan Ting Chang,,"September 1, 1998",,False,2017,"[2017, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,False
+zhang-000hao,Hao Wei Chang,,"December 13, 1994",,False,2021,"[2021, 2023]",none,none,False
+zhang-000jun,Jun Shou Zhang,,"October 15, 2002",,False,2022,"[2022, 2025, 2026]",none,none,False
+zhang-000kai,Kai Lun Chang,,"March 4, 1995",,False,2015,"[2015, 2016, 2017, 2018]",none,none,True
+zhang-000rui,Jui Ling Chang,,"June 28, 1992",,False,2018,"[2018, 2019, 2021, 2022, 2024, 2025, 2026]",none,none,True
+zhang-000wei,Wei Sheng Chang,,"December 7, 1997",,False,2018,"[2018, 2019, 2020, 2021, 2023, 2024, 2025, 2026]",none,none,True
+zhang-000xia,Jyun Long Jhang,,"May 20, 1993",,False,2018,"[2018, 2019]",none,none,True
+zhang-000zha,Jhao Yuan Jhang,,"October 30, 1997",,False,2022,"[2022, 2024, 2025]",none,none,False
+zhang-001min,Ming Hsiang Chang,,"October 4, 1996",,False,2016,"[2016, 2018, 2019, 2020]",none,none,False
+zhang-001yi-,Min Hsun Chang,,"August 8, 1994",,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+zhang-001yon,Yung Han Chang,,"September 18, 1988",,False,2012,"[2012, 2013, 2014, 2015, 2016, 2017, 2019]",none,none,True
+zhang-001yu-,Chun Kai Chang,,"December 5, 1994",,False,2018,[2018],none,none,False
+zhang-001zha,Zhao Hong Zhang,,"March 19, 2006",,False,2025,"[2025, 2026]",none,none,True
 zhang-001zhi,Chih Hao Chang,674232.0,"May 15, 1987 in Taitung, Taiwan tw",TW,False,2010,"[2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 zhang-002zhe,Cheng Wei Chang,627382.0,"August 5, 1986 in Taiwan tw",TW,False,2010,"[2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]",none,none,True
+zhang-002zhi,Chih Chiang Chang,,"December 21, 1989",,False,2014,"[2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021]",none,none,True
 zhang-004jia,Chien Ming Chang,493082.0,"July 27, 1980 in Taiwan tw",TW,False,2004,"[2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018]",none,none,True
 zhang-005zhe,Cheng Yu Chang,839138.0,"June 8, 2000 in Pingtung County, Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
 zhao--000jin,Jing Long Zhao,829319.0,"June 12, 1998 in Kaohsiung City, Taiwan tw",TW,False,2021,"[2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+zheng-000fuh,Fu Hao Zheng,,"March 3, 2000",,False,2026,[2026],none,none,
+zheng-000jun,Chun Jen Cheng,,"November 3, 1995",,False,2018,"[2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+zheng-000kai,Kai Wen Cheng,,"December 18, 1991",,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]",none,none,True
+zheng-001jia,Chia Yen Cheng,,"July 29, 1992",,False,2019,"[2019, 2020, 2021]",none,none,True
+zhong-000che,Cheng Yu Chung,,"January 31, 1985",,False,2008,"[2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]",none,none,True
+zhong-000yuc,Yu Chang Zhong,,"February 10, 2003",,False,2022,"[2022, 2023, 2024, 2025, 2026]",none,none,True
+zhou--000lei,Lei Chou,,"April 16, 1991",,False,2015,"[2015, 2016, 2017, 2018, 2020, 2022]",none,none,True
 zhou--000si-,Szu Chi Chou,547897.0,"October 26, 1981 in Hualien, Taiwan tw",TW,False,2005,"[2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]",none,none,True
+zhu---000jun,Chun Hsiang Chu,,"April 15, 1995",,False,2013,"[2013, 2014, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2025, 2026]",none,none,True
+zhu---000yu-,Yu Hsien Chu,,"November 26, 1991",,False,2016,"[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]",none,none,True
+zhu---000yua,Yuan Chin Chu,,"July 17, 1986",,False,2011,"[2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]",none,none,True
+zhuang000jun,Chun Kai Chuang,,"December 15, 1991",,False,2015,"[2015, 2016, 2017, 2018, 2019]",none,none,True
+zhuang000men,Meng Yuan Zhuang,,"February 13, 2004",,False,2026,[2026],none,none,

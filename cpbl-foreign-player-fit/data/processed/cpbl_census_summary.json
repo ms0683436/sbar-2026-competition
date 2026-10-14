@@ -1,16 +1,16 @@
 {
   "census": {
-    "imports_seen": 151,
-    "arrivals_in_range": 141,
+    "imports_seen": 153,
+    "arrivals_in_range": 143,
     "returnees_first_before_range": 10,
-    "unknown_birthplace": 7,
+    "unknown_birthplace": 410,
     "arrivals_by_season": {
       "2018": 6,
       "2019": 12,
       "2020": 16,
-      "2021": 18,
+      "2021": 19,
       "2022": 20,
-      "2023": 18,
+      "2023": 19,
       "2024": 19,
       "2025": 19,
       "2026": 13
@@ -19,46 +19,60 @@
       {
         "origin": "AA or lower",
         "n": 11,
+        "n_observable": 11,
         "returned_next": 0.18181818181818182
       },
       {
         "origin": "AAA",
         "n": 43,
-        "returned_next": 0.3023255813953488
+        "n_observable": 39,
+        "returned_next": 0.3333333333333333
       },
       {
         "origin": "KBO",
         "n": 16,
-        "returned_next": 0.4375
+        "n_observable": 14,
+        "returned_next": 0.5
       },
       {
         "origin": "MLB",
         "n": 4,
+        "n_observable": 4,
         "returned_next": 0.5
       },
       {
         "origin": "NPB",
         "n": 4,
-        "returned_next": 0.25
+        "n_observable": 3,
+        "returned_next": 0.3333333333333333
+      },
+      {
+        "origin": "NPB farm",
+        "n": 7,
+        "n_observable": 7,
+        "returned_next": 0.0
       },
       {
         "origin": "none",
         "n": 22,
-        "returned_next": 0.18181818181818182
+        "n_observable": 20,
+        "returned_next": 0.2
       },
       {
         "origin": "other",
-        "n": 41,
-        "returned_next": 0.2926829268292683
+        "n": 36,
+        "n_observable": 32,
+        "returned_next": 0.375
       }
     ],
     "with_mlbam": 141
   },
   "data_check": {
-    "n": 58,
-    "mad_k": 0.0002964773502735965,
-    "mad_bb": 0.0007629401536713026,
-    "mean_bf_ratio": 1.0015083883850062
+    "n": 61,
+    "n_pitchers": 46,
+    "mad_k": 0.0002818964969814524,
+    "mad_bb": 0.000265461595349096,
+    "mean_bf_ratio": 1.001434205349678
   },
   "pitchers": {
     "n": 53,
@@ -173,6 +187,39 @@
         -0.004377256985263166,
         0.002910737817709346
       ]
+    },
+    "slopes_2021_on": [
+      {
+        "metric": "AAA K-BB%",
+        "n": 41,
+        "slope": 0.5599776741563729,
+        "ci_lo": 0.24906633516866752,
+        "ci_hi": 0.8665699054319459
+      },
+      {
+        "metric": "AAA K%",
+        "n": 41,
+        "slope": 0.5742554691879523,
+        "ci_lo": 0.2948696798953303,
+        "ci_hi": 0.7720083965536774
+      },
+      {
+        "metric": "AAA BB%",
+        "n": 41,
+        "slope": 0.2871239980702917,
+        "ci_lo": 0.07454223992318582,
+        "ci_hi": 0.5659540301838512
+      }
+    ],
+    "rolling_2021_on": {
+      "n_held_out": 33,
+      "mae_m0": 0.04899967825461614,
+      "mae_m1": 0.04817232080855717,
+      "m1_minus_m0": -0.0008273574460589683,
+      "ci": [
+        -0.0074190736498454275,
+        0.005870647075105722
+      ]
     }
   },
   "hitters": {
@@ -268,6 +315,27 @@
       }
     ],
     "rolling": {
+      "n_held_out": 0
+    },
+    "slopes_2021_on": [
+      {
+        "metric": "AAA wOBA",
+        "n": 2
+      },
+      {
+        "metric": "AAA K%",
+        "n": 2
+      },
+      {
+        "metric": "AAA BB%",
+        "n": 2
+      },
+      {
+        "metric": "AAA ISO",
+        "n": 2
+      }
+    ],
+    "rolling_2021_on": {
       "n_held_out": 0
     }
   },

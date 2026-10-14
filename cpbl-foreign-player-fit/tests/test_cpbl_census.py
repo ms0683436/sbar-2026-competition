@@ -53,3 +53,25 @@ def test_census_woba_uses_config_weights_and_drops_ibb():
     w = config()["woba_weights"]
     num = w["uBB"] * 1 + w["2B"] + w["HR"]
     assert np.isclose(cc._woba(d).iat[0], num / (4 + 1 + 0 + 0))           # AB + uBB + SF + HBP
+
+
+def test_history_uses_the_multi_team_summary_not_its_stints():
+    pitching = pd.DataFrame({"year_ID": ["2018", "2018", "2018", "2019", "2019", "2019"],
+                             "team_ID": ["2 Teams", "Fresno", "Round Rock", "2 Teams", "SK", "Lotte"],
+                             "lg_ID": ["PCL", "PCL", "PCL", "KBO", "KBO", "KBO"],
+                             "level": ["AAA", "AAA", "AAA", "Fgn", "Fgn", "Fgn"],
+                             "batters_faced": ["450", "300", "150", "649", "", ""]})
+    h = cc.history({"pitching": pitching, "batting": pd.DataFrame()})
+    got = {(r.season, r.cat): r.batters_faced for r in h.itertuples()}
+    assert got == {(2018, "AAA"): 450, (2019, "KBO"): 649}             # not 900, and blank stints ignored
+
+
+def test_blank_bf_is_estimated_from_innings():
+    pitching = pd.DataFrame({"year_ID": ["2023"], "team_ID": ["Tri-City"], "lg_ID": ["FRON"], "level": ["Ind"],
+                             "batters_faced": [""], "IP": ["24.1"], "H": ["20"], "BB": ["10"], "HBP": [""]})
+    h = cc.history({"pitching": pitching, "batting": pd.DataFrame()})
+    assert np.isclose(h.batters_faced.iat[0], 3 * (24 + 1 / 3) + 20 + 10)
+
+
+def test_npb_farm_is_its_own_label():
+    assert cc._category("JPEL", "Fgn") == "NPB farm" and cc._category("JPWL", "Fgn") == "NPB farm"

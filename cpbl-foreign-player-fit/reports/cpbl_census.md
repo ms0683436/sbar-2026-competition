@@ -2,23 +2,24 @@
 
 Source: Baseball-Reference register (CPBL team-season pages and player register pages); AAA from statsapi season stats. Traditional stats only. Only players who reached the CPBL first team appear.
 
-Imports seen on 2018-2026 team pages: 151; first CPBL season in 2018-2026: 141 (with an MLBAM id: 141); first seen before 2018: 10; players with unknown birthplace (excluded): 7.
+Imports seen on 2018-2026 team pages: 153; first CPBL season in 2018-2026: 143 (with an MLBAM id: 141); first seen before 2018: 10; players with unknown birthplace (excluded): 410.
 
-Arrivals by season: 2018: 6, 2019: 12, 2020: 16, 2021: 18, 2022: 20, 2023: 18, 2024: 19, 2025: 19, 2026: 13
+Arrivals by season: 2018: 6, 2019: 12, 2020: 16, 2021: 19, 2022: 20, 2023: 19, 2024: 19, 2025: 19, 2026: 13
 
-Where arrivals pitched / batted most in the season before (and share back in the CPBL the next season):
+Where arrivals pitched / batted most in the season before (pitchers by BF, others by PA; blank BF / PA estimated from IP or AB; 'unknown workload' = listed with no numbers; 'none' = no record). Share back in the CPBL the next season, among arrivals whose next season has been played (n_observable):
 
-| origin | n | returned_next |
-|---|---|---|
-| AA or lower | 11 | 0.18 |
-| AAA | 43 | 0.30 |
-| KBO | 16 | 0.44 |
-| MLB | 4 | 0.50 |
-| NPB | 4 | 0.25 |
-| none | 22 | 0.18 |
-| other | 41 | 0.29 |
+| origin | n | n_observable | returned_next |
+|---|---|---|---|
+| AA or lower | 11 | 11 | 0.18 |
+| AAA | 43 | 39 | 0.33 |
+| KBO | 16 | 14 | 0.50 |
+| MLB | 4 | 4 | 0.50 |
+| NPB | 4 | 3 | 0.33 |
+| NPB farm | 7 | 7 | 0.00 |
+| none | 22 | 20 | 0.20 |
+| other | 36 | 32 | 0.38 |
 
-Data check vs REBAS 2024-25 (pitchers, n 58): mean |K% diff| 0.0003, mean |BB% diff| 0.0008, BF ratio B-R/REBAS 1.002.
+Data check vs REBAS 2024-25 (61 pitcher-seasons, 46 pitchers; BB includes IBB on both sides): mean |K% diff| 0.0003, mean |BB% diff| 0.0003, BF ratio B-R/REBAS 1.001.
 
 ## Pitchers (n 53, by arrival season {2018: 1, 2019: 3, 2020: 8, 2021: 8, 2022: 6, 2023: 6, 2024: 7, 2025: 10, 2026: 4})
 
@@ -48,6 +49,16 @@ How much of an AAA edge survives (OLS slope of centred CPBL on centred AAA, 90% 
 
 Rolling forecast (primary outcome, trained on earlier arrivals): held-out 49, MAE training mean 0.0480, MAE OLS on AAA 0.0472, difference -0.0007 (90% CI -0.0044 to +0.0029).
 
+Sensitivity, arrivals 2021-2026 (slopes):
+
+| metric | n | slope | ci_lo | ci_hi |
+|---|---|---|---|---|
+| AAA K-BB% | 41 | 0.56 | 0.25 | 0.87 |
+| AAA K% | 41 | 0.57 | 0.29 | 0.77 |
+| AAA BB% | 41 | 0.29 | 0.07 | 0.57 |
+
+Sensitivity, arrivals 2021-2026 (rolling forecast): held-out 33, MAE training mean 0.0490, MAE OLS on AAA 0.0482, difference -0.0008 (90% CI -0.0074 to +0.0059).
+
 ## Hitters (n 2, by arrival season {2021: 1, 2022: 1})
 
 | test | n | rho | ci_lo | ci_hi | verdict |
@@ -67,6 +78,15 @@ Sensitivity, arrivals 2021-2026:
 | CH4 AAA ISO vs CPBL ISO | 2 |  |  |  | too few |
 
 How much of an AAA edge survives (OLS slope of centred CPBL on centred AAA, 90% CI):
+
+| metric | n |
+|---|---|
+| AAA wOBA | 2 |
+| AAA K% | 2 |
+| AAA BB% | 2 |
+| AAA ISO | 2 |
+
+Sensitivity, arrivals 2021-2026 (slopes):
 
 | metric | n |
 |---|---|
