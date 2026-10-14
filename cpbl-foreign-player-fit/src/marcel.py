@@ -97,8 +97,10 @@ def _prep(s: pd.DataFrame, role: str) -> pd.DataFrame:
 
 
 def project(role: str, year: int, mult: float = 1.0, age: bool = True, neutral: bool = False,
-            seasons: list[int] | None = None) -> pd.DataFrame:
-    """Marcel projection for season `year` from AAA seasons year-1..year-3 (one row per player)."""
+            seasons: list[int] | None = None, scale: pd.DataFrame | None = None) -> pd.DataFrame:
+    """Marcel projection for season `year` from AAA seasons year-1..year-3 (one row per player).
+    `scale` (bootstrap): multipliers per (player_id, season, team_id) for the counting columns of
+    those stints; league averages stay those of the unscaled data."""
     c = cfg()["pitcher" if role == "pitcher" else "hitter"]
     group = "pitching" if role == "pitcher" else "hitting"
     expo = "pitching_BF" if role == "pitcher" else "batting_PA"
@@ -110,8 +112,10 @@ def project(role: str, year: int, mult: float = 1.0, age: bool = True, neutral: 
         s = stints(group, y, neutral)
         if s.empty:
             continue
+        lg = _prep(s, role).groupby("team_league")
+        if scale is not None:
+            s = _scaled(s, scale)
         s = _prep(s, role)
-        lg = s.groupby("team_league")
         rows = pd.DataFrame({"player_id": s.player_id, "season": y, "w": wt, expo: s[expo]})
         for k, (num, den, _) in stats.items():
             L = (lg.apply(lambda g, num=num: num(g).sum(), include_groups=False) / lg[den].sum())
@@ -154,6 +158,36 @@ def project(role: str, year: int, mult: float = 1.0, age: bool = True, neutral: 
     out = out[keep].reset_index()
     out["player_id"] = out.player_id.astype(int)
     return out
+
+
+def _scaled(s: pd.DataFrame, scale: pd.DataFrame) -> pd.DataFrame:
+    key = pd.MultiIndex.from_arrays([s.player_id.astype(int), s.season.astype(int), s.team_id.astype(int)])
+    f = scale.reindex(key)
+    s = s.copy()
+    for c in scale.columns.intersection(s.columns):
+        s[c] = s[c] * f[c].fillna(1.0).to_numpy()
+    return s
+
+
+def log_scale(logs: pd.DataFrame, w: pd.Series) -> pd.DataFrame:
+    """Bootstrap multipliers per (player, season, team): re-weighted / original game-log totals."""
+    cols = [c for c in logs.columns if c.startswith(("pitching_", "batting_")) and c != "pitching_IP"]
+    g = logs.assign(season=pd.to_datetime(logs.game_date).dt.year)
+    f = g.game_id.astype(str).map(w).fillna(0).to_numpy()
+    keys = [g.player_id.astype(int), g.season.astype(int), g.team_id.astype(int)]
+    base = g[cols].groupby(keys).sum()
+    rw = g[cols].mul(f, axis=0).groupby(keys).sum()
+    out = (rw / base.replace(0, np.nan)).fillna(1.0)
+    if "pitching_BF" in out:            # innings follow batters faced (log IP is in x.1 / x.2 notation)
+        out["pitching_IP"] = out.pitching_BF
+    out.index.names = ["player_id", "season", "team_id"]
+    return out
+
+
+def candidate_scores(role: str, ids, scale: pd.DataFrame | None = None) -> pd.DataFrame:
+    """Production projection (forecast season 2027 from AAA 2024-26) for the candidate ids."""
+    p = project(role, cfg()["forecast_season"], scale=scale).set_index("player_id")
+    return p.reindex(pd.Index(ids).astype(int))
 
 
 # ------------------------------------------------------------------ V1: AAA next season
