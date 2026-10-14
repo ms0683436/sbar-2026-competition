@@ -2,32 +2,32 @@ mlbam_id,old_rank,old_rank_non40,name,new_rank,new_rank_signable,sign_tier,in_on
 663662,,,Daz Cameron,1,1.0,T2_expiring,False,hitter
 542208,,,Carlos Pérez,3,2.0,T2_expiring,False,hitter
 669899,54.0,20.0,Ryan Ward,20,3.0,T1_free,True,hitter
-693459,10.0,5.0,Kyler Fedko,29,4.0,T2_expiring,True,hitter
+693459,10.0,5.0,Kyler Fedko,30,4.0,T2_expiring,True,hitter
 692585,32.0,12.0,Yanquiel Fernández,34,5.0,T2_expiring,True,hitter
 673995,,,Davis Wendzel,35,6.0,T1_free,False,hitter
 688760,,,Blaine Crim,36,7.0,T1_free,False,hitter
 678760,22.0,9.0,Eddys Leonard,37,8.0,T2_expiring,True,hitter
-675448,,,Blake Hunt,47,9.0,T1_free,False,hitter
+675448,,,Blake Hunt,45,9.0,T1_free,False,hitter
 681357,29.0,11.0,Cody Morissette,48,10.0,T2_expiring,True,hitter
-680769,15.0,7.0,CJ Alexander,83,18.0,T2_expiring,True,hitter
+680769,15.0,7.0,CJ Alexander,84,18.0,T2_expiring,True,hitter
 691001,2.0,1.0,Robert Moore,4,,T3_controlled,True,hitter
-806252,4.0,2.0,Ralphy Velazquez,10,,T3_controlled,True,hitter
+806252,4.0,2.0,Ralphy Velazquez,8,,T3_controlled,True,hitter
 689531,6.0,3.0,Brett Squires,9,,T3_controlled,True,hitter
-687627,9.0,4.0,Kody Huff,103,,T3_controlled,True,hitter
-696486,13.0,6.0,James Tibbs III,17,,T3_controlled,True,hitter
-801194,20.0,8.0,Max Anderson,46,,T3_controlled,True,hitter
-809707,27.0,10.0,Charlie Condon,38,,T3_controlled,True,hitter
-621550,3.0,,Patrick Wisdom,8,,T4_40man,True,hitter
+687627,9.0,4.0,Kody Huff,104,,T3_controlled,True,hitter
+696486,13.0,6.0,James Tibbs III,18,,T3_controlled,True,hitter
+801194,20.0,8.0,Max Anderson,43,,T3_controlled,True,hitter
+809707,27.0,10.0,Charlie Condon,39,,T3_controlled,True,hitter
+621550,3.0,,Patrick Wisdom,11,,T4_40man,True,hitter
 680664,12.0,,Eduardo Valencia,2,,T4_40man,True,hitter
-680695,,,Brennen Davis,5,,T4_40man,False,hitter
-691728,1.0,,Zac Veen,16,,T4_40man,True,hitter
-695491,5.0,,Joshua Báez,12,,T4_40man,True,hitter
+691728,1.0,,Zac Veen,15,,T4_40man,True,hitter
+694673,8.0,,Abimelec Ortiz,5,,T4_40man,True,hitter
+695491,5.0,,Joshua Báez,14,,T4_40man,True,hitter
 680702,,,Joey Gerber,15,1.0,T1_free,False,pitcher
 605218,44.0,20.0,Carl Edwards Jr.,31,2.0,T2_expiring,True,pitcher
 663884,33.0,15.0,Nolan Kingham,41,3.0,T2_expiring,True,pitcher
 664353,29.0,13.0,José Urquidy,42,4.0,T1_free,True,pitcher
-624522,91.0,50.0,Keegan Thompson,49,5.0,T2_expiring,True,pitcher
-605182,,,Mike Clevinger,50,6.0,T1_free,False,pitcher
+605182,,,Mike Clevinger,49,5.0,T1_free,False,pitcher
+624522,91.0,50.0,Keegan Thompson,51,6.0,T2_expiring,True,pitcher
 670234,,,Seth Shuman,53,7.0,T2_expiring,False,pitcher
 622694,39.0,18.0,Elieser Hernández,56,8.0,T1_free,True,pitcher
 656212,46.0,21.0,Charlie Barnes,57,9.0,T2_expiring,True,pitcher
@@ -45,7 +45,7 @@ mlbam_id,old_rank,old_rank_non40,name,new_rank,new_rank_signable,sign_tier,in_on
 683000,,,Riley Cornelio,5,,T4_40man,False,pitcher
 687931,2.0,,Carson Whisenhunt,11,,T4_40man,True,pitcher
 694341,5.0,,Brendan Beck,28,,T4_40man,True,pitcher
-694494,3.0,,Ty Johnson,7,,T4_40man,True,pitcher
+694494,3.0,,Ty Johnson,6,,T4_40man,True,pitcher
 701656,,,Logan Henderson,1,,T4_40man,False,pitcher
 702281,,,Robby Snelling,2,,T4_40man,False,pitcher
 814490,10.0,,Ethan Pecko,4,,T4_40man,True,pitcher

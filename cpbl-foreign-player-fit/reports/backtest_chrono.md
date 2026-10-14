@@ -39,7 +39,7 @@ Held-out arrivals 9 (2025 trained on 2024; 2026 trained on 2024-25). MAE M0 (tra
 
 ## Exploratory (not registered; added after C1 was seen)
 
-Baseline vs Fit on the C1 pitchers: rho -0.77. C1 by baseline weight (Fit = 1 - weight): 0.5: 0.63, 0.6: 0.67, 0.7: 0.73, 0.8: 0.35, 0.9: 0.23, 1.0: 0.18. Leave-one-out range 0.62 to 0.86; 2025 arrivals only (n 7) 1.00. Amendment-7 combined (cohort z-scores) on the same pitchers 0.35, on all 17 0.14.
+Baseline vs Fit on the C1 pitchers: rho -0.77. C1 by baseline weight (Fit = 1 - weight): 0.5: 0.72, 0.6: 0.67, 0.7: 0.73, 0.8: 0.35, 0.9: 0.23, 1.0: 0.18. Leave-one-out range 0.62 to 0.86; 2025 arrivals only (n 7) 1.00. Amendment-7 combined (cohort z-scores) on the same pitchers 0.35, on all 17 0.14.
 
 ## Retrospective version (amendment 7, for comparison)
 
@@ -58,19 +58,19 @@ Rank correlation of inputs, retrospective vs chronological: baseline 0.99, Fit (
 | season | english_name | baseline_score | baseline_retro | fit | fit_retro | combined | cpbl_kbb_c | cpbl_k_c | cpbl_bb_c |
 |---|---|---|---|---|---|---|---|---|---|
 | 2024 | Aaron Leasher | -0.742 | -0.710 |  | -0.633 |  | 0.034 | 0.034 | -0.000 |
-| 2024 | Angel Sánchez | 0.064 | 0.110 |  | 1.327 |  | -0.032 | -0.039 | -0.007 |
-| 2024 | Daniel Mengden | -0.525 | -0.560 |  | 1.396 |  | 0.017 | 0.006 | -0.011 |
+| 2024 | Angel Sánchez | 0.064 | 0.110 |  | 1.330 |  | -0.032 | -0.039 | -0.007 |
+| 2024 | Daniel Mengden | -0.525 | -0.560 |  | 1.398 |  | 0.017 | 0.006 | -0.011 |
 | 2024 | Eric Stout | 0.391 | 0.407 |  | -0.087 |  | 0.083 | 0.063 | -0.020 |
-| 2024 | Héctor Pérez | 0.317 | 0.279 |  | -1.273 |  | 0.034 | 0.058 | 0.024 |
-| 2024 | Nick Margevicius | -0.330 | -0.302 |  | 0.310 |  | 0.050 | 0.016 | -0.034 |
-| 2024 | Pedro Fernández | -0.244 | -0.338 |  | -0.090 |  | 0.025 | 0.001 | -0.024 |
-| 2024 | Rio Gomez | 0.051 | 0.042 |  | -0.943 |  | 0.134 | 0.096 | -0.038 |
-| 2025 | Beau Sulser | -0.531 | -0.555 | 0.649 | 1.035 | -0.346 | -0.018 | -0.001 | 0.017 |
-| 2025 | Brandon Leibrandt | 0.282 | 0.244 | -0.734 | -1.346 | 0.051 | 0.018 | -0.003 | -0.021 |
-| 2025 | David Buchanan | -0.354 | -0.381 | 0.695 | 1.100 | -0.155 | -0.015 | -0.025 | -0.009 |
-| 2025 | Humberto Castellanos | 0.298 | 0.306 | -0.016 | -0.197 | 0.283 | 0.024 | 0.015 | -0.009 |
-| 2025 | Jackson Stephens | 0.563 | 0.556 | -0.293 | -0.661 | 0.463 | 0.095 | 0.045 | -0.050 |
-| 2025 | Jonathan Bermúdez | -0.166 | -0.127 | -0.565 | -1.118 | -0.345 | -0.016 | 0.008 | 0.024 |
-| 2025 | Spenser Watkins | -0.338 | -0.288 | -0.024 | -0.219 | -0.355 | -0.020 | -0.012 | 0.008 |
-| 2026 | John Gant | -0.621 | -0.634 | 0.822 | 0.941 | -0.339 | 0.092 | 0.095 | 0.003 |
-| 2026 | Jordan Balazovic | -0.417 | -0.395 | 0.435 | 0.457 | -0.263 | 0.078 | 0.102 | 0.024 |
+| 2024 | Héctor Pérez | 0.317 | 0.279 |  | -1.265 |  | 0.034 | 0.058 | 0.024 |
+| 2024 | Nick Margevicius | -0.330 | -0.302 |  | 0.314 |  | 0.050 | 0.016 | -0.034 |
+| 2024 | Pedro Fernández | -0.244 | -0.338 |  | -0.088 |  | 0.025 | 0.001 | -0.024 |
+| 2024 | Rio Gomez | 0.051 | 0.042 |  | -0.942 |  | 0.134 | 0.096 | -0.038 |
+| 2025 | Beau Sulser | -0.531 | -0.555 | 0.644 | 1.031 | -0.347 | -0.018 | -0.001 | 0.017 |
+| 2025 | Brandon Leibrandt | 0.282 | 0.244 | -0.738 | -1.349 | 0.050 | 0.018 | -0.003 | -0.021 |
+| 2025 | David Buchanan | -0.354 | -0.381 | 0.688 | 1.093 | -0.157 | -0.015 | -0.025 | -0.009 |
+| 2025 | Humberto Castellanos | 0.298 | 0.306 | -0.021 | -0.201 | 0.281 | 0.024 | 0.015 | -0.009 |
+| 2025 | Jackson Stephens | 0.563 | 0.556 | -0.297 | -0.663 | 0.462 | 0.095 | 0.045 | -0.050 |
+| 2025 | Jonathan Bermúdez | -0.166 | -0.127 | -0.569 | -1.121 | -0.347 | -0.016 | 0.008 | 0.024 |
+| 2025 | Spenser Watkins | -0.338 | -0.288 | -0.031 | -0.225 | -0.357 | -0.020 | -0.012 | 0.008 |
+| 2026 | John Gant | -0.621 | -0.634 | 0.819 | 0.944 | -0.339 | 0.092 | 0.095 | 0.003 |
+| 2026 | Jordan Balazovic | -0.417 | -0.395 | 0.436 | 0.463 | -0.263 | 0.078 | 0.102 | 0.024 |

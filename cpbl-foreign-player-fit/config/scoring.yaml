@@ -109,15 +109,20 @@ candidate_filters:
     min_pa: 300
 
 # wOBA linear weights. The same generic weights are applied to BOTH leagues so
-# that differences reflect outcomes, not weight choices (FanGraphs 2024 MLB
-# scale, rounded). Absolute levels are therefore "wOBA-like", not official.
+# that differences reflect outcomes, not weight choices. Absolute levels are therefore
+# "wOBA-like", not official.
+# CORRECTION (2026-10-14, Johnny 「修正」): from the first commit (80a6cff) until this change the
+# block was labelled "FanGraphs 2024" but held the FanGraphs 2013 weights rounded (uBB .69,
+# HBP .72, 1B .89, 2B 1.27, 3B 1.62, HR 2.10). It now holds the FanGraphs Guts 2024 values
+# (checked 2026-10-14). Every output that uses wOBA was re-run; differences are reported in
+# reports/findings.md section 0.11.
 woba_weights:
-  uBB: 0.69
-  HBP: 0.72
-  1B: 0.89
-  2B: 1.27
-  3B: 1.62
-  HR: 2.10
+  uBB: 0.689131
+  HBP: 0.720192
+  1B: 0.881711
+  2B: 1.25445
+  3B: 1.58991
+  HR: 2.04961
 
 baseline:
   winsor_z: 2.5               # z-scores clipped so one extreme stat cannot dominate
