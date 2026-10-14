@@ -176,6 +176,78 @@ def season_stats(kind: str, year: int) -> pd.DataFrame:
     return park.adjust(df[df.team_level_abv == "AAA"].copy(), kind)
 
 
+def amendment6() -> dict | None:
+    """Amendment-6 settings when the two-season pool is registered, else None."""
+    return config().get("amendment6")
+
+
+def candidate_stats(kind: str) -> pd.DataFrame:
+    """Season stints behind the candidate pool and the baseline's league table.
+
+    Before amendment 6: the 2026 mirror season file. Amendment 6: the statsapi per-club tables
+    of every pool season (park-adjusted, src.baseline_weights.fetch), with `team_league` set to
+    "<season>_<league>" so a player's league mix (and the league table) is per season x league.
+    """
+    a6 = amendment6()
+    if not a6:
+        return season_stats(kind, config()["candidate_filters"]["pitcher" if kind == "pitching" else "hitter"]["season"])
+    from .baseline_weights import fetch
+    group = "pitching" if kind == "pitching" else "hitting"
+    df = pd.concat([fetch(group, y) for y in a6["pool"]["seasons"]], ignore_index=True)
+    df["league"] = df.team_league
+    df["team_league"] = df.season.astype(str) + "_" + df.league
+    return df
+
+
+GAMELOG_PITCHING = {"gamesStarted": "pitching_GS", "battersFaced": "pitching_BF", "outs": "outs",
+                    "hits": "pitching_H", "homeRuns": "pitching_HR", "baseOnBalls": "pitching_BB",
+                    "intentionalWalks": "pitching_IBB", "strikeOuts": "pitching_SO", "hitByPitch": "pitching_HBP",
+                    "earnedRuns": "pitching_ER"}
+GAMELOG_HITTING = {"plateAppearances": "batting_PA", "atBats": "batting_AB", "hits": "batting_H",
+                   "doubles": "batting_2B", "triples": "batting_3B", "homeRuns": "batting_HR",
+                   "baseOnBalls": "batting_BB", "intentionalWalks": "batting_IBB", "strikeOuts": "batting_SO",
+                   "hitByPitch": "batting_HBP", "sacFlies": "batting_SF", "totalBases": "batting_TB"}
+
+
+def statsapi_game_logs(year: int, ids, group: str, workers: int = 4) -> pd.DataFrame:
+    """Amendment 6: AAA per-game lines from the statsapi gameLog for seasons the mirror's game
+    files do not cover. One request per player, cached per player under
+    data/raw/statsapi_season/gamelog_<group>_<year>/. Same column names as the mirror logs."""
+    from concurrent.futures import ThreadPoolExecutor
+    d = raw("statsapi_season", f"gamelog_{group}_{year}")
+    d.mkdir(parents=True, exist_ok=True)
+    fields = GAMELOG_PITCHING if group == "pitching" else GAMELOG_HITTING
+
+    def one(pid: int) -> pd.DataFrame:
+        f = d / f"{pid}.csv"
+        if f.exists():
+            return pd.read_csv(f)
+        js = statsapi_pbp._get(f"{statsapi_pbp.API}/v1/people/{pid}/stats",
+                               {"stats": "gameLog", "group": group, "season": year, "sportId": 11, "gameType": "R"})
+        rows = []
+        for st in js.get("stats", []):
+            for sp in st.get("splits", []):
+                r = {"player_id": pid, "season": year, "game_id": sp["game"]["gamePk"], "game_date": sp["date"],
+                     "team_id": sp.get("team", {}).get("id"), "loc": "H" if sp.get("isHome") else "A"}
+                r.update({v: sp["stat"].get(k, 0) for k, v in fields.items()})
+                rows.append(r)
+        out = pd.DataFrame(rows, columns=["player_id", "season", "game_id", "game_date", "team_id", "loc", *fields.values()])
+        out.to_csv(f, index=False)
+        return out
+
+    with ThreadPoolExecutor(workers) as ex:
+        parts = list(ex.map(one, sorted(set(int(i) for i in ids))))
+    df = pd.concat([p for p in parts if len(p)], ignore_index=True)
+    if group == "pitching":
+        df["pitching_IP"] = df.outs / 3
+    df["game_date"] = pd.to_datetime(df.game_date)
+    df = df[df.game_date <= snapshot()].drop_duplicates(["game_id", "player_id", "team_id"])
+    if park.enabled():
+        home = df["loc"].eq("H")
+        df = park.adjust(df, "pitching" if group == "pitching" else "batting", home=home)
+    return df
+
+
 def game_logs(year: int) -> pd.DataFrame:
     files = sorted(glob.glob(str(raw("milb_game", f"{year}_*_aaa_player_game_stats.csv"))))
     df = pd.concat((pd.read_csv(f, low_memory=False) for f in files), ignore_index=True)

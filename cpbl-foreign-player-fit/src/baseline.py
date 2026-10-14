@@ -28,7 +28,7 @@ from .common import config, processed, zscore
 
 def _league_table(kind: str, year: int, s: pd.DataFrame | None = None) -> pd.DataFrame:
     """League (PCL / INT) totals and rates; `s` overrides the mirror season file (amendment 4)."""
-    s = milb_loader.season_stats(kind, year) if s is None else s
+    s = milb_loader.candidate_stats(kind) if s is None else s      # amendment 6: two seasons
     if kind == "pitching":
         g = s.groupby("team_league")[["pitching_BF", "pitching_SO", "pitching_BB", "pitching_HBP", "pitching_HR",
                                       "pitching_ER", "pitching_IP"]].sum()
@@ -198,12 +198,13 @@ def run(cands: dict) -> dict:
              "whip", "swstr_pct_aaa", "recent_pitching_BF", "recent_k_minus_bb_pct_raw", "ip_per_gs",
              *[c for c in p.columns if c.startswith("z_")], "baseline_score", "baseline_score_judgment",
              "baseline_rank_judgment", "mlb_ip_2024", "mlb_ip_2025",
-             "eligibility_status", "tracked_pitches", *milb_candidates.REC_COLS]
+             "eligibility_status", "tracked_pitches", *milb_candidates.REC_COLS,
+             *milb_candidates.SIGN_COLS]
     hcols = ["baseline_rank", "mlbam_id", "name", "position", "teams", "leagues", "age_2026", "batting_PA",
              "woba_raw", "woba", "obp", "slg", "ops", "iso_raw", "bb_pct_raw", "k_pct_raw", "whiff_pct_aaa",
              "recent_batting_PA", "recent_woba_raw", *[c for c in h.columns if c.startswith("z_")],
              "baseline_score", "baseline_score_judgment", "baseline_rank_judgment", "mlb_pa_2024", "mlb_pa_2025", "eligibility_status", "tracked_pa",
-             *milb_candidates.REC_COLS]
+             *milb_candidates.REC_COLS, *milb_candidates.SIGN_COLS]
     p[[c for c in pcols if c in p.columns]].to_csv(processed("baseline_pitchers.csv"), index=False)
     h[[c for c in hcols if c in h.columns]].to_csv(processed("baseline_hitters.csv"), index=False)
     out["pitcher"], out["hitter"] = p, h

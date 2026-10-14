@@ -84,6 +84,16 @@ def estimate(g: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(out, index=pd.Index(clubs, name="club_id"))
 
 
+def factors_for(seasons, aaa: pd.DataFrame) -> pd.DataFrame:
+    """Factors estimated from the given seasons only (amendment-6 backtest folds); cached per season set."""
+    f = processed(f"park_factors_{'_'.join(map(str, seasons))}.csv")
+    if f.exists():
+        return pd.read_csv(f, index_col="club_id")
+    pf = estimate(game_events(aaa, seasons))
+    pf.to_csv(f)
+    return pf
+
+
 @lru_cache(maxsize=1)
 def factors() -> pd.DataFrame:
     f = processed("park_factors.csv")
@@ -95,8 +105,9 @@ def factors() -> pd.DataFrame:
     return pf
 
 
-def _divide(df: pd.DataFrame, club: pd.Series, cols: dict, half: bool, home: pd.Series | None = None) -> pd.DataFrame:
-    pf = factors()
+def _divide(df: pd.DataFrame, club: pd.Series, cols: dict, half: bool, home: pd.Series | None = None,
+            pf: pd.DataFrame | None = None) -> pd.DataFrame:
+    pf = factors() if pf is None else pf
     df = df.copy()
     for e, targets in cols.items():
         f = club.map(pf[e]).fillna(1.0)
@@ -118,25 +129,26 @@ def _batting_totals(df: pd.DataFrame, singles_f: pd.Series) -> pd.DataFrame:
     return df.drop(columns="_1B")
 
 
-def adjust(df: pd.DataFrame, kind: str, club_col: str = "team_id", home: pd.Series | None = None) -> pd.DataFrame:
-    """Park-adjust a per-club table (season stints: half factor; game logs: pass `home`)."""
+def adjust(df: pd.DataFrame, kind: str, club_col: str = "team_id", home: pd.Series | None = None,
+           pf: pd.DataFrame | None = None) -> pd.DataFrame:
+    """Park-adjust a per-club table (season stints: half factor; game logs: pass `home`).
+    `pf` overrides the default 2025-26 factors (amendment-6 backtest folds use their own seasons)."""
     if not enabled() or df.empty:
         return df
+    pf = factors() if pf is None else pf
     club = pd.to_numeric(df[club_col], errors="coerce")
     half = home is None
     if kind == "pitching":
-        out = _divide(df, club, PITCHING_COLS, half, home)
+        out = _divide(df, club, PITCHING_COLS, half, home, pf)
         # hits allowed: singles / doubles / triples are not split in pitching tables; HR is
         if "pitching_H" in out:
-            pf = factors()
             f1 = club.map(pf["1B"]).fillna(1.0)
             f1 = (f1 + 1) / 2 if half else f1.where(home, 1.0)
             out["pitching_H"] = (df.pitching_H - df.pitching_HR) / f1.values + out.pitching_HR
         return out
     d = df.copy()
     d["_1B"] = d.batting_H - d.batting_2B - d.batting_3B - d.batting_HR
-    d = _divide(d, club, BATTING_COLS, half, home)
-    pf = factors()
+    d = _divide(d, club, BATTING_COLS, half, home, pf)
     f1 = club.map(pf["1B"]).fillna(1.0)
     f1 = (f1 + 1) / 2 if half else f1.where(home, 1.0)
     return _batting_totals(d, f1)
