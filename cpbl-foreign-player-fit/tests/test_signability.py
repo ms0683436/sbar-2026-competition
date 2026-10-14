@@ -76,3 +76,8 @@ def test_trade_or_waiver_claim_keeps_the_free_agent_contract():
     rows = [(6, "2022-06-01", "SGN", 100), (6, "2024-07-01", "REL", 100), (6, "2025-01-05", "SFA", 100),
             (6, "2025-06-01", "TR", 200), (6, "2025-07-01", "CLW", 100)]
     assert _tier(rows)[6] == "T2_expiring"
+
+
+def test_college_and_showcase_assignments_do_not_start_the_pro_clock():
+    rows = [(7, "2019-07-20", "ASG", 900), (7, "2022-07-25", "SGN", 100)]     # 900 = college summer team
+    assert _tier(rows, draft=2022)[7] == "T3_controlled"

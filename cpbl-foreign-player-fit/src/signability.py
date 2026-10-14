@@ -11,7 +11,9 @@ A CPBL club can only sign a player his MLB organisation lets go of (or buys out)
                  first professional season is <= as_of year - expiring_years. statsapi files an
                  international amateur's first contract as SFA too; an SFA counts only when an
                  affiliated "Declared Free Agency" / "Released" precedes it (clarified after the
-                 first tier table showed 2021-22 international signees as T2)
+                 first tier table showed 2021-22 international signees as T2). The first
+                 professional season is the year of the first affiliated transaction (fixed after
+                 the first 2026 run counted college and showcase assignments)
   T3_controlled  every other player not on a 40-man
 
 Only transactions whose toTeam or fromTeam is an affiliated club (MLB, AAA to Rookie) count, so
@@ -90,9 +92,10 @@ def classify(tx: pd.DataFrame, as_of: str, on40: set[int], aff: set[int]) -> pd.
     for pid, g in tx.groupby("mlbam_id"):
         pid = int(pid)
         g = g[g.date.notna()]
-        first = min([int(d[:4]) for d in g.date] + ([int(g.draft_year.iloc[0])] if g.draft_year.notna().any() else []),
-                    default=None)
         g = g[(g.date <= as_of) & (g.to_team.isin(aff) | g.from_team.isin(aff))].sort_values(["date", "tx_id"])
+        # first professional season = first affiliated transaction (college / showcase / summer-league
+        # assignments are not affiliated and do not count)
+        first = int(g.date.iloc[0][:4]) if len(g) else None
         st = g[g.type.isin(free | control)]
         last = st.iloc[-1] if len(st) else None
         sign = g[g.type.isin(CONTRACTS)]
