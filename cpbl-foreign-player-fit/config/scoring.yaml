@@ -651,3 +651,63 @@ amendment11:
   forecast_origins: [2025, 2026]
   bootstrap: {draws: 2000, ci: 0.90, seed: 20261019}
   min_n_for_conclusion: 15
+
+# AMENDMENT 12 (2026-10-14; committed BEFORE any census page was downloaded, except the two
+# pages opened while checking the source: Brandon Leibrandt's register page (his 2025 CPBL line
+# was seen: 335 BF, 55 SO, 18 BB) and the 2025 CTBC Brothers team page (roster ids only)).
+# Johnny chose Baseball-Reference as the source and 2018-2026 as the range (card 「用，2018–2026」).
+# Goal: a larger, historical test of whether AAA performance carries over to the CPBL, for
+# pitchers AND hitters (hitters were n = 0 so far). Traditional stats only: no Fit (no CPBL
+# pitch data before 2024). Validation only: nothing changes the ranking or the picks.
+#
+# Source: baseball-reference.com register (team-season pages of the CPBL, 2018-2026, and each
+#   listed player's register page). <= 20 requests per minute; pages cached under
+#   data/raw/bbref/ (git-ignored, not redistributed); cited as "Baseball-Reference". AAA
+#   predictors and league values come from statsapi season stats (sportId 11), as before.
+# Census: every player on a CPBL team page 2018-2026 whose register page gives a birthplace
+#   outside Taiwan = import. Unknown birthplace: listed and excluded. Arrival season Y = his
+#   first CPBL season on his register page; arrivals with Y in 2018-2026 enter the tests,
+#   players first seen in the CPBL before 2018 are returnees (described only).
+# Origin (descriptive): the league/level where he had the most BF (pitchers) or PA (hitters)
+#   in Y-1 on his register page: MLB, AAA, AA or lower, NPB, KBO, other (MEX, indy, winter,
+#   other foreign), none. Also: share returning to the CPBL in Y+1, by origin.
+# Identity: register id -> MLBAM via the Chadwick register (key_bbref_minors). AAA season A =
+#   Y-1, except Y = 2021 uses 2019 (no 2020 minor-league season).
+# Pitchers: CPBL BF in Y >= 60 and AAA BF in A >= 100 (all AAA stints summed).
+#   Predictors: AAA K%, BB%, K-BB% minus the AAA league value of A (statsapi totals; no park
+#   adjustment: no pitch-level AAA before 2023); and an amendment-5-style baseline (K% .50,
+#   BB% .25, FIP .25 as league-relative z-scores, clipped at 2.5, over every AAA pitcher of A
+#   with >= 100 BF; FIP constant = league ERA - league raw FIP).
+#   Outcomes: CPBL K%, BB%, K-BB% per BF in Y minus the CPBL league value of Y (totals of all
+#   pitchers on that season's team pages).
+# Hitters: CPBL PA in Y >= 100 and AAA PA in A >= 150. Predictors: AAA wOBA (generic
+#   woba_weights), K%, BB%, ISO minus the AAA league value of A (non-pitchers). Outcomes: the
+#   same four in the CPBL minus the CPBL league value of Y (all hitters on the team pages).
+# Tests (Spearman, 90% bootstrap over players, 2000 draws, seed below; min_n 15; verdict:
+#   CI above 0 supports, below 0 contradicts, else inconclusive):
+#   CP1 (primary, pitchers) AAA K-BB% vs CPBL K-BB%     CH1 (primary, hitters) wOBA vs wOBA
+#   CP2 K% vs K%   CP3 BB% vs BB%   CP4 baseline vs CPBL K-BB%
+#   CH2 K% vs K%   CH3 BB% vs BB%   CH4 ISO vs ISO
+#   Translation (descriptive): OLS slope of the centred CPBL value on the centred AAA value with
+#   a 90% bootstrap CI (how much of an AAA edge survives).
+#   R2 rolling-origin forecast (as amendment 11): for each Y in 2019-2026 an OLS of the centred
+#   CPBL primary outcome on the centred AAA primary predictor fitted on earlier arrivals only;
+#   MAE vs the training mean over all held-out arrivals, paired bootstrap CI.
+#   Sensitivity: arrivals 2021-2026 only (four-import era, after the 2020 rule change).
+# Data check: for players in REBAS 2024-25 (pitchers in the amendment-2 reference), the B-R
+#   CPBL K% and BB% are compared with REBAS (mean absolute difference reported).
+# Survivorship: only players who reached the first team appear on B-R; signed-but-unused
+#   imports are missing. Reported, not fixed.
+amendment12:
+  seasons: [2018, 2026]
+  aaa_season_override: {2021: 2019}
+  min_cpbl_bf: 60
+  min_aaa_bf: 100
+  min_cpbl_pa: 100
+  min_aaa_pa: 150
+  baseline_weights: {k_pct: 0.50, bb_pct: 0.25, fip: 0.25}
+  baseline_clip: 2.5
+  sensitivity_from: 2021
+  request_interval_s: 3.5
+  bootstrap: {draws: 2000, ci: 0.90, seed: 20261020}
+  min_n_for_conclusion: 15
