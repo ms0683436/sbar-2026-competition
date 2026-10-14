@@ -481,6 +481,16 @@ amendment7b:
 #   S4 amendment-7 pooled CPBL cohort: Spearman(pre-arrival Stuff+, centred CPBL K-BB%) and
 #      (pre-arrival Stuff+, centred CPBL whiff%), reported next to P1 and Fit; amendment-2
 #      verdict rule and minimum n.
+# Amendment 8 addendum (2026-10-14, Johnny: "method follows FanGraphs Stuff+"; written before any
+# model was trained). Known deviations from FanGraphs' published Stuff+ method:
+#   - data: one AAA season (2025) of statsapi feeds, not several MLB seasons of Statcast
+#   - release point: the feed's x0 / z0 at y = 50 ft, not Statcast's release_pos; no arm angle
+#   - target: run value from AAA 2025 count values and the project's wOBA weights, not
+#     FanGraphs' own pitch run values
+#   - model: scikit-learn HistGradientBoostingRegressor with fixed settings (FanGraphs' exact
+#     model and tuning are not public); three families (FB / BR / OS) as listed below
+#   - park / altitude: an explicit home-club input offset (FanGraphs does not publish one)
+#   - scale: z over AAA pitchers with >= 300 pitches in the season (FanGraphs scales to MLB)
 amendment8:
   train_season: 2025
   predict_seasons: [2023, 2024, 2025]
