@@ -749,3 +749,65 @@ amendment13:
   min_pitches: 300
   seasons: [2025, 2026]
   sensitivity_stuff_weights: [0.1, 0.3]
+
+# AMENDMENT 14 (2026-10-14; committed BEFORE any two-strike metric, put-away rate or pick
+# appendix was computed). An outside suggestion said AAA pitchers with good ERAs get worn down by
+# CPBL hitters' contact and two-strike "battling". Johnny accepted two additions and, after a
+# Codex design discussion, chose 「照建議做」. Descriptive / exploratory only: nothing enters the
+# ranking or changes the picks.
+#
+# Part A: two-strike battle metrics, CPBL (REBAS) vs AAA, 2024 and 2025 regular seasons.
+#   Population: complete PAs only; drop the whole PA if it has a bunt attempt (REBAS BUNT /
+#   FOUL_BUNT / TRY_BUNT, terminal SH; AAA bunt codes and bunts in play), an intentional ball /
+#   IBB, a pitchout, or ends in interference / unknown result. Two strikes = count BEFORE the pitch.
+#   Foul tips (REBAS FT, AAA T) are contact (project convention) but not a continuation foul.
+#   A1 (primary) continuation-foul rate = ordinary fouls at two strikes / pitches at two strikes.
+#   A2 foul per swing at two strikes; A3 contact = (swings - whiffs) / swings at two strikes;
+#   A4 put-away (pitch) = strikeouts on a two-strike pitch / two-strike pitches;
+#   A5 conversion (PA) = PAs ending in SO / PAs that reached two strikes;
+#   A6 pitches per PA and PA-length bins 1-3, 4-5, 6-7, 8+; A7 two-strike pitches per PA that
+#   reached two strikes; A8 share of PAs reaching two strikes.
+#   Standardisation (per season): pitch-level metrics reweighted over balls (0-3) x batter hand x
+#   pitcher hand x SP/RP to the equal-weighted average of the two leagues' distributions (swing
+#   shares for per-swing metrics); A5 and A7 by the count when the PA first reached two strikes,
+#   hands and role. Common support only; excluded weight reported. Raw rates shown first.
+#   Uncertainty: 2,000 game-cluster bootstrap draws within league-season, 95% CI.
+#   Decision (A1 only): "CPBL hitters battle more" if the standardised CPBL - AAA difference has its
+#   95% CI entirely above +2 percentage points AND is positive in both seasons; CI inside -2..+2 =
+#   small difference; otherwise unresolved. Supporting thresholds, descriptive: A3 2 pp, A5 3 pp,
+#   A6 0.15 pitches, A7 0.20 pitches.
+#   Supplement: within pitcher-season, two-strike minus one-strike change in A1 and whiff, by
+#   league, controlling ball count, pitch family and batter hand (descriptive).
+#   Sequence audit first: PA / SO / BB totals vs box scores, missing first / last pitches, PAs with
+#   impossible count transitions; exclusions reported by league-season.
+#   Skipped: two-strike chase (CPBL locations are hand-recorded).
+# Part B: exploratory link to CPBL results. Cohort = amendment-11 pitchers (amendment-7 identities,
+#   one row per pitcher, pre-arrival AAA window as in amendment 11). Predictor P1 = AAA two-strike
+#   put-away rate (A4) with >= 100 two-strike pitches and >= 50 PAs reaching two strikes. Outcome =
+#   season-centred CPBL K-BB% as in amendment 11. Partial Spearman controlling pre-arrival AAA
+#   K-BB% (ranks of predictor and outcome residualised on its rank), pitcher bootstrap refitting the
+#   residualisation, 95% CI, leave-one-out range. "Tentative signal" only if rho >= 0.30, CI above
+#   0 and no sign flip when any one pitcher is dropped; below 15 eligible pitchers: descriptive only.
+#   Secondary (descriptive): foul-allowed rate A1. Also the 2024 -> 2025 AAA reliability of P1 and
+#   A1 (pitchers with >= 100 two-strike pitches in both seasons). The outcomes are already known, so
+#   this is a constrained re-analysis, not an independent test.
+# Part C: appendix for the final primary pitcher pick (whoever it is after amendments 13 and 15),
+#   AAA 2025 and 2026 separately: per pitch type x batter side: pitches, swings, games, terminal PAs,
+#   usage (with an "unknown type" share), velocity median / IQR, whiff per swing, count-based run
+#   value per 100 pitches (amendment-8 construction, positive = worse for the pitcher; a proxy, not
+#   Statcast RV); two-strike usage, put-away and continuation-foul rate. Display minimums per cell:
+#   usage flagged under 50 pitches; whiff needs >= 200 pitches, >= 100 swings, >= 10 games; run
+#   value >= 500 pitches, >= 100 terminal PAs, >= 10 games; two-strike rates >= 100 two-strike
+#   pitches and >= 10 games (whiff there >= 50 swings). Below them: counts and "insufficient
+#   sample", no ranking of cells. Next to it, the existing CPBL environment results (findings
+#   1.2-1.4) and the LHB share faced by RHP / LHP in each league. Labelled an untested hypothesis;
+#   no recommended pitch mix, sequencing or simulated improvement.
+amendment14:
+  seasons: [2024, 2025]
+  bootstrap: {draws: 2000, ci: 0.95, seed: 20261021}
+  a1_threshold_pp: 2.0
+  support_thresholds: {contact_pp: 2.0, conversion_pp: 3.0, pitches_per_pa: 0.15, two_strike_pitches: 0.20}
+  part_b: {min_two_strike_pitches: 100, min_two_strike_pa: 50, min_rho: 0.30, min_n: 15}
+  appendix_min: {usage_flag: 50, whiff: {pitches: 200, swings: 100, games: 10},
+                 run_value: {pitches: 500, pas: 100, games: 10},
+                 two_strike: {pitches: 100, games: 10, whiff_swings: 50}}
