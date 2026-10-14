@@ -124,14 +124,14 @@ EXPORT_COLS = {  # site column -> ours (rates as fractions)
 }
 
 
-def load_export(role: str) -> pd.DataFrame:
-    """The site's PR-table export for 2026 一軍例行賽 (role = 'pitcher' or 'batter')."""
-    d = raw("cpbl_site")
-    files = sorted(p for p in d.glob(f"*{role}*") if p.suffix.lower() in (".csv", ".xlsx", ".xls"))
-    if not files:
-        raise FileNotFoundError(f"no {role} export in {d}")
-    f = files[-1]
-    df = pd.read_excel(f) if f.suffix.lower() != ".csv" else pd.read_csv(f, encoding="utf-8-sig")
+def load_export(name: str) -> pd.DataFrame:
+    """One of the site's PR-table exports (原始數據, 2026 一軍例行賽) under data/raw/cpbl_site/exports/:
+    pr_pitcher_2026.xlsx (min PA 0), pr_pitcher_2026_min50 / _min100 (same table, min PA 50 / 100),
+    pr_teampitcher_2026.xlsx, pr_batter_2026.xlsx. Saved by tools/cpbl_site_export.js."""
+    f = raw("cpbl_site", "exports") / f"pr_{name}.xlsx"
+    if not f.exists():
+        raise FileNotFoundError(f)
+    df = pd.read_excel(f)
     df = df.rename(columns={c: EXPORT_COLS[c.strip()] for c in df.columns if c.strip() in EXPORT_COLS})
     for c in ("k_pct", "bb_pct", "whiff_pct", "chase_pct"):
         if c not in df:
@@ -144,6 +144,17 @@ def load_export(role: str) -> pd.DataFrame:
         if c in df:
             df[c] = pd.to_numeric(df[c], errors="coerce")
     return df
+
+
+def pitcher_export() -> pd.DataFrame:
+    """The export has no PA column: a lower bound comes from the min-PA versions of the same table
+    (100 if listed with min 100, 50 if with min 50, else 0)."""
+    e = load_export("pitcher_2026")
+    m50 = set(load_export("pitcher_2026_min50").site_name)
+    m100 = set(load_export("pitcher_2026_min100").site_name)
+    e["pa"] = np.where(e.site_name.isin(m100), 100, np.where(e.site_name.isin(m50), 50, 0))
+    e["pa_note"] = np.where(e.site_name.isin(m50) & ~e.site_name.isin(m100), "50-99 (cannot tell >= 60)", "")
+    return e
 
 
 def _league(df: pd.DataFrame, col: str, w: str = "pa") -> float:
@@ -177,7 +188,7 @@ def pitcher_cohort(exp: pd.DataFrame, ids: pd.DataFrame) -> tuple[pd.DataFrame, 
     aaa_env = milb_loader.load()
     aaa_all = pd.concat([backtest.aaa_extra(), aaa_env], ignore_index=True)
     # 2026 screen
-    e = exp[["site_name", "pa"]].merge(ids[ids.role.eq("pitcher")], on="site_name", how="inner")
+    e = ids[ids.role.eq("pitcher")].merge(exp[["site_name", "pa"]], on="site_name", how="left")
     a25 = aaa_env[aaa_env.season == p["aaa_season"]]
     rows = []
     a2 = pd.read_csv(processed("backtest_screening.csv"), dtype={"rebas_id": str})
@@ -194,6 +205,10 @@ def pitcher_cohort(exp: pd.DataFrame, ids: pd.DataFrame) -> tuple[pd.DataFrame, 
             reason = "counted in an earlier season"
         elif len(w) < p["min_aaa_tracked_pitches"]:
             reason = f"AAA {p['aaa_season']} pitches < {p['min_aaa_tracked_pitches']}"
+        elif pd.isna(r.pa):
+            reason = "no 2026 一軍 row on the site"
+        elif r.pa == 50:
+            reason = "CPBL BF 50-99 (cannot tell >= 60)"
         elif not r.pa >= p["min_cpbl_bf"]:
             reason = f"CPBL BF < {p['min_cpbl_bf']}"
         elif hand != r.throws:
@@ -214,7 +229,8 @@ def pitcher_cohort(exp: pd.DataFrame, ids: pd.DataFrame) -> tuple[pd.DataFrame, 
     new["key"] = new.mlbam_id.astype(int).astype(str)
     new = new.join(f.join(aaa_r), on="key")
     ex = exp.set_index("site_name")
-    lg26 = {c: _league(exp, c) for c in ("k_pct", "bb_pct", "whiff_pct")}
+    team = load_export("teampitcher_2026")         # league value = mean of the six club rows
+    lg26 = {c: float(team[c].mean()) for c in ("k_pct", "bb_pct", "whiff_pct")}
     new["cpbl_k_pct"] = new.site_name.map(ex.k_pct)
     new["cpbl_bb_pct"] = new.site_name.map(ex.bb_pct)
     new["cpbl_whiff_pct"] = new.site_name.map(ex.whiff_pct)
@@ -296,7 +312,8 @@ def _tests(df: pd.DataFrame, tests, rng) -> list[dict]:
 # ------------------------------------------------------------------ hitters
 def hitter_cohort(exp: pd.DataFrame, ids: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
     h = cfg()["hitter"]
-    e = exp.merge(ids[ids.role.eq("hitter")], on="site_name", how="inner")
+    exp = exp if "pa" in exp else exp.assign(pa=np.nan)      # the export has no PA column
+    e = ids[ids.role.eq("hitter")].merge(exp, on="site_name", how="left")
     pr = hitter_predictors(h["aaa_season"])
     e = e.merge(pr, on="mlbam_id", how="left")
     e["excluded"] = np.select(
@@ -312,9 +329,9 @@ def hitter_cohort(exp: pd.DataFrame, ids: pd.DataFrame) -> tuple[pd.DataFrame, p
 def run() -> dict:
     ids = identities()
     rng = np.random.default_rng(cfg()["bootstrap"]["seed"])
-    ep = load_export("pitcher")
+    ep = pitcher_export()
     try:
-        eb = load_export("batter")
+        eb = load_export("batter_2026")
     except FileNotFoundError:      # not needed when no import hitter passes the AAA screen
         eb = pd.DataFrame({"site_name": ids.loc[ids.role.eq("hitter"), "site_name"], "pa": np.nan,
                            "woba": np.nan, "k_pct": np.nan, "iso": np.nan})
@@ -339,6 +356,16 @@ def run() -> dict:
     return summ
 
 
+def _translation_rows(ols: list[dict]) -> pd.DataFrame:
+    rows = []
+    for r in ols:
+        at = {k: v for k, v in r.items() if k.startswith("at_")}
+        rows.append({"metric": r["metric"], "n": r["n"], "slope b (90% CI)": f"{r['b']:.2f} ({r['b_ci'][0]:.2f} to {r['b_ci'][1]:.2f})",
+                     "intercept a": f"{r['a']:.3f}",
+                     "AAA -> CPBL": "; ".join(f"{float(k[3:]):.0%} -> {v[0]:.1%} ({v[1]:.1%}-{v[2]:.1%})" for k, v in at.items())})
+    return pd.DataFrame(rows)
+
+
 def report(psc, pc, hsc, hc, summ) -> None:
     pcols = ["season", "source", "english_name", "aaa_bf", "baseline_score", "k_pct_adj", "bb_pct_adj", "fit", "stuff_plus",
              "cpbl_k_c", "cpbl_bb_c", "cpbl_kbb_c"]
@@ -349,7 +376,8 @@ def report(psc, pc, hsc, hc, summ) -> None:
              "(see limitations L10). 2024-25 outcomes: REBAS (資料來源：野球革命 Rebas Open Data).", "",
              f"## Pitchers (pooled n = {summ['pitchers']['n']}, by outcome season {summ['pitchers']['by_season']})", "",
              md_table(pd.DataFrame(summ["pitchers"]["tests"]), floatfmt=".2f"), "",
-             "Amendment 8 (Stuff+, S4):", "", md_table(pd.DataFrame(summ["pitchers"]["stuff_plus"]), floatfmt=".2f"), "",
+             *(["Amendment 8 (Stuff+, S4):", "", md_table(pd.DataFrame(summ["pitchers"]["stuff_plus"]), floatfmt=".2f"), ""]
+               if summ["pitchers"]["stuff_plus"] else []),
              "Descriptive (P1 by cohort):", "", md_table(pd.DataFrame(summ["pitchers"]["descriptive"]), floatfmt=".2f"), "",
              md_table(pc[[c for c in pcols if c in pc]].sort_values("baseline_score", ascending=False), floatfmt=".3f"), "",
              "Screened out (2026):", "", md_table(psc[psc.excluded.ne("")]), "",
@@ -358,8 +386,11 @@ def report(psc, pc, hsc, hc, summ) -> None:
              md_table(hc[[c for c in hcols if c in hc]].sort_values("baseline_score", ascending=False), floatfmt=".3f"), "",
              "Screened out:", "", md_table(hsc[hsc.excluded.ne("")]), "",
              "## AAA -> CPBL translation (amendment 7b item 3, descriptive; survivors only)", "",
-             md_table(pd.DataFrame(summ["translation"]["league_ratio"]), floatfmt=".3f"), "",
-             md_table(pd.DataFrame(summ["translation"]["ols"]).astype(str)), ""]
+             "League ratio (CPBL league / AAA league of the season before):", "",
+             md_table(pd.DataFrame(summ["translation"]["league_ratio"]).astype({"cpbl_season": str, "aaa_season": str}),
+                      floatfmt=".3f"), "",
+             "Cohort OLS (CPBL = a + b * AAA) and translated values (90% CI):", "",
+             md_table(_translation_rows(summ["translation"]["ols"])), ""]
     (path("reports") / "backtest_2026.md").write_text("\n".join(lines), encoding="utf-8")
 
 

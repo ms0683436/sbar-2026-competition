@@ -1,0 +1,225 @@
+{
+  "pitchers": {
+    "n": 17,
+    "by_season": {
+      "2024": 8,
+      "2025": 7,
+      "2026": 2
+    },
+    "n_with_baseline": 17,
+    "tests": [
+      {
+        "test": "P1 baseline vs centred CPBL K-BB% (primary)",
+        "n": 17,
+        "rho": 0.12745098039215688,
+        "ci_lo": -0.3118012422360249,
+        "ci_hi": 0.5173610171576164,
+        "verdict": "inconclusive"
+      },
+      {
+        "test": "P2 AAA K% vs centred CPBL K%",
+        "n": 17,
+        "rho": 0.34558823529411764,
+        "ci_lo": -0.04581188618096174,
+        "ci_hi": 0.658010642538635,
+        "verdict": "inconclusive"
+      },
+      {
+        "test": "P3 AAA BB% vs centred CPBL BB%",
+        "n": 17,
+        "rho": 0.36764705882352944,
+        "ci_lo": -0.02487109963285252,
+        "ci_hi": 0.6841314644489728,
+        "verdict": "inconclusive"
+      },
+      {
+        "test": "P4 Fit vs CPBL K-BB% residual after baseline",
+        "n": 17,
+        "rho": -0.07107843137254903,
+        "ci_lo": -0.5043882470438824,
+        "ci_hi": 0.4025113073110285,
+        "verdict": "inconclusive"
+      },
+      {
+        "test": "P5 F1 vs centred whiff% change",
+        "n": 17,
+        "rho": 0.24019607843137256,
+        "ci_lo": -0.3040504036252371,
+        "ci_hi": 0.69639419968597,
+        "verdict": "inconclusive"
+      }
+    ],
+    "descriptive": [
+      {
+        "test": "P1 baseline vs centred CPBL K-BB% (primary) — 2026 cohort",
+        "n": 2,
+        "rho": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "verdict": "too few"
+      },
+      {
+        "test": "P1 baseline vs centred CPBL K-BB% (primary) — amendment-2 cohort",
+        "n": 15,
+        "rho": 0.3321428571428571,
+        "ci_lo": -0.11408865396207177,
+        "ci_hi": 0.6875286697247707,
+        "verdict": "inconclusive"
+      }
+    ],
+    "stuff_plus": []
+  },
+  "hitters": {
+    "n": 0,
+    "tests": [
+      {
+        "test": "Q1 baseline (estimated weights) vs CPBL wOBA (primary)",
+        "n": 0,
+        "rho": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "verdict": "too few"
+      },
+      {
+        "test": "Q2 baseline (judgment weights) vs CPBL wOBA",
+        "n": 0,
+        "rho": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "verdict": "too few"
+      },
+      {
+        "test": "Q3 AAA K% vs CPBL K%",
+        "n": 0,
+        "rho": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "verdict": "too few"
+      },
+      {
+        "test": "Q4 AAA ISO vs CPBL ISO",
+        "n": 0,
+        "rho": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "verdict": "too few"
+      },
+      {
+        "test": "Q5 AAA wOBA vs CPBL wOBA",
+        "n": 0,
+        "rho": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "verdict": "too few"
+      }
+    ]
+  },
+  "translation": {
+    "league_ratio": [
+      {
+        "cpbl_season": 2024,
+        "aaa_season": 2023,
+        "k_pct": 0.7709185668279095,
+        "bb_pct": 0.6508518442776912,
+        "whiff_pct": 0.7769010121098014
+      },
+      {
+        "cpbl_season": 2025,
+        "aaa_season": 2024,
+        "k_pct": 0.7324511649129628,
+        "bb_pct": 0.6547085023582812,
+        "whiff_pct": 0.7743810039177272
+      },
+      {
+        "cpbl_season": 2026,
+        "aaa_season": 2025,
+        "k_pct": 0.7055058585071624,
+        "bb_pct": 0.7104437353173287,
+        "whiff_pct": 0.7844206150621083
+      }
+    ],
+    "ols": [
+      {
+        "metric": "K%",
+        "n": 17,
+        "a": 0.12124521056040649,
+        "b": 0.3536844884339247,
+        "b_ci": [
+          -0.09166248625995708,
+          0.7234736104975221
+        ],
+        "aaa_mean": 0.21150848297957617,
+        "cpbl_mean": 0.19605248016247337,
+        "at_0.20": [
+          0.19198210824719142,
+          0.1760791483631485,
+          0.20899769668418167
+        ],
+        "at_0.25": [
+          0.20966633266888768,
+          0.18533616781801598,
+          0.231830658954721
+        ],
+        "at_0.30": [
+          0.22735055709058388,
+          0.18360548302319446,
+          0.26552000944579035
+        ]
+      },
+      {
+        "metric": "BB%",
+        "n": 17,
+        "a": 0.04192465709498849,
+        "b": 0.2518408678797434,
+        "b_ci": [
+          0.022622119819034954,
+          0.5170566004316214
+        ],
+        "aaa_mean": 0.10392283579640847,
+        "cpbl_mean": 0.06809667425448004,
+        "at_0.06": [
+          0.0570351091677731,
+          0.042823478339430954,
+          0.07127331494747739
+        ],
+        "at_0.08": [
+          0.06207192652536797,
+          0.05127511470954543,
+          0.07274561997615886
+        ],
+        "at_0.10": [
+          0.06710874388296284,
+          0.05852307736608695,
+          0.07549529369838828
+        ]
+      },
+      {
+        "metric": "whiff%",
+        "n": 17,
+        "a": 0.06332124166464763,
+        "b": 0.6619173199915278,
+        "b_ci": [
+          0.22894783768671287,
+          0.9387749857303257
+        ],
+        "aaa_mean": 0.2284996018990105,
+        "cpbl_mean": 0.21456908577277178,
+        "at_0.22": [
+          0.20894305206278374,
+          0.1939447065258287,
+          0.22664344636697692
+        ],
+        "at_0.26": [
+          0.23541974486244488,
+          0.2127110797491689,
+          0.25885476277645414
+        ],
+        "at_0.30": [
+          0.26189643766210596,
+          0.22438579354042368,
+          0.29425401228401943
+        ]
+      }
+    ]
+  }
+}
