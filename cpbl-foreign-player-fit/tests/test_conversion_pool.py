@@ -41,3 +41,9 @@ def test_score_vs_starter_reference_matches_zscore_on_the_reference():
                       "fip": rng.normal(0, .8, 50)})
     own = baseline.score(d, "pitcher", baseline.judgment_weights("pitcher")).sort_index().baseline_score
     assert np.allclose(cp.score_vs(d, d), own)
+
+
+def test_cohort_role_effect_uses_only_the_pre_arrival_season():
+    import inspect
+    src = inspect.getsource(cp.cohort_check)
+    assert "_pitches([int(y)])" in src            # role effect and relief share: season Y only

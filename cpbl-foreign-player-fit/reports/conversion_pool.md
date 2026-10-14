@@ -10,13 +10,22 @@ AAA pitchers outside the starter pool with >= 400 tracked pitches over the two p
 | BB | 0.0021 | -0.0016 | 0.0059 |
 | HR | -0.0043 | -0.0069 | -0.0020 |
 
+Caveats: the effect is learned from pitchers who both started and relieved; applying it to pure relievers is an extrapolation, and clubs chose who could start, so the true conversion penalty for a pure reliever is plausibly larger (scores too optimistic, mainly K% and FIP; BB% unclear). The bootstrap treats pitcher-seasons as independent and the cohort check holds the adjustment fixed, so both intervals are too narrow. The 2026 list also shows a score with twice the effect (sensitivity, not registered).
+
 ## Recruitment replay, fold A (primary): as of 2024-10-13, AAA 2023-2024; positives 17, with AAA pitching 12; starter pool 217, conversion pool 425
 
-| arm | list N | positives in list | coverage | hits@10 | random@10 | hits@20 | random@20 | median pct rank | conversion positives | their median pct rank |
-|---|---|---|---|---|---|---|---|---|---|---|
-| starter | 86 | 6 | 0.50 | 1 | 0.70 | 1 | 1.40 | 0.54 | 0 |  |
-| expanded_raw | 279 | 9 | 0.75 | 0 | 0.32 | 1 | 0.65 | 0.57 | 3 | 0.54 |
-| expanded_adj | 279 | 9 | 0.75 | 0 | 0.32 | 1 | 0.65 | 0.57 | 3 | 0.56 |
+| arm | list N | positives in list | coverage | hits@10 | random@10 | hits@20 | random@20 | median pct rank |
+|---|---|---|---|---|---|---|---|---|
+| starter | 86 | 6 | 0.50 | 1 | 0.70 | 1 | 1.40 | 0.54 |
+| expanded_raw | 279 | 9 | 0.75 | 0 | 0.32 | 1 | 0.65 | 0.57 |
+| expanded_adj | 279 | 9 | 0.75 | 0 | 0.32 | 1 | 0.65 | 0.57 |
+
+Conversion-pool positives only (denominator: 3 positives in the conversion pool, any tier):
+
+| arm | conversion positives in list | coverage | hits@10 | random@10 | hits@20 | random@20 | median pct rank |
+|---|---|---|---|---|---|---|---|
+| expanded_raw | 3 | 1.00 | 0 | 0.11 | 1 | 0.22 | 0.54 |
+| expanded_adj | 3 | 1.00 | 0 | 0.11 | 1 | 0.22 | 0.56 |
 
 | name | expanded_adj | expanded_raw | starter |
 |---|---|---|---|
@@ -44,11 +53,18 @@ Role effect in this fold:
 
 ## Recruitment replay, fold B (exploratory): as of 2025-10-13, AAA 2024-2025; positives 13, with AAA pitching 9; starter pool 225, conversion pool 421
 
-| arm | list N | positives in list | coverage | hits@10 | random@10 | hits@20 | random@20 | median pct rank | conversion positives | their median pct rank |
-|---|---|---|---|---|---|---|---|---|---|---|
-| starter | 82 | 6 | 0.67 | 0 | 0.73 | 0 | 1.46 | 0.57 | 0 |  |
-| expanded_raw | 259 | 7 | 0.78 | 0 | 0.27 | 0 | 0.54 | 0.58 | 1 | 0.32 |
-| expanded_adj | 259 | 7 | 0.78 | 0 | 0.27 | 0 | 0.54 | 0.53 | 1 | 0.32 |
+| arm | list N | positives in list | coverage | hits@10 | random@10 | hits@20 | random@20 | median pct rank |
+|---|---|---|---|---|---|---|---|---|
+| starter | 82 | 6 | 0.67 | 0 | 0.73 | 0 | 1.46 | 0.57 |
+| expanded_raw | 259 | 7 | 0.78 | 0 | 0.27 | 0 | 0.54 | 0.58 |
+| expanded_adj | 259 | 7 | 0.78 | 0 | 0.27 | 0 | 0.54 | 0.53 |
+
+Conversion-pool positives only (denominator: 1 positives in the conversion pool, any tier):
+
+| arm | conversion positives in list | coverage | hits@10 | random@10 | hits@20 | random@20 | median pct rank |
+|---|---|---|---|---|---|---|---|
+| expanded_raw | 1 | 1.00 | 0 | 0.04 | 0 | 0.08 | 0.32 |
+| expanded_adj | 1 | 1.00 | 0 | 0.04 | 0 | 0.08 | 0.32 |
 
 | name | expanded_adj | expanded_raw | starter |
 |---|---|---|---|
@@ -76,27 +92,46 @@ Role effect in this fold:
 
 | test | n | rho | ci_lo | ci_hi |
 |---|---|---|---|---|
-| P1 unadjusted (amendment 7) | 17 | 0.13 | -0.32 | 0.52 |
-| P1 starter-equivalent | 17 | 0.13 | -0.29 | 0.50 |
+| P1 unadjusted (amendment 7) | 17 | 0.13 | -0.33 | 0.54 |
+| P1 starter-equivalent (role effect from the pre-arrival season) | 17 | 0.14 | -0.29 | 0.50 |
 
 ## 2026 conversion list (signable T1 + T2: 146 of 375; starter pool 178)
 
 rank_all = rank among starter + conversion pool on one scale (all tiers).
 
-| mlbam_id | name | teams | sign_tier | pitching_G | pitching_GS | IP | pitching_BF | relief_share | max_game_pitches | starting_evidence | k_pct_adj | bb_pct_adj | fip | baseline_score | baseline_score_unadjusted | rank_all |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 664192 | Joey Lucchesi | Sacramento River Cats/Salt Lake Bees | T1_free | 40 | 0 | 64.000 | 260 | 1.000 | 46.000 | none | 0.066 | -0.034 | -0.986 | 1.670 | 1.877 | 16 |
-| 547184 | Michael Kelly | Las Vegas Aviators | T1_free | 22 | 0 | 25.333 | 110 | 1.000 | 33.000 | none | 0.054 | -0.025 | -1.549 | 1.602 | 1.866 | 18 |
-| 641386 | Ben Bowden | Las Vegas Aviators | T2_expiring | 77 | 0 | 91.000 | 376 | 1.000 | 54.000 | partial | 0.055 | -0.014 | -1.014 | 1.341 | 1.603 | 29 |
-| 675919 | Nick Raquet | Memphis Redbirds/Norfolk Tides | T1_free | 49 | 0 | 61.333 | 261 | 1.000 | 36.000 | none | 0.038 | -0.039 | -1.068 | 1.337 | 1.601 | 30 |
-| 694356 | Nick Garcia | Tacoma Rainiers | T2_expiring | 41 | 1 | 56.000 | 233 | 0.953 | 48.000 | none | 0.051 | -0.017 | -1.056 | 1.324 | 1.574 | 32 |
-| 663753 | Reiss Knehr | El Paso Chihuahuas/Nashville Sounds | T2_expiring | 50 | 0 | 54.667 | 223 | 1.000 | 37.000 | none | 0.053 | -0.010 | -0.796 | 1.214 | 1.475 | 44 |
-| 672277 | Sam Carlson | Oklahoma City Comets/Sugar Land Space Cowboys | T2_expiring | 76 | 0 | 96.000 | 423 | 1.000 | 46.000 | none | 0.064 | 0.003 | -0.635 | 1.195 | 1.443 | 46 |
-| 640454 | Matt Krook | Columbus Clippers/Las Vegas Aviators/Rochester Red Wings | T2_expiring | 82 | 4 | 95.333 | 419 | 0.947 | 40.000 | none | 0.067 | 0.026 | -0.959 | 1.138 | 1.340 | 52 |
-| 682126 | Evan Reifert | Durham Bulls | T2_expiring | 77 | 3 | 87.000 | 377 | 0.975 | 47.000 | none | 0.089 | 0.026 | -0.476 | 1.100 | 1.184 | 56 |
-| 688497 | Taylor Rashi | Las Vegas Aviators/Reno Aces/St. Paul Saints | T2_expiring | 81 | 2 | 122.000 | 523 | 0.948 | 54.000 | partial | 0.033 | -0.007 | -1.043 | 0.971 | 1.222 | 69 |
-| 676831 | Kodi Whitley | Durham Bulls | T2_expiring | 40 | 0 | 52.333 | 209 | 1.000 | 35.000 | none | 0.010 | -0.059 | -0.553 | 0.951 | 1.209 | 73 |
-| 682785 | Angel Bastardo | Worcester Red Sox | T2_expiring | 40 | 0 | 54.333 | 231 | 1.000 | 47.000 | none | 0.074 | 0.030 | -0.142 | 0.938 | 1.036 | 77 |
-| 682645 | Jerming Rosario | Oklahoma City Comets | T2_expiring | 52 | 0 | 65.333 | 289 | 1.000 | 41.000 | none | 0.063 | 0.008 | 0.053 | 0.916 | 1.175 | 80 |
-| 642758 | Domingo Acevedo | Albuquerque Isotopes | T2_expiring | 8 | 6 | 31.000 | 138 | 0.203 | 98.000 | stretched | 0.048 | 0.024 | -0.851 | 0.847 | 0.902 | 89 |
-| 643361 | Kevin Herget | Gwinnett Stripers/Syracuse Mets | T1_free | 47 | 9 | 67.333 | 273 | 0.696 | 52.000 | partial | 0.009 | -0.066 | -0.036 | 0.829 | 1.010 | 91 |
+| mlbam_id | name | teams | sign_tier | pitching_G | pitching_GS | IP | pitching_BF | relief_share | max_game_pitches | starting_evidence | k_pct_adj | bb_pct_adj | fip | baseline_score | baseline_score_unadjusted | baseline_score_2x_effect | rank_all |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 664192 | Joey Lucchesi | Sacramento River Cats/Salt Lake Bees | T1_free | 40 | 0 | 64.000 | 260 | 1.000 | 46.000 | none | 0.066 | -0.034 | -0.986 | 1.670 | 1.877 | 1.410 | 16 |
+| 547184 | Michael Kelly | Las Vegas Aviators | T1_free | 22 | 0 | 25.333 | 110 | 1.000 | 33.000 | none | 0.054 | -0.025 | -1.549 | 1.602 | 1.866 | 1.335 | 18 |
+| 641386 | Ben Bowden | Las Vegas Aviators | T2_expiring | 77 | 0 | 91.000 | 376 | 1.000 | 54.000 | partial | 0.055 | -0.014 | -1.014 | 1.341 | 1.603 | 1.080 | 29 |
+| 675919 | Nick Raquet | Memphis Redbirds/Norfolk Tides | T1_free | 49 | 0 | 61.333 | 261 | 1.000 | 36.000 | none | 0.038 | -0.039 | -1.068 | 1.337 | 1.601 | 1.072 | 30 |
+| 694356 | Nick Garcia | Tacoma Rainiers | T2_expiring | 41 | 1 | 56.000 | 233 | 0.953 | 48.000 | none | 0.051 | -0.017 | -1.056 | 1.324 | 1.574 | 1.074 | 32 |
+| 663753 | Reiss Knehr | El Paso Chihuahuas/Nashville Sounds | T2_expiring | 50 | 0 | 54.667 | 223 | 1.000 | 37.000 | none | 0.053 | -0.010 | -0.796 | 1.214 | 1.475 | 0.954 | 44 |
+| 672277 | Sam Carlson | Oklahoma City Comets/Sugar Land Space Cowboys | T2_expiring | 76 | 0 | 96.000 | 423 | 1.000 | 46.000 | none | 0.064 | 0.003 | -0.635 | 1.195 | 1.443 | 0.926 | 46 |
+| 640454 | Matt Krook | Columbus Clippers/Las Vegas Aviators/Rochester Red Wings | T2_expiring | 82 | 4 | 95.333 | 419 | 0.947 | 40.000 | none | 0.067 | 0.026 | -0.959 | 1.138 | 1.340 | 0.884 | 52 |
+| 682126 | Evan Reifert | Durham Bulls | T2_expiring | 77 | 3 | 87.000 | 377 | 0.975 | 47.000 | none | 0.089 | 0.026 | -0.476 | 1.100 | 1.184 | 1.015 | 56 |
+| 688497 | Taylor Rashi | Las Vegas Aviators/Reno Aces/St. Paul Saints | T2_expiring | 81 | 2 | 122.000 | 523 | 0.948 | 54.000 | partial | 0.033 | -0.007 | -1.043 | 0.971 | 1.222 | 0.719 | 69 |
+| 676831 | Kodi Whitley | Durham Bulls | T2_expiring | 40 | 0 | 52.333 | 209 | 1.000 | 35.000 | none | 0.010 | -0.059 | -0.553 | 0.951 | 1.209 | 0.693 | 73 |
+| 682785 | Angel Bastardo | Worcester Red Sox | T2_expiring | 40 | 0 | 54.333 | 231 | 1.000 | 47.000 | none | 0.074 | 0.030 | -0.142 | 0.938 | 1.036 | 0.674 | 77 |
+| 682645 | Jerming Rosario | Oklahoma City Comets | T2_expiring | 52 | 0 | 65.333 | 289 | 1.000 | 41.000 | none | 0.063 | 0.008 | 0.053 | 0.916 | 1.175 | 0.647 | 80 |
+| 642758 | Domingo Acevedo | Albuquerque Isotopes | T2_expiring | 8 | 6 | 31.000 | 138 | 0.203 | 98.000 | stretched | 0.048 | 0.024 | -0.851 | 0.847 | 0.902 | 0.793 | 89 |
+| 643361 | Kevin Herget | Gwinnett Stripers/Syracuse Mets | T1_free | 47 | 9 | 67.333 | 273 | 0.696 | 52.000 | partial | 0.009 | -0.066 | -0.036 | 0.829 | 1.010 | 0.649 | 91 |
+
+With twice the role effect, 15 of these 15 stay in the top 15.
+
+Signable conversion candidates with starting evidence 'stretched' (>= 75 pitches in one AAA game):
+
+| mlbam_id | name | sign_tier | pitching_G | pitching_GS | max_game_pitches | baseline_score | baseline_score_2x_effect | rank_all |
+|---|---|---|---|---|---|---|---|---|
+| 642758 | Domingo Acevedo | T2_expiring | 8 | 6 | 98.000 | 0.847 | 0.793 | 89 |
+| 689476 | Jace Beck | T2_expiring | 11 | 9 | 89.000 | 0.286 | 0.255 | 205 |
+| 686844 | Ben Wereski | T1_free | 9 | 9 | 101.000 | 0.135 | 0.135 | 243 |
+| 695247 | Jagger Haynes | T2_expiring | 10 | 9 | 88.000 | -0.228 | -0.245 | 341 |
+| 681673 | Kohl Franklin | T2_expiring | 8 | 7 | 83.000 | -0.236 | -0.255 | 343 |
+| 592288 | Kent Emanuel | T2_expiring | 6 | 5 | 100.000 | -0.278 | -0.318 | 351 |
+| 800550 | Miguel Cienfuegos | T1_free | 55 | 8 | 90.000 | -0.331 | -0.532 | 363 |
+| 669294 | Paul Campbell | T1_free | 18 | 9 | 88.000 | -0.386 | -0.483 | 374 |
+| 672712 | Luis Palacios | T2_expiring | 14 | 7 | 90.000 | -0.449 | -0.550 | 389 |
+| 683568 | Jairo Iriarte | T2_expiring | 63 | 5 | 85.000 | -0.585 | -0.803 | 421 |
+
+Starting history covers AAA in the two pool seasons only; earlier MLB or AAA starts are not counted.

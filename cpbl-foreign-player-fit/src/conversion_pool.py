@@ -155,7 +155,8 @@ def run_fold(name: str, f: dict, rng) -> dict:
     t = signability.tiers(df.mlbam_id, f["as_of"])
     res = {"as_of": f["as_of"], "seasons": f["seasons"], "primary": f["primary"], "role_effect": eff,
            "positives": len(pos), "positives_with_aaa": len(reach),
-           "pool_sizes": {"starter": int(df.starter_pool.sum()), "conversion": int(df.conversion_pool.sum())}}
+           "pool_sizes": {"starter": int(df.starter_pool.sum()), "conversion": int(df.conversion_pool.sum())},
+           "conversion_reachable": int(df.loc[df.conversion_pool, "mlbam_id"].isin(reach).sum())}
     detail = []
     for arm in cfg()["arms"]:
         d = scored(df, s, int(max(f["seasons"])), eff if arm == "expanded_adj" else None)
@@ -167,8 +168,13 @@ def run_fold(name: str, f: dict, rng) -> dict:
                                                    keep, set(pos.mlbam_id), len(reach), config()["amendment6"]["backtest"]["ks"])
         hit = hit.merge(d[["mlbam_id", "conversion_pool", "starting_evidence"]], on="mlbam_id", how="left")
         conv_hit = hit[hit.conversion_pool.fillna(False).astype(bool)]
+        n_conv_reach = int(df.loc[df.conversion_pool, "mlbam_id"].isin(reach).sum())   # any tier
         r["conversion_positives_in_list"] = int(len(conv_hit))
+        r["conversion_coverage"] = len(conv_hit) / n_conv_reach if n_conv_reach else None
         r["conversion_median_percentile"] = float(np.median(conv_hit.list_rank / r["N"])) if len(conv_hit) else None
+        for k in config()["amendment6"]["backtest"]["ks"]:
+            r[f"conversion_hits@{k}"] = int((conv_hit.list_rank <= k).sum())
+            r[f"conversion_random@{k}"] = round(k * len(conv_hit) / r["N"], 2) if r["N"] else None
         miss = pos[pos.mlbam_id.isin(reach) & ~pos.mlbam_id.isin(hit.mlbam_id)]
         why = d.set_index("mlbam_id")
         r["missed"] = {n: ("not in pool" if m not in why.index else str(why.sign_tier.get(m)))
@@ -188,12 +194,13 @@ def cohort_check(rng) -> list[dict]:
     coh = pd.read_csv(f)
     adj = []
     for y in sorted(coh.aaa_season.unique()):
-        seasons = [int(y), int(y) + 1]
-        a = recruitment_backtest._pitches(seasons)
-        app = appearances(a)
+        # role effect and relief share from the pre-arrival AAA season only (no outcome-year data);
+        # park factors stay as amendment 7 registered them ([Y, Y + 1])
+        app = appearances(recruitment_backtest._pitches([int(y)]))
         eff = role_effect(app, rng)
-        usage = pitcher_usage(app[app.season == y])
-        pf = park.factors_for(seasons, a)
+        usage = pitcher_usage(app)
+        seasons = [int(y), int(y) + 1]
+        pf = park.factors_for(seasons, recruitment_backtest._pitches(seasons))
         s = baseline_weights.fetch("pitching", int(y), pf=pf)
         df = milb_candidates._combine(s, [c for c in milb_candidates.PITCH_SUM if c in s] + ["outs"], "pitching_BF")
         df["IP"] = df.outs / 3
@@ -209,7 +216,8 @@ def cohort_check(rng) -> list[dict]:
     coh.to_csv(processed("conversion_cohort.csv"), index=False)
     b = cfg()["bootstrap"]
     out = []
-    for label, x in (("P1 unadjusted (amendment 7)", "baseline_score"), ("P1 starter-equivalent", "baseline_score_adj")):
+    for label, x in (("P1 unadjusted (amendment 7)", "baseline_score"),
+                     ("P1 starter-equivalent (role effect from the pre-arrival season)", "baseline_score_adj")):
         est, lo, hi = backtest.boot_ci(coh, x, "cpbl_kbb_c", b["draws"], b["ci"], rng)
         out.append({"test": label, "n": int(coh[[x, "cpbl_kbb_c"]].dropna().shape[0]), "rho": est, "ci_lo": lo, "ci_hi": hi})
     return out
@@ -228,12 +236,16 @@ def list_2026(rng) -> tuple[pd.DataFrame, dict]:
     d = scored(df, s, int(max(seasons)), eff)
     raw = scored(df, s, int(max(seasons)), None)
     d["baseline_score_unadjusted"] = raw.baseline_score.to_numpy()
+    # sensitivity (not registered): pure relievers may convert worse than the swingmen the effect is
+    # learned from, so also score with twice the effect
+    twice = {k: {"effect": 2 * v["effect"]} for k, v in eff.items() if k in RATES}
+    d["baseline_score_2x_effect"] = scored(df, s, int(max(seasons)), twice).baseline_score.to_numpy()
     t = signability.tiers(d.mlbam_id)
     d = d.merge(t[["mlbam_id", "sign_tier", "signable"]], on="mlbam_id", how="left")
     d["rank_all"] = d.baseline_score.rank(ascending=False, method="first").astype(int)
     cols = ["mlbam_id", "name", "teams", "starter_pool", "conversion_pool", "sign_tier", "signable", "pitching_G",
             "pitching_GS", "IP", "pitching_BF", "relief_share", "max_game_pitches", "starting_evidence", "k_pct_adj",
-            "bb_pct_adj", "fip", "baseline_score", "baseline_score_unadjusted", "rank_all"]
+            "bb_pct_adj", "fip", "baseline_score", "baseline_score_unadjusted", "baseline_score_2x_effect", "rank_all"]
     return d[cols].sort_values("rank_all"), eff
 
 
@@ -263,7 +275,13 @@ def report(out: dict, lst: pd.DataFrame) -> None:
          "the amendment-5 baseline against the starter pool's mean and SD after a starter-equivalent adjustment. "
          "The primary picks stay with the starter pool. Backtest folds were already inspected (exploratory).", "",
          f"## Role effect, AAA 2025-26 (n = {out['role_effect_2025_2026']['n_pitcher_seasons']} pitcher-seasons with >= 30 BF in both roles)", "",
-         md_table(_eff_rows(out["role_effect_2025_2026"]), ".4f"), ""]
+         md_table(_eff_rows(out["role_effect_2025_2026"]), ".4f"), "",
+         "Caveats: the effect is learned from pitchers who both started and relieved; applying it to pure "
+         "relievers is an extrapolation, and clubs chose who could start, so the true conversion penalty for "
+         "a pure reliever is plausibly larger (scores too optimistic, mainly K% and FIP; BB% unclear). The "
+         "bootstrap treats pitcher-seasons as independent and the cohort check holds the adjustment fixed, so "
+         "both intervals are too narrow. The 2026 list also shows a score with twice the effect (sensitivity, "
+         "not registered).", ""]
     for k, r in out["folds"].items():
         L += [f"## Recruitment replay, fold {k} ({'primary' if r['primary'] else 'exploratory'}): as of {r['as_of']}, "
               f"AAA {r['seasons'][0]}-{r['seasons'][-1]}; positives {r['positives']}, with AAA pitching {r['positives_with_aaa']}; "
@@ -272,9 +290,15 @@ def report(out: dict, lst: pd.DataFrame) -> None:
                  "coverage": r[arm]["coverage"], "hits@10": r[arm]["hits@10"], "random@10": r[arm]["random@10"],
                  "hits@20": r[arm]["hits@20"], "random@20": r[arm]["random@20"],
                  "median pct rank": r[arm]["median_percentile"],
-                 "conversion positives": r[arm]["conversion_positives_in_list"],
-                 "their median pct rank": r[arm]["conversion_median_percentile"]} for arm in cfg()["arms"]]
+                 } for arm in cfg()["arms"]]
         L += [md_table(pd.DataFrame(rows), ".2f"), ""]
+        sub = [{"arm": arm, "conversion positives in list": r[arm]["conversion_positives_in_list"],
+                "coverage": r[arm]["conversion_coverage"], "hits@10": r[arm]["conversion_hits@10"],
+                "random@10": r[arm]["conversion_random@10"], "hits@20": r[arm]["conversion_hits@20"],
+                "random@20": r[arm]["conversion_random@20"], "median pct rank": r[arm]["conversion_median_percentile"]}
+               for arm in cfg()["arms"] if arm != "starter"]
+        L += [f"Conversion-pool positives only (denominator: {r['conversion_reachable']} positives in the conversion pool, any tier):", "",
+              md_table(pd.DataFrame(sub), ".2f"), ""]
         det = pd.DataFrame(r["detail"])
         if len(det):
             L += [md_table(det.pivot_table(index="name", columns="arm", values="list_rank").reset_index(), ".0f"), ""]
@@ -290,6 +314,15 @@ def report(out: dict, lst: pd.DataFrame) -> None:
     L += [f"## 2026 conversion list (signable T1 + T2: {p['conversion_signable']} of {p['conversion']}; starter pool {p['starter']})", "",
           "rank_all = rank among starter + conversion pool on one scale (all tiers).", "",
           md_table(top.drop(columns=["starter_pool", "conversion_pool", "signable"]), ".3f"), ""]
+    sig = lst[lst.conversion_pool & lst.signable.fillna(False).astype(bool)]
+    t15 = set(sig.nlargest(15, "baseline_score").mlbam_id)
+    t15x = set(sig.nlargest(15, "baseline_score_2x_effect").mlbam_id)
+    st = sig[sig.starting_evidence.eq("stretched")].head(10)
+    L += [f"With twice the role effect, {len(t15 & t15x)} of these 15 stay in the top 15.", "",
+          "Signable conversion candidates with starting evidence 'stretched' (>= 75 pitches in one AAA game):", "",
+          md_table(st[["mlbam_id", "name", "sign_tier", "pitching_G", "pitching_GS", "max_game_pitches",
+                       "baseline_score", "baseline_score_2x_effect", "rank_all"]], ".3f"), "",
+          "Starting history covers AAA in the two pool seasons only; earlier MLB or AAA starts are not counted.", ""]
     (path("reports") / "conversion_pool.md").write_text("\n".join(L), encoding="utf-8")
 
 
