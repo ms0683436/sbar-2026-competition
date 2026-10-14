@@ -17,7 +17,7 @@ Outdoor temperature quantiles (F): 0.1: 60, 0.25: 71, 0.5: 80, 0.75: 86, 0.9: 92
 | whiff_pct | 160 | -0.03 | -0.16 | 0.10 | fail | False |
 | velo | 217 | 0.10 | -0.02 | 0.21 | fail | False |
 
-League mean split (hot minus other, centred; K% and whiff% as fractions, velocity in mph):
+Mean split over qualifying pitchers (hot minus other, centred; K% and whiff% as fractions, velocity in mph; an average of pitcher splits, not a pooled league contrast):
 
 | split | 2025 | 2026 |
 |---|---|---|
@@ -33,10 +33,33 @@ League mean split (hot minus other, centred; K% and whiff% as fractions, velocit
 | whiff_pct | 247 | -0.18 | -0.28 | -0.07 | fail | False |
 | velo | 291 | 0.16 | 0.06 | 0.26 | fail | False |
 
-League mean split (hot minus other, centred; K% and whiff% as fractions, velocity in mph):
+Mean split over qualifying pitchers (hot minus other, centred; K% and whiff% as fractions, velocity in mph; an average of pitcher splits, not a pooled league contrast):
 
 | split | 2025 | 2026 |
 |---|---|---|
 | k_pct | -0.0069 | -0.0021 |
 | whiff_pct | -0.0047 | -0.0019 |
 | velo | 0.1933 | 0.1433 |
+
+## Exploratory checks (not registered)
+
+Outdoor readings below 32 F (implausible for an AAA season game): 6 games. Primary test without them:
+
+| split | n | rho | ci_lo | ci_hi | verdict | >= 0.5 |
+|---|---|---|---|---|---|---|
+| k_pct | 137 | -0.02 | -0.16 | 0.13 | fail | False |
+| whiff_pct | 160 | -0.02 | -0.16 | 0.11 | fail | False |
+| velo | 217 | 0.10 | -0.02 | 0.23 | fail | False |
+
+Within-season noise ceiling: each pitcher-season's games alternately split into two halves (hot and other separately, minimums halved); Pearson between the halves' splits and the Spearman-Brown full-season reliability. A split cannot correlate across seasons much above this.
+
+| split season | n | half_r | full_season_reliability |
+|---|---|---|---|
+| k_pct 2025 | 352.00 | -0.01 | -0.02 |
+| k_pct 2026 | 330.00 | 0.05 | 0.10 |
+| whiff_pct 2025 | 396.00 | 0.02 | 0.05 |
+| whiff_pct 2026 | 363.00 | 0.09 | 0.17 |
+| velo 2025 | 487.00 | 0.34 | 0.50 |
+| velo 2026 | 451.00 | 0.37 | 0.54 |
+
+Suspended games resumed on a later day keep the first day's weather and month (verified for game 781382; not counted). The registration preceded the bulk weather download and every split; one schedule day (2025-07-01) had been fetched before it, only to confirm the weather field exists.

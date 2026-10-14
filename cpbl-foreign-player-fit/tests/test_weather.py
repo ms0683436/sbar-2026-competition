@@ -19,3 +19,10 @@ def test_split_needs_minimum_in_both_groups():
                      "whiff": False, "pitch_type_raw": "SL", "velo_mph": 85.0})
     sp = weather.splits(pd.DataFrame(rows), 85)
     assert sp.empty or sp.k_pct.isna().all()
+
+
+def test_reliability_handles_one_season_and_constant_splits():
+    sp = pd.DataFrame({"season": [2025] * 4, "pitcher_id": list("abcd"), "k_pct": [.1, .2, .3, .4],
+                       "whiff_pct": [.0] * 4, "velo": [1.0] * 4})
+    out = weather.reliability(sp, np.random.default_rng(0))
+    assert all(r["verdict"] == "too few" for r in out)

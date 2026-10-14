@@ -107,5 +107,104 @@
         "2026": 0.143338306515785
       }
     }
+  },
+  "suspect_temps": [
+    {
+      "game_pk": 779575,
+      "season": 2025,
+      "temp_f": 5.0,
+      "condition": "Sunny"
+    },
+    {
+      "game_pk": 779841,
+      "season": 2025,
+      "temp_f": 7.0,
+      "condition": "Overcast"
+    },
+    {
+      "game_pk": 779599,
+      "season": 2025,
+      "temp_f": 10.0,
+      "condition": "Clear"
+    },
+    {
+      "game_pk": 816976,
+      "season": 2026,
+      "temp_f": 31.0,
+      "condition": "Sunny"
+    },
+    {
+      "game_pk": 816341,
+      "season": 2026,
+      "temp_f": 7.0,
+      "condition": "Partly Cloudy"
+    },
+    {
+      "game_pk": 816387,
+      "season": 2026,
+      "temp_f": 8.0,
+      "condition": "Partly Cloudy"
+    }
+  ],
+  "exploratory_no_suspect_temps": [
+    {
+      "split": "k_pct",
+      "n": 137,
+      "rho": -0.015979987678981462,
+      "ci_lo": -0.15956553718964095,
+      "ci_hi": 0.12552534959239348,
+      "verdict": "fail",
+      ">= 0.5": false
+    },
+    {
+      "split": "whiff_pct",
+      "n": 160,
+      "rho": -0.022805578342904018,
+      "ci_lo": -0.15544052975790446,
+      "ci_hi": 0.10744294149746421,
+      "verdict": "fail",
+      ">= 0.5": false
+    },
+    {
+      "split": "velo",
+      "n": 217,
+      "rho": 0.1033084833025644,
+      "ci_lo": -0.015527825439776334,
+      "ci_hi": 0.2252590543260671,
+      "verdict": "fail",
+      ">= 0.5": false
+    }
+  ],
+  "exploratory_split_half": {
+    "k_pct 2025": {
+      "n": 352,
+      "half_r": -0.008159992701801087,
+      "full_season_reliability": -0.016454251979669876
+    },
+    "k_pct 2026": {
+      "n": 330,
+      "half_r": 0.0548857089095068,
+      "full_season_reliability": 0.10406001038016749
+    },
+    "whiff_pct 2025": {
+      "n": 396,
+      "half_r": 0.024156388878335426,
+      "full_season_reliability": 0.04717324256462766
+    },
+    "whiff_pct 2026": {
+      "n": 363,
+      "half_r": 0.09053460893001014,
+      "full_season_reliability": 0.16603711278606584
+    },
+    "velo 2025": {
+      "n": 487,
+      "half_r": 0.3364422365542601,
+      "full_season_reliability": 0.5034893800149669
+    },
+    "velo 2026": {
+      "n": 451,
+      "half_r": 0.37189247258652863,
+      "full_season_reliability": 0.5421597975319052
+    }
   }
 }

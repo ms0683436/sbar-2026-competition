@@ -102,8 +102,9 @@ def reliability(sp: pd.DataFrame, rng) -> list[dict]:
     y0, y1 = c["seasons"]
     res = []
     for m in ("k_pct", "whiff_pct", "velo"):
-        w = sp.pivot_table(index="pitcher_id", columns="season", values=m).dropna()
-        if len(w) < 3:
+        w = (sp.pivot_table(index="pitcher_id", columns="season", values=m)
+             .reindex(columns=[y0, y1]).dropna())
+        if len(w) < 3 or w[y0].nunique() < 2 or w[y1].nunique() < 2:
             res.append({"split": m, "n": len(w), "rho": np.nan, "ci_lo": np.nan, "ci_hi": np.nan, "verdict": "too few"})
             continue
         df = w.rename(columns={y0: "a", y1: "b"})
@@ -112,6 +113,34 @@ def reliability(sp: pd.DataFrame, rng) -> list[dict]:
                     "verdict": "pass" if est >= c["pass_rho"] else "fail",
                     f">= {c['report_rho']}": bool(est >= c["report_rho"])})
     return res
+
+
+def split_half(a: pd.DataFrame, hot_f: float) -> dict:
+    """Exploratory noise check (not registered): games of each pitcher-season alternately
+    assigned to two halves within the hot and the other group; Pearson between the halves'
+    splits (minimums halved), then Spearman-Brown to full season."""
+    a = a.copy()
+    a["hot"] = a.temp_f >= hot_f
+    order = a.drop_duplicates(["season", "pitcher_id", "game_pk"]).sort_values("date")
+    order["half"] = order.groupby(["season", "pitcher_id", "hot"]).cumcount() % 2
+    a = a.merge(order[["season", "pitcher_id", "game_pk", "half"]], on=["season", "pitcher_id", "game_pk"])
+    mins = cfg()["min_each_group"]
+    halved = {"bf": mins["bf"] // 2, "swings": mins["swings"] // 2, "fastballs": mins["fastballs"] // 2}
+    old = cfg()["min_each_group"]
+    out = {}
+    try:
+        config()["amendment10"]["min_each_group"] = halved
+        h = [splits(a[a.half == k], hot_f).set_index(["season", "pitcher_id"]) for k in (0, 1)]
+    finally:
+        config()["amendment10"]["min_each_group"] = old
+    for m in ("k_pct", "whiff_pct", "velo"):
+        for y in cfg()["seasons"]:
+            j = pd.concat([h[0][m], h[1][m]], axis=1, keys=["a", "b"]).dropna()
+            j = j[j.index.get_level_values("season") == y]
+            r = float(j.a.corr(j.b)) if len(j) > 2 else np.nan
+            out[f"{m} {y}"] = {"n": int(len(j)), "half_r": r,
+                               "full_season_reliability": 2 * r / (1 + r) if r == r and r > -1 else np.nan}
+    return out
 
 
 def league_effect(sp: pd.DataFrame) -> dict:
@@ -131,6 +160,12 @@ def run() -> dict:
         if hot == cfg()["hot_f"]:
             sp.to_csv(processed("weather_splits.csv"), index=False)
         out[f"hot_{hot}F"] = {"reliability": reliability(sp, rng), "league_mean_split": league_effect(sp)}
+    # exploratory (not registered): implausible readings dropped; within-season noise ceiling
+    sus = w[w.outdoor & (w.temp_f < 32)]
+    out["suspect_temps"] = sus[["game_pk", "season", "temp_f", "condition"]].to_dict(orient="records")
+    sp = splits(p[~p.game_pk.isin(sus.game_pk)], cfg()["hot_f"])
+    out["exploratory_no_suspect_temps"] = reliability(sp, rng)
+    out["exploratory_split_half"] = split_half(p, cfg()["hot_f"])
     processed("weather_summary.json").write_text(json.dumps(out, indent=2, ensure_ascii=False))
     report(out)
     return out
@@ -150,8 +185,19 @@ def report(out: dict) -> None:
             continue
         L += [f"## {k.replace('_', ' ')}{' (primary)' if k == f'hot_{c['hot_f']}F' else ' (sensitivity)'}", "",
               md_table(pd.DataFrame(v["reliability"]), ".2f"), "",
-              "League mean split (hot minus other, centred; K% and whiff% as fractions, velocity in mph):", "",
+              "Mean split over qualifying pitchers (hot minus other, centred; K% and whiff% as fractions, "
+              "velocity in mph; an average of pitcher splits, not a pooled league contrast):", "",
               md_table(pd.DataFrame(v["league_mean_split"]).T.reset_index(names="split"), ".4f"), ""]
+    L += ["## Exploratory checks (not registered)", "",
+          f"Outdoor readings below 32 F (implausible for an AAA season game): {len(out['suspect_temps'])} games. "
+          "Primary test without them:", "", md_table(pd.DataFrame(out["exploratory_no_suspect_temps"]), ".2f"), "",
+          "Within-season noise ceiling: each pitcher-season's games alternately split into two halves (hot and "
+          "other separately, minimums halved); Pearson between the halves' splits and the Spearman-Brown full-season "
+          "reliability. A split cannot correlate across seasons much above this.", "",
+          md_table(pd.DataFrame(out["exploratory_split_half"]).T.reset_index(names="split season"), ".2f"), "",
+          "Suspended games resumed on a later day keep the first day's weather and month (verified for game 781382; "
+          "not counted). The registration preceded the bulk weather download and every split; one schedule day "
+          "(2025-07-01) had been fetched before it, only to confirm the weather field exists.", ""]
     (path("reports") / "weather.md").write_text("\n".join(L), encoding="utf-8")
 
 
