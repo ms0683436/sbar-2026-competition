@@ -138,11 +138,12 @@ def _model() -> HistGradientBoostingRegressor:
     return HistGradientBoostingRegressor(**cfg()["model"])
 
 
-def fit_predict() -> tuple[pd.DataFrame, dict]:
-    """Per-pitch predicted run value for every predict season (2025 out-of-fold)."""
+def fit_predict(predict_seasons=None) -> tuple[pd.DataFrame, dict]:
+    """Per-pitch predicted run value for every predict season (2025 out-of-fold). Everything but
+    the 2025 training is within season, so adding a season does not change the other seasons."""
     c = cfg()
     tr_y = c["train_season"]
-    seasons = sorted(set(c["predict_seasons"]) | {tr_y})
+    seasons = sorted(set(predict_seasons or c["predict_seasons"]) | {tr_y})
     a = pitches(seasons)
     off = park_offsets(a)
     a = fastball_diffs(adjust(a, off))

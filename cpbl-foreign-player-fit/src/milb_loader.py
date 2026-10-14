@@ -25,6 +25,7 @@ import pandas as pd
 
 from . import park, statsapi_pbp
 from .common import config, processed, raw, snapshot
+from . import pitch_schema
 from .pitch_schema import finalize
 
 USECOLS = [
@@ -148,7 +149,7 @@ def _inputs_newer_than(out) -> bool:
 def load(force: bool = False) -> pd.DataFrame:
     out = processed("aaa_pitches.parquet")
     if out.exists() and not force and not _inputs_newer_than(out):
-        return pd.read_parquet(out)
+        return pitch_schema.refresh_woba(pd.read_parquet(out))
     audits, frames = [], []
     api = statsapi_pbp.read_all(USECOLS + statsapi_pbp.PRE_COUNT)
     api_year = pd.to_datetime(api.game_date).dt.year if len(api) else pd.Series(dtype=int)

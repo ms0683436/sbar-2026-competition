@@ -192,8 +192,13 @@ def test_b(r: dict, P: pd.DataFrame, H: pd.DataFrame, reps: int | None = None) -
     # (2025-26) and the 2026 game logs behind the baseline, so a resampled game moves
     # baseline and Fit together. Game ids are compared as strings (logs store integers).
     plogs["game_id"], hlogs["game_id"] = plogs.game_id.astype(str), hlogs.game_id.astype(str)
+    a13 = "amendment13" in config()
+    if a13:                              # amendment 13: Stuff+ re-weighted with the same AAA games
+        from . import stuff_rank
+        sums = stuff_rank.game_sums()
     aaa_games = pd.unique(np.concatenate([t[k].game_id.astype(str).unique() for k in ("env_aaa", "pit", "hit", "hand_hit")]
-                                         + [plogs.game_id.unique(), hlogs.game_id.unique()]))
+                                         + [plogs.game_id.unique(), hlogs.game_id.unique()]
+                                         + ([sums.game_pk.astype(str).unique()] if a13 else [])))
     ch = config()["fit"]["combined_heuristic"]
     store = {k: [] for k in ("p_fit", "p_comb", "p_base", "h_fit", "h_comb", "h_base")}
     for _ in range(reps):
@@ -205,8 +210,14 @@ def test_b(r: dict, P: pd.DataFrame, H: pd.DataFrame, reps: int | None = None) -
         hfit = zscore(hf.fit_total, 2.5).values
         pb = baseline_boot("pitcher", Pt, plogs, wa).reindex(Pt.mlbam_id).values
         hb = baseline_boot("hitter", Ht, hlogs, wa).reindex(Ht.mlbam_id).values
+        if a13:
+            st = stuff_rank.candidate_stuff(sums, wa).set_index("pitcher_id").stuff_plus
+            pstuff = Pt.mlbam_id.map(st).reset_index(drop=True)
         for key, f, b in (("p", pfit, pb), ("h", hfit, hb)):
-            comb = ch["baseline"] * zscore(pd.Series(b)).values + ch["fit"] * np.nan_to_num(f)
+            if key == "p" and a13:
+                comb = stuff_rank.combined(pd.Series(b), pstuff, pd.Series(f)).values
+            else:
+                comb = ch["baseline"] * zscore(pd.Series(b)).values + ch["fit"] * np.nan_to_num(f)
             store[f"{key}_fit"].append(np.asarray(f, dtype=float))
             store[f"{key}_base"].append(np.asarray(b, dtype=float))
             store[f"{key}_comb"].append(np.asarray(comb, dtype=float))

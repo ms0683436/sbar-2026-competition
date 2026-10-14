@@ -335,6 +335,17 @@ def run(baseline: dict, cpbl=None, aaa=None) -> dict:
         D.loc[m, "baseline_rank_tracked"] = D.loc[m, "baseline_score"].rank(ascending=False, method="first")
         D.loc[m, "combined_heuristic"] = ch["baseline"] * zscore(D.loc[m, "baseline_score"]) + ch["fit"] * D.loc[m, "fit_score"]
         D.loc[m, "combined_rank"] = D.loc[m, "combined_heuristic"].rank(ascending=False, method="first")
+    if "amendment13" in config():        # Stuff+ enters the pitcher ranking (amendment 13)
+        from . import stuff_rank
+        st = stuff_rank.candidate_stuff(stuff_rank.game_sums()).set_index("pitcher_id")
+        P["stuff_plus"] = P.mlbam_id.map(st.stuff_plus)
+        P["stuff_pitches"] = P.mlbam_id.map(st.stuff_pitches)
+        m = P.fit_available
+        P.loc[m, "combined_a6"] = P.loc[m, "combined_heuristic"]
+        P.loc[m, "combined_rank_a6"] = P.loc[m, "combined_rank"]
+        P.loc[m, "combined_heuristic"] = stuff_rank.combined(P.loc[m, "baseline_score"], P.loc[m, "stuff_plus"],
+                                                             P.loc[m, "fit_score"])
+        P.loc[m, "combined_rank"] = P.loc[m, "combined_heuristic"].rank(ascending=False, method="first")
     P = P.sort_values(["fit_available", "combined_rank"], ascending=[False, True])
     H = H.sort_values(["fit_available", "combined_rank"], ascending=[False, True])
     P.drop(columns="pid").to_csv(processed("pitcher_fit_results.csv"), index=False)
