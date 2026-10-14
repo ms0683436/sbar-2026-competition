@@ -555,3 +555,42 @@ amendment9:
   flags: {stretched_min_pitches: 75, partial_min_pitches: 50}
   arms: [starter, expanded_raw, expanded_adj]
   bootstrap: {draws: 2000, ci: 0.90, seed: 20261017}
+
+# AMENDMENT 10 (2026-10-14; committed BEFORE any weather value was downloaded or any split
+# computed). Johnny: 「做氣候」. Question: do some AAA pitchers do better or worse in hot games
+# in a way that repeats from one season to the next? CPBL is hot and humid most of the season
+# (Taipei Dome excepted), so a stable personal heat split could matter for fit. Park factors
+# already absorb each home park's average climate; what is untested is individual adaptation.
+# Data: statsapi AAA schedule with hydrate=weather (src/weather.py): per game temperature (F),
+#   condition, wind; no humidity. Games whose condition says Dome or Roof Closed are dropped.
+# Hot game: temperature >= hot_f (85 F = 29.4 C, about a CPBL summer night); "other" = every
+#   other outdoor game with a temperature. Sensitivity: 80 F.
+# Per pitcher-season, on AAA pitch data, three splits (hot minus other):
+#   K%        SO / BF
+#   whiff%    whiffs / swings (bunts excluded)
+#   velocity  mean release speed of his FF + SI
+#   Before splitting, every PA / swing / pitch outcome is centred on the season's league mean
+#   for its home club and for its calendar month (additive: value - club mean - month mean +
+#   season mean), so the split is not just "hot parks" or "summer".
+#   Minimum per pitcher-season: >= 40 BF in each group (K%), >= 60 swings in each group
+#   (whiff%), >= 40 FF + SI in each group (velocity).
+# Test: Spearman of the 2025 split vs the 2026 split over pitchers meeting the minimum in both
+#   seasons, 90% bootstrap CI over pitchers. Pass bar 0.30, the same reliability bar the
+#   project already uses (hitter Fit, amendment 1): below it a split mostly reflects noise and
+#   would add more error than signal to a score that ranks a few dozen pitchers. Whether 0.50
+#   is reached is reported too. Descriptive: league-wide mean split (does heat move K%,
+#   whiff%, velocity on average).
+# Decision rule: nothing enters the score in this amendment. If a split passes, Johnny decides
+#   whether a later amendment uses it (CPBL weather would then need CWA station data per
+#   park). If none passes, limitations records that individual heat adaptation was not shown
+#   to be stable.
+amendment10:
+  seasons: [2025, 2026]
+  hot_f: 85
+  sensitivity_hot_f: [80]
+  indoor_conditions: [Dome, Roof Closed]
+  min_each_group: {bf: 40, swings: 60, fastballs: 40}
+  fastballs: [FF, SI]
+  pass_rho: 0.30
+  report_rho: 0.50
+  bootstrap: {draws: 2000, ci: 0.90, seed: 20261018}
