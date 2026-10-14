@@ -39,20 +39,26 @@ def _combine(df: pd.DataFrame, cols: list[str], weight: str) -> pd.DataFrame:
     return agg.join(info).join(w).reset_index()
 
 
+def _latest(raw: pd.DataFrame, df: pd.DataFrame, cols: list[str]) -> pd.DataFrame:
+    """Amendment 6: latest pool season's totals (workload rule) and the old one-season pool flag."""
+    if "season" not in raw:
+        return df
+    last = raw[raw.season == raw.season.max()].groupby("player_id")[cols].sum().add_prefix("latest_")
+    return df.join(last, on="player_id").fillna({f"latest_{c}": 0 for c in cols})
+
+
 def pitcher_pool() -> pd.DataFrame:
-    year = config()["candidate_filters"]["pitcher"]["season"]
-    raw = milb_loader.season_stats("pitching", year)
-    df = _combine(raw, PITCH_SUM, "pitching_BF")
+    raw = milb_loader.candidate_stats("pitching")
+    df = _combine(raw, [c for c in PITCH_SUM if c in raw], "pitching_BF")
     df["outs"] = (df.pitching_IP * 3).round().astype(int)
     df["IP"] = df.outs / 3
-    return df
+    return _latest(raw, df, ["pitching_GS", "pitching_IP", "pitching_BF"])
 
 
 def hitter_pool() -> pd.DataFrame:
-    year = config()["candidate_filters"]["hitter"]["season"]
-    raw = milb_loader.season_stats("batting", year)
+    raw = milb_loader.candidate_stats("batting")
     raw = raw[raw.player_position != "P"]
-    return _combine(raw, BAT_SUM, "batting_PA")
+    return _latest(raw, _combine(raw, [c for c in BAT_SUM if c in raw], "batting_PA"), ["batting_PA"])
 
 
 def tracked_counts(aaa: pd.DataFrame) -> tuple[pd.Series, pd.Series]:
@@ -66,12 +72,26 @@ def screen(role: str, aaa: pd.DataFrame | None = None) -> tuple[pd.DataFrame, pd
     """Returns (screening_log for all players, candidate table for survivors)."""
     f = config()["candidate_filters"][role]
     pool = pitcher_pool() if role == "pitcher" else hitter_pool()
+    a6 = milb_loader.amendment6()
     if role == "pitcher":
         pool["pass_workload"] = (pool.pitching_GS >= f["min_gs"]) & (pool.IP >= f["min_ip"])
         wl = "GS>={} & IP>={}".format(f["min_gs"], f["min_ip"])
     else:
         pool["pass_workload"] = pool.batting_PA >= f["min_pa"]
         wl = "PA>={}".format(f["min_pa"])
+    if a6:      # amendment 6: two-season totals + a minimum in the latest season
+        g = a6["pool"][role]
+        if role == "pitcher":
+            pool["in_one_season_pool"] = (pool.latest_pitching_GS >= f["min_gs"]) & (pool.latest_pitching_IP >= f["min_ip"])
+            pool["pass_workload"] = ((pool.pitching_GS >= g["min_gs"]) & (pool.IP >= g["min_ip"])
+                                     & (pool.latest_pitching_IP >= g["latest_min_ip"]))
+            wl = "{} GS>={} & IP>={}, {} IP>={}".format("+".join(map(str, a6["pool"]["seasons"])), g["min_gs"],
+                                                       g["min_ip"], a6["pool"]["seasons"][-1], g["latest_min_ip"])
+        else:
+            pool["in_one_season_pool"] = pool.latest_batting_PA >= f["min_pa"]
+            pool["pass_workload"] = (pool.batting_PA >= g["min_pa"]) & (pool.latest_batting_PA >= g["latest_min_pa"])
+            wl = "{} PA>={}, {} PA>={}".format("+".join(map(str, a6["pool"]["seasons"])), g["min_pa"],
+                                              a6["pool"]["seasons"][-1], g["latest_min_pa"])
     pool["mlbam_id"] = pool.player_id.astype(int)
     stage = pool[pool.pass_workload]
     el = eligibility.check(stage[["mlbam_id", "name"]], role)
@@ -84,14 +104,15 @@ def screen(role: str, aaa: pd.DataFrame | None = None) -> tuple[pd.DataFrame, pd
         key = pool.mlbam_id.astype(str)
         pool["tracked_pitches"] = key.map(pc).fillna(0).astype(int) if role == "pitcher" else np.nan
         pool["tracked_pa"] = key.map(bc).fillna(0).astype(int) if role == "hitter" else np.nan
-    reason = np.where(~pool.pass_workload, f"excluded: 2026 AAA workload below {wl}",
+    reason = np.where(~pool.pass_workload, f"excluded: {'' if a6 else '2026 '}AAA workload below {wl}",
                       np.where(pool.eligibility_status == "ineligible", "excluded: MLB playing time over limit",
                                np.where(pool.eligibility_status == "unknown", "excluded: MLB playing time unconfirmed",
                                         "candidate")))
     pool["screening_result"] = reason
     by = pool.birth_year.astype(float)
     pool["age_2026"] = snapshot().year - by
-    pool["data_year_baseline"] = config()["candidate_filters"][role]["season"]
+    pool["data_year_baseline"] = ("+".join(map(str, a6["pool"]["seasons"])) if a6
+                                  else config()["candidate_filters"][role]["season"])
     log = pool.copy()
     cand = pool[pool.screening_result == "candidate"].copy()
     return log, cand
@@ -99,6 +120,8 @@ def screen(role: str, aaa: pd.DataFrame | None = None) -> tuple[pd.DataFrame, pd
 
 REC_COLS = ["on_40man", "roster_club", "roster_status", "mlb_2026_g", "mlb_2026_pa", "mlb_2026_ip",
             "last_transaction_date", "last_transaction", "recruitment_feasibility"]
+SIGN_COLS = ["sign_tier", "signable", "first_pro_season", "last_signing", "last_status_date", "last_status_event",
+             "in_one_season_pool"]      # amendment 6
 
 
 def recruitment(ids) -> pd.DataFrame:
@@ -113,7 +136,11 @@ def recruitment(ids) -> pd.DataFrame:
 def run(aaa: pd.DataFrame | None = None) -> dict:
     out = {}
     screened = {role: screen(role, aaa) for role in ("pitcher", "hitter")}
-    rec = recruitment(pd.concat([c.mlbam_id for _, c in screened.values()]))
+    ids = pd.concat([c.mlbam_id for _, c in screened.values()])
+    rec = recruitment(ids)
+    if milb_loader.amendment6():
+        from . import signability
+        rec = rec.merge(signability.tiers(ids), on="mlbam_id", how="left")
     for role in ("pitcher", "hitter"):
         log, cand = screened[role]
         cand = cand.merge(rec, on="mlbam_id", how="left")
@@ -122,7 +149,7 @@ def run(aaa: pd.DataFrame | None = None) -> dict:
                 *[c for c in log.columns if c.startswith("mlb_")],
                 *[c for c in log.columns if c.startswith("official_")], "screening_result"]
         log = log.merge(rec, on="mlbam_id", how="left")
-        cols += REC_COLS
+        cols += REC_COLS + SIGN_COLS
         log[[c for c in cols if c in log.columns]].to_csv(processed(f"screening_log_{role}s.csv"), index=False)
         out[role] = (log, cand)
     return out

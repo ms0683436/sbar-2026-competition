@@ -1,0 +1,282 @@
+{
+  "A": {
+    "as_of": "2024-10-13",
+    "seasons": [
+      2023,
+      2024
+    ],
+    "primary": true,
+    "positives": 17,
+    "positives_with_aaa": 12,
+    "old": {
+      "N": 85,
+      "positives_in_list": 5,
+      "coverage": 0.4166666666666667,
+      "median_percentile": 0.5411764705882353,
+      "hits@10": 0,
+      "random@10": 0.59,
+      "hits@20": 1,
+      "random@20": 1.18,
+      "pool_before_tiers": 149,
+      "tier_counts": {
+        "T4_40man": 64,
+        "T3_controlled": 34,
+        "T2_expiring": 33,
+        "T1_free": 18
+      },
+      "missed": {
+        "Roenis Elías": "not in pool",
+        "Jonathan Bermúdez": "not in pool",
+        "Caleb Baragar": "not in pool",
+        "Jackson Stephens": "not in pool",
+        "Cam Alldred": "not in pool",
+        "Brandon Leibrandt": "T4_40man",
+        "William Cuevas": "not in pool"
+      }
+    },
+    "new": {
+      "N": 86,
+      "positives_in_list": 6,
+      "coverage": 0.5,
+      "median_percentile": 0.5406976744186046,
+      "hits@10": 1,
+      "random@10": 0.7,
+      "hits@20": 1,
+      "random@20": 1.4,
+      "pool_before_tiers": 217,
+      "tier_counts": {
+        "T4_40man": 91,
+        "T2_expiring": 45,
+        "T1_free": 41,
+        "T3_controlled": 40
+      },
+      "missed": {
+        "Roenis Elías": "not in pool",
+        "Jonathan Bermúdez": "not in pool",
+        "Caleb Baragar": "not in pool",
+        "Jackson Stephens": "not in pool",
+        "Brandon Leibrandt": "T4_40man",
+        "William Cuevas": "not in pool"
+      }
+    },
+    "detail": [
+      {
+        "mlbam_id": 528748,
+        "name": "Humberto Castellanos",
+        "list_rank": 12,
+        "fold": "A",
+        "arm": "old"
+      },
+      {
+        "mlbam_id": 657093,
+        "name": "Spenser Watkins",
+        "list_rank": 43,
+        "fold": "A",
+        "arm": "old"
+      },
+      {
+        "mlbam_id": 571527,
+        "name": "David Buchanan",
+        "list_rank": 46,
+        "fold": "A",
+        "arm": "old"
+      },
+      {
+        "mlbam_id": 676641,
+        "name": "Beau Sulser",
+        "list_rank": 56,
+        "fold": "A",
+        "arm": "old"
+      },
+      {
+        "mlbam_id": 659275,
+        "name": "Dinelson Lamet",
+        "list_rank": 67,
+        "fold": "A",
+        "arm": "old"
+      },
+      {
+        "mlbam_id": 528748,
+        "name": "Humberto Castellanos",
+        "list_rank": 10,
+        "fold": "A",
+        "arm": "new"
+      },
+      {
+        "mlbam_id": 682027,
+        "name": "Cam Alldred",
+        "list_rank": 23,
+        "fold": "A",
+        "arm": "new"
+      },
+      {
+        "mlbam_id": 659275,
+        "name": "Dinelson Lamet",
+        "list_rank": 46,
+        "fold": "A",
+        "arm": "new"
+      },
+      {
+        "mlbam_id": 657093,
+        "name": "Spenser Watkins",
+        "list_rank": 47,
+        "fold": "A",
+        "arm": "new"
+      },
+      {
+        "mlbam_id": 571527,
+        "name": "David Buchanan",
+        "list_rank": 51,
+        "fold": "A",
+        "arm": "new"
+      },
+      {
+        "mlbam_id": 676641,
+        "name": "Beau Sulser",
+        "list_rank": 71,
+        "fold": "A",
+        "arm": "new"
+      }
+    ]
+  },
+  "B": {
+    "as_of": "2025-10-13",
+    "seasons": [
+      2024,
+      2025
+    ],
+    "primary": false,
+    "positives": 13,
+    "positives_with_aaa": 9,
+    "old": {
+      "N": 81,
+      "positives_in_list": 6,
+      "coverage": 0.6666666666666666,
+      "median_percentile": 0.6728395061728395,
+      "hits@10": 0,
+      "random@10": 0.74,
+      "hits@20": 0,
+      "random@20": 1.48,
+      "pool_before_tiers": 148,
+      "tier_counts": {
+        "T4_40man": 67,
+        "T2_expiring": 39,
+        "T3_controlled": 31,
+        "T1_free": 11
+      },
+      "missed": {
+        "Nick Nelson": "not in pool",
+        "Angel Macuare": "not in pool",
+        "Jordan Balazovic": "not in pool"
+      }
+    },
+    "new": {
+      "N": 82,
+      "positives_in_list": 6,
+      "coverage": 0.6666666666666666,
+      "median_percentile": 0.5670731707317074,
+      "hits@10": 0,
+      "random@10": 0.73,
+      "hits@20": 0,
+      "random@20": 1.46,
+      "pool_before_tiers": 225,
+      "tier_counts": {
+        "T4_40man": 105,
+        "T2_expiring": 59,
+        "T3_controlled": 38,
+        "T1_free": 23
+      },
+      "missed": {
+        "Nick Nelson": "not in pool",
+        "Angel Macuare": "not in pool",
+        "Jordan Balazovic": "not in pool"
+      }
+    },
+    "detail": [
+      {
+        "mlbam_id": 658792,
+        "name": "Aaron Wilkerson",
+        "list_rank": 22,
+        "fold": "B",
+        "arm": "old"
+      },
+      {
+        "mlbam_id": 612797,
+        "name": "Erick Leal",
+        "list_rank": 32,
+        "fold": "B",
+        "arm": "old"
+      },
+      {
+        "mlbam_id": 669682,
+        "name": "Morgan McSweeney",
+        "list_rank": 51,
+        "fold": "B",
+        "arm": "old"
+      },
+      {
+        "mlbam_id": 663959,
+        "name": "Tyler Ivey",
+        "list_rank": 58,
+        "fold": "B",
+        "arm": "old"
+      },
+      {
+        "mlbam_id": 667725,
+        "name": "Kyle Tyler",
+        "list_rank": 66,
+        "fold": "B",
+        "arm": "old"
+      },
+      {
+        "mlbam_id": 607231,
+        "name": "John Gant",
+        "list_rank": 70,
+        "fold": "B",
+        "arm": "old"
+      },
+      {
+        "mlbam_id": 658792,
+        "name": "Aaron Wilkerson",
+        "list_rank": 23,
+        "fold": "B",
+        "arm": "new"
+      },
+      {
+        "mlbam_id": 612797,
+        "name": "Erick Leal",
+        "list_rank": 31,
+        "fold": "B",
+        "arm": "new"
+      },
+      {
+        "mlbam_id": 667725,
+        "name": "Kyle Tyler",
+        "list_rank": 38,
+        "fold": "B",
+        "arm": "new"
+      },
+      {
+        "mlbam_id": 669682,
+        "name": "Morgan McSweeney",
+        "list_rank": 55,
+        "fold": "B",
+        "arm": "new"
+      },
+      {
+        "mlbam_id": 663959,
+        "name": "Tyler Ivey",
+        "list_rank": 61,
+        "fold": "B",
+        "arm": "new"
+      },
+      {
+        "mlbam_id": 607231,
+        "name": "John Gant",
+        "list_rank": 68,
+        "fold": "B",
+        "arm": "new"
+      }
+    ]
+  }
+}

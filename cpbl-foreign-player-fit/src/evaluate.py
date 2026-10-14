@@ -43,6 +43,7 @@ def test_a(P: pd.DataFrame, H: pd.DataFrame) -> dict:
         top_b = d.nsmallest(5, "baseline_rank_tracked").name.tolist()
         top_f = d.nsmallest(5, "fit_rank").name.tolist()
         top_c = d.nsmallest(5, "combined_rank").name.tolist()
+        ctrl = [c for c in ctrl if d[c].notna().any()]      # amendment 6: statsapi tables carry no swing counts
         X = d[ctrl].apply(lambda s: s.fillna(s.mean()))
         X = sm.add_constant((X - X.mean()) / X.std())
         r2 = sm.OLS(d[fitcol], X).fit().rsquared
@@ -60,10 +61,67 @@ def test_a(P: pd.DataFrame, H: pd.DataFrame) -> dict:
 
 # ------------------------------------------------------------------ Test B
 def _baseline_logs(role: str, cand: pd.DataFrame):
-    """Per-player per-game 2026 counting stats for the baseline bootstrap."""
+    """Per-player per-game counting stats for the baseline bootstrap: 2026 mirror logs, plus
+    (amendment 6, two-season pool) the earlier pool seasons from the statsapi gameLog."""
     g = milb_loader.game_logs(2026)
     g = g[g.player_id.isin(cand.mlbam_id)]
+    a6 = milb_loader.amendment6()
+    if a6:
+        group = "pitching" if role == "pitcher" else "hitting"
+        early = [milb_loader.statsapi_game_logs(y, cand.mlbam_id, group) for y in a6["pool"]["seasons"] if y != 2026]
+        g = pd.concat([g, *early], ignore_index=True)
+        g = g[g.player_id.isin(cand.mlbam_id)]
+        # season x league of every game line, so the bootstrap can re-mix league averages
+        st = milb_loader.candidate_stats("pitching" if role == "pitcher" else "batting")
+        key = st.drop_duplicates(["season", "team_id"]).set_index(["season", "team_id"]).team_league
+        idx = pd.MultiIndex.from_arrays([pd.to_datetime(g.game_date).dt.year, g.team_id])
+        g["sl"] = key.reindex(idx).values
     return g
+
+
+_LG: dict = {}
+
+
+def _league_cached(kind: str) -> pd.DataFrame:
+    if kind not in _LG:
+        _LG[kind] = baseline._league_table(kind, None)
+    return _LG[kind]
+
+
+def old_vs_new(P: pd.DataFrame, H: pd.DataFrame) -> pd.DataFrame:
+    """Amendment 6: the amendment-5 ranking (frozen copy of the merged results) next to the new one."""
+    rows = []
+    for role, D in (("pitcher", P), ("hitter", H)):
+        old = pd.read_csv(processed("amendment5_frozen", f"{role}_fit_results.csv"))
+        basis = "combined_rank" if role == "pitcher" else "baseline_rank_tracked"
+        old = old[old.fit_available].sort_values(basis)
+        old["old_rank"] = np.arange(1, len(old) + 1)
+        old["old_rank_non40"] = np.nan
+        o40 = ~old.on_40man.fillna(False).astype(bool)
+        old.loc[o40, "old_rank_non40"] = np.arange(1, int(o40.sum()) + 1)
+        new = D[D.fit_available].sort_values(basis).copy()
+        new["new_rank"] = np.arange(1, len(new) + 1)
+        sig = new.signable.fillna(False).astype(bool)
+        new["new_rank_signable"] = np.nan
+        new.loc[sig, "new_rank_signable"] = np.arange(1, int(sig.sum()) + 1)
+        m = old[["mlbam_id", "name", "old_rank", "old_rank_non40"]].merge(
+            new[["mlbam_id", "name", "new_rank", "new_rank_signable", "sign_tier", "in_one_season_pool"]],
+            on="mlbam_id", how="outer", suffixes=("_old", ""))
+        m["name"] = m.name.fillna(m.name_old)
+        keep = (m.old_rank_non40 <= 10) | (m.new_rank_signable <= 10) | (m.old_rank <= 5) | (m.new_rank <= 5)
+        rows.append(m[keep].drop(columns="name_old").assign(role=role))
+    out = pd.concat(rows).sort_values(["role", "new_rank_signable", "old_rank_non40"])
+    out.to_csv(processed("amendment6_old_vs_new.csv"), index=False)
+    return out
+
+
+def _boot_league(g: pd.DataFrame, role: str, cols: list[str]) -> pd.DataFrame:
+    """Amendment 6: league averages re-mixed with the resampled BF / PA shares per season x league."""
+    w = "pitching_BF" if role == "pitcher" else "batting_PA"
+    sh = g.dropna(subset=["sl"]).pivot_table(index="player_id", columns="sl", values=w, aggfunc="sum").fillna(0)
+    sh = sh.div(sh.sum(axis=1).replace(0, np.nan), axis=0)
+    lg = _league_cached("pitching" if role == "pitcher" else "batting")
+    return pd.DataFrame({c: sh.mul(lg[c].reindex(sh.columns), axis=1).sum(axis=1, min_count=1) for c in cols})
 
 
 def baseline_boot(role: str, cand: pd.DataFrame, logs: pd.DataFrame, w: pd.Series | None) -> pd.Series:
@@ -86,6 +144,11 @@ def baseline_boot(role: str, cand: pd.DataFrame, logs: pd.DataFrame, w: pd.Serie
         kbb = (s.pitching_SO - s.pitching_BB) / s.pitching_BF
         lg_adj = d.lg_k_minus_bb
         cf = d.fip_raw - (13 * d.pitching_HR + 3 * (d.pitching_BB + d.pitching_HBP) - 2 * d.pitching_SO) / d.IP
+        if "sl" in g:       # amendment 6: league mix follows the resampled games
+            lgb = _boot_league(g, role, ["k_minus_bb_pct", "k_pct", "bb_pct", "fip", "cfip"]).reindex(d.index)
+            d = d.assign(lg_k_minus_bb=lgb.k_minus_bb_pct.fillna(d.lg_k_minus_bb), lg_k_pct=lgb.k_pct.fillna(d.lg_k_pct),
+                         lg_bb_pct=lgb.bb_pct.fillna(d.lg_bb_pct), lg_fip=lgb.fip.fillna(d.lg_fip))
+            lg_adj, cf = d.lg_k_minus_bb, lgb.cfip.fillna(cf)
         x = pd.DataFrame(index=d.index)
         x["k_minus_bb_pct"] = kbb - lg_adj
         x["fip"] = (13 * s.pitching_HR + 3 * (s.pitching_BB + s.pitching_HBP) - 2 * s.pitching_SO) / s.pitching_IP + cf - d.lg_fip
@@ -98,6 +161,9 @@ def baseline_boot(role: str, cand: pd.DataFrame, logs: pd.DataFrame, w: pd.Serie
     else:
         cols = ["batting_PA", "batting_AB", "batting_H", "batting_2B", "batting_3B", "batting_HR", "batting_BB",
                 "batting_IBB", "batting_SO", "batting_HBP", "batting_SF", "batting_TB"]
+        if "sl" in g:       # amendment 6: league mix follows the resampled games
+            lgb = _boot_league(g, role, ["woba", "iso", "bb_pct", "k_pct"]).reindex(d.index)
+            d = d.assign(**{f"lg_{c}": lgb[c].fillna(d[f"lg_{c}"]) for c in ("woba", "iso", "bb_pct", "k_pct")})
         s = baseline._hitter_rates(g.groupby("player_id")[cols].sum().reindex(d.index).fillna(0))
         r = baseline._hitter_rates(rec.groupby("player_id")[cols].sum().reindex(d.index).fillna(0))
         x = pd.DataFrame(index=d.index)
@@ -155,6 +221,7 @@ def test_b(r: dict, P: pd.DataFrame, H: pd.DataFrame, reps: int | None = None) -
         res = pd.DataFrame({"name": D.name.values, "mlbam_id": D.mlbam_id.values,
                             "on_40man": D.on_40man.fillna(False).astype(bool).values})
         free = ~res.on_40man.values
+        sig = D.signable.fillna(False).astype(bool).values if "signable" in D else None
         for kind in ("fit", "base", "comb"):
             S = np.vstack(store[f"{key}_{kind}"])
             R = ranks(S)
@@ -167,6 +234,10 @@ def test_b(r: dict, P: pd.DataFrame, H: pd.DataFrame, reps: int | None = None) -
             Rf = ranks(S, np.broadcast_to(free, S.shape))
             res[f"{kind}_p_top1_non40"] = np.where(free, (Rf == 1).mean(axis=0), np.nan)
             res[f"{kind}_p_top3_non40"] = np.where(free, (Rf <= 3).mean(axis=0), np.nan)
+            if sig is not None:      # amendment 6: among signable candidates (tiers T1 + T2)
+                Rs = ranks(S, np.broadcast_to(sig, S.shape))
+                res[f"{kind}_p_top1_signable"] = np.where(sig, (Rs == 1).mean(axis=0), np.nan)
+                res[f"{kind}_p_top3_signable"] = np.where(sig, (Rs <= 3).mean(axis=0), np.nan)
         out[key] = res.sort_values("comb_rank_med")
     return out
 
@@ -401,7 +472,7 @@ def recommend(P: pd.DataFrame, H: pd.DataFrame, season: dict, boot: dict) -> dic
     hitter_uses_fit = bool(hitter_rel >= rc["hitter_fit_min_reliability"])
     out = {"hitter_fit_reliability": hitter_rel, "hitter_uses_fit": hitter_uses_fit}
     keep = ["name", "mlbam_id", "age_2026", "teams", "baseline_rank", "baseline_rank_tracked", "fit_rank",
-            "combined_rank", *milb_candidates.REC_COLS]
+            "combined_rank", *milb_candidates.REC_COLS, *milb_candidates.SIGN_COLS]
     rows = []
     for role, D, key, rank_col in (("pitcher", P, "p", "combined_rank"),
                                    ("hitter", H, "h", "combined_rank" if hitter_uses_fit else "baseline_rank_tracked")):
@@ -415,17 +486,30 @@ def recommend(P: pd.DataFrame, H: pd.DataFrame, season: dict, boot: dict) -> dic
         d["boot_p_top1"] = d.mlbam_id.map(b[f"{kind}_p_top1"])
         d["boot_p_top1_non40"] = d.mlbam_id.map(b[f"{kind}_p_top1_non40"])
         d["boot_p_top3_non40"] = d.mlbam_id.map(b[f"{kind}_p_top3_non40"])
+        a6 = "signable" in d
+        if a6:      # amendment 6: the primary pick comes from the signable tiers (T1 + T2)
+            d["signable"] = d.signable.fillna(False).astype(bool)
+            d["rule_rank_signable"] = np.nan
+            d.loc[d.signable, "rule_rank_signable"] = np.arange(1, int(d.signable.sum()) + 1)
+            d["boot_p_top1_signable"] = d.mlbam_id.map(b[f"{kind}_p_top1_signable"])
+            d["boot_p_top3_signable"] = d.mlbam_id.map(b[f"{kind}_p_top3_signable"])
         d["role"], d["rank_basis"] = role, rank_col
         top = d.head(10)
         free = d[~d.on_40man].head(10)
-        rows.append(pd.concat([top, free]).drop_duplicates("mlbam_id"))
+        pool = d[d.signable].head(10) if a6 else free
+        rows.append(pd.concat([top, free, pool]).drop_duplicates("mlbam_id"))
         out[role] = {"rank_basis": rank_col, "overall_top": d.iloc[0]["name"],
                      "overall_top_on_40man": bool(d.iloc[0].on_40man),
-                     "primary_pick": free.iloc[0]["name"] if len(free) else None,
-                     "alternates": free.iloc[1:3].name.tolist(),
+                     "primary_pick": pool.iloc[0]["name"] if len(pool) else None,
+                     "alternates": pool.iloc[1:3].name.tolist(),
+                     "primary_pick_rule": "signable (T1+T2), amendment 6" if a6 else "not on a 40-man, amendment 1",
+                     "non40_pick": free.iloc[0]["name"] if len(free) else None,
                      "n_ranked": len(d), "n_non40": int((~d.on_40man).sum())}
-    cols = ["role", "rank_basis", "rule_rank", "rule_rank_non40", "boot_p_top1", "boot_p_top1_non40",
-            "boot_p_top3_non40", *keep]
+        if a6:
+            out[role]["n_signable"] = int(d.signable.sum())
+            out[role]["tier_counts"] = d.sign_tier.value_counts().to_dict()
+    cols = ["role", "rank_basis", "rule_rank", "rule_rank_non40", "rule_rank_signable", "boot_p_top1",
+            "boot_p_top1_non40", "boot_p_top3_non40", "boot_p_top1_signable", "boot_p_top3_signable", *keep]
     sl = pd.concat(rows)
     sl[[c for c in cols if c in sl.columns]].to_csv(processed("recommendation_shortlist.csv"), index=False)
     return out
@@ -479,6 +563,10 @@ def run(reps: int | None = None) -> dict:
         boot[key].to_csv(processed(f"bootstrap_ranks_{'pitchers' if key == 'p' else 'hitters'}.csv"), index=False)
     summary["B_boot_top"] = {key: boot[key].head(8).round(3).to_dict(orient="records") for key in ("p", "h")}
     summary["recommendation"] = recommend(P, H, summary["B_season"], boot)
+    if milb_loader.amendment6():
+        from . import signability
+        summary["signability_t2_check"] = signability.t2_check(pd.concat([P.mlbam_id, H.mlbam_id]))
+        ovn = old_vs_new(P, H)
     figures(P, H, boot)
     with open(processed("evaluation_summary.json"), "w") as f:
         json.dump(summary, f, indent=2, default=lambda o: o.item() if hasattr(o, "item") else str(o), ensure_ascii=False)
@@ -490,8 +578,13 @@ def run(reps: int | None = None) -> dict:
     lines.append(md_table(boot["h"].head(15), ".2f"))
     lines.append("\n## Recommendation shortlist (pre-registered rule, amendment 1)\n")
     sl = pd.read_csv(processed("recommendation_shortlist.csv"))
-    lines.append(md_table(sl[["role", "rule_rank", "rule_rank_non40", "name", "age_2026", "teams", "on_40man",
-                              "roster_club", "roster_status", "mlb_2026_g", "boot_p_top1", "boot_p_top1_non40"]], ".2f"))
+    lines.append(md_table(sl[[c for c in ["role", "rule_rank", "rule_rank_non40", "rule_rank_signable", "name", "age_2026",
+                              "teams", "on_40man", "sign_tier", "roster_club", "roster_status", "mlb_2026_g",
+                              "boot_p_top1", "boot_p_top1_non40", "boot_p_top1_signable"] if c in sl]], ".2f"))
+    if milb_loader.amendment6():
+        lines.append("\n## Amendment 5 (one-season pool, non-40 rule) vs amendment 6 (two seasons, signable tiers)\n")
+        lines.append(md_table(ovn[["role", "name", "old_rank", "old_rank_non40", "new_rank", "new_rank_signable",
+                                   "sign_tier", "in_one_season_pool"]], ".0f"))
     lines.append("\n## Baseline weights (amendment 4: estimated 2025 -> 2026 AAA; judgment = original)\n")
     lines.append(md_table(bw[["role", "metric", "judgment_weight", "estimated_weight", "ci_lo", "ci_hi", "share_zero",
                               "n", "used"]], ".3f"))

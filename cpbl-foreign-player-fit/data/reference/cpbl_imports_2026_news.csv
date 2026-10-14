@@ -1,0 +1,39 @@
+# 2026 CPBL import pitchers named in public news (amendment 6, fold B of the recruitment backtest).
+# Names only, from search-engine snippets of the listed pages (the tracker page itself is not reachable from the
+# analysis environment), compiled 2026-10-14; may be incomplete. Ids from statsapi.mlb.com/api/v1/people/search.
+# No CPBL statistics are taken from these sources.
+cpbl_team,english_name,mlbam_id,throws,source,note
+Rakuten Monkeys,Pedro Fernandez,613548,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+Rakuten Monkeys,Kyle Marman,663613,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+Rakuten Monkeys,Morgan McSweeney,669682,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+Rakuten Monkeys,Tyler Eppler,621169,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+Rakuten Monkeys,Motoki Sakakibara,,,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,no MLBAM id found (statsapi people search)
+CTBC Brothers,Mario Sanchez,532936,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+CTBC Brothers,Jose De Paula,517059,L,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+CTBC Brothers,Nivaldo Rodriguez,670550,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+CTBC Brothers,Kyle Tyler,667725,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+CTBC Brothers,Nick Nelson,656793,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+CTBC Brothers,Angel Macuare,672836,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+CTBC Brothers,Felix Pena,570240,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+Uni-President Lions,Brock Dykxhoorn,621245,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+Uni-President Lions,Jackson Stephens,623451,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+Uni-President Lions,Jordan Balazovic,666364,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+Uni-President Lions,Denyi Reyes,660593,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+Uni-President Lions,Joe Wieland,543921,R,https://worldbaseball.com/cpbl-news-brothers-sign-rodriguez-uni-lions-sign-wieland/,
+TSG Hawks,Bradin Hagens,543266,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+TSG Hawks,Eric Stout,657770,L,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+TSG Hawks,Shuto Sakurai,,,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,no MLBAM id found (statsapi people search)
+TSG Hawks,David Buchanan,571527,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+TSG Hawks,Wilmer Font,521655,R,https://sports.ltn.com.tw/news/breakingnews/5533048,
+Wei Chuan Dragons,Bryan Woodall,543941,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+Wei Chuan Dragons,Drew Gagnon,543193,R,http://cpblstats.com/wei-chuan-dragons-sign-drew-gagnon-2026-season/,
+Wei Chuan Dragons,C.C. Mercedes,,,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,no MLBAM id found (statsapi people search)
+Wei Chuan Dragons,John Gant,607231,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+Wei Chuan Dragons,Marcelo Martinez,,,https://en.wikipedia.org/wiki/Marcelo_Martinez,no MLBAM id found (statsapi people search)
+Fubon Guardians,Aaron Wilkerson,658792,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+Fubon Guardians,Shunsuke Suzuki,,,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,no MLBAM id found (statsapi people search)
+Fubon Guardians,Shawn Morimando,596049,L,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+Fubon Guardians,Erick Leal,612797,R,http://cpblstats.com/2026-cpbl-foreign-player-signing-tracker/,
+Fubon Guardians,Tyler Ivey,663959,R,http://cpblstats.com/2026-august-31-deadline-foreign-players-release-list/,
+Fubon Guardians,A.J. Candelario,,,https://sports.ltn.com.tw/news/breakingnews/5535595,no MLBAM id found (statsapi people search)
+Fubon Guardians,Roenis Elias,606273,L,https://worldbaseball.com/cpbl-news-brothers-sign-rodriguez-uni-lions-sign-wieland/,

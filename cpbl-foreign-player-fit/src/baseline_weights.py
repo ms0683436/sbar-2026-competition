@@ -74,7 +74,7 @@ def to_frame(splits: list[dict], group: str) -> pd.DataFrame:
 
 
 def fetch(group: str, season: int, start: str | None = None, end: str | None = None,
-          force: bool = False) -> pd.DataFrame:
+          force: bool = False, pf: pd.DataFrame | None = None) -> pd.DataFrame:
     """Season (or date-range) AAA stats, one row per player x team stint, cached under
     data/raw/statsapi_season. The league-wide query returns ONE combined row per player labelled
     with his latest team, so a traded player's league mix would be lost; each AAA club is
@@ -83,7 +83,7 @@ def fetch(group: str, season: int, start: str | None = None, end: str | None = N
     out = raw("statsapi_season", f"{tag}_by_team.csv")
     kind = "pitching" if group == "pitching" else "batting"
     if out.exists() and not force:
-        return park.adjust(pd.read_csv(out), kind)
+        return park.adjust(pd.read_csv(out), kind, pf=pf)
     from .statsapi_pbp import _get
     teams = _get(f"{API.rsplit('/', 1)[0]}/teams", {"sportId": 11, "season": season})["teams"]
     params = {"stats": "byDateRange" if start else "season", "group": group, "sportId": 11, "season": season,
@@ -98,7 +98,7 @@ def fetch(group: str, season: int, start: str | None = None, end: str | None = N
     df = to_frame(splits, group)
     out.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(out, index=False)
-    return park.adjust(df, kind)
+    return park.adjust(df, kind, pf=pf)
 
 
 def _pool(group: str, season: int) -> pd.DataFrame:
