@@ -29,7 +29,7 @@ from concurrent.futures import ThreadPoolExecutor
 import numpy as np
 import pandas as pd
 
-from . import fit_score, milb_loader, rebas_loader, statsapi_pbp
+from . import fit_score, milb_loader, pitch_schema, rebas_loader, statsapi_pbp
 from .common import ROOT, config, md_table, path, processed, raw, zscore
 
 
@@ -57,7 +57,9 @@ def fetch_extra(workers: int = 4) -> pd.DataFrame:
 def aaa_extra() -> pd.DataFrame:
     out = processed("aaa_backtest_pitches.parquet")
     if out.exists():
-        return pd.read_parquet(out)
+        df = pd.read_parquet(out)
+        if "pitch_code" in df:              # older caches lack the raw call code: rebuild
+            return pitch_schema.refresh_woba(df)
     if not _schedule_path().exists():
         fetch_extra()
     sched = pd.read_csv(_schedule_path())

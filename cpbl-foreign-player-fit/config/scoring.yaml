@@ -109,15 +109,20 @@ candidate_filters:
     min_pa: 300
 
 # wOBA linear weights. The same generic weights are applied to BOTH leagues so
-# that differences reflect outcomes, not weight choices (FanGraphs 2024 MLB
-# scale, rounded). Absolute levels are therefore "wOBA-like", not official.
+# that differences reflect outcomes, not weight choices. Absolute levels are therefore
+# "wOBA-like", not official.
+# CORRECTION (2026-10-14, Johnny 「修正」): from the first commit (80a6cff) until this change the
+# block was labelled "FanGraphs 2024" but held the FanGraphs 2013 weights rounded (uBB .69,
+# HBP .72, 1B .89, 2B 1.27, 3B 1.62, HR 2.10). It now holds the FanGraphs Guts 2024 values
+# (checked 2026-10-14). Every output that uses wOBA was re-run; differences are reported in
+# reports/findings.md section 0.11.
 woba_weights:
-  uBB: 0.69
-  HBP: 0.72
-  1B: 0.89
-  2B: 1.27
-  3B: 1.62
-  HR: 2.10
+  uBB: 0.689131
+  HBP: 0.720192
+  1B: 0.881711
+  2B: 1.25445
+  3B: 1.58991
+  HR: 2.04961
 
 baseline:
   winsor_z: 2.5               # z-scores clipped so one extreme stat cannot dominate
@@ -651,3 +656,223 @@ amendment11:
   forecast_origins: [2025, 2026]
   bootstrap: {draws: 2000, ci: 0.90, seed: 20261019}
   min_n_for_conclusion: 15
+
+# AMENDMENT 12 (2026-10-14; committed BEFORE any census page was downloaded, except the two
+# pages opened while checking the source: Brandon Leibrandt's register page (his 2025 CPBL line
+# was seen: 335 BF, 55 SO, 18 BB) and the 2025 CTBC Brothers team page (roster ids only)).
+# Johnny chose Baseball-Reference as the source and 2018-2026 as the range (card 「用，2018–2026」).
+# Goal: a larger, historical test of whether AAA performance carries over to the CPBL, for
+# pitchers AND hitters (hitters were n = 0 so far). Traditional stats only: no Fit (no CPBL
+# pitch data before 2024). Validation only: nothing changes the ranking or the picks.
+#
+# Source: baseball-reference.com register (team-season pages of the CPBL, 2018-2026, and each
+#   listed player's register page). <= 20 requests per minute; pages cached under
+#   data/raw/bbref/ (git-ignored, not redistributed); cited as "Baseball-Reference". AAA
+#   predictors and league values come from statsapi season stats (sportId 11), as before.
+# Census: every player on a CPBL team page 2018-2026 whose register page gives a birthplace
+#   outside Taiwan = import. Unknown birthplace: listed and excluded. Arrival season Y = his
+#   first CPBL season on his register page; arrivals with Y in 2018-2026 enter the tests,
+#   players first seen in the CPBL before 2018 are returnees (described only).
+# Origin (descriptive): the league/level where he had the most BF (pitchers) or PA (hitters)
+#   in Y-1 on his register page: MLB, AAA, AA or lower, NPB, KBO, other (MEX, indy, winter,
+#   other foreign), none. Also: share returning to the CPBL in Y+1, by origin.
+# Identity: register id -> MLBAM via the Chadwick register (key_bbref_minors). AAA season A =
+#   Y-1, except Y = 2021 uses 2019 (no 2020 minor-league season).
+# Pitchers: CPBL BF in Y >= 60 and AAA BF in A >= 100 (all AAA stints summed).
+#   Predictors: AAA K%, BB%, K-BB% minus the AAA league value of A (statsapi totals; no park
+#   adjustment: no pitch-level AAA before 2023); and an amendment-5-style baseline (K% .50,
+#   BB% .25, FIP .25 as league-relative z-scores, clipped at 2.5, over every AAA pitcher of A
+#   with >= 100 BF; FIP constant = league ERA - league raw FIP).
+#   Outcomes: CPBL K%, BB%, K-BB% per BF in Y minus the CPBL league value of Y (totals of all
+#   pitchers on that season's team pages).
+# Hitters: CPBL PA in Y >= 100 and AAA PA in A >= 150. Predictors: AAA wOBA (generic
+#   woba_weights), K%, BB%, ISO minus the AAA league value of A (non-pitchers). Outcomes: the
+#   same four in the CPBL minus the CPBL league value of Y (all hitters on the team pages).
+# Tests (Spearman, 90% bootstrap over players, 2000 draws, seed below; min_n 15; verdict:
+#   CI above 0 supports, below 0 contradicts, else inconclusive):
+#   CP1 (primary, pitchers) AAA K-BB% vs CPBL K-BB%     CH1 (primary, hitters) wOBA vs wOBA
+#   CP2 K% vs K%   CP3 BB% vs BB%   CP4 baseline vs CPBL K-BB%
+#   CH2 K% vs K%   CH3 BB% vs BB%   CH4 ISO vs ISO
+#   Translation (descriptive): OLS slope of the centred CPBL value on the centred AAA value with
+#   a 90% bootstrap CI (how much of an AAA edge survives).
+#   R2 rolling-origin forecast (as amendment 11): for each Y in 2019-2026 an OLS of the centred
+#   CPBL primary outcome on the centred AAA primary predictor fitted on earlier arrivals only;
+#   MAE vs the training mean over all held-out arrivals, paired bootstrap CI.
+#   Sensitivity: arrivals 2021-2026 only (four-import era, after the 2020 rule change).
+# Data check: for players in REBAS 2024-25 (pitchers in the amendment-2 reference), the B-R
+#   CPBL K% and BB% are compared with REBAS (mean absolute difference reported).
+# Survivorship: only players who reached the first team appear on B-R; signed-but-unused
+#   imports are missing. Reported, not fixed.
+amendment12:
+  seasons: [2018, 2026]
+  aaa_season_override: {2021: 2019}
+  min_cpbl_bf: 60
+  min_aaa_bf: 100
+  min_cpbl_pa: 100
+  min_aaa_pa: 150
+  baseline_weights: {k_pct: 0.50, bb_pct: 0.25, fip: 0.25}
+  baseline_clip: 2.5
+  sensitivity_from: 2021
+  request_interval_s: 3.5
+  bootstrap: {draws: 2000, ci: 0.90, seed: 20261020}
+  min_n_for_conclusion: 15
+
+# AMENDMENT 13 (2026-10-14; committed BEFORE any 2026 Stuff+ value or new ranking was computed).
+# Johnny chose 「加進排名」 on the card "要不要把 Stuff+ 加進洋投排名?" after the wOBA weight
+# correction made amendment 8's S3 pass narrowly (0.14, 90% CI 0.02 to 0.25; S1 still not shown).
+# Amendment 8 allowed Stuff+ into the ranking only through a later amendment; this is it.
+# Facts seen before this registration: amendment 8 Stuff+ for 2023-25 (Gerber 2025 = 112) and its
+# validation; the current ranking without Stuff+. The 2026 release-point feeds were downloaded
+# (src/statsapi_release.py 2026) but no 2026 Stuff+ was computed.
+#
+# Stuff+ per candidate: the amendment-8 model unchanged (trained on AAA 2025, 5 pitcher-grouped
+#   folds). 2025 pitches use the out-of-fold predictions; 2026 pitches use the model fit on all of
+#   2025 (2026 was never in training). Per pitcher-season Stuff+ = 100 - 10 z of the mean predicted
+#   run value, z over AAA pitchers with >= 300 tracked pitches that season (amendment-8 scale).
+#   Candidate value = pitch-weighted mean of his 2025 and 2026 Stuff+; available if >= 300 tracked
+#   pitches over 2025-26, else missing.
+# Ranking (pitchers only; hitters unchanged):
+#   combined = 0.5 z(baseline) + 0.2 z(Stuff+) + 0.3 Fit, z over the Fit-available candidates
+#   (Stuff+ z clipped at 2.5 like Fit; missing Stuff+ -> z = 0, flagged). Fit keeps its 0.3; the
+#   old 0.7 baseline share is split 0.5 / 0.2 because Stuff+ passed only S3 (adds to the
+#   baseline) and not S1 (beats the baseline), so it gets less weight than the baseline.
+#   The pick rule is unchanged: primary pick = best combined rank among signable (T1 + T2).
+# Bootstrap: the Stuff+ term is resampled with the same AAA game weights as baseline and Fit
+#   (per-game sums of predicted run value; the model itself is not refit).
+# Reported next to the new ranking: the amendment-6 ranking (old pick), and a sensitivity of the
+#   signable top 3 with Stuff+ weight 0.1 and 0.3 (baseline 0.6 and 0.4; Fit 0.3).
+# Not changed: Fit, baseline, the backtests (amendments 2, 7, 11 keep their registered combined
+#   score), the conversion pool (amendment 9) and the hitter ranking.
+amendment13:
+  weights: {baseline: 0.5, stuff: 0.2, fit: 0.3}
+  stuff_clip: 2.5
+  min_pitches: 300
+  seasons: [2025, 2026]
+  sensitivity_stuff_weights: [0.1, 0.3]
+
+# AMENDMENT 14 (2026-10-14; committed BEFORE any two-strike metric, put-away rate or pick
+# appendix was computed). An outside suggestion said AAA pitchers with good ERAs get worn down by
+# CPBL hitters' contact and two-strike "battling". Johnny accepted two additions and, after a
+# Codex design discussion, chose 「照建議做」. Descriptive / exploratory only: nothing enters the
+# ranking or changes the picks.
+#
+# Part A: two-strike battle metrics, CPBL (REBAS) vs AAA, 2024 and 2025 regular seasons.
+#   Population: complete PAs only; drop the whole PA if it has a bunt attempt (REBAS BUNT /
+#   FOUL_BUNT / TRY_BUNT, terminal SH; AAA bunt codes and bunts in play), an intentional ball /
+#   IBB, a pitchout, or ends in interference / unknown result. Two strikes = count BEFORE the pitch.
+#   Foul tips (REBAS FT, AAA T) are contact (project convention) but not a continuation foul.
+#   A1 (primary) continuation-foul rate = ordinary fouls at two strikes / pitches at two strikes.
+#   A2 foul per swing at two strikes; A3 contact = (swings - whiffs) / swings at two strikes;
+#   A4 put-away (pitch) = strikeouts on a two-strike pitch / two-strike pitches;
+#   A5 conversion (PA) = PAs ending in SO / PAs that reached two strikes;
+#   A6 pitches per PA and PA-length bins 1-3, 4-5, 6-7, 8+; A7 two-strike pitches per PA that
+#   reached two strikes; A8 share of PAs reaching two strikes.
+#   Standardisation (per season): pitch-level metrics reweighted over balls (0-3) x batter hand x
+#   pitcher hand x SP/RP to the equal-weighted average of the two leagues' distributions (swing
+#   shares for per-swing metrics); A5 and A7 by the count when the PA first reached two strikes,
+#   hands and role. Common support only; excluded weight reported. Raw rates shown first.
+#   Uncertainty: 2,000 game-cluster bootstrap draws within league-season, 95% CI.
+#   Decision (A1 only): "CPBL hitters battle more" if the standardised CPBL - AAA difference has its
+#   95% CI entirely above +2 percentage points AND is positive in both seasons; CI inside -2..+2 =
+#   small difference; otherwise unresolved. Supporting thresholds, descriptive: A3 2 pp, A5 3 pp,
+#   A6 0.15 pitches, A7 0.20 pitches.
+#   Supplement: within pitcher-season, two-strike minus one-strike change in A1 and whiff, by
+#   league, controlling ball count, pitch family and batter hand (descriptive).
+#   Sequence audit first: PA / SO / BB totals vs box scores, missing first / last pitches, PAs with
+#   impossible count transitions; exclusions reported by league-season.
+#   Skipped: two-strike chase (CPBL locations are hand-recorded).
+# Part B: exploratory link to CPBL results. Cohort = amendment-11 pitchers (amendment-7 identities,
+#   one row per pitcher, pre-arrival AAA window as in amendment 11). Predictor P1 = AAA two-strike
+#   put-away rate (A4) with >= 100 two-strike pitches and >= 50 PAs reaching two strikes. Outcome =
+#   season-centred CPBL K-BB% as in amendment 11. Partial Spearman controlling pre-arrival AAA
+#   K-BB% (ranks of predictor and outcome residualised on its rank), pitcher bootstrap refitting the
+#   residualisation, 95% CI, leave-one-out range. "Tentative signal" only if rho >= 0.30, CI above
+#   0 and no sign flip when any one pitcher is dropped; below 15 eligible pitchers: descriptive only.
+#   Secondary (descriptive): foul-allowed rate A1. Also the 2024 -> 2025 AAA reliability of P1 and
+#   A1 (pitchers with >= 100 two-strike pitches in both seasons). The outcomes are already known, so
+#   this is a constrained re-analysis, not an independent test.
+# Part C: appendix for the final primary pitcher pick (whoever it is after amendments 13 and 15),
+#   AAA 2025 and 2026 separately: per pitch type x batter side: pitches, swings, games, terminal PAs,
+#   usage (with an "unknown type" share), velocity median / IQR, whiff per swing, count-based run
+#   value per 100 pitches (amendment-8 construction, positive = worse for the pitcher; a proxy, not
+#   Statcast RV); two-strike usage, put-away and continuation-foul rate. Display minimums per cell:
+#   usage flagged under 50 pitches; whiff needs >= 200 pitches, >= 100 swings, >= 10 games; run
+#   value >= 500 pitches, >= 100 terminal PAs, >= 10 games; two-strike rates >= 100 two-strike
+#   pitches and >= 10 games (whiff there >= 50 swings). Below them: counts and "insufficient
+#   sample", no ranking of cells. Next to it, the existing CPBL environment results (findings
+#   1.2-1.4) and the LHB share faced by RHP / LHP in each league. Labelled an untested hypothesis;
+#   no recommended pitch mix, sequencing or simulated improvement.
+amendment14:
+  seasons: [2024, 2025]
+  bootstrap: {draws: 2000, ci: 0.95, seed: 20261021}
+  a1_threshold_pp: 2.0
+  support_thresholds: {contact_pp: 2.0, conversion_pp: 3.0, pitches_per_pa: 0.15, two_strike_pitches: 0.20}
+  part_b: {min_two_strike_pitches: 100, min_two_strike_pa: 50, min_rho: 0.30, min_n: 15}
+  appendix_min: {usage_flag: 50, whiff: {pitches: 200, swings: 100, games: 10},
+                 run_value: {pitches: 500, pas: 100, games: 10},
+                 two_strike: {pitches: 100, games: 10, whiff_swings: 50}}
+
+# AMENDMENT 15 (2026-10-14; committed BEFORE any Marcel projection or comparison was computed).
+# Johnny asked whether our estimated baseline weights beat the Marcel ("monkey") projection and,
+# since that was never tested, said to replace every place that can use Marcel. Design discussed
+# with Codex. Facts seen before: amendment-4 out-of-sample correlations (hitters 0.21 / 0.21,
+# pitchers 0.08 / 0.01), the amendment-13 interim run had just finished (its output not opened).
+#
+# "AAA Marcel" (Tango's Marcel adapted to AAA; AAA lines only, MLB / foreign seasons not used):
+#   For forecast season Y use seasons Y-1, Y-2, Y-3 (calendar; 2020 had no AAA season and keeps
+#   its weight slot, contributing nothing). Per statistic, with park-neutral rate r_s, its
+#   season x league (PCL / INT) average L_s and the pooled AAA average L0 of Y-1:
+#     r_hat = L0 + sum_s w_s n_s (r_s - L_s) / (sum_s w_s n_s + R)
+#   deviations computed per team stint before combining.
+#   Hitters: weights 5/4/3, R = 1200 PA (scaled to each denominator: wOBA denominator
+#     R * L_den / L_PA, ISO R * L_AB / L_PA); stats wOBA (config woba_weights), ISO, K%, BB%.
+#     Ranking score = projected wOBA (ISO, K%, BB% shown, no ranking weight). The recent-form
+#     (Aug-Sep) term is dropped.
+#   Pitchers: weights 3/2/1, R = 600 BF for every component (about 134 IP); stats SO/BF, BB/BF,
+#     HR/BF, HBP/BF, IP/BF. Ranking score = projected K% - BB%. Projected FIP (components, last
+#     season's league cFIP) is shown and used as a secondary validation outcome.
+#   Park: each stint's events divided by (PF + 1) / 2 with that season's single-year factors where
+#     they exist (2023-2025 files; 2026 estimated the same way from 2026 alone), PF = 1 otherwise
+#     (flagged); league averages computed on the same adjusted counts.
+#   Age (a = Y - birth year), applied once after shrinkage: A = 1 + 0.006 (29 - a) below 29, 1 at
+#     29, 1 / (1 + 0.003 (a - 29)) above 29; multiply hitter wOBA, ISO, BB% and pitcher K%;
+#     divide hitter K%, pitcher BB% and HR/BF; HBP and IP/BF unchanged. Missing birth year: A = 1.
+#     Projections re-centred to L0 over the Y-1 AAA population (exposure-weighted).
+#   No per-statistic tuning. Sensitivities (never select the model): R x 0.5 and x 2; A = 1.
+# Use in the ranking (current candidates: Y = 2027, seasons 2024-26):
+#   pitchers: combined = 0.5 z(Marcel K-BB%) + 0.2 z(Stuff+) + 0.3 Fit (amendment 13 with the
+#     Marcel score in the baseline slot); hitters: rank by projected wOBA (Fit still unused for
+#     hitters). Pool, signability tiers and pick rules unchanged.
+# Validation (reported; the switch is Johnny's decision and happens unless "clearly worse"):
+#   V1 AAA next season, folds 2023-25 -> 2026 and 2022-24 -> 2025. Players: preceding two seasons
+#     >= 10 GS and >= 60 IP with latest season >= 20 IP (pitchers); >= 300 PA with latest >= 100 PA
+#     (hitters); target season >= 150 BF / PA in AAA. Outcomes: league-relative K-BB% (pitchers,
+#     primary), -FIP (pitchers, secondary), wOBA (hitters, primary). Methods: Marcel, judgment
+#     baseline, estimated baseline (weights fit only on transitions ending before the target season;
+#     NNLS, min n 40, judgment fallback). Spearman rho and paired differences, 2,000 player
+#     bootstrap draws (seed 20261022), 90% CI, per fold and the equal-weighted mean.
+#     Non-inferior: lower bound of rho(Marcel) - rho(comparator) > -0.05 against both.
+#     Clearly worse: upper bound < -0.05 against either comparator on the primary outcome; then that
+#     role's pick keeps the amendment-13 ranking and Marcel is reported only.
+#   V2 CPBL: amendment-11 pitchers (n 17) and the amendment-12 census pitchers: Spearman(Marcel
+#     K-BB%, centred CPBL K-BB%) next to the registered single-season predictor, paired bootstrap
+#     as in those amendments. Census: AAA seasons back to 2015 are fetched (statsapi season stats);
+#     PF = 1 throughout (primary). 2021 arrivals use weights 2020:3 (empty), 2019:2, 2018:1.
+#   V3 translation (amendment 7b): rolling fit of centred CPBL K%, BB%, K-BB% on the Marcel
+#     projection, earlier arrivals only, >= 15 training pitchers else the training mean; MAE vs the
+#     mean, paired bootstrap.
+# Not changed by Marcel: Fit, Stuff+, the pitch-level environment, velocity calibration,
+#   eligibility, signability, the conversion pool (amendment 9) and amendment 11's registered C1.
+amendment15:
+  hitter: {weights: [5, 4, 3], regress_pa: 1200}
+  pitcher: {weights: [3, 2, 1], regress_bf: 600}
+  age: {peak: 29, young: 0.006, old: 0.003}
+  forecast_season: 2027
+  sensitivity_regress: [0.5, 2.0]
+  validation:
+    folds: {2026: [2023, 2024, 2025], 2025: [2022, 2023, 2024]}
+    pitcher: {min_gs_2y: 10, min_ip_2y: 60, min_ip_last: 20, min_bf_target: 150}
+    hitter: {min_pa_2y: 300, min_pa_last: 100, min_pa_target: 150}
+    noninferiority: -0.05
+    bootstrap: {draws: 2000, ci: 0.90, seed: 20261022}
+  census_first_season: 2015

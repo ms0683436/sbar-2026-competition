@@ -1,0 +1,35 @@
+{
+  "n_ranked": 178,
+  "n_with_stuff": 178,
+  "n_signable": 57,
+  "n_signable_with_stuff": 57,
+  "picks": [
+    {
+      "ranking": "amendment 15 (Marcel 0.5 / Stuff+ 0.2 / Fit 0.3)",
+      "signable top 3": "Joey Gerber, José Urquidy, Elieser Hernández",
+      "overall top 3": "Logan Henderson, Robby Snelling, Riley Cornelio"
+    },
+    {
+      "ranking": "amendment 13 (old baseline 0.5 / Stuff+ 0.2 / Fit 0.3)",
+      "signable top 3": "Joey Gerber, José Urquidy, Seth Shuman",
+      "overall top 3": "Logan Henderson, Robby Snelling, Jonah Tong"
+    },
+    {
+      "ranking": "amendment 6 (0.7 old baseline / 0.3 Fit)",
+      "signable top 3": "Joey Gerber, Carl Edwards Jr., Nolan Kingham",
+      "overall top 3": "Logan Henderson, Robby Snelling, Tyson Hardin"
+    },
+    {
+      "ranking": "sensitivity Stuff+ 0.1 (Marcel 0.6)",
+      "signable top 3": "Joey Gerber, Elieser Hernández, José Urquidy",
+      "overall top 3": "Logan Henderson, Robby Snelling, Riley Cornelio"
+    },
+    {
+      "ranking": "sensitivity Stuff+ 0.3 (Marcel 0.4)",
+      "signable top 3": "Joey Gerber, José Urquidy, Seth Shuman",
+      "overall top 3": "Jonah Tong, Robby Snelling, Logan Henderson"
+    }
+  ],
+  "primary_pick": "Joey Gerber",
+  "primary_pick_p_top1_signable": 0.5933333333333334
+}

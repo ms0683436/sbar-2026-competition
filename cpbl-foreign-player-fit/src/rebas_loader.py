@@ -14,6 +14,7 @@ import numpy as np
 import pandas as pd
 
 from .common import processed, raw
+from . import pitch_schema
 from .pitch_schema import finalize
 
 SWING_CODES = {"SW", "F", "FT", "H"}
@@ -135,7 +136,7 @@ def in_zone(x: pd.Series, y: pd.Series) -> pd.Series:
 def load(seasons=(2024, 2025), force: bool = False) -> pd.DataFrame:
     out = processed("cpbl_pitches.parquet")
     if out.exists() and not force:
-        return pd.read_parquet(out)
+        return pitch_schema.refresh_woba(pd.read_parquet(out))
     df = pd.concat([pitches(s) for s in seasons], ignore_index=True)
     df.to_parquet(out, index=False)
     return df

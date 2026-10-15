@@ -335,6 +335,37 @@ def run(baseline: dict, cpbl=None, aaa=None) -> dict:
         D.loc[m, "baseline_rank_tracked"] = D.loc[m, "baseline_score"].rank(ascending=False, method="first")
         D.loc[m, "combined_heuristic"] = ch["baseline"] * zscore(D.loc[m, "baseline_score"]) + ch["fit"] * D.loc[m, "fit_score"]
         D.loc[m, "combined_rank"] = D.loc[m, "combined_heuristic"].rank(ascending=False, method="first")
+    if "amendment13" in config():        # Stuff+ enters the pitcher ranking (amendment 13)
+        from . import stuff_rank
+        st = stuff_rank.candidate_stuff(stuff_rank.game_sums()).set_index("pitcher_id")
+        P["stuff_plus"] = P.mlbam_id.map(st.stuff_plus)
+        P["stuff_pitches"] = P.mlbam_id.map(st.stuff_pitches)
+        m = P.fit_available
+        P.loc[m, "combined_a6"] = P.loc[m, "combined_heuristic"]
+        P.loc[m, "combined_rank_a6"] = P.loc[m, "combined_rank"]
+        P.loc[m, "combined_heuristic"] = stuff_rank.combined(P.loc[m, "baseline_score"], P.loc[m, "stuff_plus"],
+                                                             P.loc[m, "fit_score"])
+        P.loc[m, "combined_rank"] = P.loc[m, "combined_heuristic"].rank(ascending=False, method="first")
+    if "amendment15" in config():        # AAA Marcel replaces the baseline in the ranking (amendment 15)
+        from . import marcel
+        for D in (P, H):
+            role = "pitcher" if D is P else "hitter"
+            mp = marcel.candidate_scores(role, D.mlbam_id)
+            D["marcel_score"] = mp.score.to_numpy()
+            D["marcel_share_data"] = mp[f"share_data_{'k' if role == 'pitcher' else 'woba'}"].to_numpy()
+            if role == "pitcher":
+                D["marcel_k_pct"], D["marcel_bb_pct"], D["marcel_fip"] = mp.k.to_numpy(), mp.bb.to_numpy(), mp.fip.to_numpy()
+            else:
+                D["marcel_iso"], D["marcel_k_pct"], D["marcel_bb_pct"] = mp.iso.to_numpy(), mp.k.to_numpy(), mp.bb.to_numpy()
+            m = D.fit_available
+            D.loc[m, "marcel_rank_tracked"] = D.loc[m, "marcel_score"].rank(ascending=False, method="first")
+        m = P.fit_available
+        if marcel.active("pitcher"):             # unless V1 found Marcel "clearly worse"
+            P.loc[m, "combined_a13"] = P.loc[m, "combined_heuristic"]
+            P.loc[m, "combined_rank_a13"] = P.loc[m, "combined_rank"]
+            P.loc[m, "combined_heuristic"] = stuff_rank.combined(P.loc[m, "marcel_score"], P.loc[m, "stuff_plus"],
+                                                                 P.loc[m, "fit_score"])
+            P.loc[m, "combined_rank"] = P.loc[m, "combined_heuristic"].rank(ascending=False, method="first")
     P = P.sort_values(["fit_available", "combined_rank"], ascending=[False, True])
     H = H.sort_values(["fit_available", "combined_rank"], ascending=[False, True])
     P.drop(columns="pid").to_csv(processed("pitcher_fit_results.csv"), index=False)

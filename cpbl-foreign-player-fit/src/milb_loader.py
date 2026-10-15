@@ -25,6 +25,7 @@ import pandas as pd
 
 from . import park, statsapi_pbp
 from .common import config, processed, raw, snapshot
+from . import pitch_schema
 from .pitch_schema import finalize
 
 USECOLS = [
@@ -130,6 +131,7 @@ def to_schema(df: pd.DataFrame) -> pd.DataFrame:
     out = finalize(df)
     out = pd.concat([out, extra.drop(columns="_pt")], axis=1)
     out["launch_speed"] = df["launch_speed"]
+    out["pitch_code"] = code.to_numpy()          # raw call code (amendment 14 audit: pitchouts, foul tips)
     return out
 
 
@@ -148,7 +150,9 @@ def _inputs_newer_than(out) -> bool:
 def load(force: bool = False) -> pd.DataFrame:
     out = processed("aaa_pitches.parquet")
     if out.exists() and not force and not _inputs_newer_than(out):
-        return pd.read_parquet(out)
+        df = pd.read_parquet(out)
+        if "pitch_code" in df:              # caches from before the raw call code was kept are rebuilt
+            return pitch_schema.refresh_woba(df)
     audits, frames = [], []
     api = statsapi_pbp.read_all(USECOLS + statsapi_pbp.PRE_COUNT)
     api_year = pd.to_datetime(api.game_date).dt.year if len(api) else pd.Series(dtype=int)

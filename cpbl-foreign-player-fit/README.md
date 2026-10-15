@@ -8,6 +8,9 @@
 
 - **分析快照**：2026-10-13（可簽性分層的日期也是 2026-10-13）
 - **Go / No-Go**：有條件 GO（細球種可行；AAA 2025–26 逐球已補齊，但中職沒有 2026 逐球、也沒有轉速與位移）
+- **修正 13–15（2026-10-14，一次重跑，首選不變）**：Stuff+ 加進投手排名；Marcel（「猴子」預測法）取代原本的 baseline，投手排名 = 0.5 Marcel K−BB% + 0.2 Stuff+ + 0.3 Fit，打者改用 Marcel wOBA 排名。Marcel 預測下一季 AAA 不比原方法差（每格都略高），在 53 位洋投普查中對中職 K−BB% 的 ρ 0.42（單季 AAA 0.34）。另做兩好球纏鬥指標：中職打者兩好球後的續命界外球率比 AAA 高 2.5 個百分點，剛好過登錄門檻；「兩好球收得掉的投手來台更好」沒有得到支持（[`reports/marcel.md`](reports/marcel.md)、[`reports/stuff_rank.md`](reports/stuff_rank.md)、[`reports/battle.md`](reports/battle.md)、findings 0.12–0.14 節）。
+- **修正 12（2026-10-14，只做驗證，首選不變）**：用 Baseball-Reference 做 2018–2026 中職洋將普查。53 位前一季在 AAA 投過的洋投，來台前的 AAA K-BB%、K%、BB% 都和來台後的中職成績正相關（主要檢定 ρ 0.34，90% CI 0.11 至 0.54），AAA 的 K-BB% 優勢約剩一半，但沒有證明能準確預測數值。洋打只有 2 人符合條件，做不了檢定（[`reports/cpbl_census.md`](reports/cpbl_census.md)）。
+- **wOBA 權重修正（2026-10-14，首選不變）**：Johnny 發現設定檔標示 2024、實際是 FanGraphs 2013 年的權重。改成 2024 後全部重跑，首選與登錄的回測結論都不變；Stuff+ 的 S3 改成勉強通過，Johnny 之後決定加進排名（修正 13；findings 0.11 節）。
 - **修正 11（2026-10-14，首選不變）**：Codex 指出舊回測用到未來資料。改成每位來台者只用來台前的資料（中職環境、球場係數、標準化母體、模型訓練都只用更早的資料），現在是主要回測。Fit 仍沒有被證實能預測來台成績（[`reports/backtest_chrono.md`](reports/backtest_chrono.md)）。
 - **修正 10（2026-10-14，首選不變）**：Johnny 要求看氣候。AAA 投手熱天（≥ 85°F）的 K%、揮空率、球速差異沒有跨季穩定（ρ −0.03 至 0.10，門檻 0.30），不加進分數（[`reports/weather.md`](reports/weather.md)）。
 - **修正 9（2026-10-14，首選不變）**：Johnny 問為什麼只看 AAA 先發。AAA 後援另列「轉先發池」：角色校正後用先發池的尺度算分，標出先發經驗，並回推比較三種做法。加入後援涵蓋更多實際來台者，但排序沒有變好，所以只當參考名單（[`reports/conversion_pool.md`](reports/conversion_pool.md)）。
@@ -22,9 +25,9 @@
 
 | | 結論 |
 |---|---|
-| **A. 技術可行？** | **可行，但有條件。** AAA 端改用官方 statsapi，2024–26 逐球完整；CPBL 端用 REBAS 2024–25（ODC-By）。中職官方站的使用條款要求書面授權；排名沒有用它，修正 7 起在沒有授權的情況下只用來驗證（limitations L10）。整條流程可以重現，有 101 個自動化測試。限制：中職缺 2026 逐球、轉速與位移；中職球種為人工標記。 |
-| **B. 找到 baseline 沒有的適性資訊？** | **投手：有獨立且穩定的資訊，但沒有證據能預測來台成績。** 投手 Fit 與 baseline 幾乎無關（修正 6 後 ρ = 0.04），跨季可靠度 0.63（修正 5 為 0.74）。修正 3 扣掉投手品質後，中職「怕高速球、擅打 SPL」的揮空面差異大多消失，剩下的差異跨季不穩定（ρ = 0.27）。<br>**打者：沒有可用的。** 打者 Fit 跨季可靠度 0.09（修正 5 為 0.22），未達 0.30 門檻。<br>**回測**：修正 3 之後主要檢驗 ρ = 0.24（90% CI −0.29 至 0.70），無法判定；Fit 與來台後 K-BB% ρ = −0.36。見 [`reports/backtest.md`](reports/backtest.md)。修正 7 加入 2026 成績後 n = 17，所有檢驗仍無法判定（[`reports/backtest_2026.md`](reports/backtest_2026.md)）。<br>**自建 AAA Stuff+（修正 8）**：預測下一季 AAA 的方向為正，但沒有贏過 baseline，也沒有證明在 baseline 之外有額外資訊（ρ = 0.11，90% CI −0.01 至 0.22），中職回測也無法判定，所以不進排名（[`reports/stuff_plus.md`](reports/stuff_plus.md)）。第一版因實作錯誤誤判為通過，Codex 審查後修正（findings 0.6 節）。Gerber 的 2025 Stuff+ 為 114。<br>**baseline 本身**：AAA 傳統指標預測下一季 AAA 表現的能力很弱；打者的資料估權重與人工權重預測力相同（0.21），卻選出不同首選。 |
-| **C. 推薦與依據** | **洋投：Joey Gerber**（RHP，29 歲，T1：2026-08 被大都會釋出）。可簽者 57 人中組合第 1、客場第 2，K% 24.9%；但 ERA 6.94、先發只有 10 場，bootstrap 首位機率 0.36。依據**弱**。<br>**洋打：Daz Cameron**（右打 LF，29 歲，T2：2026-09 被藍鳥 outright）。全體 baseline 第 1，球場校正後 wOBA .427、客場 .439；可簽者中首位機率 0.47、前 3 機率 0.76。只有 430 PA。依據**中等偏弱**。<br>修正 5 的首選 Hardin、Moore 都是 T3（仍受合約控制），已換掉。**回推驗證**：可簽性讓名單更像球團的選擇，但名單內的能力排序和隨機差不多（[`reports/recruitment_backtest.md`](reports/recruitment_backtest.md)）。<br>合約金額與來台意願**未評估**。候補見 [`reports/recommendations.md`](reports/recommendations.md)。 |
+| **A. 技術可行？** | **可行，但有條件。** AAA 端改用官方 statsapi，2024–26 逐球完整；CPBL 端用 REBAS 2024–25（ODC-By）。中職官方站的使用條款要求書面授權；排名沒有用它，修正 7 起在沒有授權的情況下只用來驗證（limitations L10）。整條流程可以重現，有 107 個自動化測試。限制：中職缺 2026 逐球、轉速與位移；中職球種為人工標記。 |
+| **B. 找到 baseline 沒有的適性資訊？** | **投手：有獨立且穩定的資訊，但沒有證據能預測來台成績。** 投手 Fit 與 baseline 幾乎無關（修正 6 後 ρ = 0.04），跨季可靠度 0.63（修正 5 為 0.74）。修正 3 扣掉投手品質後，中職「怕高速球、擅打 SPL」的揮空面差異大多消失，剩下的差異跨季不穩定（ρ = 0.27）。<br>**打者：沒有可用的。** 打者 Fit 跨季可靠度 0.09（修正 5 為 0.22），未達 0.30 門檻。<br>**回測**：修正 3 之後主要檢驗 ρ = 0.24（90% CI −0.29 至 0.70），無法判定；Fit 與來台後 K-BB% ρ = −0.36。見 [`reports/backtest.md`](reports/backtest.md)。修正 7 加入 2026 成績後 n = 17，所有檢驗仍無法判定（[`reports/backtest_2026.md`](reports/backtest_2026.md)）。修正 12 的 2018–2026 普查（n = 53）顯示來台前的 AAA K%、BB% 和中職成績正相關，但沒有檢驗 Fit。<br>**自建 AAA Stuff+（修正 8）**：預測下一季 AAA 的方向為正，但沒有贏過 baseline，wOBA 權重修正後，在 baseline 之外的額外資訊勉強通過（S3 ρ = 0.14，90% CI 0.02 至 0.25），主要檢定 S1 仍未通過；Johnny 決定加進投手排名（修正 13，權重 0.2；[`reports/stuff_plus.md`](reports/stuff_plus.md)、findings 0.11、0.12 節）。第一版因實作錯誤誤判為通過，Codex 審查後修正（findings 0.6 節）。Gerber 2025–26 的 Stuff+ 為 110。<br>**baseline 本身**：AAA 傳統指標預測下一季 AAA 表現的能力很弱，資料估權重還比 Marcel 和人工權重差，所以修正 15 改用 Marcel（findings 0.14 節）。 |
+| **C. 推薦與依據** | **洋投：Joey Gerber**（RHP，29 歲，T1：2026-08 被大都會釋出）。可簽者 57 人中組合第 1，Stuff+ 110 是可簽者最高，K% 24.9%；但 ERA 6.94、先發只有 10 場。修正 13–15 後 bootstrap 首位機率 0.59（修正 6 時 0.36），候補 José Urquidy、Elieser Hernández。依據**弱**。<br>**洋打：Daz Cameron**（右打 LF，29 歲，T2：2026-09 被藍鳥 outright）。全體 baseline 第 1，球場校正後 wOBA .427、客場 .439；改用 Marcel wOBA 排名後，可簽者首位機率 0.70、前 3 機率 0.89（修正 6 時 0.47、0.76），候補 Ryan Ward、Pablo Reyes。只有 430 PA。依據**中等偏弱**。<br>修正 5 的首選 Hardin、Moore 都是 T3（仍受合約控制），已換掉。**回推驗證**：可簽性讓名單更像球團的選擇，但名單內的能力排序和隨機差不多（[`reports/recruitment_backtest.md`](reports/recruitment_backtest.md)）。<br>合約金額與來台意願**未評估**。候補見 [`reports/recommendations.md`](reports/recommendations.md)。 |
 | **D. 下一步** | 見本頁最後一節。 |
 
 ## 專案結構
@@ -64,9 +67,10 @@ cpbl-foreign-player-fit/
 │   ├── stuff_plus.py            # 修正 8：自建 AAA Stuff+ 與驗證
 │   ├── conversion_pool.py       # 修正 9：AAA 後援轉先發池、角色校正、三種做法的回推
 │   ├── weather.py               # 修正 10：AAA 逐場天氣與熱天個人差異的跨季可靠度
-│   └── backtest_chrono.py       # 修正 11：只用事前資料的投手回測
+│   ├── backtest_chrono.py       # 修正 11：只用事前資料的投手回測
+│   └── cpbl_census.py           # 修正 12：2018–2026 中職洋將普查與 AAA 延續性檢定（Baseball-Reference）
 ├── tools/cpbl_site_export.js    # 修正 7：以無頭瀏覽器操作官網排行榜的「匯出表單」
-├── tests/                       # 101 tests：資格邊界、計算、跨來源一致性、官方交叉核對、回測規則、權重估計、球場係數、可簽性、官網匯出解析
+├── tests/                       # 107 tests：資格邊界、計算、跨來源一致性、官方交叉核對、回測規則、權重估計、球場係數、可簽性、官網匯出解析
 ├── reports/
 │   ├── data_feasibility.md      # Phase 0 稽核與 Go/No-Go
 │   ├── data_audit_summary.md    # 自動產生的覆蓋率表
@@ -79,6 +83,7 @@ cpbl-foreign-player-fit/
 │   ├── conversion_pool.md       # 修正 9 轉先發池（自動產生）
 │   ├── weather.md               # 修正 10 氣候（自動產生）
 │   ├── backtest_chrono.md       # 修正 11 只用事前資料的回測（自動產生）
+│   ├── cpbl_census.md           # 修正 12 中職洋將普查（自動產生）
 │   ├── evaluation_tables.md     # 自動產生的 bootstrap 與環境表
 │   ├── limitations.md
 │   └── recommendations.md
@@ -113,6 +118,7 @@ cpbl-foreign-player-fit/
 | `conversion_pool_pitchers.csv`、`conversion_pool_summary.json`、`conversion_cohort.csv` | 修正 9：先發池＋轉先發池的分數、先發經驗標記、回推與中職回測結果 |
 | `weather_splits.csv`、`weather_summary.json` | 修正 10：每位投手每季的熱天差異與跨季可靠度 |
 | `backtest_chrono_cohort.csv`、`backtest_chrono_summary.json`、`park_factors_2023.csv` 等 | 修正 11：只用事前資料的預測值、檢定與滾動預測結果，以及單季球場係數 |
+| `cpbl_census.csv`、`cpbl_census_pitchers.csv`、`cpbl_census_hitters.csv`、`cpbl_census_summary.json` | 修正 12：2018–2026 中職洋將名單與來源、洋投／洋打檢定名單、檢定與換算結果 |
 
 ## 重現
 
@@ -139,7 +145,12 @@ python -m src.backtest_2026     # 修正 7、7b（需要上面的匯出表與 St
 python -m src.conversion_pool   # 修正 9 轉先發池
 python -m src.weather           # 修正 10 氣候（AAA 賽程天氣）
 python -m src.backtest_chrono   # 修正 11 只用事前資料的回測（需要 backtest 與 backtest_2026 的輸出）
-pytest -q                       # 101 passed
+python -m src.cpbl_census       # 修正 12 中職洋將普查（Baseball-Reference，每分鐘 ≤ 20 次，首次約 1 小時）
+python -m src.stuff_rank        # 修正 13 Stuff+ 進排名的比較表（evaluate 之後）
+python -m src.marcel            # 修正 15 Marcel 驗證 V1–V3 與排名前後比較（evaluate、普查之後）
+python -m src.battle            # 修正 14 兩好球纏鬥指標 A、B 部分
+python -m src.battle appendix   # 修正 14 C 部分：目前洋投首選的配球附錄
+pytest -q                       # 107 passed
 ```
 
 各步驟都是 deterministic 的：bootstrap 的 seed 寫在 `config/scoring.yaml`。
@@ -158,6 +169,7 @@ pytest -q                       # 101 passed
 - **Chadwick Baseball Bureau register**：ODC-By 1.0。
 - **中職官網（stats.cpbl.com.tw）**：只用於修正 7、7b 的驗證，未取得書面授權（limitations L10）；原始頁面與匯出檔不隨本 repo 散布。
 - **AAA 資料**：源自 MLB Advanced Media，經 `armstjc/milb-data-repository`（MIT）鏡像取得。僅供非商業研究使用，逐球原始檔不隨本 repo 散布。
+- **中職洋將普查（修正 12）**：資料來源 Baseball-Reference（© Sports Reference）。原始頁面不隨本 repo 散布，只保留衍生的普查表。
 
 ## 下一步：若要正式參賽，最值得投入的事
 
@@ -166,4 +178,4 @@ pytest -q                       # 101 passed
 3. **估權重樣本的存活偏差**：把 2026 升上大聯盟的球員以換算成績補進樣本。
 4. **人工查證招募可行性**：Gerber、Cameron 與候補的合約狀態、身價與來台意願；T2 要等 11 月初小聯盟自由球員名單公布確認。
 5. **後援型洋投**：修正 9 已另列轉先發池。下一步是更好的轉先發校正（例如用大聯盟或 AAA 的角色轉換歷史、球種數、單場用球數），並用 2027 年新來台的洋投確認。
-6. **Stuff+**：修正 8 的 S1、S3 都沒通過，依登錄規則不進排名。若要再試，可以加多季 MLB／AAA 資料訓練，或用 statsapi 的球種分類重建全部欄位，但都要先登錄新規則。
+6. **Stuff+**：修正 8 的 S1、S3 原本都沒通過；wOBA 權重修正後 S3 勉強通過，依登錄規則可以在之後的修正加進排名，待 Johnny 決定。若要再試，可以加多季 MLB／AAA 資料訓練，或用 statsapi 的球種分類重建全部欄位，但都要先登錄新規則。

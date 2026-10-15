@@ -48,11 +48,18 @@ def woba_columns(event: pd.Series) -> tuple[pd.Series, pd.Series]:
     return value, denom
 
 
-def finalize(df: pd.DataFrame) -> pd.DataFrame:
-    df["pitch_type"], df["pitch_group"] = harmonise_pitch_type(df["pitch_type_raw"])
+def refresh_woba(df: pd.DataFrame) -> pd.DataFrame:
+    """(Re)compute woba_value / woba_denom from pa_event with the current config weights, so a
+    cached parquet never carries weights from an older config."""
     v, d = woba_columns(df["pa_event"].fillna("NONE"))
     df["woba_value"] = np.where(df["pa_end"], v, np.nan)
     df["woba_denom"] = np.where(df["pa_end"], d, np.nan)
+    return df
+
+
+def finalize(df: pd.DataFrame) -> pd.DataFrame:
+    df["pitch_type"], df["pitch_group"] = harmonise_pitch_type(df["pitch_type_raw"])
+    refresh_woba(df)
     for c in COLUMNS:
         if c not in df.columns:
             df[c] = np.nan

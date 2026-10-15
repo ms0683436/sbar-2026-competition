@@ -71,18 +71,18 @@
       {
         "test": "S4a Stuff+ vs centred CPBL K-BB%",
         "n": 17,
-        "rho": 0.19117647058823534,
-        "ci_lo": -0.2114729052354289,
-        "ci_hi": 0.5539821951365239,
+        "rho": 0.3088235294117647,
+        "ci_lo": -0.07035703859221942,
+        "ci_hi": 0.6336860076613348,
         "verdict": "inconclusive"
       },
       {
         "test": "S4b Stuff+ vs centred CPBL whiff%",
         "n": 17,
-        "rho": 0.35294117647058826,
-        "ci_lo": -0.07008024691358028,
-        "ci_hi": 0.7300168539325842,
-        "verdict": "inconclusive"
+        "rho": 0.42892156862745107,
+        "ci_lo": 0.03211442435961764,
+        "ci_hi": 0.7651431077794171,
+        "verdict": "supports"
       },
       {
         "test": "S4c Fit vs centred CPBL K-BB% (reference)",

@@ -1,0 +1,416 @@
+{
+  "census": {
+    "imports_seen": 153,
+    "arrivals_in_range": 143,
+    "returnees_first_before_range": 10,
+    "unknown_birthplace": 410,
+    "arrivals_by_season": {
+      "2018": 6,
+      "2019": 12,
+      "2020": 16,
+      "2021": 19,
+      "2022": 20,
+      "2023": 19,
+      "2024": 19,
+      "2025": 19,
+      "2026": 13
+    },
+    "origin": [
+      {
+        "origin": "AA or lower",
+        "n": 11,
+        "n_observable": 11,
+        "returned_next": 0.18181818181818182
+      },
+      {
+        "origin": "AAA",
+        "n": 43,
+        "n_observable": 39,
+        "returned_next": 0.3333333333333333
+      },
+      {
+        "origin": "KBO",
+        "n": 16,
+        "n_observable": 14,
+        "returned_next": 0.5
+      },
+      {
+        "origin": "MLB",
+        "n": 4,
+        "n_observable": 4,
+        "returned_next": 0.5
+      },
+      {
+        "origin": "NPB",
+        "n": 4,
+        "n_observable": 3,
+        "returned_next": 0.3333333333333333
+      },
+      {
+        "origin": "NPB farm",
+        "n": 7,
+        "n_observable": 7,
+        "returned_next": 0.0
+      },
+      {
+        "origin": "none",
+        "n": 22,
+        "n_observable": 20,
+        "returned_next": 0.2
+      },
+      {
+        "origin": "other",
+        "n": 36,
+        "n_observable": 32,
+        "returned_next": 0.375
+      }
+    ],
+    "with_mlbam": 141
+  },
+  "data_check": {
+    "n": 61,
+    "n_pitchers": 46,
+    "mad_k": 0.0002818964969814524,
+    "mad_bb": 0.000265461595349096,
+    "mean_bf_ratio": 1.001434205349678
+  },
+  "pitchers": {
+    "n": 53,
+    "by_season": {
+      "2018": 1,
+      "2019": 3,
+      "2020": 8,
+      "2021": 8,
+      "2022": 6,
+      "2023": 6,
+      "2024": 7,
+      "2025": 10,
+      "2026": 4
+    },
+    "tests": [
+      {
+        "test": "CP1 AAA K-BB% vs CPBL K-BB% (primary)",
+        "n": 53,
+        "rho": 0.3390582164167069,
+        "ci_lo": 0.11009084721713482,
+        "ci_hi": 0.5412787130240672,
+        "verdict": "supports"
+      },
+      {
+        "test": "CP2 AAA K% vs CPBL K%",
+        "n": 53,
+        "rho": 0.39646831156265117,
+        "ci_lo": 0.16325068381666888,
+        "ci_hi": 0.5964552464774517,
+        "verdict": "supports"
+      },
+      {
+        "test": "CP3 AAA BB% vs CPBL BB%",
+        "n": 53,
+        "rho": 0.34260603128527656,
+        "ci_lo": 0.15163407249071503,
+        "ci_hi": 0.5077268572062242,
+        "verdict": "supports"
+      },
+      {
+        "test": "CP4 baseline vs CPBL K-BB%",
+        "n": 53,
+        "rho": 0.3643767134333172,
+        "ci_lo": 0.14490409389042608,
+        "ci_hi": 0.5594043558148815,
+        "verdict": "supports"
+      }
+    ],
+    "sensitivity_2021_on": [
+      {
+        "test": "CP1 AAA K-BB% vs CPBL K-BB% (primary)",
+        "n": 41,
+        "rho": 0.4067944250871081,
+        "ci_lo": 0.16356257927053072,
+        "ci_hi": 0.6117316743259215,
+        "verdict": "supports"
+      },
+      {
+        "test": "CP2 AAA K% vs CPBL K%",
+        "n": 41,
+        "rho": 0.41167247386759587,
+        "ci_lo": 0.14542224751822166,
+        "ci_hi": 0.6344272017851009,
+        "verdict": "supports"
+      },
+      {
+        "test": "CP3 AAA BB% vs CPBL BB%",
+        "n": 41,
+        "rho": 0.3602787456445994,
+        "ci_lo": 0.14047327238090057,
+        "ci_hi": 0.544916969853229,
+        "verdict": "supports"
+      },
+      {
+        "test": "CP4 baseline vs CPBL K-BB%",
+        "n": 41,
+        "rho": 0.44041811846689904,
+        "ci_lo": 0.1929421521545542,
+        "ci_hi": 0.6334280760632096,
+        "verdict": "supports"
+      }
+    ],
+    "slopes": [
+      {
+        "metric": "AAA K-BB%",
+        "n": 53,
+        "slope": 0.5118911065816938,
+        "ci_lo": 0.20547988293039743,
+        "ci_hi": 0.8066122452775716
+      },
+      {
+        "metric": "AAA K%",
+        "n": 53,
+        "slope": 0.5839918244801071,
+        "ci_lo": 0.36282629642891157,
+        "ci_hi": 0.763752363132811
+      },
+      {
+        "metric": "AAA BB%",
+        "n": 53,
+        "slope": 0.2637255848407812,
+        "ci_lo": 0.0894471409311845,
+        "ci_hi": 0.4886340755734472
+      }
+    ],
+    "rolling": {
+      "n_held_out": 49,
+      "mae_m0": 0.04797054236506119,
+      "mae_m1": 0.04722826446119914,
+      "m1_minus_m0": -0.0007422779038620472,
+      "ci": [
+        -0.004377256985263166,
+        0.002910737817709346
+      ]
+    },
+    "slopes_2021_on": [
+      {
+        "metric": "AAA K-BB%",
+        "n": 41,
+        "slope": 0.5599776741563729,
+        "ci_lo": 0.24906633516866752,
+        "ci_hi": 0.8665699054319459
+      },
+      {
+        "metric": "AAA K%",
+        "n": 41,
+        "slope": 0.5742554691879523,
+        "ci_lo": 0.2948696798953303,
+        "ci_hi": 0.7720083965536774
+      },
+      {
+        "metric": "AAA BB%",
+        "n": 41,
+        "slope": 0.2871239980702917,
+        "ci_lo": 0.07454223992318582,
+        "ci_hi": 0.5659540301838512
+      }
+    ],
+    "rolling_2021_on": {
+      "n_held_out": 33,
+      "mae_m0": 0.04899967825461614,
+      "mae_m1": 0.04817232080855717,
+      "m1_minus_m0": -0.0008273574460589683,
+      "ci": [
+        -0.0074190736498454275,
+        0.005870647075105722
+      ]
+    }
+  },
+  "hitters": {
+    "n": 2,
+    "by_season": {
+      "2021": 1,
+      "2022": 1
+    },
+    "tests": [
+      {
+        "test": "CH1 AAA wOBA vs CPBL wOBA (primary)",
+        "n": 2,
+        "rho": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "verdict": "too few"
+      },
+      {
+        "test": "CH2 AAA K% vs CPBL K%",
+        "n": 2,
+        "rho": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "verdict": "too few"
+      },
+      {
+        "test": "CH3 AAA BB% vs CPBL BB%",
+        "n": 2,
+        "rho": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "verdict": "too few"
+      },
+      {
+        "test": "CH4 AAA ISO vs CPBL ISO",
+        "n": 2,
+        "rho": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "verdict": "too few"
+      }
+    ],
+    "sensitivity_2021_on": [
+      {
+        "test": "CH1 AAA wOBA vs CPBL wOBA (primary)",
+        "n": 2,
+        "rho": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "verdict": "too few"
+      },
+      {
+        "test": "CH2 AAA K% vs CPBL K%",
+        "n": 2,
+        "rho": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "verdict": "too few"
+      },
+      {
+        "test": "CH3 AAA BB% vs CPBL BB%",
+        "n": 2,
+        "rho": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "verdict": "too few"
+      },
+      {
+        "test": "CH4 AAA ISO vs CPBL ISO",
+        "n": 2,
+        "rho": NaN,
+        "ci_lo": NaN,
+        "ci_hi": NaN,
+        "verdict": "too few"
+      }
+    ],
+    "slopes": [
+      {
+        "metric": "AAA wOBA",
+        "n": 2
+      },
+      {
+        "metric": "AAA K%",
+        "n": 2
+      },
+      {
+        "metric": "AAA BB%",
+        "n": 2
+      },
+      {
+        "metric": "AAA ISO",
+        "n": 2
+      }
+    ],
+    "rolling": {
+      "n_held_out": 0
+    },
+    "slopes_2021_on": [
+      {
+        "metric": "AAA wOBA",
+        "n": 2
+      },
+      {
+        "metric": "AAA K%",
+        "n": 2
+      },
+      {
+        "metric": "AAA BB%",
+        "n": 2
+      },
+      {
+        "metric": "AAA ISO",
+        "n": 2
+      }
+    ],
+    "rolling_2021_on": {
+      "n_held_out": 0
+    }
+  },
+  "cpbl_league": {
+    "2018": {
+      "k_pct": 0.17486051163280344,
+      "bb_pct": 0.0775344773134014,
+      "bat_k_pct": 0.17488812845485655,
+      "bat_bb_pct": 0.07754672282179521,
+      "iso": 0.13307310149041873,
+      "woba": 0.34011986889721624
+    },
+    "2019": {
+      "k_pct": 0.179071989806753,
+      "bb_pct": 0.07639626247610957,
+      "bat_k_pct": 0.17908149721263605,
+      "bat_bb_pct": 0.07640031855588002,
+      "iso": 0.15082201572551823,
+      "woba": 0.34252911682495146
+    },
+    "2020": {
+      "k_pct": 0.18563741721854304,
+      "bb_pct": 0.07672806291390728,
+      "bat_k_pct": 0.18567584351066033,
+      "bat_bb_pct": 0.076743945352929,
+      "iso": 0.16219660545675724,
+      "woba": 0.35585999336017154
+    },
+    "2021": {
+      "k_pct": 0.17657782793645282,
+      "bb_pct": 0.07813178227276674,
+      "bat_k_pct": 0.17660082483177772,
+      "bat_bb_pct": 0.07814195789016713,
+      "iso": 0.10523996082272281,
+      "woba": 0.3058138132028046
+    },
+    "2022": {
+      "k_pct": 0.17153876495595388,
+      "bb_pct": 0.07095586624008415,
+      "bat_k_pct": 0.17156884232674352,
+      "bat_bb_pct": 0.07096830754394425,
+      "iso": 0.08679004467134652,
+      "woba": 0.2977076602235782
+    },
+    "2023": {
+      "k_pct": 0.16813812899578132,
+      "bb_pct": 0.08085069368938373,
+      "bat_k_pct": 0.16813812899578132,
+      "bat_bb_pct": 0.08085069368938373,
+      "iso": 0.10025112019301788,
+      "woba": 0.3053019763198586
+    },
+    "2024": {
+      "k_pct": 0.17216731701980234,
+      "bb_pct": 0.07968345428686044,
+      "bat_k_pct": 0.17217987526897408,
+      "bat_bb_pct": 0.0796892665669791,
+      "iso": 0.09799315943462315,
+      "woba": 0.30595649557358223
+    },
+    "2025": {
+      "k_pct": 0.1673130193905817,
+      "bb_pct": 0.07283471837488457,
+      "bat_k_pct": 0.16732537952942045,
+      "bat_bb_pct": 0.07284009899161527,
+      "iso": 0.09952176781002639,
+      "woba": 0.2999378155848041
+    },
+    "2026": {
+      "k_pct": 0.1594256395112768,
+      "bb_pct": 0.07932523716363368,
+      "bat_k_pct": 0.15943152454780363,
+      "bat_bb_pct": 0.079328165374677,
+      "iso": 0.0826153910184376,
+      "woba": 0.2915178236196319
+    }
+  }
+}
