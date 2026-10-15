@@ -12,6 +12,8 @@ AAA pitchers outside the starter pool with >= 400 tracked pitches over the two p
 
 Caveats: the effect is learned from pitchers who both started and relieved; applying it to pure relievers is an extrapolation, and clubs chose who could start, so the true conversion penalty for a pure reliever is plausibly larger (scores too optimistic, mainly K% and FIP; BB% unclear). The bootstrap treats pitcher-seasons as independent and the cohort check holds the adjustment fixed, so both intervals are too narrow. The 2026 list also shows a score with twice the effect (sensitivity, not registered).
 
+The recruitment replay and the cohort check below are amendment 9's published results (`conversion_pool_summary_a9.json`); amendment 17 changes only the 2026 list's scoring (last section).
+
 ## Recruitment replay, fold A (primary): as of 2024-10-13, AAA 2023-2024; positives 17, with AAA pitching 12; starter pool 217, conversion pool 425
 
 | arm | list N | positives in list | coverage | hits@10 | random@10 | hits@20 | random@20 | median pct rank |
@@ -135,3 +137,44 @@ Signable conversion candidates with starting evidence 'stretched' (>= 75 pitches
 | 683568 | Jairo Iriarte | T2_expiring | 63 | 5 | 85.000 | -0.585 | -0.803 | 421 |
 
 Starting history covers AAA in the two pool seasons only; earlier MLB or AAA starts are not counted.
+
+## Amendment 17: the conversion pool on the main ranking's scale
+
+score = 0.5 z(Marcel K-BB%, starter-equivalent stints) + 0.2 z(Stuff+) + 0.3 Fit, every z against the 178 Fit-available starters (their scores reproduce the main ranking: max difference 6.7e-16). rank_all = rank among those starters plus the 375 conversion pitchers; pct = percentile among the 57 signable starters; a9_rank_all = the old amendment-9 rank (old baseline, different pool size). Conversion pitchers with Fit: 375, with Stuff+: 375; not ranked (no Marcel line): 0.
+
+Signable conversion candidates, top 15:
+
+| name | sign_tier | pitching_G | pitching_GS | max_game_pitches | starting_evidence | a17_marcel_k_bb | a17_stuff_plus | a17_fit | a17_score | a17_rank_all | a17_pct_signable_starters | a9_rank_all | a17_score_x2 | a17_score_no_stuff | a17_score_no_adjustment |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Angel Bastardo | T2_expiring | 40 | 0 | 47.000 | none | 0.144 | 118.315 | 1.481 | 1.524 | 11 | 100.000 | 77 | 1.418 | 1.024 | 1.630 |
+| Alejandro Hidalgo | T2_expiring | 31 | 0 | 50.000 | partial | 0.132 | 106.517 | 2.370 | 1.288 | 27 | 100.000 | 350 | 1.187 | 1.067 | 1.388 |
+| Gunner Mayer | T1_free | 32 | 0 | 37.000 | none | 0.141 | 99.128 | 2.416 | 1.281 | 29 | 100.000 | 139 | 1.195 | 1.245 | 1.366 |
+| Reiss Knehr | T2_expiring | 50 | 0 | 37.000 | none | 0.137 | 100.919 | 2.377 | 1.234 | 35 | 100.000 | 44 | 1.139 | 1.153 | 1.329 |
+| Kevin Herget | T1_free | 47 | 9 | 52.000 | partial | 0.153 | 92.806 | 2.049 | 1.229 | 36 | 100.000 | 91 | 1.151 | 1.352 | 1.307 |
+| Nick Garcia | T2_expiring | 41 | 1 | 48.000 | none | 0.135 | 114.705 | 0.922 | 1.124 | 44 | 100.000 | 32 | 1.017 | 0.697 | 1.230 |
+| Ben Bowden | T2_expiring | 77 | 0 | 54.000 | partial | 0.150 | 98.434 | 1.189 | 1.063 | 49 | 100.000 | 29 | 0.942 | 1.045 | 1.185 |
+| Jerming Rosario | T2_expiring | 52 | 0 | 41.000 | none | 0.147 | 107.619 | 0.557 | 1.059 | 50 | 100.000 | 80 | 0.944 | 0.810 | 1.174 |
+| Sam Carlson | T2_expiring | 76 | 0 | 46.000 | none | 0.150 | 103.086 | 0.765 | 1.047 | 51 | 100.000 | 46 | 0.927 | 0.912 | 1.166 |
+| Jace Beck | T2_expiring | 11 | 9 | 89.000 | stretched | 0.134 | 101.637 | 1.775 | 1.034 | 55 | 100.000 | 205 | 1.023 | 0.935 | 1.044 |
+| Matt Seelinger | T2_expiring | 78 | 1 | 55.000 | partial | 0.122 | 113.706 | 0.786 | 0.814 | 89 | 98.246 | 194 | 0.692 | 0.412 | 0.935 |
+| Houston Roth | T2_expiring | 64 | 5 | 50.000 | partial | 0.139 | 109.939 | 0.022 | 0.799 | 91 | 98.246 | 192 | 0.693 | 0.492 | 0.904 |
+| Junior Fernández | T1_free | 61 | 0 | 44.000 | none | 0.109 | 107.398 | 2.021 | 0.779 | 95 | 98.246 | 177 | 0.670 | 0.536 | 0.887 |
+| Kyle Keller | T2_expiring | 23 | 0 | 44.000 | none | 0.103 | 112.372 | 1.960 | 0.767 | 99 | 98.246 | 239 | 0.690 | 0.398 | 0.843 |
+| Peter Strzelecki | T1_free | 50 | 2 | 50.000 | partial | 0.134 | 106.364 | 0.473 | 0.758 | 100 | 98.246 | 313 | 0.651 | 0.541 | 0.865 |
+
+Sensitivities (reported, never choose): of these 15, still in the signable top 15 with twice the role effect 15, with no Stuff+ term 11, with no role adjustment 15.
+
+Signable with starting evidence 'stretched':
+
+| name | sign_tier | pitching_G | pitching_GS | max_game_pitches | starting_evidence | a17_marcel_k_bb | a17_stuff_plus | a17_fit | a17_score | a17_rank_all | a17_pct_signable_starters | a9_rank_all | a17_score_x2 | a17_score_no_stuff | a17_score_no_adjustment |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Jace Beck | T2_expiring | 11 | 9 | 89.000 | stretched | 0.134 | 101.637 | 1.775 | 1.034 | 55 | 100.000 | 205 | 1.023 | 0.935 | 1.044 |
+| Kohl Franklin | T2_expiring | 8 | 7 | 83.000 | stretched | 0.100 | 101.039 | 1.519 | 0.312 | 201 | 82.456 | 343 | 0.307 | 0.229 | 0.317 |
+| Domingo Acevedo | T2_expiring | 8 | 6 | 98.000 | stretched | 0.115 | 77.329 | 2.353 | 0.256 | 218 | 78.947 | 89 | 0.241 | 0.756 | 0.272 |
+| Jairo Iriarte | T2_expiring | 63 | 5 | 85.000 | stretched | 0.092 | 103.926 | 1.554 | 0.231 | 225 | 77.193 | 421 | 0.130 | 0.075 | 0.331 |
+| Ben Wereski | T1_free | 9 | 9 | 101.000 | stretched | 0.117 | 97.443 | 0.314 | 0.163 | 242 | 77.193 | 243 | 0.163 | 0.170 | 0.163 |
+| Erasmo Ramírez | T1_free | 22 | 7 | 84.000 | stretched | 0.091 | 95.720 | 0.883 | -0.187 | 340 | 52.632 | 499 | -0.247 | -0.137 | -0.127 |
+| Paul Campbell | T1_free | 18 | 9 | 88.000 | stretched | 0.110 | 92.221 | -0.910 | -0.470 | 412 | 36.842 | 374 | -0.511 | -0.332 | -0.430 |
+| Jagger Haynes | T2_expiring | 10 | 9 | 88.000 | stretched | 0.103 | 83.181 | -0.035 | -0.552 | 435 | 29.825 | 341 | -0.558 | -0.187 | -0.546 |
+| J.P. France | T1_free | 46 | 5 | 80.000 | stretched | 0.075 | 103.468 | -0.075 | -0.582 | 441 | 26.316 | 453 | -0.670 | -0.726 | -0.493 |
+| Jean Cabrera | T2_expiring | 7 | 7 | 85.000 | stretched | 0.068 | 98.084 | 0.736 | -0.597 | 447 | 24.561 | 539 | -0.597 | -0.606 | -0.597 |

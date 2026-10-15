@@ -1,0 +1,348 @@
+{
+  "backtest": {
+    "pools": {
+      "2024": {
+        "pool": 642,
+        "pool_with_stuff": 642,
+        "stuff_seasons_with_data": [
+          2023
+        ]
+      },
+      "2025": {
+        "pool": 611,
+        "pool_with_stuff": 611,
+        "stuff_seasons_with_data": [
+          2023,
+          2024
+        ]
+      },
+      "2026": {
+        "pool": 611,
+        "pool_with_stuff": 611,
+        "stuff_seasons_with_data": [
+          2023,
+          2024,
+          2025
+        ]
+      }
+    },
+    "tests": [
+      {
+        "test": "M1 Marcel + Stuff+ + Fit vs centred CPBL K-BB% (2025-26 arrivals; primary)",
+        "n": 9,
+        "rho": 0.65,
+        "ci_lo": 0.07819397993311034,
+        "ci_hi": 0.9478260869565218,
+        "verdict": "descriptive only (n below minimum)"
+      },
+      {
+        "test": "C1 amendment-11 combined (old baseline + Fit), same pitchers",
+        "n": 9,
+        "rho": 0.7333333333333334,
+        "ci_lo": 0.16521739130434784,
+        "ci_hi": 1.0,
+        "verdict": "descriptive only (n below minimum)"
+      },
+      {
+        "test": "Marcel alone, same pitchers",
+        "n": 9,
+        "rho": 0.3666666666666667,
+        "ci_lo": -0.34482758620689663,
+        "ci_hi": 0.8974358974358972,
+        "verdict": "descriptive only (n below minimum)"
+      },
+      {
+        "test": "Stuff+ (rule S) alone, same pitchers",
+        "n": 9,
+        "rho": 0.45,
+        "ci_lo": -0.24999999999999994,
+        "ci_hi": 0.8749999999999999,
+        "verdict": "descriptive only (n below minimum)"
+      },
+      {
+        "test": "M2 Marcel + Stuff+ (no Fit) vs centred CPBL K-BB% (all 2024-26 arrivals)",
+        "n": 17,
+        "rho": 0.34803921568627455,
+        "ci_lo": -0.009925558312655087,
+        "ci_hi": 0.6571607142857143,
+        "verdict": "inconclusive"
+      }
+    ],
+    "paired": [
+      {
+        "test": "M1 minus C1",
+        "n": 9,
+        "rho": -0.08333333333333337,
+        "ci_lo": -0.631578947368421,
+        "ci_hi": 0.40368825873413017,
+        "verdict": "descriptive only (n below minimum)"
+      },
+      {
+        "test": "M1 minus Marcel alone",
+        "n": 9,
+        "rho": 0.2833333333333333,
+        "ci_lo": -0.20512820512820512,
+        "ci_hi": 0.7894736842105263,
+        "verdict": "descriptive only (n below minimum)"
+      }
+    ]
+  },
+  "replay": {
+    "A": {
+      "as_of": "2024-10-13",
+      "forecast": 2025,
+      "primary": true,
+      "positives_with_aaa": 12,
+      "starter_no_marcel": 0,
+      "starter_positives_no_marcel": 0,
+      "starter": {
+        "N": 86,
+        "positives_in_list": 6,
+        "coverage": 0.5,
+        "median_percentile": 0.5290697674418605,
+        "hits@10": 1,
+        "random@10": 0.7,
+        "hits@20": 1,
+        "random@20": 1.4,
+        "hits": [
+          {
+            "mlbam_id": 528748,
+            "name": "Humberto Castellanos",
+            "list_rank": 5
+          },
+          {
+            "mlbam_id": 682027,
+            "name": "Cam Alldred",
+            "list_rank": 25
+          },
+          {
+            "mlbam_id": 676641,
+            "name": "Beau Sulser",
+            "list_rank": 26
+          },
+          {
+            "mlbam_id": 571527,
+            "name": "David Buchanan",
+            "list_rank": 65
+          },
+          {
+            "mlbam_id": 659275,
+            "name": "Dinelson Lamet",
+            "list_rank": 67
+          },
+          {
+            "mlbam_id": 657093,
+            "name": "Spenser Watkins",
+            "list_rank": 69
+          }
+        ]
+      },
+      "expanded_adj_no_marcel": 0,
+      "expanded_adj_positives_no_marcel": 0,
+      "expanded_adj": {
+        "N": 279,
+        "positives_in_list": 9,
+        "coverage": 0.75,
+        "median_percentile": 0.5555555555555556,
+        "hits@10": 0,
+        "random@10": 0.32,
+        "hits@20": 1,
+        "random@20": 0.65,
+        "hits": [
+          {
+            "mlbam_id": 528748,
+            "name": "Humberto Castellanos",
+            "list_rank": 17
+          },
+          {
+            "mlbam_id": 623451,
+            "name": "Jackson Stephens",
+            "list_rank": 25
+          },
+          {
+            "mlbam_id": 682027,
+            "name": "Cam Alldred",
+            "list_rank": 102
+          },
+          {
+            "mlbam_id": 676641,
+            "name": "Beau Sulser",
+            "list_rank": 103
+          },
+          {
+            "mlbam_id": 670056,
+            "name": "Caleb Baragar",
+            "list_rank": 155
+          },
+          {
+            "mlbam_id": 642834,
+            "name": "Jonathan Bermúdez",
+            "list_rank": 169
+          },
+          {
+            "mlbam_id": 571527,
+            "name": "David Buchanan",
+            "list_rank": 197
+          },
+          {
+            "mlbam_id": 659275,
+            "name": "Dinelson Lamet",
+            "list_rank": 200
+          },
+          {
+            "mlbam_id": 657093,
+            "name": "Spenser Watkins",
+            "list_rank": 204
+          }
+        ]
+      }
+    },
+    "B": {
+      "as_of": "2025-10-13",
+      "forecast": 2026,
+      "primary": false,
+      "positives_with_aaa": 9,
+      "starter_no_marcel": 0,
+      "starter_positives_no_marcel": 0,
+      "starter": {
+        "N": 82,
+        "positives_in_list": 6,
+        "coverage": 0.6666666666666666,
+        "median_percentile": 0.6951219512195121,
+        "hits@10": 1,
+        "random@10": 0.73,
+        "hits@20": 2,
+        "random@20": 1.46,
+        "hits": [
+          {
+            "mlbam_id": 658792,
+            "name": "Aaron Wilkerson",
+            "list_rank": 9
+          },
+          {
+            "mlbam_id": 612797,
+            "name": "Erick Leal",
+            "list_rank": 16
+          },
+          {
+            "mlbam_id": 667725,
+            "name": "Kyle Tyler",
+            "list_rank": 54
+          },
+          {
+            "mlbam_id": 663959,
+            "name": "Tyler Ivey",
+            "list_rank": 60
+          },
+          {
+            "mlbam_id": 669682,
+            "name": "Morgan McSweeney",
+            "list_rank": 63
+          },
+          {
+            "mlbam_id": 607231,
+            "name": "John Gant",
+            "list_rank": 73
+          }
+        ]
+      },
+      "expanded_adj_no_marcel": 0,
+      "expanded_adj_positives_no_marcel": 0,
+      "expanded_adj": {
+        "N": 259,
+        "positives_in_list": 7,
+        "coverage": 0.7777777777777778,
+        "median_percentile": 0.667953667953668,
+        "hits@10": 0,
+        "random@10": 0.27,
+        "hits@20": 0,
+        "random@20": 0.54,
+        "hits": [
+          {
+            "mlbam_id": 658792,
+            "name": "Aaron Wilkerson",
+            "list_rank": 51
+          },
+          {
+            "mlbam_id": 612797,
+            "name": "Erick Leal",
+            "list_rank": 74
+          },
+          {
+            "mlbam_id": 666364,
+            "name": "Jordan Balazovic",
+            "list_rank": 98
+          },
+          {
+            "mlbam_id": 667725,
+            "name": "Kyle Tyler",
+            "list_rank": 173
+          },
+          {
+            "mlbam_id": 663959,
+            "name": "Tyler Ivey",
+            "list_rank": 192
+          },
+          {
+            "mlbam_id": 669682,
+            "name": "Morgan McSweeney",
+            "list_rank": 201
+          },
+          {
+            "mlbam_id": 607231,
+            "name": "John Gant",
+            "list_rank": 226
+          }
+        ]
+      }
+    }
+  },
+  "replay_baseline_published": {
+    "A": {
+      "starter": {
+        "N": 86,
+        "positives_in_list": 6,
+        "hits@10": 1,
+        "random@10": 0.7,
+        "hits@20": 1,
+        "random@20": 1.4,
+        "median_percentile": 0.5406976744186046
+      },
+      "expanded_adj": {
+        "N": 279,
+        "positives_in_list": 9,
+        "hits@10": 0,
+        "random@10": 0.32,
+        "hits@20": 1,
+        "random@20": 0.65,
+        "median_percentile": 0.5663082437275986
+      }
+    },
+    "B": {
+      "starter": {
+        "N": 82,
+        "positives_in_list": 6,
+        "hits@10": 0,
+        "random@10": 0.73,
+        "hits@20": 0,
+        "random@20": 1.46,
+        "median_percentile": 0.5670731707317074
+      },
+      "expanded_adj": {
+        "N": 259,
+        "positives_in_list": 7,
+        "hits@10": 0,
+        "random@10": 0.27,
+        "hits@20": 0,
+        "random@20": 0.54,
+        "median_percentile": 0.5328185328185329
+      }
+    }
+  },
+  "stuff_reliability": {
+    "r": 0.9610872910344765,
+    "nbar": 578.1716867469879,
+    "R": 23.40913961548189,
+    "n_pitchers": 332
+  }
+}

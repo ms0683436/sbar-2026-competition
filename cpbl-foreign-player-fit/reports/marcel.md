@@ -93,5 +93,5 @@ Pitchers: amendment 13 (old baseline in the 0.5 slot) vs amendment 15 (Marcel K-
 
 | role | before | after | rank corr (signable) | P(top 1 among signable), pick |
 |---|---|---|---|---|
-| pitcher | Joey Gerber, José Urquidy, Seth Shuman | Joey Gerber, José Urquidy, Elieser Hernández | 0.94 | 0.59 |
-| hitter | Daz Cameron, Carlos Pérez, Ryan Ward | Daz Cameron, Ryan Ward, Pablo Reyes | 0.75 | 0.70 |
+| pitcher | Joey Gerber, José Urquidy, Seth Shuman | Joey Gerber, José Urquidy, Elieser Hernández | 0.94 | 0.57 |
+| hitter | Daz Cameron, Carlos Pérez, Ryan Ward | Daz Cameron, Ryan Ward, Pablo Reyes | 0.75 | 0.69 |

@@ -1,0 +1,660 @@
+{
+  "role_effect_2025_2026": {
+    "n_pitcher_seasons": 348,
+    "SO": {
+      "effect": 0.01238534244040424,
+      "ci": [
+        0.006323509316447761,
+        0.018329165569411575
+      ]
+    },
+    "BB": {
+      "effect": 0.002059057470278295,
+      "ci": [
+        -0.0016162573019824526,
+        0.00588990659335277
+      ]
+    },
+    "HR": {
+      "effect": -0.004330146229091936,
+      "ci": [
+        -0.006894484977361548,
+        -0.0020145336888262038
+      ]
+    }
+  },
+  "folds": {
+    "A": {
+      "as_of": "2024-10-13",
+      "seasons": [
+        2023,
+        2024
+      ],
+      "primary": true,
+      "role_effect": {
+        "n_pitcher_seasons": 322,
+        "SO": {
+          "effect": 0.016629837112546137,
+          "ci": [
+            0.010712814257733478,
+            0.022837382562540445
+          ]
+        },
+        "BB": {
+          "effect": 0.004280653538192019,
+          "ci": [
+            0.0003691382462373709,
+            0.00811760329944995
+          ]
+        },
+        "HR": {
+          "effect": -0.003227818535447482,
+          "ci": [
+            -0.005331876060652657,
+            -0.0010990982522670156
+          ]
+        }
+      },
+      "positives": 17,
+      "positives_with_aaa": 12,
+      "pool_sizes": {
+        "starter": 217,
+        "conversion": 425
+      },
+      "conversion_reachable": 3,
+      "starter": {
+        "N": 86,
+        "positives_in_list": 6,
+        "coverage": 0.5,
+        "median_percentile": 0.5406976744186046,
+        "hits@10": 1,
+        "random@10": 0.7,
+        "hits@20": 1,
+        "random@20": 1.4,
+        "conversion_positives_in_list": 0,
+        "conversion_coverage": 0.0,
+        "conversion_median_percentile": null,
+        "conversion_hits@10": 0,
+        "conversion_random@10": 0.0,
+        "conversion_hits@20": 0,
+        "conversion_random@20": 0.0,
+        "missed": {
+          "Roenis Elías": "not in pool",
+          "Jonathan Bermúdez": "not in pool",
+          "Caleb Baragar": "not in pool",
+          "Jackson Stephens": "not in pool",
+          "Brandon Leibrandt": "T4_40man",
+          "William Cuevas": "not in pool"
+        }
+      },
+      "expanded_raw": {
+        "N": 279,
+        "positives_in_list": 9,
+        "coverage": 0.75,
+        "median_percentile": 0.5698924731182796,
+        "hits@10": 0,
+        "random@10": 0.32,
+        "hits@20": 1,
+        "random@20": 0.65,
+        "conversion_positives_in_list": 3,
+        "conversion_coverage": 1.0,
+        "conversion_median_percentile": 0.5448028673835126,
+        "conversion_hits@10": 0,
+        "conversion_random@10": 0.11,
+        "conversion_hits@20": 1,
+        "conversion_random@20": 0.22,
+        "missed": {
+          "Roenis Elías": "not in pool",
+          "Brandon Leibrandt": "T4_40man",
+          "William Cuevas": "not in pool"
+        }
+      },
+      "expanded_adj": {
+        "N": 279,
+        "positives_in_list": 9,
+        "coverage": 0.75,
+        "median_percentile": 0.5663082437275986,
+        "hits@10": 0,
+        "random@10": 0.32,
+        "hits@20": 1,
+        "random@20": 0.65,
+        "conversion_positives_in_list": 3,
+        "conversion_coverage": 1.0,
+        "conversion_median_percentile": 0.5591397849462365,
+        "conversion_hits@10": 0,
+        "conversion_random@10": 0.11,
+        "conversion_hits@20": 1,
+        "conversion_random@20": 0.22,
+        "missed": {
+          "Roenis Elías": "not in pool",
+          "Brandon Leibrandt": "T4_40man",
+          "William Cuevas": "not in pool"
+        }
+      },
+      "detail": [
+        {
+          "mlbam_id": 528748,
+          "name": "Humberto Castellanos",
+          "list_rank": 10,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "starter"
+        },
+        {
+          "mlbam_id": 682027,
+          "name": "Cam Alldred",
+          "list_rank": 23,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "starter"
+        },
+        {
+          "mlbam_id": 659275,
+          "name": "Dinelson Lamet",
+          "list_rank": 46,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "starter"
+        },
+        {
+          "mlbam_id": 657093,
+          "name": "Spenser Watkins",
+          "list_rank": 47,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "starter"
+        },
+        {
+          "mlbam_id": 571527,
+          "name": "David Buchanan",
+          "list_rank": 51,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "starter"
+        },
+        {
+          "mlbam_id": 676641,
+          "name": "Beau Sulser",
+          "list_rank": 71,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "starter"
+        },
+        {
+          "mlbam_id": 623451,
+          "name": "Jackson Stephens",
+          "list_rank": 15,
+          "conversion_pool": true,
+          "starting_evidence": "none",
+          "fold": "A",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 528748,
+          "name": "Humberto Castellanos",
+          "list_rank": 59,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 682027,
+          "name": "Cam Alldred",
+          "list_rank": 129,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 670056,
+          "name": "Caleb Baragar",
+          "list_rank": 152,
+          "conversion_pool": true,
+          "starting_evidence": "partial",
+          "fold": "A",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 642834,
+          "name": "Jonathan Bermúdez",
+          "list_rank": 159,
+          "conversion_pool": true,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 659275,
+          "name": "Dinelson Lamet",
+          "list_rank": 176,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 657093,
+          "name": "Spenser Watkins",
+          "list_rank": 181,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 571527,
+          "name": "David Buchanan",
+          "list_rank": 190,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 676641,
+          "name": "Beau Sulser",
+          "list_rank": 234,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 623451,
+          "name": "Jackson Stephens",
+          "list_rank": 14,
+          "conversion_pool": true,
+          "starting_evidence": "none",
+          "fold": "A",
+          "arm": "expanded_adj"
+        },
+        {
+          "mlbam_id": 528748,
+          "name": "Humberto Castellanos",
+          "list_rank": 49,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "expanded_adj"
+        },
+        {
+          "mlbam_id": 682027,
+          "name": "Cam Alldred",
+          "list_rank": 96,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "expanded_adj"
+        },
+        {
+          "mlbam_id": 642834,
+          "name": "Jonathan Bermúdez",
+          "list_rank": 156,
+          "conversion_pool": true,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "expanded_adj"
+        },
+        {
+          "mlbam_id": 659275,
+          "name": "Dinelson Lamet",
+          "list_rank": 158,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "expanded_adj"
+        },
+        {
+          "mlbam_id": 670056,
+          "name": "Caleb Baragar",
+          "list_rank": 161,
+          "conversion_pool": true,
+          "starting_evidence": "partial",
+          "fold": "A",
+          "arm": "expanded_adj"
+        },
+        {
+          "mlbam_id": 657093,
+          "name": "Spenser Watkins",
+          "list_rank": 163,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "expanded_adj"
+        },
+        {
+          "mlbam_id": 571527,
+          "name": "David Buchanan",
+          "list_rank": 173,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "expanded_adj"
+        },
+        {
+          "mlbam_id": 676641,
+          "name": "Beau Sulser",
+          "list_rank": 225,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "A",
+          "arm": "expanded_adj"
+        }
+      ]
+    },
+    "B": {
+      "as_of": "2025-10-13",
+      "seasons": [
+        2024,
+        2025
+      ],
+      "primary": false,
+      "role_effect": {
+        "n_pitcher_seasons": 322,
+        "SO": {
+          "effect": 0.012223523623477055,
+          "ci": [
+            0.006380556967273427,
+            0.018020321266126207
+          ]
+        },
+        "BB": {
+          "effect": 0.005180887526759805,
+          "ci": [
+            0.0009288763580553348,
+            0.00916552864241013
+          ]
+        },
+        "HR": {
+          "effect": -0.0031620959296852647,
+          "ci": [
+            -0.00563785367083281,
+            -0.0008592551947355033
+          ]
+        }
+      },
+      "positives": 13,
+      "positives_with_aaa": 9,
+      "pool_sizes": {
+        "starter": 225,
+        "conversion": 421
+      },
+      "conversion_reachable": 1,
+      "starter": {
+        "N": 82,
+        "positives_in_list": 6,
+        "coverage": 0.6666666666666666,
+        "median_percentile": 0.5670731707317074,
+        "hits@10": 0,
+        "random@10": 0.73,
+        "hits@20": 0,
+        "random@20": 1.46,
+        "conversion_positives_in_list": 0,
+        "conversion_coverage": 0.0,
+        "conversion_median_percentile": null,
+        "conversion_hits@10": 0,
+        "conversion_random@10": 0.0,
+        "conversion_hits@20": 0,
+        "conversion_random@20": 0.0,
+        "missed": {
+          "Nick Nelson": "not in pool",
+          "Angel Macuare": "not in pool",
+          "Jordan Balazovic": "not in pool"
+        }
+      },
+      "expanded_raw": {
+        "N": 259,
+        "positives_in_list": 7,
+        "coverage": 0.7777777777777778,
+        "median_percentile": 0.583011583011583,
+        "hits@10": 0,
+        "random@10": 0.27,
+        "hits@20": 0,
+        "random@20": 0.54,
+        "conversion_positives_in_list": 1,
+        "conversion_coverage": 1.0,
+        "conversion_median_percentile": 0.3204633204633205,
+        "conversion_hits@10": 0,
+        "conversion_random@10": 0.04,
+        "conversion_hits@20": 0,
+        "conversion_random@20": 0.08,
+        "missed": {
+          "Nick Nelson": "not in pool",
+          "Angel Macuare": "not in pool"
+        }
+      },
+      "expanded_adj": {
+        "N": 259,
+        "positives_in_list": 7,
+        "coverage": 0.7777777777777778,
+        "median_percentile": 0.5328185328185329,
+        "hits@10": 0,
+        "random@10": 0.27,
+        "hits@20": 0,
+        "random@20": 0.54,
+        "conversion_positives_in_list": 1,
+        "conversion_coverage": 1.0,
+        "conversion_median_percentile": 0.3166023166023166,
+        "conversion_hits@10": 0,
+        "conversion_random@10": 0.04,
+        "conversion_hits@20": 0,
+        "conversion_random@20": 0.08,
+        "missed": {
+          "Nick Nelson": "not in pool",
+          "Angel Macuare": "not in pool"
+        }
+      },
+      "detail": [
+        {
+          "mlbam_id": 658792,
+          "name": "Aaron Wilkerson",
+          "list_rank": 23,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "starter"
+        },
+        {
+          "mlbam_id": 612797,
+          "name": "Erick Leal",
+          "list_rank": 31,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "starter"
+        },
+        {
+          "mlbam_id": 667725,
+          "name": "Kyle Tyler",
+          "list_rank": 38,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "starter"
+        },
+        {
+          "mlbam_id": 669682,
+          "name": "Morgan McSweeney",
+          "list_rank": 55,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "starter"
+        },
+        {
+          "mlbam_id": 663959,
+          "name": "Tyler Ivey",
+          "list_rank": 61,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "starter"
+        },
+        {
+          "mlbam_id": 607231,
+          "name": "John Gant",
+          "list_rank": 68,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "starter"
+        },
+        {
+          "mlbam_id": 666364,
+          "name": "Jordan Balazovic",
+          "list_rank": 83,
+          "conversion_pool": true,
+          "starting_evidence": "partial",
+          "fold": "B",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 658792,
+          "name": "Aaron Wilkerson",
+          "list_rank": 112,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 612797,
+          "name": "Erick Leal",
+          "list_rank": 129,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 667725,
+          "name": "Kyle Tyler",
+          "list_rank": 151,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 669682,
+          "name": "Morgan McSweeney",
+          "list_rank": 188,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 663959,
+          "name": "Tyler Ivey",
+          "list_rank": 196,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 607231,
+          "name": "John Gant",
+          "list_rank": 212,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "expanded_raw"
+        },
+        {
+          "mlbam_id": 666364,
+          "name": "Jordan Balazovic",
+          "list_rank": 82,
+          "conversion_pool": true,
+          "starting_evidence": "partial",
+          "fold": "B",
+          "arm": "expanded_adj"
+        },
+        {
+          "mlbam_id": 658792,
+          "name": "Aaron Wilkerson",
+          "list_rank": 98,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "expanded_adj"
+        },
+        {
+          "mlbam_id": 612797,
+          "name": "Erick Leal",
+          "list_rank": 120,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "expanded_adj"
+        },
+        {
+          "mlbam_id": 667725,
+          "name": "Kyle Tyler",
+          "list_rank": 138,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "expanded_adj"
+        },
+        {
+          "mlbam_id": 669682,
+          "name": "Morgan McSweeney",
+          "list_rank": 175,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "expanded_adj"
+        },
+        {
+          "mlbam_id": 663959,
+          "name": "Tyler Ivey",
+          "list_rank": 185,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "expanded_adj"
+        },
+        {
+          "mlbam_id": 607231,
+          "name": "John Gant",
+          "list_rank": 203,
+          "conversion_pool": false,
+          "starting_evidence": "stretched",
+          "fold": "B",
+          "arm": "expanded_adj"
+        }
+      ]
+    }
+  },
+  "cohort": [
+    {
+      "test": "P1 unadjusted (amendment 7)",
+      "n": 17,
+      "rho": 0.12745098039215688,
+      "ci_lo": -0.3300832290362954,
+      "ci_hi": 0.542089675385449
+    },
+    {
+      "test": "P1 starter-equivalent (role effect from the pre-arrival season)",
+      "n": 17,
+      "rho": 0.13970588235294118,
+      "ci_lo": -0.29422657952069725,
+      "ci_hi": 0.49648148148148125
+    }
+  ],
+  "pool_2026": {
+    "starter": 178,
+    "conversion": 375,
+    "conversion_signable": 146
+  }
+}

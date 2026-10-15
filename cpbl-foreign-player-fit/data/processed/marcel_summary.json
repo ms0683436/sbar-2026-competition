@@ -352,7 +352,7 @@
         "Elieser Hernández"
       ],
       "rank_corr_signable": 0.9417941405237232,
-      "p_top1_signable_pick": 0.5933333333333334
+      "p_top1_signable_pick": 0.5666666666666667
     },
     "hitter": {
       "before": [
@@ -366,7 +366,7 @@
         "Pablo Reyes"
       ],
       "rank_corr_signable": 0.7515290588676415,
-      "p_top1_signable_pick": 0.6966666666666667
+      "p_top1_signable_pick": 0.69
     }
   }
 }

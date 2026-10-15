@@ -8,6 +8,7 @@
 
 - **分析快照**：2026-10-13（可簽性分層的日期也是 2026-10-13）
 - **Go / No-Go**：有條件 GO（細球種可行；AAA 2025–26 逐球已補齊，但中職沒有 2026 逐球、也沒有轉速與位移）
+- **修正 16–18（2026-10-15，一次重跑，首選不變）**：KBO 洋將另列參考名單（FanGraphs KBO 資料；KBO→中職換算沒有成立，只有 BB% 正相關）；轉先發池改用主排名的尺（前 10 名可簽後援分數高於 Gerber，但幾乎沒先發過，只當參考）；Stuff+ 改成逐季加權並回歸、整體回測與 Marcel 招募回推（樣本小，無法判定）。洋打首選 Cameron 2026 上半季在 KBO 斗山、6 月被釋出（[`reports/findings.md`](reports/findings.md) 0.15–0.17 節）。
 - **修正 13–15（2026-10-14，一次重跑，首選不變）**：Stuff+ 加進投手排名；Marcel（「猴子」預測法）取代原本的 baseline，投手排名 = 0.5 Marcel K−BB% + 0.2 Stuff+ + 0.3 Fit，打者改用 Marcel wOBA 排名。Marcel 預測下一季 AAA 不比原方法差（每格都略高），在 53 位洋投普查中對中職 K−BB% 的 ρ 0.42（單季 AAA 0.34）。另做兩好球纏鬥指標：中職打者兩好球後的續命界外球率比 AAA 高 2.5 個百分點，剛好過登錄門檻；「兩好球收得掉的投手來台更好」沒有得到支持（[`reports/marcel.md`](reports/marcel.md)、[`reports/stuff_rank.md`](reports/stuff_rank.md)、[`reports/battle.md`](reports/battle.md)、findings 0.12–0.14 節）。
 - **修正 12（2026-10-14，只做驗證，首選不變）**：用 Baseball-Reference 做 2018–2026 中職洋將普查。53 位前一季在 AAA 投過的洋投，來台前的 AAA K-BB%、K%、BB% 都和來台後的中職成績正相關（主要檢定 ρ 0.34，90% CI 0.11 至 0.54），AAA 的 K-BB% 優勢約剩一半，但沒有證明能準確預測數值。洋打只有 2 人符合條件，做不了檢定（[`reports/cpbl_census.md`](reports/cpbl_census.md)）。
 - **wOBA 權重修正（2026-10-14，首選不變）**：Johnny 發現設定檔標示 2024、實際是 FanGraphs 2013 年的權重。改成 2024 後全部重跑，首選與登錄的回測結論都不變；Stuff+ 的 S3 改成勉強通過，Johnny 之後決定加進排名（修正 13；findings 0.11 節）。
@@ -68,9 +69,14 @@ cpbl-foreign-player-fit/
 │   ├── conversion_pool.py       # 修正 9：AAA 後援轉先發池、角色校正、三種做法的回推
 │   ├── weather.py               # 修正 10：AAA 逐場天氣與熱天個人差異的跨季可靠度
 │   ├── backtest_chrono.py       # 修正 11：只用事前資料的投手回測
-│   └── cpbl_census.py           # 修正 12：2018–2026 中職洋將普查與 AAA 延續性檢定（Baseball-Reference）
+│   ├── cpbl_census.py           # 修正 12：2018–2026 中職洋將普查與 AAA 延續性檢定（Baseball-Reference）
+│   ├── stuff_rank.py            # 修正 13、18：Stuff+ 進投手排名（修正 18：Marcel 式逐季加權與回歸）
+│   ├── battle.py                # 修正 14：兩好球纏鬥指標與首選配球附錄
+│   ├── marcel.py                # 修正 15：AAA Marcel 預測與驗證 V1–V3
+│   ├── kbo.py                   # 修正 16：KBO→中職換算與 2026 KBO 洋將參考名單（FanGraphs）
+│   └── a18_checks.py            # 修正 18：目前排名的回測、以 Marcel 排序的招募回推
 ├── tools/cpbl_site_export.js    # 修正 7：以無頭瀏覽器操作官網排行榜的「匯出表單」
-├── tests/                       # 107 tests：資格邊界、計算、跨來源一致性、官方交叉核對、回測規則、權重估計、球場係數、可簽性、官網匯出解析
+├── tests/                       # 133 tests：資格邊界、計算、跨來源一致性、官方交叉核對、回測規則、權重估計、球場係數、可簽性、官網匯出解析
 ├── reports/
 │   ├── data_feasibility.md      # Phase 0 稽核與 Go/No-Go
 │   ├── data_audit_summary.md    # 自動產生的覆蓋率表
@@ -142,7 +148,7 @@ python -m src.statsapi_release 2025 2023 2024  # 修正 8：約 6,500 場 AAA ga
 python -m src.stuff_plus        # 修正 8 Stuff+ 與驗證（約 1 分鐘）
 python -m src.velocity_calibration
 python -m src.backtest_2026     # 修正 7、7b（需要上面的匯出表與 Stuff+）
-python -m src.conversion_pool   # 修正 9 轉先發池
+python -m src.conversion_pool   # 修正 9 轉先發池；修正 17 同一把尺（evaluate 之後）
 python -m src.weather           # 修正 10 氣候（AAA 賽程天氣）
 python -m src.backtest_chrono   # 修正 11 只用事前資料的回測（需要 backtest 與 backtest_2026 的輸出）
 python -m src.cpbl_census       # 修正 12 中職洋將普查（Baseball-Reference，每分鐘 ≤ 20 次，首次約 1 小時）
@@ -150,7 +156,9 @@ python -m src.stuff_rank        # 修正 13 Stuff+ 進排名的比較表（evalu
 python -m src.marcel            # 修正 15 Marcel 驗證 V1–V3 與排名前後比較（evaluate、普查之後）
 python -m src.battle            # 修正 14 兩好球纏鬥指標 A、B 部分
 python -m src.battle appendix   # 修正 14 C 部分：目前洋投首選的配球附錄
-pytest -q                       # 107 passed
+python -m src.kbo               # 修正 16 KBO（FanGraphs KBO 排行榜 2015–2026；普查之後）
+python -m src.a18_checks        # 修正 18 B、R 部分（evaluate、conversion_pool 之後）
+pytest -q                       # 133 passed
 ```
 
 各步驟都是 deterministic 的：bootstrap 的 seed 寫在 `config/scoring.yaml`。

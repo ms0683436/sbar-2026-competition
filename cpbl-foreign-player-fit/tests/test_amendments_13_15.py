@@ -29,7 +29,7 @@ def test_candidate_stuff_scale_and_minimum():
     # season 2025: three pitchers; lower predicted run value = better = higher Stuff+
     g = pd.DataFrame({"pitcher_id": ["1", "2", "3", "1"], "season": [2025, 2025, 2025, 2025],
                       "game_pk": [10, 11, 12, 13], "n": [400, 500, 100, 200], "s": [-4.0, 0.0, 1.0, -2.0]})
-    c = stuff_rank.candidate_stuff(g).set_index("pitcher_id")
+    c = stuff_rank.candidate_stuff_a13(g).set_index("pitcher_id")      # amendment 13's rule (18 replaces it)
     assert c.stuff_plus.loc[1] > 100 > c.stuff_plus.loc[2]
     assert np.isnan(c.stuff_plus.loc[3])                       # 100 pitches < 300 minimum
     assert c.stuff_pitches.loc[1] == 600

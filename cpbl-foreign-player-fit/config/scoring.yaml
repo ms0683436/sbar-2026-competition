@@ -876,3 +876,162 @@ amendment15:
     noninferiority: -0.05
     bootstrap: {draws: 2000, ci: 0.90, seed: 20261022}
   census_first_season: 2015
+
+# AMENDMENT 16 (2026-10-15; committed BEFORE any KBO rate, translation or candidate score was
+# computed). Johnny: 「那如果納入 KBO 的洋將呢 我記得已經有人做過 AAA 到 KBO 的轉換了 cpbl 有些洋將是不是
+# 從 KBO 來的」, then 「好」 to: (a) current KBO foreign players as candidates, baseline only; (b) a
+# KBO -> CPBL K% / BB% translation from players who played in both. Design discussed with Codex.
+# Facts seen before this registration: FanGraphs KBO leaderboards 2015-2026 downloaded (row counts
+# and MLBAM-match counts only); census adjacent-pair counts (pitchers KBO Y -> CPBL Y+1: 19 pairs /
+# 17 pitchers; CPBL -> KBO: 5; hitters KBO -> CPBL: 1). No rate, correlation or score looked at.
+#
+# Data: FanGraphs KBO leaderboards (international/kbo, type 1), regular season, 2015-2026, downloaded
+#   2026-10-15 (KBO 2026 regular season complete). Season totals per player; multi-team rows summed.
+#   KBO league averages from ALL players in the table (SO / TBF, BB / TBF, IBB included in BB as in
+#   amendment 12); hitter wOBA recomputed from counts with config woba_weights (FanGraphs' own wOBA
+#   not used). CPBL lines and league averages: Baseball-Reference as in amendment 12. AAA: amendment
+#   15 stints and Marcel. Players linked FanGraphs id -> MLBAM through the Chadwick register.
+# "KBO Marcel": amendment 15 unchanged but on KBO seasons only (one league, PF = 1): pitchers 3/2/1,
+#   R = 600 BF; hitters 5/4/3, R = 1200 PA; same age rule; centred on the KBO average of the latest
+#   season. No tuning.
+#
+# T1 KBO -> CPBL, pitchers (primary for the KBO pitcher translation):
+#   Forward transitions KBO season Y -> CPBL Y+1, CPBL destination 2018-2026, >= 100 BF in both.
+#   Primary sample: each pitcher's first qualifying forward transition (one row per pitcher).
+#   Outcome: CPBL K-BB% (Y+1) minus the CPBL league K-BB% of Y+1. Predictor: KBO Marcel K-BB% for
+#   Y+1 (KBO seasons Y, Y-1, Y-2) centred on KBO season Y.
+#   K1 (primary): Spearman(KBO Marcel, CPBL), 2,000 pitcher bootstrap draws, 90% CI; census rules:
+#     n >= 15, CI above 0 supports, below 0 contradicts, otherwise inconclusive.
+#   K2 (descriptive): single-season KBO Y centred K-BB% vs CPBL; mean within-pitcher change in
+#     centred K-BB% (and K%, BB%, raw rates) with CI. A centred change is movement relative to the
+#     league averages, not a pure league-strength difference.
+#   K3 prediction: OLS CPBL_c = a + b * KBO_Marcel_c. Leave-one-pitcher-out MAE and rolling by
+#     destination year (fit only on earlier destinations, >= 15 training pitchers, else training
+#     mean), each vs the training mean, paired bootstrap of the MAE difference. "Predictive
+#     improvement" only with >= 15 held-out pitchers predicted by a fitted line AND the 90% CI of
+#     the MAE difference entirely below 0; otherwise "not established".
+#   Secondary K%, BB% the same way. Sensitivities (reported, never choose): >= 200 BF both sides;
+#   destinations 2021 onward; all forward pairs clustered by pitcher. The 5 CPBL -> KBO transitions
+#   are shown separately (not pooled).
+# T2 AAA -> KBO (pitchers and hitters, supporting): every AAA season Y -> KBO Y+1 transition among
+#   MLBAM-linked KBO players, KBO destination 2016-2026, >= 150 BF / PA in both adjacent seasons
+#   (no 2019 -> 2021 bridge). Predictor: AAA Marcel (amendment 15) for Y+1; outcome: KBO centred
+#   K-BB% (pitchers) / wOBA (hitters). Spearman with player bootstrap (>= 15 players for a verdict),
+#   OLS fit, leave-one-player-out MAE vs mean. Never inverted.
+# Candidates (reference list, NOT eligible for the primary pick in this amendment):
+#   Everyone who appears as a KBO foreign player in 2026: MLBAM-linked with a non-Korean birth
+#   country (statsapi people), >= 150 BF (pitchers) or >= 200 PA (hitters) in KBO 2026. Players
+#   that cannot be linked (e.g. Asian-quota players with no MLB / MiLB record) are listed as
+#   unmatched exclusions. Pitchers additionally need KBO 2025-26 GS >= 10, IP >= 60 and 2026
+#   IP >= 20 (the amendment-6 starter rule); relievers listed separately like amendment 9.
+#   Availability (separate field, dated evidence, filled by hand from KBO / team announcements and
+#   news, MyKBO for discovery): confirmed departure or release / reported non-renewal / signed
+#   elsewhere or re-signed / unknown. KBO publishes reserve lists around 30 November, after the
+#   competition deadline, so most will be "unknown".
+#   Watchlist flag (not availability): below the unweighted median of exposure-qualified 2026 KBO
+#   foreign players of the same role on 2026 centred K-BB% (pitchers) / wOBA (hitters); ties not
+#   flagged. Called "performance-based non-renewal watchlist".
+# Comparison with the AAA pool (shown, never re-ranks the AAA list):
+#   Pitchers: projected CPBL centred K-BB% = T1 OLS applied to the KBO Marcel (forecast 2027, KBO
+#   2024-26) vs AAA signable candidates' projected CPBL K-BB% = the census V3 line (amendment 15,
+#   OLS of centred CPBL K-BB% on AAA Marcel K-BB% over all census pitchers) applied to their AAA
+#   Marcel. Percentile among AAA signable pitchers, with the CI of the projection from the bootstrap
+#   of each line and an extrapolation flag outside the training range. This is a baseline
+#   percentile, not a percentile of the amendment-13/15 combined score (no Fit, no Stuff+ for KBO).
+#   Hitters: no CPBL translation (1 pair). Common KBO scale: AAA signable hitters' Marcel wOBA
+#   through the T2 hitter line vs KBO candidates' KBO Marcel wOBA (centred); percentile. AAA
+#   rankings shown unchanged next to it.
+# Primary picks: unchanged. A unified pool would need its own amendment with one objective for
+#   every candidate and confirmed availability.
+amendment16:
+  kbo_seasons: [2015, 2026]
+  fangraphs_url: "https://www.fangraphs.com/api/leaders/international/kbo/data?lg=&pos=all&qual=0&stats={kind}&type=1&season={y}&seasonstart={y}&seasonend={y}&team=0"
+  t1: {destinations: [2018, 2026], min_bf: 100, sensitivity_min_bf: 200, sensitivity_from: 2021, min_train: 15}
+  t2: {destinations: [2016, 2026], min_bf: 150, min_pa: 150}
+  candidates: {season: 2026, min_bf: 150, min_pa: 200, starter: {min_gs_2y: 10, min_ip_2y: 60, min_ip_last: 20}}
+  forecast_season: 2027
+  min_n: 15
+  bootstrap: {draws: 2000, ci: 0.90, seed: 20261023}
+
+# AMENDMENT 17 (2026-10-15; committed BEFORE any conversion-pool Marcel, Stuff+ or Fit value was
+# computed). Johnny asked why the conversion pool (amendment 9) still uses the amendment-5
+# baseline instead of the main ranking's scale, then chose 「改成同一把尺」 (put the conversion pool
+# on the same Marcel + Stuff+ scale; still a separate reference list, picks unchanged, one re-run
+# together with amendment 16). Seen before this registration: the amendment-9 list and its old
+# baseline ranks only.
+#
+# Pool, eligibility, signability tiers, starting-evidence flags: amendment 9 unchanged (2026 list,
+#   AAA 2025-26). Role effect: the amendment-9 estimate from AAA 2025-26 (relief - start rate of
+#   SO / BF, BB / BF, HR / BF), unchanged.
+# Score = the amendment-13/15 combined score, with every component's z computed against the
+#   fit-available STARTER pool's mean and SD (so no starter's score or rank moves):
+#     0.5 z(Marcel K-BB%) + 0.2 z(Stuff+, clip 2.5; missing = 0) + 0.3 Fit
+#   Marcel: amendment 15 (forecast 2027 from AAA 2024-26, park-adjusted where available) with the
+#     starter-equivalent adjustment applied to each conversion pitcher's AAA stints season by
+#     season: SO, BB, HR minus relief BF x role effect, relief BF = that season's relief share of
+#     BF in the AAA pitch data x the stint's BF (seasons without pitch data for the pitcher: share
+#     from the pooled 2025-26 pitch data). Done through Marcel's per-stint multipliers, so league
+#     averages are those of the unadjusted data. HBP, IP not adjusted (as amendment 9).
+#   Stuff+: amendment 13 model and >= 300-pitch rule, no role adjustment (none estimated).
+#   Fit: the same Fit as the starters (same CPBL / AAA environment table, same >= min tracked
+#     pitches rule), its z against the starter pool. Conversion pitchers without enough tracked
+#     pitches get Fit 0 (average), like a missing Stuff+.
+# Reported: conversion list with the new score, rank among starter + conversion pool on one scale,
+#   percentile among the signable starter pool, the amendment-9 baseline rank next to it.
+#   Sensitivities (reported, never choose): twice the role effect; Stuff+ term 0 for conversion
+#   pitchers (relievers throw harder in short outings and no adjustment exists); no role
+#   adjustment at all. The amendment-9 recruitment replay and cohort check are not re-run (they
+#   were exploratory and used the old scale).
+# Primary picks: unchanged (starter pool only). Merging still needs its own amendment.
+amendment17:
+  weights_from: amendment13
+  sensitivities: [role_effect_x2, no_stuff_for_conversion, no_role_adjustment]
+
+# AMENDMENT 18 (2026-10-15; committed BEFORE any of the values below was computed). Johnny asked
+# which places could still use the "monkey" (Marcel) method, then chose 「1、2、3 都做」 on:
+# (1) backtest the CURRENT ranking as a whole, (2) the recruitment replay ranked by Marcel,
+# (3) regress Stuff+ Marcel-style (this one changes the ranking; the pick may change).
+# Seen before this registration: the amendment-11 results (C1-C8), amendment-15 V2 on the
+# amendment-11 cohort, the amendment-6 / 9 replays on the old scale. Not seen: anything below.
+#
+# S. Stuff+ Marcel-style (replaces amendment 13's two-season pitch-weighted mean + 300-pitch minimum
+#    in every place the ranking uses Stuff+: main ranking, its bootstrap, the conversion pool):
+#    seasons 2026 / 2025 / 2024 weighted 3 / 2 / 1 (as Marcel pitchers), each season's Stuff+ as now
+#    (100 = that season's >= 300-pitch average, model of amendment 8); per pitcher
+#      stuff = (sum w_s n_s stuff_s + R x 100) / (sum w_s n_s + R),   n_s = pitches in season s,
+#    for every pitcher with any tracked pitch (no minimum; the regression handles small samples).
+#    R from split-half reliability, fixed before use: AAA 2025, each pitcher's games split by
+#    game_pk parity, Stuff+ per half (scaled as a season), pitchers with >= 300 pitches in both
+#    halves; r = Pearson between halves, nbar = mean pitches per half, R = nbar x (1 - r) / r.
+#    If r <= 0, R = 10,000 (no signal: everyone near 100). No age term (no AAA aging curve for
+#    pitch quality estimated). Old Stuff+ kept as `stuff_plus_a13` for the ablation.
+#    Reported: R, r, nbar; signable top 3 / P(top-1) before and after; rank correlation.
+# B. Backtest of the current ranking (amendment-11 cohort, pre-arrival inputs only):
+#    M1 (primary of this amendment) combined_a18 = 0.5 z(Marcel K-BB%) + 0.2 z(Stuff+) + 0.3 Fit
+#      vs centred CPBL K-BB%, Fit-arrival seasons (2025, 2026) as C1. Marcel: amendment 15 for
+#      season Y from AAA Y-1..Y-3 (as amendment-15 V2 on this cohort). Stuff+: rule S on AAA
+#      Y-1, Y-2, Y-3 (weights 3 / 2 / 1; seasons with pitch data only) with R from rule S. Fit:
+#      amendment 11's chronological Fit. Each z against amendment 11's reference pool R(Y) (AAA Y-1
+#      pitchers >= 100 BF and >= 400 tracked pitches), Stuff+ clipped at 2.5, missing = 0.
+#      Spearman, 2,000 bootstrap draws, 90% CI, amendment-11 verdict rule (n >= 15).
+#    M2 0.5 z(Marcel) + 0.2 z(Stuff+) rescaled to 5/7, 2/7 (no Fit), all arrivals 2024-26.
+#    Paired: M1 minus C1 (registered amendment-11 combined) and M1 minus Marcel alone.
+#    Disclosed limitation: the Stuff+ model was trained on AAA 2025 (other pitchers' AAA run
+#    values, not CPBL outcomes), so 2025 arrivals use a model that saw later AAA data.
+# R. Recruitment replay (amendment-6 folds A primary, B exploratory; amendment-6 metrics) with
+#    the list ranked by Marcel K-BB% (fold A: forecast 2025 from AAA 2024-22; fold B: 2026 from
+#    2025-23; nothing after the fold's as-of date) instead of the amendment-5 baseline:
+#      starter       amendment-6 starter pool, T1 + T2
+#      expanded_adj  starter + conversion pool (amendment 9), conversion pitchers' Marcel with the
+#                    amendment-17 per-season starter-equivalent adjustment, role effect from the
+#                    fold's own seasons
+#    Reported next to the baseline-ranked arms already published. Exploratory (positives seen).
+# Primary picks follow the main ranking with rule S applied (the pick rule itself unchanged:
+#   best combined rank among signable T1 + T2). M1 / M2 / R never choose the model.
+amendment18:
+  stuff:
+    seasons: [2026, 2025, 2024]
+    weights: [3, 2, 1]
+    reliability: {season: 2025, min_pitches_each_half: 300, no_signal_R: 10000}
+  backtest: {primary: M1, min_n: 15, bootstrap: {draws: 2000, ci: 0.90, seed: 20261024}}
+  replay_arms: [starter, expanded_adj]

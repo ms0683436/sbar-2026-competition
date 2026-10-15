@@ -97,10 +97,14 @@ def _prep(s: pd.DataFrame, role: str) -> pd.DataFrame:
 
 
 def project(role: str, year: int, mult: float = 1.0, age: bool = True, neutral: bool = False,
-            seasons: list[int] | None = None, scale: pd.DataFrame | None = None) -> pd.DataFrame:
+            seasons: list[int] | None = None, scale: pd.DataFrame | None = None,
+            stints_fn=None, birth: pd.Series | None = None) -> pd.DataFrame:
     """Marcel projection for season `year` from AAA seasons year-1..year-3 (one row per player).
     `scale` (bootstrap): multipliers per (player_id, season, team_id) for the counting columns of
-    those stints; league averages stay those of the unscaled data."""
+    those stints (a column "+col" adds to col instead); league averages stay those of the unscaled data. `stints_fn(group, season,
+    neutral)` swaps the AAA stints for another league's (amendment 16: KBO); `birth` = birth year
+    by player id (default: Chadwick register by MLBAM id)."""
+    get = stints_fn or stints
     c = cfg()["pitcher" if role == "pitcher" else "hitter"]
     group = "pitching" if role == "pitcher" else "hitting"
     expo = "pitching_BF" if role == "pitcher" else "batting_PA"
@@ -109,7 +113,7 @@ def project(role: str, year: int, mult: float = 1.0, age: bool = True, neutral: 
     stats = _stats(role)
     frames = []
     for wt, y in zip(c["weights"], seasons):
-        s = stints(group, y, neutral)
+        s = get(group, y, neutral)
         if s.empty:
             continue
         lg = _prep(s, role).groupby("team_league")
@@ -123,13 +127,13 @@ def project(role: str, year: int, mult: float = 1.0, age: bool = True, neutral: 
             rows[f"den_{k}"] = wt * s[den]
         frames.append(rows)
     allr = pd.concat(frames, ignore_index=True)
-    latest = next(y for y in seasons if not stints(group, y, neutral).empty)   # 2021 forecasts: 2019
-    last = _prep(stints(group, latest, neutral), role)
+    latest = next(y for y in seasons if not get(group, y, neutral).empty)   # 2021 forecasts: 2019
+    last = _prep(get(group, latest, neutral), role)
     out = allr.groupby("player_id").sum(numeric_only=True).drop(columns=["season", "w"])
     exp_last = allr[allr.season == latest].groupby("player_id")[expo].sum()
     out["exposure_last"] = exp_last.reindex(out.index).fillna(0)
     out["seasons_used"] = allr[allr[expo] > 0].groupby("player_id").season.nunique()
-    by = birth_years()
+    by = birth_years() if birth is None else birth
     a = pd.Series(year - by.reindex(out.index.astype(int)).to_numpy(), index=out.index)
     out["age"] = a
     A = age_factor(a) if age else pd.Series(1.0, index=out.index)
@@ -166,6 +170,9 @@ def _scaled(s: pd.DataFrame, scale: pd.DataFrame) -> pd.DataFrame:
     s = s.copy()
     for c in scale.columns.intersection(s.columns):
         s[c] = s[c] * f[c].fillna(1.0).to_numpy()
+    for c in scale.columns:                    # "+col": additive change (amendment 17: can raise a zero count)
+        if c.startswith("+") and c[1:] in s:
+            s[c[1:]] = s[c[1:]] + f[c].fillna(0.0).to_numpy()
     return s
 
 
@@ -416,6 +423,8 @@ def ranking_effect() -> dict:
     for role, f, old, new in (("pitcher", "pitcher_fit_results.csv", "combined_rank_a13", "combined_rank"),
                               ("hitter", "hitter_fit_results.csv", "baseline_rank_tracked", "marcel_rank_tracked")):
         D = pd.read_csv(processed(f))
+        if role == "pitcher" and "combined_rank_a15" in D:   # Marcel's own effect, before rule S (amendment 18)
+            new = "combined_rank_a15"
         if new not in D or old not in D:
             continue
         D = D[D.fit_available & D.signable.fillna(False).astype(bool)]

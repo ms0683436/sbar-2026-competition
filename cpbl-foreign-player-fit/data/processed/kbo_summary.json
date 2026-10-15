@@ -1,0 +1,736 @@
+{
+  "links": {
+    "no register match": 1236,
+    "fg key": 258,
+    "name + birth year": 255,
+    "birth date does not match": 5,
+    "alias": 1
+  },
+  "kbo_league": {
+    "2015": {
+      "k": 0.18598216488668007,
+      "bb": 0.09259455077367734,
+      "woba": 0.34306394394369233
+    },
+    "2016": {
+      "k": 0.16910820286735861,
+      "bb": 0.09325858298330267,
+      "woba": 0.3493859305174235
+    },
+    "2017": {
+      "k": 0.17596076087338702,
+      "bb": 0.07946274744207306,
+      "woba": 0.3439415263580126
+    },
+    "2018": {
+      "k": 0.18782840974992532,
+      "bb": 0.08122594590794861,
+      "woba": 0.3480548236684078
+    },
+    "2019": {
+      "k": 0.17249128105562148,
+      "bb": 0.08535576888505375,
+      "woba": 0.3174517836932987
+    },
+    "2020": {
+      "k": 0.17398135724878186,
+      "bb": 0.0938316503071817,
+      "woba": 0.3322594688432603
+    },
+    "2021": {
+      "k": 0.18199646989605806,
+      "bb": 0.10504733548467614,
+      "woba": 0.3222693310254053
+    },
+    "2022": {
+      "k": 0.18711074522156204,
+      "bb": 0.08792683799842509,
+      "woba": 0.3136818026368286
+    },
+    "2023": {
+      "k": 0.1772422262962106,
+      "bb": 0.09137995479059502,
+      "woba": 0.3145385939330393
+    },
+    "2024": {
+      "k": 0.188483610886174,
+      "bb": 0.09182128648382214,
+      "woba": 0.33725831809432993
+    },
+    "2025": {
+      "k": 0.196812035461628,
+      "bb": 0.09119727769320318,
+      "woba": 0.3202969353812417
+    },
+    "2026": {
+      "k": 0.19564911787446404,
+      "bb": 0.09351936458845857,
+      "woba": 0.3296401806624409
+    }
+  },
+  "t1": {
+    "n_pairs": 18,
+    "n_pitchers": 16,
+    "by_dest": {
+      "2018": 2,
+      "2019": 1,
+      "2020": 1,
+      "2021": 2,
+      "2022": 1,
+      "2023": 2,
+      "2024": 2,
+      "2025": 3,
+      "2026": 2
+    },
+    "k1": [
+      {
+        "test": "K1 KBO Marcel K-BB% vs CPBL K-BB% (primary)",
+        "n": 16,
+        "rows": 16,
+        "rho": 0.09999999999999999,
+        "ci_lo": -0.38725339175481244,
+        "ci_hi": 0.5958996208765898,
+        "verdict": "inconclusive"
+      },
+      {
+        "test": "K1b KBO Marcel K% vs CPBL K%",
+        "n": 16,
+        "rows": 16,
+        "rho": -0.11176470588235293,
+        "ci_lo": -0.5575990788995274,
+        "ci_hi": 0.3721042440616906,
+        "verdict": "inconclusive"
+      },
+      {
+        "test": "K1c KBO Marcel BB% vs CPBL BB%",
+        "n": 16,
+        "rows": 16,
+        "rho": 0.45,
+        "ci_lo": 0.029685399419797597,
+        "ci_hi": 0.7716281616504167,
+        "verdict": "supports"
+      }
+    ],
+    "k2_single_season": [
+      {
+        "test": "K2 KBO season K-BB% vs CPBL K-BB%",
+        "n": 16,
+        "rows": 16,
+        "rho": 0.2735294117647059,
+        "ci_lo": -0.2351322106803741,
+        "ci_hi": 0.687057563338301,
+        "verdict": "inconclusive"
+      },
+      {
+        "test": "K2 KBO season K% vs CPBL K%",
+        "n": 16,
+        "rows": 16,
+        "rho": -0.008823529411764706,
+        "ci_lo": -0.48819685833311216,
+        "ci_hi": 0.4489817578772801,
+        "verdict": "inconclusive"
+      },
+      {
+        "test": "K2 KBO season BB% vs CPBL BB%",
+        "n": 16,
+        "rows": 16,
+        "rho": 0.40294117647058825,
+        "ci_lo": -0.02388204910493176,
+        "ci_hi": 0.735794987812925,
+        "verdict": "inconclusive"
+      }
+    ],
+    "k2_change": [
+      {
+        "metric": "CPBL - KBO centred K-BB%",
+        "n": 16,
+        "mean": 0.01197242729369146,
+        "ci_lo": -0.010641336077577787,
+        "ci_hi": 0.03462458430084435
+      },
+      {
+        "metric": "CPBL - KBO centred K%",
+        "n": 16,
+        "mean": 0.0031466456668623136,
+        "ci_lo": -0.01811862578255097,
+        "ci_hi": 0.023846529120061015
+      },
+      {
+        "metric": "CPBL - KBO centred BB%",
+        "n": 16,
+        "mean": -0.00882578162682915,
+        "ci_lo": -0.01778744577592645,
+        "ci_hi": 0.00018655941746977561
+      },
+      {
+        "metric": "CPBL - KBO raw K%",
+        "n": 16,
+        "mean": -0.008694302034265019,
+        "ci_lo": -0.03018889253945906,
+        "ci_hi": 0.010393476196141406
+      },
+      {
+        "metric": "CPBL - KBO raw BB%",
+        "n": 16,
+        "mean": -0.02139166975090754,
+        "ci_lo": -0.0315303012783287,
+        "ci_hi": -0.01125542496450947
+      },
+      {
+        "metric": "CPBL - KBO raw K-BB%",
+        "n": 16,
+        "mean": 0.012697367716642528,
+        "ci_lo": -0.009664027832257083,
+        "ci_hi": 0.03658101038151542
+      }
+    ],
+    "k3": {
+      "k-bb": {
+        "line": {
+          "line": "k-bb",
+          "n": 16,
+          "slope": 0.12952959000473083,
+          "slope_lo": -0.7903196074685889,
+          "slope_hi": 1.137252402548788,
+          "intercept": 0.04037665097608984,
+          "x_min": -0.03164260349572717,
+          "x_max": 0.053044851202849644
+        },
+        "loo": {
+          "n_held_out": 16,
+          "n_fitted": 16,
+          "n_fitted_rows": 16,
+          "mae_mean": 0.0350944698116715,
+          "mae_line": 0.03878130116429346,
+          "diff": 0.003686831352621961,
+          "ci": [
+            0.001126074328823749,
+            0.006497962333957183
+          ],
+          "verdict": "not established"
+        },
+        "rolling": {
+          "n_held_out": 14,
+          "n_fitted": 0,
+          "n_fitted_rows": 0,
+          "mae_mean": 0.037143089266641095,
+          "mae_line": 0.037143089266641095,
+          "diff": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ],
+          "verdict": "not established"
+        }
+      },
+      "k": {
+        "line": {
+          "line": "k",
+          "n": 16,
+          "slope": 0.012370802814219428,
+          "slope_lo": -0.928106012824073,
+          "slope_hi": 0.8473541352660858,
+          "intercept": 0.01856173907806214,
+          "x_min": -0.04111753665453169,
+          "x_max": 0.046960088899943686
+        },
+        "loo": {
+          "n_held_out": 16,
+          "n_fitted": 16,
+          "n_fitted_rows": 16,
+          "mae_mean": 0.030781555537574525,
+          "mae_line": 0.034233625773652056,
+          "diff": 0.0034520702360775306,
+          "ci": [
+            0.0005114340841427329,
+            0.006877202003497383
+          ],
+          "verdict": "not established"
+        },
+        "rolling": {
+          "n_held_out": 14,
+          "n_fitted": 0,
+          "n_fitted_rows": 0,
+          "mae_mean": 0.02931892000998038,
+          "mae_line": 0.02931892000998038,
+          "diff": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ],
+          "verdict": "not established"
+        }
+      },
+      "bb": {
+        "line": {
+          "line": "bb",
+          "n": 16,
+          "slope": 0.40904231690511067,
+          "slope_lo": -0.14733578710063627,
+          "slope_hi": 0.7912897516920838,
+          "intercept": -0.02005975169906007,
+          "x_min": -0.03328960262151943,
+          "x_max": 0.008613072094722993
+        },
+        "loo": {
+          "n_held_out": 16,
+          "n_fitted": 16,
+          "n_fitted_rows": 16,
+          "mae_mean": 0.013608994908494598,
+          "mae_line": 0.013578183831448994,
+          "diff": -3.081107704560465e-05,
+          "ci": [
+            -0.0018471709214213548,
+            0.0017865765582123693
+          ],
+          "verdict": "not established"
+        },
+        "rolling": {
+          "n_held_out": 14,
+          "n_fitted": 0,
+          "n_fitted_rows": 0,
+          "mae_mean": 0.013631131632341783,
+          "mae_line": 0.013631131632341783,
+          "diff": 0.0,
+          "ci": [
+            0.0,
+            0.0
+          ],
+          "verdict": "not established"
+        }
+      }
+    },
+    "sensitivity": [
+      {
+        "test": "K1 CPBL K-BB%: >= 200 BF both sides",
+        "n": 12,
+        "rows": 12,
+        "rho": 0.2027972027972028,
+        "ci_lo": -0.4389494855728322,
+        "ci_hi": 0.7165179592770532,
+        "verdict": "descriptive only (n below 15)"
+      },
+      {
+        "test": "K1 CPBL K-BB%: destinations 2021+",
+        "n": 12,
+        "rows": 12,
+        "rho": 0.17482517482517487,
+        "ci_lo": -0.3546213681079845,
+        "ci_hi": 0.7123154929577463,
+        "verdict": "descriptive only (n below 15)"
+      },
+      {
+        "test": "K1 CPBL K-BB%: all forward pairs (clustered by pitcher)",
+        "n": 16,
+        "rows": 18,
+        "rho": 0.12487100103199174,
+        "ci_lo": -0.3482857381835057,
+        "ci_hi": 0.5576323987538941,
+        "verdict": "inconclusive"
+      },
+      {
+        "test": "K1b CPBL K%: >= 200 BF both sides",
+        "n": 12,
+        "rows": 12,
+        "rho": -0.04895104895104895,
+        "ci_lo": -0.5971904294746022,
+        "ci_hi": 0.5183214295057949,
+        "verdict": "descriptive only (n below 15)"
+      },
+      {
+        "test": "K1b CPBL K%: destinations 2021+",
+        "n": 12,
+        "rows": 12,
+        "rho": 0.07692307692307693,
+        "ci_lo": -0.5255951613319234,
+        "ci_hi": 0.5870204603580562,
+        "verdict": "descriptive only (n below 15)"
+      },
+      {
+        "test": "K1b CPBL K%: all forward pairs (clustered by pitcher)",
+        "n": 16,
+        "rows": 18,
+        "rho": -0.15583075335397317,
+        "ci_lo": -0.5594691163677038,
+        "ci_hi": 0.3070421813415661,
+        "verdict": "inconclusive"
+      },
+      {
+        "test": "K1c CPBL BB%: >= 200 BF both sides",
+        "n": 12,
+        "rows": 12,
+        "rho": 0.35664335664335667,
+        "ci_lo": -0.23153660396542972,
+        "ci_hi": 0.7873268858800774,
+        "verdict": "descriptive only (n below 15)"
+      },
+      {
+        "test": "K1c CPBL BB%: destinations 2021+",
+        "n": 12,
+        "rows": 12,
+        "rho": 0.4685314685314686,
+        "ci_lo": -0.06766447833292652,
+        "ci_hi": 0.8092388640994558,
+        "verdict": "descriptive only (n below 15)"
+      },
+      {
+        "test": "K1c CPBL BB%: all forward pairs (clustered by pitcher)",
+        "n": 16,
+        "rows": 18,
+        "rho": 0.4757481940144479,
+        "ci_lo": 0.0887538940809968,
+        "ci_hi": 0.7615815846278006,
+        "verdict": "supports"
+      }
+    ],
+    "reverse": [
+      {
+        "name": "Chris Seddon",
+        "src": 2015,
+        "dest": 2016,
+        "cpbl_bf": 238,
+        "kbo_bf": 283.0,
+        "cpbl_kbb_c": 0.10440505526142434,
+        "kbo_kbb_c": 0.016023171635378683
+      },
+      {
+        "name": "Nick Additon",
+        "src": 2016,
+        "dest": 2017,
+        "cpbl_bf": 166,
+        "kbo_bf": 324.0,
+        "cpbl_kbb_c": 0.06198676965600616,
+        "kbo_kbb_c": 0.011526677926710721
+      },
+      {
+        "name": "Ryan Carpenter",
+        "src": 2020,
+        "dest": 2021,
+        "cpbl_bf": 692,
+        "kbo_bf": 746.0,
+        "cpbl_kbb_c": 0.060165790204034765,
+        "kbo_kbb_c": 0.06648250097735803
+      },
+      {
+        "name": "Aríel Miranda",
+        "src": 2020,
+        "dest": 2021,
+        "cpbl_bf": 672,
+        "kbo_bf": 709.0,
+        "cpbl_kbb_c": 0.053293026647745184,
+        "kbo_kbb_c": 0.15154169774658705
+      },
+      {
+        "name": "Brandon Waddell",
+        "src": 2023,
+        "dest": 2024,
+        "cpbl_bf": 309,
+        "kbo_bf": 315.0,
+        "cpbl_kbb_c": 0.061579878609460015,
+        "kbo_kbb_c": 0.1065122787722513
+      },
+      {
+        "name": "Ryan Weiss",
+        "src": 2023,
+        "dest": 2024,
+        "cpbl_bf": 127,
+        "kbo_bf": 384.0,
+        "cpbl_kbb_c": 0.022948785166043373,
+        "kbo_kbb_c": 0.08302517559764813
+      }
+    ]
+  },
+  "t1_coverage": {
+    "br_pairs": 18,
+    "in_sample": 18,
+    "missed": [],
+    "bf_check_n": 79,
+    "bf_mean_abs_diff": 0.31645569620253167
+  },
+  "t2": {
+    "pitchers": {
+      "rows": 101,
+      "players": 95,
+      "by_dest": {
+        "2016": 13,
+        "2017": 6,
+        "2018": 12,
+        "2019": 12,
+        "2020": 7,
+        "2022": 9,
+        "2023": 11,
+        "2024": 9,
+        "2025": 10,
+        "2026": 12
+      },
+      "rho": {
+        "test": "AAA Marcel vs KBO next season (clustered by player)",
+        "n": 95,
+        "rows": 101,
+        "rho": 0.2870005824111823,
+        "ci_lo": 0.12288215236338325,
+        "ci_hi": 0.4304263909734428,
+        "verdict": "supports"
+      },
+      "line": {
+        "line": "KBO_c = a + b * AAA Marcel_c",
+        "n": 95,
+        "slope": 0.5119316908560672,
+        "slope_lo": 0.23056371020135225,
+        "slope_hi": 0.7960319162909621,
+        "intercept": 0.029131807757297436,
+        "x_min": -0.05475493670745696,
+        "x_max": 0.05592563878893189
+      },
+      "loo": {
+        "n_held_out": 101,
+        "n_fitted": 95,
+        "n_fitted_rows": 101,
+        "mae_mean": 0.033023591456544106,
+        "mae_line": 0.032444108457553286,
+        "diff": -0.0005794829989908198,
+        "ci": [
+          -0.0025830662141814466,
+          0.001353207372265128
+        ],
+        "verdict": "not established"
+      },
+      "mean_change": {
+        "metric": "KBO_c - AAA Marcel_c",
+        "n": 101,
+        "mean": 0.02944289551864878,
+        "ci_lo": 0.021996167478809222,
+        "ci_hi": 0.03682038601482976
+      },
+      "components": [
+        {
+          "test": "AAA Marcel k vs KBO k",
+          "n": 95,
+          "rows": 101,
+          "rho": 0.31437390797903314,
+          "ci_lo": 0.1612330807947943,
+          "ci_hi": 0.46427759208183866,
+          "verdict": "supports"
+        },
+        {
+          "test": "AAA Marcel bb vs KBO bb",
+          "n": 95,
+          "rows": 101,
+          "rho": 0.5627256843331392,
+          "ci_lo": 0.4136751060352201,
+          "ci_hi": 0.6833702715782602,
+          "verdict": "supports"
+        }
+      ]
+    },
+    "hitters": {
+      "rows": 44,
+      "players": 43,
+      "by_dest": {
+        "2016": 3,
+        "2017": 5,
+        "2018": 3,
+        "2019": 6,
+        "2020": 5,
+        "2022": 4,
+        "2023": 4,
+        "2024": 4,
+        "2025": 3,
+        "2026": 7
+      },
+      "rho": {
+        "test": "AAA Marcel vs KBO next season (clustered by player)",
+        "n": 43,
+        "rows": 44,
+        "rho": 0.06863988724453841,
+        "ci_lo": -0.14689298455829403,
+        "ci_hi": 0.2684065864769622,
+        "verdict": "inconclusive"
+      },
+      "line": {
+        "line": "KBO_c = a + b * AAA Marcel_c",
+        "n": 43,
+        "slope": -0.007217908731220115,
+        "slope_lo": -0.44752759852736446,
+        "slope_hi": 0.4079365389654549,
+        "intercept": 0.0383135414229911,
+        "x_min": -0.01564711247406969,
+        "x_max": 0.04189493731561256
+      },
+      "loo": {
+        "n_held_out": 44,
+        "n_fitted": 43,
+        "n_fitted_rows": 44,
+        "mae_mean": 0.03088439350714633,
+        "mae_line": 0.03139062052865683,
+        "diff": 0.0005062270215104962,
+        "ci": [
+          0.00035915760434785705,
+          0.0006606433426976704
+        ],
+        "verdict": "not established"
+      },
+      "mean_change": {
+        "metric": "KBO_c - AAA Marcel_c",
+        "n": 44,
+        "mean": 0.024267992010950642,
+        "ci_lo": 0.013436223116029482,
+        "ci_hi": 0.03504088900041886
+      }
+    }
+  },
+  "comparison": {
+    "pitchers": {
+      "t1_line": [
+        0.12952959000473083,
+        0.04037665097608984
+      ],
+      "census_v3_line": [
+        0.9893478940127984,
+        0.026310384821254012
+      ],
+      "aaa_signable_n": 57,
+      "aaa_dropped_no_marcel": [],
+      "aaa_extrapolated": 0,
+      "joint_draws": 2000,
+      "t1_x_range": [
+        -0.03164260349572717,
+        0.053044851202849644
+      ],
+      "census_x_range": [
+        -0.073568337733006,
+        0.0284618302559124
+      ],
+      "aaa_top5": [
+        {
+          "name": "Joey Gerber",
+          "combined_rank": 13,
+          "aaa_marcel_c": 0.01810210832559464,
+          "proj_cpbl_kbb_c": 0.044219667570372614,
+          "proj_lo": 0.0260514945743474,
+          "proj_hi": 0.06281615035371987,
+          "pct": 91.22807017543859
+        },
+        {
+          "name": "José Urquidy",
+          "combined_rank": 24,
+          "aaa_marcel_c": 0.014080108037324346,
+          "proj_cpbl_kbb_c": 0.04024051005545353,
+          "proj_lo": 0.02365721259685159,
+          "proj_hi": 0.057207767580439495,
+          "pct": 87.71929824561403
+        },
+        {
+          "name": "Elieser Hernández",
+          "combined_rank": 29,
+          "aaa_marcel_c": 0.011915901623004405,
+          "proj_cpbl_kbb_c": 0.038099356997237106,
+          "proj_lo": 0.02237957751958453,
+          "proj_hi": 0.05431645455525424,
+          "pct": 84.21052631578947
+        },
+        {
+          "name": "Seth Shuman",
+          "combined_rank": 32,
+          "aaa_marcel_c": -0.0029600930078048093,
+          "proj_cpbl_kbb_c": 0.023381823037900314,
+          "proj_lo": 0.010950582563553682,
+          "proj_hi": 0.03578022462751125,
+          "pct": 61.40350877192983
+        },
+        {
+          "name": "Lazaro Estrada",
+          "combined_rank": 41,
+          "aaa_marcel_c": 0.020492263598834853,
+          "proj_cpbl_kbb_c": 0.04658436265631641,
+          "proj_lo": 0.027569232714872653,
+          "proj_hi": 0.06601277899271556,
+          "pct": 96.49122807017544
+        }
+      ]
+    },
+    "hitters": {
+      "t2_line": [
+        -0.007217908731220115,
+        0.0383135414229911
+      ],
+      "aaa_signable_n": 126,
+      "aaa_dropped_no_marcel": [],
+      "aaa_extrapolated": 56,
+      "t2_x_range": [
+        -0.01564711247406969,
+        0.04189493731561256
+      ],
+      "aaa_top5": [
+        {
+          "name": "Daz Cameron",
+          "rank": 5,
+          "aaa_marcel_c": 0.04815232306234568,
+          "proj_kbo_woba_c": 0.037965982349930864,
+          "extrapolated": true,
+          "pct": 0.7936507936507936
+        },
+        {
+          "name": "Ryan Ward",
+          "rank": 45,
+          "aaa_marcel_c": 0.023887734786710912,
+          "proj_kbo_woba_c": 0.03814112193350503,
+          "extrapolated": false,
+          "pct": 1.5873015873015872
+        },
+        {
+          "name": "Pablo Reyes",
+          "rank": 55,
+          "aaa_marcel_c": 0.021210913766052053,
+          "proj_kbo_woba_c": 0.038160442983321954,
+          "extrapolated": false,
+          "pct": 2.380952380952381
+        },
+        {
+          "name": "Nick Solak",
+          "rank": 57,
+          "aaa_marcel_c": 0.020703970758128742,
+          "proj_kbo_woba_c": 0.03816410205168508,
+          "extrapolated": false,
+          "pct": 3.1746031746031744
+        },
+        {
+          "name": "Buddy Kennedy",
+          "rank": 58,
+          "aaa_marcel_c": 0.020483295976780613,
+          "proj_kbo_woba_c": 0.03816569486211613,
+          "extrapolated": false,
+          "pct": 3.968253968253968
+        }
+      ]
+    }
+  },
+  "unlinked_2026_qualified": 139,
+  "unlinked_foreign_by_hand": [
+    {
+      "fg_id": "sa3025099",
+      "name": "Keisho Shirakawa",
+      "note": "Japanese name; no MLBAM link (no MLB/MiLB record found); identified by hand 2026-10-15"
+    },
+    {
+      "fg_id": "sa3075928",
+      "name": "Koki Sugimoto",
+      "note": "Japanese name; no MLBAM link; identified by hand 2026-10-15"
+    },
+    {
+      "fg_id": "sa3075931",
+      "name": "Kanakubo Yuto",
+      "note": "Japanese name (FanGraphs lists family name first); no MLBAM link; identified by hand 2026-10-15"
+    },
+    {
+      "fg_id": "sa3075965",
+      "name": "Yan-Cheng Wang",
+      "note": "Taiwanese name; no MLBAM link; identified by hand 2026-10-15"
+    },
+    {
+      "fg_id": "sa3077731",
+      "name": "Shota Iimura",
+      "note": "Japanese name; no MLBAM link; identified by hand 2026-10-15"
+    }
+  ]
+}

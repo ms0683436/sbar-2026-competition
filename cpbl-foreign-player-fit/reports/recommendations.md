@@ -65,6 +65,8 @@
 | 洋投（可簽者首位機率） | Gerber 0.36；候補 Carl Edwards Jr.、Nolan Kingham | Gerber **0.59**；候補 José Urquidy、Elieser Hernández |
 | 洋打（可簽者首位機率） | Cameron 0.47；候補 Carlos Pérez、Ryan Ward | Cameron **0.70**；候補 Ryan Ward、Pablo Reyes |
 
+修正 16–18 之後首選與候補都不變（Gerber 首位機率 0.57，Cameron 0.69；與 0.59、0.70 的差異是 bootstrap 抽樣序列改變，見 findings 0.17 節）。
+
 Carlos Pérez 掉到可簽者第 10：他 2027 年 37 歲，Marcel 有年齡折扣。Edwards Jr.、Kingham 掉出前 3：Stuff+ 和 Marcel 都沒有支持他們。
 
 **為什麼換人**
@@ -129,6 +131,7 @@ Carlos Pérez 掉到可簽者第 10：他 2027 年 37 歲，Marcel 有年齡折�
 
 **主要風險**
 - 兩季 AAA 只有 430 PA。
+- **2026 年上半季在 KBO 斗山熊**：75 場、314 打席，wOBA .375、wRC+ 120（FanGraphs）。斗山 6/28 釋出他後，他回到 AAA Buffalo。這是登錄規則之外的描述性資訊，不計分。釋出代表 KBO 球團不續用，球探應該先問原因。
 - 2026 年在藍鳥上下多次，可能還想爭取大聯盟機會。
 
 ### 洋打候補
@@ -163,6 +166,14 @@ T3 的人不是完全不可能來，球團可以買斷；只是成本與機率�
 - 可簽的轉先發候選 146 人。分數最高的多半是從沒先發過的純後援（例如 Joey Lucchesi、Michael Kelly，兩季 AAA 都沒先發、單場最多不到 50 球）。他們的分數很可能被高估，不建議直接當先發找。
 - 有先發經驗（單場 ≥ 75 球）且可簽的 21 人中，分數最高的是 **Domingo Acevedo**（T2，Albuquerque，兩季 8 場 6 場先發，單場最多 98 球）。他局數不夠進先發池，比較像傷停或時間不足的先發。
 - 回推顯示加入後援只讓名單涵蓋更多實際來台者，排序沒有變好，所以這份名單只供球探參考。
+
+### 修正 17：同一把尺之後（參考）
+
+改用主排名的分數（Marcel + Stuff+ + Fit）後，可簽轉先發候選的前 10 名分數都高於所有可簽先發，第一是 **Angel Bastardo**（T2，40 場全後援，Stuff+ 118）。這些人幾乎沒先發過（單場最多約 50 球），轉先發的代價是外推估計，所以仍不當首選。有先發經驗（單場 ≥ 75 球）的可簽者中最高是 **Jace Beck**（T2，11 場 9 場先發，全體第 55）。完整名單：`data/processed/conversion_pool_a17.csv`。
+
+## 參考：2026 KBO 洋將（修正 16）
+
+不影響首選，完整名單在 [`kbo.md`](kbo.md)。KBO→中職的換算沒有成立，所以 KBO 先發的中職投影都接近同一個平均值，百分位不能拿來比較兩位 KBO 投手。確定離隊（多半是季中釋出）的有 Austin Voth、Caleb Boushley、Lachlan Wells、Jack O'Loughlin、Yonny Chirinos、Anthony Veneziano、Wilkel Hernandez、Matt Sauer，以及打者 Daz Cameron。其他人的 2027 去留要等 11 月底的保留名單。
 
 ## 結論
 
