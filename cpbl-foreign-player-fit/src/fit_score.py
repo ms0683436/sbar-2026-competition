@@ -340,10 +340,19 @@ def run(baseline: dict, cpbl=None, aaa=None) -> dict:
         st = stuff_rank.candidate_stuff(stuff_rank.game_sums()).set_index("pitcher_id")
         P["stuff_plus"] = P.mlbam_id.map(st.stuff_plus)
         P["stuff_pitches"] = P.mlbam_id.map(st.stuff_pitches)
+        # amendment 18 replaces Stuff+ by its Marcel-style version; the old one is kept for the
+        # earlier rankings (amendments 13 and 15) and the ablation
+        a13 = stuff_rank.candidate_stuff_a13(stuff_rank.game_sums()).set_index("pitcher_id")
+        P["stuff_plus_a13"] = P.mlbam_id.map(a13.stuff_plus)
         m = P.fit_available
         P.loc[m, "combined_a6"] = P.loc[m, "combined_heuristic"]
         P.loc[m, "combined_rank_a6"] = P.loc[m, "combined_rank"]
-        P.loc[m, "combined_heuristic"] = stuff_rank.combined(P.loc[m, "baseline_score"], P.loc[m, "stuff_plus"],
+        P.loc[m, "combined_a13"] = stuff_rank.combined(P.loc[m, "baseline_score"], P.loc[m, "stuff_plus_a13"],
+                                                       P.loc[m, "fit_score"])           # amendment 13 as published
+        P.loc[m, "combined_rank_a13"] = P.loc[m, "combined_a13"].rank(ascending=False, method="first")
+        # rule S (amendment 18) applies whichever baseline the ranking uses
+        stuff_now = "stuff_plus" if "amendment18" in config() else "stuff_plus_a13"
+        P.loc[m, "combined_heuristic"] = stuff_rank.combined(P.loc[m, "baseline_score"], P.loc[m, stuff_now],
                                                              P.loc[m, "fit_score"])
         P.loc[m, "combined_rank"] = P.loc[m, "combined_heuristic"].rank(ascending=False, method="first")
     if "amendment15" in config():        # AAA Marcel replaces the baseline in the ranking (amendment 15)
@@ -361,11 +370,12 @@ def run(baseline: dict, cpbl=None, aaa=None) -> dict:
             D.loc[m, "marcel_rank_tracked"] = D.loc[m, "marcel_score"].rank(ascending=False, method="first")
         m = P.fit_available
         if marcel.active("pitcher"):             # unless V1 found Marcel "clearly worse"
-            P.loc[m, "combined_a13"] = P.loc[m, "combined_heuristic"]
-            P.loc[m, "combined_rank_a13"] = P.loc[m, "combined_rank"]
             P.loc[m, "combined_heuristic"] = stuff_rank.combined(P.loc[m, "marcel_score"], P.loc[m, "stuff_plus"],
                                                                  P.loc[m, "fit_score"])
             P.loc[m, "combined_rank"] = P.loc[m, "combined_heuristic"].rank(ascending=False, method="first")
+            P.loc[m, "combined_a15"] = stuff_rank.combined(P.loc[m, "marcel_score"], P.loc[m, "stuff_plus_a13"],
+                                                           P.loc[m, "fit_score"])     # amendment 15 as published
+            P.loc[m, "combined_rank_a15"] = P.loc[m, "combined_a15"].rank(ascending=False, method="first")
     P = P.sort_values(["fit_available", "combined_rank"], ascending=[False, True])
     H = H.sort_values(["fit_available", "combined_rank"], ascending=[False, True])
     P.drop(columns="pid").to_csv(processed("pitcher_fit_results.csv"), index=False)

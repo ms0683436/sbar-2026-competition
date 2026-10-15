@@ -205,7 +205,8 @@ def test_b(r: dict, P: pd.DataFrame, H: pd.DataFrame, reps: int | None = None) -
     from . import marcel
     a15p, a15h = marcel.active("pitcher"), marcel.active("hitter")
     ch = config()["fit"]["combined_heuristic"]
-    store = {k: [] for k in ("p_fit", "p_comb", "p_base", "h_fit", "h_comb", "h_base")}
+    store = {k: [] for k in ("p_fit", "p_comb", "p_base", "h_fit", "h_comb", "h_base", "p_comba15")}
+    a18 = "amendment18" in config() and a13
     for _ in range(reps):
         wc, wa = poisson_weights(cpbl_games), poisson_weights(aaa_games)
         env = fit_score.environment(t, wc, wa)
@@ -221,6 +222,10 @@ def test_b(r: dict, P: pd.DataFrame, H: pd.DataFrame, reps: int | None = None) -
         if a13:
             st = stuff_rank.candidate_stuff(sums, wa).set_index("pitcher_id").stuff_plus
             pstuff = Pt.mlbam_id.map(st).reset_index(drop=True)
+            if a18:                      # amendment 18 before / after: the amendment-13 Stuff+ in the same draw
+                st0 = stuff_rank.candidate_stuff_a13(sums, wa).set_index("pitcher_id").stuff_plus
+                store["p_comba15"].append(stuff_rank.combined(pd.Series(pb), Pt.mlbam_id.map(st0).reset_index(drop=True),
+                                                              pd.Series(pfit)).values)
         for key, f, b in (("p", pfit, pb), ("h", hfit, hb)):
             if key == "p" and a13:
                 comb = stuff_rank.combined(pd.Series(b), pstuff, pd.Series(f)).values
@@ -241,7 +246,9 @@ def test_b(r: dict, P: pd.DataFrame, H: pd.DataFrame, reps: int | None = None) -
                             "on_40man": D.on_40man.fillna(False).astype(bool).values})
         free = ~res.on_40man.values
         sig = D.signable.fillna(False).astype(bool).values if "signable" in D else None
-        for kind in ("fit", "base", "comb"):
+        for kind in ("fit", "base", "comb", "comba15"):
+            if not store.get(f"{key}_{kind}"):
+                continue
             S = np.vstack(store[f"{key}_{kind}"])
             R = ranks(S)
             res[f"{kind}_rank_med"] = np.median(R, axis=0)

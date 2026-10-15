@@ -68,9 +68,14 @@ cpbl-foreign-player-fit/
 │   ├── conversion_pool.py       # 修正 9：AAA 後援轉先發池、角色校正、三種做法的回推
 │   ├── weather.py               # 修正 10：AAA 逐場天氣與熱天個人差異的跨季可靠度
 │   ├── backtest_chrono.py       # 修正 11：只用事前資料的投手回測
-│   └── cpbl_census.py           # 修正 12：2018–2026 中職洋將普查與 AAA 延續性檢定（Baseball-Reference）
+│   ├── cpbl_census.py           # 修正 12：2018–2026 中職洋將普查與 AAA 延續性檢定（Baseball-Reference）
+│   ├── stuff_rank.py            # 修正 13、18：Stuff+ 進投手排名（修正 18：Marcel 式逐季加權與回歸）
+│   ├── battle.py                # 修正 14：兩好球纏鬥指標與首選配球附錄
+│   ├── marcel.py                # 修正 15：AAA Marcel 預測與驗證 V1–V3
+│   ├── kbo.py                   # 修正 16：KBO→中職換算與 2026 KBO 洋將參考名單（FanGraphs）
+│   └── a18_checks.py            # 修正 18：目前排名的回測、以 Marcel 排序的招募回推
 ├── tools/cpbl_site_export.js    # 修正 7：以無頭瀏覽器操作官網排行榜的「匯出表單」
-├── tests/                       # 107 tests：資格邊界、計算、跨來源一致性、官方交叉核對、回測規則、權重估計、球場係數、可簽性、官網匯出解析
+├── tests/                       # 133 tests：資格邊界、計算、跨來源一致性、官方交叉核對、回測規則、權重估計、球場係數、可簽性、官網匯出解析
 ├── reports/
 │   ├── data_feasibility.md      # Phase 0 稽核與 Go/No-Go
 │   ├── data_audit_summary.md    # 自動產生的覆蓋率表
@@ -142,7 +147,7 @@ python -m src.statsapi_release 2025 2023 2024  # 修正 8：約 6,500 場 AAA ga
 python -m src.stuff_plus        # 修正 8 Stuff+ 與驗證（約 1 分鐘）
 python -m src.velocity_calibration
 python -m src.backtest_2026     # 修正 7、7b（需要上面的匯出表與 Stuff+）
-python -m src.conversion_pool   # 修正 9 轉先發池
+python -m src.conversion_pool   # 修正 9 轉先發池；修正 17 同一把尺（evaluate 之後）
 python -m src.weather           # 修正 10 氣候（AAA 賽程天氣）
 python -m src.backtest_chrono   # 修正 11 只用事前資料的回測（需要 backtest 與 backtest_2026 的輸出）
 python -m src.cpbl_census       # 修正 12 中職洋將普查（Baseball-Reference，每分鐘 ≤ 20 次，首次約 1 小時）
@@ -150,7 +155,9 @@ python -m src.stuff_rank        # 修正 13 Stuff+ 進排名的比較表（evalu
 python -m src.marcel            # 修正 15 Marcel 驗證 V1–V3 與排名前後比較（evaluate、普查之後）
 python -m src.battle            # 修正 14 兩好球纏鬥指標 A、B 部分
 python -m src.battle appendix   # 修正 14 C 部分：目前洋投首選的配球附錄
-pytest -q                       # 107 passed
+python -m src.kbo               # 修正 16 KBO（FanGraphs KBO 排行榜 2015–2026；普查之後）
+python -m src.a18_checks        # 修正 18 B、R 部分（evaluate、conversion_pool 之後）
+pytest -q                       # 133 passed
 ```
 
 各步驟都是 deterministic 的：bootstrap 的 seed 寫在 `config/scoring.yaml`。
