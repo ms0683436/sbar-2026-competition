@@ -952,3 +952,37 @@ amendment16:
   forecast_season: 2027
   min_n: 15
   bootstrap: {draws: 2000, ci: 0.90, seed: 20261023}
+
+# AMENDMENT 17 (2026-10-15; committed BEFORE any conversion-pool Marcel, Stuff+ or Fit value was
+# computed). Johnny asked why the conversion pool (amendment 9) still uses the amendment-5
+# baseline instead of the main ranking's scale, then chose 「改成同一把尺」 (put the conversion pool
+# on the same Marcel + Stuff+ scale; still a separate reference list, picks unchanged, one re-run
+# together with amendment 16). Seen before this registration: the amendment-9 list and its old
+# baseline ranks only.
+#
+# Pool, eligibility, signability tiers, starting-evidence flags: amendment 9 unchanged (2026 list,
+#   AAA 2025-26). Role effect: the amendment-9 estimate from AAA 2025-26 (relief - start rate of
+#   SO / BF, BB / BF, HR / BF), unchanged.
+# Score = the amendment-13/15 combined score, with every component's z computed against the
+#   fit-available STARTER pool's mean and SD (so no starter's score or rank moves):
+#     0.5 z(Marcel K-BB%) + 0.2 z(Stuff+, clip 2.5; missing = 0) + 0.3 Fit
+#   Marcel: amendment 15 (forecast 2027 from AAA 2024-26, park-adjusted where available) with the
+#     starter-equivalent adjustment applied to each conversion pitcher's AAA stints season by
+#     season: SO, BB, HR minus relief BF x role effect, relief BF = that season's relief share of
+#     BF in the AAA pitch data x the stint's BF (seasons without pitch data for the pitcher: share
+#     from the pooled 2025-26 pitch data). Done through Marcel's per-stint multipliers, so league
+#     averages are those of the unadjusted data. HBP, IP not adjusted (as amendment 9).
+#   Stuff+: amendment 13 model and >= 300-pitch rule, no role adjustment (none estimated).
+#   Fit: the same Fit as the starters (same CPBL / AAA environment table, same >= min tracked
+#     pitches rule), its z against the starter pool. Conversion pitchers without enough tracked
+#     pitches get Fit 0 (average), like a missing Stuff+.
+# Reported: conversion list with the new score, rank among starter + conversion pool on one scale,
+#   percentile among the signable starter pool, the amendment-9 baseline rank next to it.
+#   Sensitivities (reported, never choose): twice the role effect; Stuff+ term 0 for conversion
+#   pitchers (relievers throw harder in short outings and no adjustment exists); no role
+#   adjustment at all. The amendment-9 recruitment replay and cohort check are not re-run (they
+#   were exploratory and used the old scale).
+# Primary picks: unchanged (starter pool only). Merging still needs its own amendment.
+amendment17:
+  weights_from: amendment13
+  sensitivities: [role_effect_x2, no_stuff_for_conversion, no_role_adjustment]
