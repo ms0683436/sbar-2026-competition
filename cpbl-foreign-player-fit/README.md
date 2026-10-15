@@ -8,6 +8,7 @@
 
 - **分析快照**：2026-10-13（可簽性分層的日期也是 2026-10-13）
 - **Go / No-Go**：有條件 GO（細球種可行；AAA 2025–26 逐球已補齊，但中職沒有 2026 逐球、也沒有轉速與位移）
+- **修正 16–18（2026-10-15，一次重跑，首選不變）**：KBO 洋將另列參考名單（FanGraphs KBO 資料；KBO→中職換算沒有成立，只有 BB% 正相關）；轉先發池改用主排名的尺（前 10 名可簽後援分數高於 Gerber，但幾乎沒先發過，只當參考）；Stuff+ 改成逐季加權並回歸、整體回測與 Marcel 招募回推（樣本小，無法判定）。洋打首選 Cameron 2026 上半季在 KBO 斗山、6 月被釋出（[`reports/findings.md`](reports/findings.md) 0.15–0.17 節）。
 - **修正 13–15（2026-10-14，一次重跑，首選不變）**：Stuff+ 加進投手排名；Marcel（「猴子」預測法）取代原本的 baseline，投手排名 = 0.5 Marcel K−BB% + 0.2 Stuff+ + 0.3 Fit，打者改用 Marcel wOBA 排名。Marcel 預測下一季 AAA 不比原方法差（每格都略高），在 53 位洋投普查中對中職 K−BB% 的 ρ 0.42（單季 AAA 0.34）。另做兩好球纏鬥指標：中職打者兩好球後的續命界外球率比 AAA 高 2.5 個百分點，剛好過登錄門檻；「兩好球收得掉的投手來台更好」沒有得到支持（[`reports/marcel.md`](reports/marcel.md)、[`reports/stuff_rank.md`](reports/stuff_rank.md)、[`reports/battle.md`](reports/battle.md)、findings 0.12–0.14 節）。
 - **修正 12（2026-10-14，只做驗證，首選不變）**：用 Baseball-Reference 做 2018–2026 中職洋將普查。53 位前一季在 AAA 投過的洋投，來台前的 AAA K-BB%、K%、BB% 都和來台後的中職成績正相關（主要檢定 ρ 0.34，90% CI 0.11 至 0.54），AAA 的 K-BB% 優勢約剩一半，但沒有證明能準確預測數值。洋打只有 2 人符合條件，做不了檢定（[`reports/cpbl_census.md`](reports/cpbl_census.md)）。
 - **wOBA 權重修正（2026-10-14，首選不變）**：Johnny 發現設定檔標示 2024、實際是 FanGraphs 2013 年的權重。改成 2024 後全部重跑，首選與登錄的回測結論都不變；Stuff+ 的 S3 改成勉強通過，Johnny 之後決定加進排名（修正 13；findings 0.11 節）。

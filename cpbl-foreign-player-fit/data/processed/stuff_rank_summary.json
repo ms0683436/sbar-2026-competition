@@ -5,7 +5,12 @@
   "n_signable_with_stuff": 57,
   "picks": [
     {
-      "ranking": "amendment 15 (Marcel 0.5 / Stuff+ 0.2 / Fit 0.3)",
+      "ranking": "amendment 18 (Marcel 0.5 / Marcel-style Stuff+ 0.2 / Fit 0.3)",
+      "signable top 3": "Joey Gerber, José Urquidy, Elieser Hernández",
+      "overall top 3": "Logan Henderson, Robby Snelling, Riley Cornelio"
+    },
+    {
+      "ranking": "amendment 15 (Marcel 0.5 / amendment-13 Stuff+ 0.2 / Fit 0.3)",
       "signable top 3": "Joey Gerber, José Urquidy, Elieser Hernández",
       "overall top 3": "Logan Henderson, Robby Snelling, Riley Cornelio"
     },
@@ -27,9 +32,41 @@
     {
       "ranking": "sensitivity Stuff+ 0.3 (Marcel 0.4)",
       "signable top 3": "Joey Gerber, José Urquidy, Seth Shuman",
-      "overall top 3": "Jonah Tong, Robby Snelling, Logan Henderson"
+      "overall top 3": "Robby Snelling, Logan Henderson, Jonah Tong"
+    }
+  ],
+  "stuff_reliability": {
+    "r": 0.9610872910344765,
+    "nbar": 578.1716867469879,
+    "R": 23.40913961548189,
+    "n_pitchers": 332
+  },
+  "stuff_rank_corr_a18_vs_a13": 0.9949932388510196,
+  "combined_rank_corr_a18_vs_previous_signable": 0.9976017630282604,
+  "previous_ranking": "amendment 15",
+  "p_top1_before_after": [
+    {
+      "name": "Joey Gerber",
+      "rank new": 1,
+      "rank previous": 1,
+      "P(top 1) new": 0.5666666666666667,
+      "P(top 1) previous": 0.5666666666666667
+    },
+    {
+      "name": "José Urquidy",
+      "rank new": 2,
+      "rank previous": 2,
+      "P(top 1) new": 0.12,
+      "P(top 1) previous": 0.12
+    },
+    {
+      "name": "Elieser Hernández",
+      "rank new": 3,
+      "rank previous": 3,
+      "P(top 1) new": 0.06,
+      "P(top 1) previous": 0.0566666666666666
     }
   ],
   "primary_pick": "Joey Gerber",
-  "primary_pick_p_top1_signable": 0.5933333333333334
+  "primary_pick_p_top1_signable": 0.5666666666666667
 }

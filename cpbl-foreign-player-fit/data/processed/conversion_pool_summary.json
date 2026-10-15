@@ -652,6 +652,16 @@
       "ci_hi": 0.49648148148148125
     }
   ],
+  "a17": {
+    "n_starters": 178,
+    "n_conversion": 375,
+    "n_signable_starters": 57,
+    "n_conversion_fit_available": 375,
+    "n_conversion_with_stuff": 375,
+    "n_conversion_not_ranked_no_marcel": 0,
+    "starter_score_reproduced_max_abs_diff": 6.661338147750939e-16
+  },
+  "a9_replay_and_cohort_frozen": true,
   "pool_2026": {
     "starter": 178,
     "conversion": 375,

@@ -1,0 +1,22 @@
+role,name,aaa_rank,signable,sign_tier,kbo_season,kbo_exposure,kbo_centred
+hitter,Daz Cameron,5.0,True,T2_expiring,2026,314.0,0.030516236535011343
+hitter,Patrick Wisdom,7.0,False,T4_40man,2025,486.0,0.040339143131155
+hitter,Blaine Crim,90.0,True,T1_free,2026,264.0,-0.004129207177592409
+hitter,Trenton Brooks,104.0,True,T2_expiring,2026,161.0,-0.08158116824008066
+hitter,Bligh Madris,151.0,True,T2_expiring,2026,72.0,-0.038732750106885316
+hitter,Hyeseong Kim,286.0,False,T4_40man,2024,567.0,0.02668254562248429
+pitcher,Elieser Hernández,29.0,True,T1_free,2024,195.0,0.10333767559764814
+pitcher,Elieser Hernández,29.0,True,T1_free,2025,276.0,0.07192147411563315
+pitcher,Thomas Hatch,48.0,True,T1_free,2026,188.0,0.020210672245909403
+pitcher,Mike Clevinger,50.0,True,T1_free,2026,102.0,-0.043306223874240754
+pitcher,Ryan Weiss,78.0,True,T2_expiring,2024,384.0,0.08302517559764813
+pitcher,Ryan Weiss,78.0,True,T2_expiring,2025,725.0,0.10266110430054068
+pitcher,Gerson Garabito,82.0,True,T2_expiring,2025,327.0,0.038116129081728095
+pitcher,Vince Velasquez,93.0,True,T2_expiring,2025,168.0,-0.04609094824461531
+pitcher,Matt Sauer,94.0,True,T2_expiring,2026,455.0,-0.044986896143148325
+pitcher,Bruce Zimmermann,101.0,True,T1_free,2026,156.0,0.013254862098609918
+pitcher,Davis Daniel,105.0,True,T1_free,2026,456.0,0.12155445724031032
+pitcher,Alec Gamboa,117.0,False,T4_40man,2025,475.0,0.03754313696841728
+pitcher,Charlie Barnes,133.0,True,T2_expiring,2024,624.0,0.10365818841816099
+pitcher,Charlie Barnes,133.0,True,T2_expiring,2025,204.0,-0.002673581297836583
+pitcher,Tucker Davidson,173.0,True,T2_expiring,2025,529.0,0.02860074317675476
