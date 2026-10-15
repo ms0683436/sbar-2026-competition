@@ -986,3 +986,52 @@ amendment16:
 amendment17:
   weights_from: amendment13
   sensitivities: [role_effect_x2, no_stuff_for_conversion, no_role_adjustment]
+
+# AMENDMENT 18 (2026-10-15; committed BEFORE any of the values below was computed). Johnny asked
+# which places could still use the "monkey" (Marcel) method, then chose 「1、2、3 都做」 on:
+# (1) backtest the CURRENT ranking as a whole, (2) the recruitment replay ranked by Marcel,
+# (3) regress Stuff+ Marcel-style (this one changes the ranking; the pick may change).
+# Seen before this registration: the amendment-11 results (C1-C8), amendment-15 V2 on the
+# amendment-11 cohort, the amendment-6 / 9 replays on the old scale. Not seen: anything below.
+#
+# S. Stuff+ Marcel-style (replaces amendment 13's two-season pitch-weighted mean + 300-pitch minimum
+#    in every place the ranking uses Stuff+: main ranking, its bootstrap, the conversion pool):
+#    seasons 2026 / 2025 / 2024 weighted 3 / 2 / 1 (as Marcel pitchers), each season's Stuff+ as now
+#    (100 = that season's >= 300-pitch average, model of amendment 8); per pitcher
+#      stuff = (sum w_s n_s stuff_s + R x 100) / (sum w_s n_s + R),   n_s = pitches in season s,
+#    for every pitcher with any tracked pitch (no minimum; the regression handles small samples).
+#    R from split-half reliability, fixed before use: AAA 2025, each pitcher's games split by
+#    game_pk parity, Stuff+ per half (scaled as a season), pitchers with >= 300 pitches in both
+#    halves; r = Pearson between halves, nbar = mean pitches per half, R = nbar x (1 - r) / r.
+#    If r <= 0, R = 10,000 (no signal: everyone near 100). No age term (no AAA aging curve for
+#    pitch quality estimated). Old Stuff+ kept as `stuff_plus_a13` for the ablation.
+#    Reported: R, r, nbar; signable top 3 / P(top-1) before and after; rank correlation.
+# B. Backtest of the current ranking (amendment-11 cohort, pre-arrival inputs only):
+#    M1 (primary of this amendment) combined_a18 = 0.5 z(Marcel K-BB%) + 0.2 z(Stuff+) + 0.3 Fit
+#      vs centred CPBL K-BB%, Fit-arrival seasons (2025, 2026) as C1. Marcel: amendment 15 for
+#      season Y from AAA Y-1..Y-3 (as amendment-15 V2 on this cohort). Stuff+: rule S on AAA
+#      Y-1, Y-2, Y-3 (weights 3 / 2 / 1; seasons with pitch data only) with R from rule S. Fit:
+#      amendment 11's chronological Fit. Each z against amendment 11's reference pool R(Y) (AAA Y-1
+#      pitchers >= 100 BF and >= 400 tracked pitches), Stuff+ clipped at 2.5, missing = 0.
+#      Spearman, 2,000 bootstrap draws, 90% CI, amendment-11 verdict rule (n >= 15).
+#    M2 0.5 z(Marcel) + 0.2 z(Stuff+) rescaled to 5/7, 2/7 (no Fit), all arrivals 2024-26.
+#    Paired: M1 minus C1 (registered amendment-11 combined) and M1 minus Marcel alone.
+#    Disclosed limitation: the Stuff+ model was trained on AAA 2025 (other pitchers' AAA run
+#    values, not CPBL outcomes), so 2025 arrivals use a model that saw later AAA data.
+# R. Recruitment replay (amendment-6 folds A primary, B exploratory; amendment-6 metrics) with
+#    the list ranked by Marcel K-BB% (fold A: forecast 2025 from AAA 2024-22; fold B: 2026 from
+#    2025-23; nothing after the fold's as-of date) instead of the amendment-5 baseline:
+#      starter       amendment-6 starter pool, T1 + T2
+#      expanded_adj  starter + conversion pool (amendment 9), conversion pitchers' Marcel with the
+#                    amendment-17 per-season starter-equivalent adjustment, role effect from the
+#                    fold's own seasons
+#    Reported next to the baseline-ranked arms already published. Exploratory (positives seen).
+# Primary picks follow the main ranking with rule S applied (the pick rule itself unchanged:
+#   best combined rank among signable T1 + T2). M1 / M2 / R never choose the model.
+amendment18:
+  stuff:
+    seasons: [2026, 2025, 2024]
+    weights: [3, 2, 1]
+    reliability: {season: 2025, min_pitches_each_half: 300, no_signal_R: 10000}
+  backtest: {primary: M1, min_n: 15, bootstrap: {draws: 2000, ci: 0.90, seed: 20261024}}
+  replay_arms: [starter, expanded_adj]
