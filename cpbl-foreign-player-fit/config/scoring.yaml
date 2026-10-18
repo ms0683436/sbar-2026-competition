@@ -1062,3 +1062,50 @@ amendment19:
   metrics: [k, bb, kbb]
   bootstrap: {draws: 2000, ci: 0.90, seed: 20261018}
   appendix_top_n: 18
+
+# AMENDMENT 20 (2026-10-18; committed BEFORE any CPBL run value, run total or validation number
+# below was computed). Johnny asked how much K and BB should each weigh and how to decide (「那各占
+# 多少？该怎么决定？跟 Codex 讨论一下」), then chose 「全部做」 on the plan from the Codex consult:
+# importance = CPBL run value of a strikeout and of a walk relative to an average CPBL plate
+# appearance (CPBL data only); translation = how much of a Marcel K% / BB% edge shows up in the
+# CPBL (census); validation on first-season CPBL runs allowed, which embeds no K / BB weighting
+# (CPBL K-BB% and FIP would be circular). Seen before this registration: amendment 19 and the
+# Q&A thread's exploratory checks; Codex's prior guess of ~1:1 importance (K ~0.28, BB ~0.30 runs).
+# Data audit only (no outcome looked at): B-R CPBL team pages 2015-2026 are cached (57
+# team-seasons); 2026 pitching pages have no innings (IP blank for 97% of rows), so RA9 is not
+# available for 2026.
+# I. Importance (primary): team-season OLS, R/PA = a + sum_e b_e share_e over e in {1B, 2B, 3B,
+#    HR, BB (incl. IBB), HBP}; reference = outs (AB - H + SH + SF, strikeouts pooled with other
+#    outs); PA = AB + BB + HBP + SH + SF; team totals from the B-R player batting rows, seasons
+#    2015-2025 (2026 incomplete). Event values relative to an average PA: v_e = b_e - sum_j pbar_j b_j
+#    (b_out = 0, pbar = pooled event shares); w_BB = v_BB, w_K = -v_out. Uncertainty: 2,000
+#    bootstrap draws resampling seasons (all teams of a season together), 90% CI.
+#    Sensitivities (reported, never choose): season fixed effects; K separate from other outs
+#    (reference = non-K outs, w_K = -(b_K - sum pbar b)); BaseRuns at CPBL 2015-25 totals (B
+#    multiplier calibrated to league runs, marginal value of replacing an average PA by one event;
+#    K = out in BaseRuns); CPBL pitcher-season OLS of R/BF on K, BB, HBP, HR and non-HR hit shares
+#    (pitchers >= 100 BF, 2015-2025; conditional associations, corroboration only).
+# II. Translation: centred CPBL K% (BB%) = a + b x centred Marcel K% (BB%), census pitchers.
+# III. Validation (rolling origin by arrival year; a held-out year needs >= 15 earlier census
+#    arrivals; everything fitted on earlier arrivals / earlier CPBL seasons only):
+#    outcome (primary) = first-season CPBL RA9 minus that season's CPBL RA9 (league R / IP x 9 over
+#      all pitchers), census arrivals 2018-2025 (2026: no innings); outcome sensitivities: R/BF
+#      relative to league incl. 2026, ERA relative to league; BF-weighted errors.
+#    arms, each score calibrated on the training arrivals by OLS outcome = c + d x score:
+#      M0 training mean (reference)
+#      A1 current: Marcel K% - Marcel BB% (centred, 1:1)
+#      A2 translated 1:1: (a_K + b_K mK) - (a_BB + b_BB mBB), translation fitted on training arrivals
+#      A3 translated with CPBL importance: w_K (a_K + b_K mK) - w_BB (a_BB + b_BB mBB), w from the
+#         primary importance model on CPBL seasons before the held-out year (if either w <= 0 that
+#         year, A3 falls back to A2 and the count is reported)
+#    loss = MAE over held-out pitchers; paired differences A3-A1 (primary), A2-A1, A3-A2, each vs
+#      M0; bootstrap 2,000 draws over held-out pitchers, 90% CI, seed 20261019.
+#    Decision rule: recommend replacing Marcel K-BB% in the 0.5 slot by A3 only if n held out >= 15,
+#      the 90% CI of MAE(A3) - MAE(A1) lies entirely below 0 AND the point gain is >= 0.10 RA9; an
+#      importance-specific claim also needs MAE(A3) - MAE(A2) CI below 0. Otherwise the current
+#      score stays. A pass is a recommendation for Johnny's approval, never an automatic change.
+#    Disclosed: the census informed this plan (not an untouched test); team runs include defence,
+#    sequencing and parks; 2023+ ball regime reported as a descriptive split only.
+amendment20:
+  importance: {seasons: [2015, 2025], bootstrap: {draws: 2000, ci: 0.90, seed: 20261018}, pitcher_min_bf: 100}
+  validation: {arrivals: [2018, 2025], min_train: 15, min_gain_ra9: 0.10, bootstrap: {draws: 2000, ci: 0.90, seed: 20261019}}
