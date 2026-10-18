@@ -1035,3 +1035,30 @@ amendment18:
     reliability: {season: 2025, min_pitches_each_half: 300, no_signal_R: 10000}
   backtest: {primary: M1, min_n: 15, bootstrap: {draws: 2000, ci: 0.90, seed: 20261024}}
   replay_arms: [starter, expanded_adj]
+
+# AMENDMENT 19 (2026-10-18; committed BEFORE any of the new numbers below was computed). Johnny
+# (POC Q&A thread): 「那先不管權重，先分別做 K%、BB% 跟 K−BB% 分開的報告」. A report only: nothing
+# enters the score, the ranking or the picks, and no weights are estimated (the K / BB importance
+# question is left for later, as Johnny said). Seen before this registration: every existing
+# number listed as "existing" below, and the Q&A thread's exploratory census checks (Marcel K%
+# vs CPBL K-BB% rho 0.35, Marcel BB% 0.08; five of the census Marcel top 18 who fell to the
+# bottom half in the CPBL all had below-average Marcel K%).
+# One section per metric m in {K%, BB%, K-BB%}; the three are never combined or weighted:
+#   1. Ranking: the signable (T1 + T2) Fit-available pitchers of the main ranking, ordered by
+#      Marcel m (amendment 15 projection; K% and K-BB% high first, BB% low first), with the other
+#      two Marcel metrics and the main combined rank shown next to it.
+#   2. Validation of Marcel m against the same metric m in the next league:
+#      census 2018-26 (n 53): Spearman Marcel m vs centred CPBL m (new for K%, BB%) next to the
+#        single-season AAA m (existing CP1-CP3); OLS slope of centred CPBL m on Marcel m (new)
+#        next to the single-season slope (existing); V3 rolling MAE vs the training mean (existing)
+#      amendment-11 cohort (n 17): Spearman Marcel m vs CPBL m (new for K%, BB%)
+#      KBO -> CPBL (amendment 16, existing K1 / K1b / K1c) and AAA -> KBO (existing T2 rows)
+#   3. Descriptive, cross-metric: Marcel K% and Marcel BB% each vs centred CPBL K-BB% on the
+#      census (the Q&A thread's check, recomputed here with a registered seed).
+#   New tests: 2,000 bootstrap draws, 90% CI, seed 20261018, amendment-12 verdict rule (n >= 15).
+#   Descriptive appendix (not a test, seen before registration): the census Marcel K-BB% top 18
+#   with Marcel K%, Marcel BB% and whether CPBL K-BB% fell in the bottom half.
+amendment19:
+  metrics: [k, bb, kbb]
+  bootstrap: {draws: 2000, ci: 0.90, seed: 20261018}
+  appendix_top_n: 18
