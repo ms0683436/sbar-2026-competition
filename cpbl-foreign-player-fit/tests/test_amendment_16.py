@@ -111,3 +111,13 @@ def test_stuff_zero_exposure_pitcher_gets_100(monkeypatch):
     c = stuff_rank.candidate_stuff(g, w, seasons=[2026, 2025, 2024]).set_index("pitcher_id").stuff_plus
     assert np.isclose(c.loc[3], 100.0)
     stuff_rank._R.clear()
+
+
+# ------------------------------------------------------------------ amendment 19
+def test_metric_ranking_bb_low_first_k_high_first():
+    from src import metric_reports
+    C = pd.DataFrame({"name": ["a", "b", "c"], "sign_tier": ["T1_free"] * 3, "marcel_k_pct": [0.20, 0.25, 0.22],
+                      "marcel_bb_pct": [0.06, 0.10, 0.08], "marcel_score": [0.14, 0.15, 0.14], "combined_rank": [3, 1, 2]})
+    assert metric_reports._ranking(C, "bb").球員.tolist() == ["a", "c", "b"]
+    assert metric_reports._ranking(C, "k").球員.tolist() == ["b", "c", "a"]
+    assert metric_reports._ranking(C, "k")["主排名（可簽者）"].tolist() == [1, 2, 3]
