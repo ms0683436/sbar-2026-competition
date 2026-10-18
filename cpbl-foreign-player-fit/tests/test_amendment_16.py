@@ -121,3 +121,40 @@ def test_metric_ranking_bb_low_first_k_high_first():
     assert metric_reports._ranking(C, "bb").球員.tolist() == ["a", "c", "b"]
     assert metric_reports._ranking(C, "k").球員.tolist() == ["b", "c", "a"]
     assert metric_reports._ranking(C, "k")["主排名（可簽者）"].tolist() == [1, 2, 3]
+
+
+# ------------------------------------------------------------------ amendment 20
+def _teams(rng, vals):
+    """Synthetic team-seasons whose runs are exact linear weights of their events."""
+    rows = []
+    for s in range(2015, 2025):
+        for t in range(5):
+            p = {"1B": rng.uniform(.14, .18), "2B": rng.uniform(.03, .05), "3B": rng.uniform(.002, .006),
+                 "HR": rng.uniform(.015, .035), "BB": rng.uniform(.07, .10), "HBP": rng.uniform(.008, .015)}
+            pa = 5000
+            r = {"season": s, "PA": pa, **{f"p_{e}": v for e, v in p.items()}}
+            r["p_OUT"] = 1 - sum(p.values())
+            r["rpa"] = sum(vals[e] * p[e] for e in p)
+            rows.append(r)
+    return pd.DataFrame(rows)
+
+
+def test_importance_recovers_linear_weights():
+    from src import kbb_weights
+    vals = {"1B": .45, "2B": .75, "3B": 1.0, "HR": 1.4, "BB": .30, "HBP": .32}   # relative to an out (0)
+    t = _teams(np.random.default_rng(0), vals)
+    r = kbb_weights.importance(t)
+    avg = float(np.average(sum(t[f"p_{e}"] * v for e, v in vals.items()), weights=t.PA))
+    assert np.isclose(r["w_K"], avg, atol=1e-6)                      # a K = an out: minus the average PA
+    assert np.isclose(r["w_BB"], vals["BB"] - avg, atol=1e-6)
+
+
+def test_baseruns_calibrates_to_league_runs_and_k_equals_out():
+    from src import kbb_weights
+    t = pd.DataFrame({"R": [700.0], "H": [1400.0], "2B": [250.0], "3B": [25.0], "HR": [120.0], "BB": [500.0], "HBP": [60.0],
+                      "AB": [5500.0], "SH": [40.0], "SF": [40.0]})
+    t["1B"] = t.H - t["2B"] - t["3B"] - t.HR
+    t["OUT"] = t.AB - t.H + t.SH + t.SF
+    t["PA"] = t.AB + t.BB + t.HBP + t.SH + t.SF
+    r = kbb_weights.baseruns(t)
+    assert r["w_K"] > 0 and r["w_BB"] > 0 and 0.3 < r["B_multiplier"] < 3
