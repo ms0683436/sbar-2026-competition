@@ -158,3 +158,23 @@ def test_baseruns_calibrates_to_league_runs_and_k_equals_out():
     t["PA"] = t.AB + t.BB + t.HBP + t.SH + t.SF
     r = kbb_weights.baseruns(t)
     assert r["w_K"] > 0 and r["w_BB"] > 0 and 0.3 < r["B_multiplier"] < 3
+
+
+# ------------------------------------------------------------------ amendment 21
+def test_stuff_signal_paired_bootstrap_clusters_pitchers(monkeypatch):
+    from src import stuff_signal
+    rng = np.random.default_rng(1)
+    n = 30
+    zm = rng.normal(size=n)
+    d = pd.DataFrame({"mlbam_id": np.r_[np.arange(n), np.arange(5)], "z_stuff": rng.normal(size=n + 5)})
+    d["z_marcel"] = np.r_[zm, zm[:5]]
+    d["y_kbb"] = d.z_marcel + 0.1 * rng.normal(size=n + 5)
+    d["s0"] = d.z_marcel
+    d["s1"] = (0.5 * d.z_marcel + 0.2 * d.z_stuff) / 0.7
+    for w in stuff_signal.cfg()["sensitivity_stuff_weights"]:
+        d[f"s1_w{w}"] = ((0.7 - w) * d.z_marcel + w * d.z_stuff) / 0.7
+    monkeypatch.setitem(stuff_signal.cfg()["bootstrap"], "draws", 200)
+    r = stuff_signal.tests(d, "y_kbb", 0)
+    assert r["n_pitchers"] == n and r["n_rows"] == n + 5          # a pitcher in both leagues counts once
+    assert r["marcel"]["rho"] > r["marcel_stuff"]["rho"]           # noise added to a near-perfect predictor
+    assert r["paired"]["ci_hi"] < 0 and r["paired"]["verdict"] == "Stuff+ 扣分"
