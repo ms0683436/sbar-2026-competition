@@ -74,9 +74,12 @@ cpbl-foreign-player-fit/
 │   ├── battle.py                # 修正 14：兩好球纏鬥指標與首選配球附錄
 │   ├── marcel.py                # 修正 15：AAA Marcel 預測與驗證 V1–V3
 │   ├── kbo.py                   # 修正 16：KBO→中職換算與 2026 KBO 洋將參考名單（FanGraphs）
-│   └── a18_checks.py            # 修正 18：目前排名的回測、以 Marcel 排序的招募回推
+│   ├── a18_checks.py            # 修正 18：目前排名的回測、以 Marcel 排序的招募回推
+│   ├── metric_reports.py        # 修正 19：K%、BB%、K−BB% 分開的報告（不加權）
+│   ├── kbb_weights.py           # 修正 20：中職三振、保送的得分價值，換算後權重的 RA9 驗證
+│   └── stuff_signal.py          # 修正 21：K−BB% 加 Stuff+ 是否比只看 K−BB% 強（韓職、中職 2024–26）
 ├── tools/cpbl_site_export.js    # 修正 7：以無頭瀏覽器操作官網排行榜的「匯出表單」
-├── tests/                       # 133 tests：資格邊界、計算、跨來源一致性、官方交叉核對、回測規則、權重估計、球場係數、可簽性、官網匯出解析
+├── tests/                       # 137 tests：資格邊界、計算、跨來源一致性、官方交叉核對、回測規則、權重估計、球場係數、可簽性、官網匯出解析
 ├── reports/
 │   ├── data_feasibility.md      # Phase 0 稽核與 Go/No-Go
 │   ├── data_audit_summary.md    # 自動產生的覆蓋率表
@@ -158,7 +161,10 @@ python -m src.battle            # 修正 14 兩好球纏鬥指標 A、B 部分
 python -m src.battle appendix   # 修正 14 C 部分：目前洋投首選的配球附錄
 python -m src.kbo               # 修正 16 KBO（FanGraphs KBO 排行榜 2015–2026；普查之後）
 python -m src.a18_checks        # 修正 18 B、R 部分（evaluate、conversion_pool 之後）
-pytest -q                       # 133 passed
+python -m src.metric_reports    # 修正 19 K%、BB%、K−BB% 分開的報告（marcel、kbo 之後）
+python -m src.kbb_weights       # 修正 20 中職三振、保送的得分價值與 RA9 驗證（普查、marcel 之後）
+python -m src.stuff_signal      # 修正 21 K−BB% 加 Stuff+ 對韓職、中職的訊號比較（kbo、marcel 之後）
+pytest -q                       # 137 passed
 ```
 
 各步驟都是 deterministic 的：bootstrap 的 seed 寫在 `config/scoring.yaml`。

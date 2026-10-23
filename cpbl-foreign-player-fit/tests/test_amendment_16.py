@@ -111,3 +111,70 @@ def test_stuff_zero_exposure_pitcher_gets_100(monkeypatch):
     c = stuff_rank.candidate_stuff(g, w, seasons=[2026, 2025, 2024]).set_index("pitcher_id").stuff_plus
     assert np.isclose(c.loc[3], 100.0)
     stuff_rank._R.clear()
+
+
+# ------------------------------------------------------------------ amendment 19
+def test_metric_ranking_bb_low_first_k_high_first():
+    from src import metric_reports
+    C = pd.DataFrame({"name": ["a", "b", "c"], "sign_tier": ["T1_free"] * 3, "marcel_k_pct": [0.20, 0.25, 0.22],
+                      "marcel_bb_pct": [0.06, 0.10, 0.08], "marcel_score": [0.14, 0.15, 0.14], "combined_rank": [3, 1, 2]})
+    assert metric_reports._ranking(C, "bb").球員.tolist() == ["a", "c", "b"]
+    assert metric_reports._ranking(C, "k").球員.tolist() == ["b", "c", "a"]
+    assert metric_reports._ranking(C, "k")["主排名（可簽者）"].tolist() == [1, 2, 3]
+
+
+# ------------------------------------------------------------------ amendment 20
+def _teams(rng, vals):
+    """Synthetic team-seasons whose runs are exact linear weights of their events."""
+    rows = []
+    for s in range(2015, 2025):
+        for t in range(5):
+            p = {"1B": rng.uniform(.14, .18), "2B": rng.uniform(.03, .05), "3B": rng.uniform(.002, .006),
+                 "HR": rng.uniform(.015, .035), "BB": rng.uniform(.07, .10), "HBP": rng.uniform(.008, .015)}
+            pa = 5000
+            r = {"season": s, "PA": pa, **{f"p_{e}": v for e, v in p.items()}}
+            r["p_OUT"] = 1 - sum(p.values())
+            r["rpa"] = sum(vals[e] * p[e] for e in p)
+            rows.append(r)
+    return pd.DataFrame(rows)
+
+
+def test_importance_recovers_linear_weights():
+    from src import kbb_weights
+    vals = {"1B": .45, "2B": .75, "3B": 1.0, "HR": 1.4, "BB": .30, "HBP": .32}   # relative to an out (0)
+    t = _teams(np.random.default_rng(0), vals)
+    r = kbb_weights.importance(t)
+    avg = float(np.average(sum(t[f"p_{e}"] * v for e, v in vals.items()), weights=t.PA))
+    assert np.isclose(r["w_K"], avg, atol=1e-6)                      # a K = an out: minus the average PA
+    assert np.isclose(r["w_BB"], vals["BB"] - avg, atol=1e-6)
+
+
+def test_baseruns_calibrates_to_league_runs_and_k_equals_out():
+    from src import kbb_weights
+    t = pd.DataFrame({"R": [700.0], "H": [1400.0], "2B": [250.0], "3B": [25.0], "HR": [120.0], "BB": [500.0], "HBP": [60.0],
+                      "AB": [5500.0], "SH": [40.0], "SF": [40.0]})
+    t["1B"] = t.H - t["2B"] - t["3B"] - t.HR
+    t["OUT"] = t.AB - t.H + t.SH + t.SF
+    t["PA"] = t.AB + t.BB + t.HBP + t.SH + t.SF
+    r = kbb_weights.baseruns(t)
+    assert r["w_K"] > 0 and r["w_BB"] > 0 and 0.3 < r["B_multiplier"] < 3
+
+
+# ------------------------------------------------------------------ amendment 21
+def test_stuff_signal_paired_bootstrap_clusters_pitchers(monkeypatch):
+    from src import stuff_signal
+    rng = np.random.default_rng(1)
+    n = 30
+    zm = rng.normal(size=n)
+    d = pd.DataFrame({"mlbam_id": np.r_[np.arange(n), np.arange(5)], "z_stuff": rng.normal(size=n + 5)})
+    d["z_marcel"] = np.r_[zm, zm[:5]]
+    d["y_kbb"] = d.z_marcel + 0.1 * rng.normal(size=n + 5)
+    d["s0"] = d.z_marcel
+    d["s1"] = (0.5 * d.z_marcel + 0.2 * d.z_stuff) / 0.7
+    for w in stuff_signal.cfg()["sensitivity_stuff_weights"]:
+        d[f"s1_w{w}"] = ((0.7 - w) * d.z_marcel + w * d.z_stuff) / 0.7
+    monkeypatch.setitem(stuff_signal.cfg()["bootstrap"], "draws", 200)
+    r = stuff_signal.tests(d, "y_kbb", 0)
+    assert r["n_pitchers"] == n and r["n_rows"] == n + 5          # a pitcher in both leagues counts once
+    assert r["marcel"]["rho"] > r["marcel_stuff"]["rho"]           # noise added to a near-perfect predictor
+    assert r["paired"]["ci_hi"] < 0 and r["paired"]["verdict"] == "Stuff+ 扣分"

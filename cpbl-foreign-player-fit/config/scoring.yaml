@@ -1035,3 +1035,112 @@ amendment18:
     reliability: {season: 2025, min_pitches_each_half: 300, no_signal_R: 10000}
   backtest: {primary: M1, min_n: 15, bootstrap: {draws: 2000, ci: 0.90, seed: 20261024}}
   replay_arms: [starter, expanded_adj]
+
+# AMENDMENT 19 (2026-10-18; committed BEFORE any of the new numbers below was computed). Johnny
+# (POC Q&A thread): 「那先不管權重，先分別做 K%、BB% 跟 K−BB% 分開的報告」. A report only: nothing
+# enters the score, the ranking or the picks, and no weights are estimated (the K / BB importance
+# question is left for later, as Johnny said). Seen before this registration: every existing
+# number listed as "existing" below, and the Q&A thread's exploratory census checks (Marcel K%
+# vs CPBL K-BB% rho 0.35, Marcel BB% 0.08; five of the census Marcel top 18 who fell to the
+# bottom half in the CPBL all had below-average Marcel K%).
+# One section per metric m in {K%, BB%, K-BB%}; the three are never combined or weighted:
+#   1. Ranking: the signable (T1 + T2) Fit-available pitchers of the main ranking, ordered by
+#      Marcel m (amendment 15 projection; K% and K-BB% high first, BB% low first), with the other
+#      two Marcel metrics and the main combined rank shown next to it.
+#   2. Validation of Marcel m against the same metric m in the next league:
+#      census 2018-26 (n 53): Spearman Marcel m vs centred CPBL m (new for K%, BB%) next to the
+#        single-season AAA m (existing CP1-CP3); OLS slope of centred CPBL m on Marcel m (new)
+#        next to the single-season slope (existing); V3 rolling MAE vs the training mean (existing)
+#      amendment-11 cohort (n 17): Spearman Marcel m vs CPBL m (new for K%, BB%)
+#      KBO -> CPBL (amendment 16, existing K1 / K1b / K1c) and AAA -> KBO (existing T2 rows)
+#   3. Descriptive, cross-metric: Marcel K% and Marcel BB% each vs centred CPBL K-BB% on the
+#      census (the Q&A thread's check, recomputed here with a registered seed).
+#   New tests: 2,000 bootstrap draws, 90% CI, seed 20261018, amendment-12 verdict rule (n >= 15).
+#   Descriptive appendix (not a test, seen before registration): the census Marcel K-BB% top 18
+#   with Marcel K%, Marcel BB% and whether CPBL K-BB% fell in the bottom half.
+amendment19:
+  metrics: [k, bb, kbb]
+  bootstrap: {draws: 2000, ci: 0.90, seed: 20261018}
+  appendix_top_n: 18
+
+# AMENDMENT 20 (2026-10-18; committed BEFORE any CPBL run value, run total or validation number
+# below was computed). Johnny asked how much K and BB should each weigh and how to decide (「那各占
+# 多少？该怎么决定？跟 Codex 讨论一下」), then chose 「全部做」 on the plan from the Codex consult:
+# importance = CPBL run value of a strikeout and of a walk relative to an average CPBL plate
+# appearance (CPBL data only); translation = how much of a Marcel K% / BB% edge shows up in the
+# CPBL (census); validation on first-season CPBL runs allowed, which embeds no K / BB weighting
+# (CPBL K-BB% and FIP would be circular). Seen before this registration: amendment 19 and the
+# Q&A thread's exploratory checks; Codex's prior guess of ~1:1 importance (K ~0.28, BB ~0.30 runs).
+# Data audit only (no outcome looked at): B-R CPBL team pages 2015-2026 are cached (57
+# team-seasons); 2026 pitching pages have no innings (IP blank for 97% of rows), so RA9 is not
+# available for 2026.
+# I. Importance (primary): team-season OLS, R/PA = a + sum_e b_e share_e over e in {1B, 2B, 3B,
+#    HR, BB (incl. IBB), HBP}; reference = outs (AB - H + SH + SF, strikeouts pooled with other
+#    outs); PA = AB + BB + HBP + SH + SF; team totals from the B-R player batting rows, seasons
+#    2015-2025 (2026 incomplete). Event values relative to an average PA: v_e = b_e - sum_j pbar_j b_j
+#    (b_out = 0, pbar = pooled event shares); w_BB = v_BB, w_K = -v_out. Uncertainty: 2,000
+#    bootstrap draws resampling seasons (all teams of a season together), 90% CI.
+#    Sensitivities (reported, never choose): season fixed effects; K separate from other outs
+#    (reference = non-K outs, w_K = -(b_K - sum pbar b)); BaseRuns at CPBL 2015-25 totals (B
+#    multiplier calibrated to league runs, marginal value of replacing an average PA by one event;
+#    K = out in BaseRuns); CPBL pitcher-season OLS of R/BF on K, BB, HBP, HR and non-HR hit shares
+#    (pitchers >= 100 BF, 2015-2025; conditional associations, corroboration only).
+# II. Translation: centred CPBL K% (BB%) = a + b x centred Marcel K% (BB%), census pitchers.
+# III. Validation (rolling origin by arrival year; a held-out year needs >= 15 earlier census
+#    arrivals; everything fitted on earlier arrivals / earlier CPBL seasons only):
+#    outcome (primary) = first-season CPBL RA9 minus that season's CPBL RA9 (league R / IP x 9 over
+#      all pitchers), census arrivals 2018-2025 (2026: no innings); outcome sensitivities: R/BF
+#      relative to league incl. 2026, ERA relative to league; BF-weighted errors.
+#    arms, each score calibrated on the training arrivals by OLS outcome = c + d x score:
+#      M0 training mean (reference)
+#      A1 current: Marcel K% - Marcel BB% (centred, 1:1)
+#      A2 translated 1:1: (a_K + b_K mK) - (a_BB + b_BB mBB), translation fitted on training arrivals
+#      A3 translated with CPBL importance: w_K (a_K + b_K mK) - w_BB (a_BB + b_BB mBB), w from the
+#         primary importance model on CPBL seasons before the held-out year (if either w <= 0 that
+#         year, A3 falls back to A2 and the count is reported)
+#    loss = MAE over held-out pitchers; paired differences A3-A1 (primary), A2-A1, A3-A2, each vs
+#      M0; bootstrap 2,000 draws over held-out pitchers, 90% CI, seed 20261019.
+#    Decision rule: recommend replacing Marcel K-BB% in the 0.5 slot by A3 only if n held out >= 15,
+#      the 90% CI of MAE(A3) - MAE(A1) lies entirely below 0 AND the point gain is >= 0.10 RA9; an
+#      importance-specific claim also needs MAE(A3) - MAE(A2) CI below 0. Otherwise the current
+#      score stays. A pass is a recommendation for Johnny's approval, never an automatic change.
+#    Disclosed: the census informed this plan (not an untouched test); team runs include defence,
+#    sequencing and parks; 2023+ ball regime reported as a descriptive split only.
+amendment20:
+  importance: {seasons: [2015, 2025], bootstrap: {draws: 2000, ci: 0.90, seed: 20261018}, pitcher_min_bf: 100}
+  validation: {arrivals: [2018, 2025], min_train: 15, min_gain_ra9: 0.10, bootstrap: {draws: 2000, ci: 0.90, seed: 20261019}}
+
+# AMENDMENT 21 (2026-10-22; committed BEFORE any number below was computed). Johnny asked whether
+# Marcel K-BB% + Stuff+ carries a stronger signal than Marcel K-BB% alone (「那 k-bb + stuff+ 有比
+# 單看 k-bb 信號來的強嗎」, then 「那對 aaa 轉韓職來說呢」, then 「好，連同 cpbl 也去抓 2026 的資料」).
+# A report only: nothing enters the score, the ranking or the picks. Seen before this
+# registration: amendment 18 (M2 0.35 vs Marcel alone 0.29 on the 17 amendment-11 CPBL arrivals,
+# no paired test; M1 minus Marcel +0.28 on 9) and amendment 16 (AAA -> KBO Marcel K-BB% rho 0.29
+# on 95 pitchers, 2016-26). Data step before registration: the 2026 CPBL Baseball-Reference
+# team pages were re-fetched on 2026-10-22 (the 2026-10-14 copies kept outside the repo); totals
+# unchanged (54,182 BF), innings still blank on B-R for 2026.
+# Samples (each pitcher's first transition in the window; seasons with AAA pitch tracking):
+#   KBO   AAA -> KBO pitchers of amendment 16's T2 cohort with KBO season D in 2024-2026
+#         (>= 150 BF in AAA D-1 and in KBO D); outcome = centred KBO K-BB% in season D.
+#   CPBL  census pitchers (amendment 12) arriving in 2024-2026; outcome = centred first-season
+#         CPBL K-BB% (2026 from the re-fetched pages).
+# Predictors (pre-arrival only): Marcel K-BB% for season D from AAA D-1..D-3 (KBO as amendment
+#   16's T2: park-adjusted; CPBL as amendment 15's census V2: PF = 1); Stuff+ = rule S
+#   (amendment 18) on AAA D-1, D-2, D-3 (seasons with pitch data only), missing = 100.
+#   Each z against the AAA D-1 reference pool R(D) of amendment 18 (>= 100 BF, >= 400 tracked
+#   pitches), Marcel of the pool from the same projection as the sample; Stuff+ clipped at 2.5.
+#   S0 = z(Marcel); S1 = (0.5 z(Marcel) + 0.2 z(Stuff+)) / 0.7 (the main ranking without Fit);
+#   Stuff+ alone reported.
+# Tests per sample: Spearman of S0 and S1 with the outcome; primary = paired rho(S1) - rho(S0),
+#   2,000 bootstrap draws over pitchers, 90% CI, seed 20261022, n >= 15. Verdict: "Stuff+ adds"
+#   if the CI lies above 0, "Stuff+ hurts" if below, else inconclusive. Secondary: the two samples
+#   pooled (outcome centred within league; a pitcher in both keeps both rows, clustered); outcome
+#   K% instead of K-BB%. Sensitivities (reported, never choose): Stuff+ weight 0.1 / 0.3 (its
+#   share taken from Marcel, as amendment 13). Disclosed: the Stuff+ model was trained on AAA
+#   2025 (2024-25 arrivals use a model that saw later AAA data); R from AAA 2025.
+amendment21:
+  kbo_seasons: [2024, 2026]
+  cpbl_arrivals: [2024, 2026]
+  weights: {marcel: 0.5, stuff: 0.2}
+  sensitivity_stuff_weights: [0.1, 0.3]
+  bootstrap: {draws: 2000, ci: 0.90, seed: 20261022}
