@@ -1144,3 +1144,26 @@ amendment21:
   weights: {marcel: 0.5, stuff: 0.2}
   sensitivity_stuff_weights: [0.1, 0.3]
   bootstrap: {draws: 2000, ci: 0.90, seed: 20261022}
+
+# AMENDMENT 22 (2026-10-31; committed BEFORE any number below was computed). Johnny, reviewing the
+# competition deck, asked whether hitters have AAA -> KBO indicators like the pitchers do (「打者有
+# 3A到韓職的指標嗎？看完投手的分析覺得不錯，但是想看打者的時候卻沒有分析」). A report only:
+# nothing enters the score, the ranking or the picks. Seen before this registration: amendment
+# 16's T2 hitter result (AAA Marcel wOBA vs KBO next-season centred wOBA, 43 hitters / 44 rows,
+# rho 0.07, CI -0.15 to 0.27, inconclusive; mean change +0.024) and its cohort file, including
+# Daz Cameron's row. No component (K%, BB%, ISO) rate of that cohort was looked at.
+# Sample: amendment 16's T2 hitter cohort unchanged (AAA season D-1 -> KBO season D, D 2016-2026,
+#   >= 150 PA on both sides, MLBAM-linked).
+# Predictors: AAA Marcel (amendment 15, hitter: weights 5/4/3, R = 1200 PA, age rule, park-adjusted
+#   as amendment 16's T2) K%, BB% and ISO for season D from AAA D-1..D-3, each centred on its
+#   Marcel league value. Outcomes: the same rate in KBO season D, centred on that KBO season's
+#   average (ISO = (TB - H) / AB).
+# Tests per component: Spearman with a player-clustered bootstrap (2,000 draws, 90% CI, seed
+#   20261031), verdict "supports" when n >= 15 players and the CI lies above 0, else
+#   inconclusive; mean change (KBO centred - AAA Marcel centred) with CI; OLS slope with CI.
+#   wOBA is re-reported from the same code as a check (must equal amendment 16).
+# No component is chosen after the fact: all three are reported together.
+amendment22:
+  components: [k, bb, iso]
+  bootstrap: {draws: 2000, ci: 0.90, seed: 20261031}
+  min_n: 15
