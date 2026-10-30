@@ -77,7 +77,8 @@ cpbl-foreign-player-fit/
 │   ├── a18_checks.py            # 修正 18：目前排名的回測、以 Marcel 排序的招募回推
 │   ├── metric_reports.py        # 修正 19：K%、BB%、K−BB% 分開的報告（不加權）
 │   ├── kbb_weights.py           # 修正 20：中職三振、保送的得分價值，換算後權重的 RA9 驗證
-│   └── stuff_signal.py          # 修正 21：K−BB% 加 Stuff+ 是否比只看 K−BB% 強（韓職、中職 2024–26）
+│   ├── stuff_signal.py          # 修正 21：K−BB% 加 Stuff+ 是否比只看 K−BB% 強（韓職、中職 2024–26）
+│   └── hitter_kbo.py            # 修正 22：AAA → 韓職打者 K%、BB%、ISO 的延續性
 ├── tools/cpbl_site_export.js    # 修正 7：以無頭瀏覽器操作官網排行榜的「匯出表單」
 ├── tests/                       # 137 tests：資格邊界、計算、跨來源一致性、官方交叉核對、回測規則、權重估計、球場係數、可簽性、官網匯出解析
 ├── reports/
@@ -164,6 +165,7 @@ python -m src.a18_checks        # 修正 18 B、R 部分（evaluate、conversion
 python -m src.metric_reports    # 修正 19 K%、BB%、K−BB% 分開的報告（marcel、kbo 之後）
 python -m src.kbb_weights       # 修正 20 中職三振、保送的得分價值與 RA9 驗證（普查、marcel 之後）
 python -m src.stuff_signal      # 修正 21 K−BB% 加 Stuff+ 對韓職、中職的訊號比較（kbo、marcel 之後）
+python -m src.hitter_kbo        # 修正 22 AAA → 韓職打者分項指標（kbo 之後）
 pytest -q                       # 137 passed
 ```
 

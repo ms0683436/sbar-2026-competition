@@ -1,0 +1,122 @@
+{
+  "rows": 44,
+  "players": 43,
+  "tests": [
+    {
+      "component": "woba",
+      "rho": {
+        "test": "AAA Marcel wOBA vs KBO wOBA",
+        "n": 43,
+        "rows": 44,
+        "rho": 0.06863988724453841,
+        "ci_lo": -0.15081954620176571,
+        "ci_hi": 0.27510577799474284,
+        "verdict": "inconclusive"
+      },
+      "line": {
+        "line": "KBO_c = a + b * AAA Marcel_c (wOBA)",
+        "n": 43,
+        "slope": -0.007217908731220115,
+        "slope_lo": -0.4383369266846291,
+        "slope_hi": 0.42472138054776554,
+        "intercept": 0.0383135414229911,
+        "x_min": -0.01564711247406969,
+        "x_max": 0.04189493731561256
+      },
+      "mean_change": {
+        "metric": "KBO_c - AAA Marcel_c (wOBA)",
+        "n": 44,
+        "mean": 0.024267992010950642,
+        "ci_lo": 0.013532151449955142,
+        "ci_hi": 0.03491220393521919
+      }
+    },
+    {
+      "component": "k",
+      "rho": {
+        "test": "AAA Marcel K% vs KBO K%",
+        "n": 43,
+        "rows": 44,
+        "rho": 0.5496828752642706,
+        "ci_lo": 0.3425372324640659,
+        "ci_hi": 0.7097313748574606,
+        "verdict": "supports"
+      },
+      "line": {
+        "line": "KBO_c = a + b * AAA Marcel_c (K%)",
+        "n": 43,
+        "slope": 1.0218752667584448,
+        "slope_lo": 0.7133473115790586,
+        "slope_hi": 1.303442952832757,
+        "intercept": 0.009217609254091326,
+        "x_min": -0.07034478686891432,
+        "x_max": 0.06617671358804597
+      },
+      "mean_change": {
+        "metric": "KBO_c - AAA Marcel_c (K%)",
+        "n": 44,
+        "mean": 0.0093801101960759,
+        "ci_lo": -0.00044577636355377643,
+        "ci_hi": 0.01981185639075113
+      }
+    },
+    {
+      "component": "bb",
+      "rho": {
+        "test": "AAA Marcel BB% vs KBO BB%",
+        "n": 43,
+        "rows": 44,
+        "rho": 0.3630725863284002,
+        "ci_lo": 0.11010437244661306,
+        "ci_hi": 0.5776218515180067,
+        "verdict": "supports"
+      },
+      "line": {
+        "line": "KBO_c = a + b * AAA Marcel_c (BB%)",
+        "n": 43,
+        "slope": 0.6097852555838659,
+        "slope_lo": 0.20032362169782025,
+        "slope_hi": 1.0047377421560928,
+        "intercept": 0.006590472903329863,
+        "x_min": -0.033625010197027544,
+        "x_max": 0.03056803386732701
+      },
+      "mean_change": {
+        "metric": "KBO_c - AAA Marcel_c (BB%)",
+        "n": 44,
+        "mean": 0.006187063954024038,
+        "ci_lo": -0.00018663092917661466,
+        "ci_hi": 0.012419329229321327
+      }
+    },
+    {
+      "component": "iso",
+      "rho": {
+        "test": "AAA Marcel ISO vs KBO ISO",
+        "n": 43,
+        "rows": 44,
+        "rho": 0.23551797040169128,
+        "ci_lo": -0.002004431447778046,
+        "ci_hi": 0.466661022633575,
+        "verdict": "inconclusive"
+      },
+      "line": {
+        "line": "KBO_c = a + b * AAA Marcel_c (ISO)",
+        "n": 43,
+        "slope": 0.6132258940397713,
+        "slope_lo": 0.21150682638170015,
+        "slope_hi": 1.0452760619882095,
+        "intercept": 0.05139281543058009,
+        "x_min": -0.03391541506822829,
+        "x_max": 0.07458234365915911
+      },
+      "mean_change": {
+        "metric": "KBO_c - AAA Marcel_c (ISO)",
+        "n": 44,
+        "mean": 0.04048974659685052,
+        "ci_lo": 0.02686754985870336,
+        "ci_hi": 0.05411190887577087
+      }
+    }
+  ]
+}
